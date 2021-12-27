@@ -47,12 +47,6 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="https://adminlte.io/docs">
-                    <i class="fa fa-book"></i>
-                    <span>Documentation</span>
-                </a>
-            </li>
             <li class="header">Akun</li>
             <li class="treeview">
                 <a href="#">
@@ -62,8 +56,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Hak Akses </a></li>
-                    <li><a href="profile.html"><i class="fa fa-circle-o"></i> Users </a></li>
+                    <li><a href="{{ url('/page/admin/akun') }}"><i class="fa fa-circle-o"></i> Users </a></li>
                 </ul>
             </li>
         </ul>

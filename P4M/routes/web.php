@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
@@ -41,6 +42,9 @@ Route::prefix("page")->group(function() {
             // Post
             Route::resource("/blog", PostController::class);
             Route::get("/logout", [LoginController::class, "logout"]);
+
+            // Akun
+            Route::resource("/akun", AkunController::class);
         });
     });
 });

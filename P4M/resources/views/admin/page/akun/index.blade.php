@@ -1,0 +1,178 @@
+@extends('admin.layouts.main')
+
+@section('page_content')
+
+<section class="content-header">
+    <h1>
+        Akun
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-dashboard"></i> Dashboard
+            </a>
+        </li>
+        <li class="active">Data Akun</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Data Akun
+                    </h3>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                            <i class="fa fa-plus"></i> Tambah Data
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No.</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data_akun as $akun)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                <td>{{ $akun->name }}</td>
+                                <td>{{ $akun->username }}</td>
+                                <td class="text-center">{{ $akun->email }}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+
+                                    @if ($akun->username == auth()->user()->username)
+
+                                    @else
+                                    <form action="" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tambah Data -->
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-plus"></i> Tambah Data Akun
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/akun') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name"> Name </label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username"> Username </label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email"> Email </label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password"> Password </label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+<!-- Edit Data -->
+<div class="modal fade" id="modal-default-edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-plus"></i> Edit Data Akun
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/akun') }}" method="POST">
+                @csrf
+                <div class="modal-body" id="modal-content-edit">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+<script>
+    const nama = document.querySelector('#nama');
+    const slug = document.querySelector('#slug');
+
+    nama.addEventListener('change', function() {
+        fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
+        .then(response => response.json())
+        .then(data => slug.value = data.slug)
+    })
+
+</script>
+
+@endsection
