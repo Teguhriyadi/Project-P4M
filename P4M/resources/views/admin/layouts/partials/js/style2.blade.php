@@ -10,8 +10,24 @@
 <script src="{{ url('/backend/template') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('/backend/template') }}/dist/js/demo.js"></script>
+
+<script src="{{ url('/backend/template') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ url('/backend/template') }}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
+    $(document).ready(function () {
+        $('.sidebar-menu').tree()
+    })
+</script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
 </script>

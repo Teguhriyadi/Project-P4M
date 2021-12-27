@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\KategoriController;
+use App\Models\Model\Kategori;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +20,14 @@ Route::get('/', function () {
     return view('pengunjung/layouts/main');
 });
 
-Route::prefix("admin")->group(function() {
-    Route::get("/template", function() {
-        return view("admin/layouts/main");
+Route::prefix("page")->group(function() {
+    Route::prefix("admin")->group(function() {
+
+        // Dashboard
+        Route::get("/dashboard", [AppController::class, "dashboard"]);
+
+        // Kategori
+        Route::resource("/kategori/", KategoriController::class);
+        Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
     });
 });
