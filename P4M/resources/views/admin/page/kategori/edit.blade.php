@@ -20,26 +20,30 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box">
-                <form action="{{ url('/page/admin/kategori/') }}" method="POST">
+                <form action="{{ url('/page/admin/kategori') }}/{{ $edit->slug }}" method="POST">
+                    @method('PUT')
                     @csrf
                     <div class="box-header">
                         <h3 class="box-title">
-                            <i class="fa fa-plus"></i> Form Tambah Kategori
+                            <i class="fa fa-pencil"></i> Form Edit Kategori
                         </h3>
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nama"> Nama Kategori </label>
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori">
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori" value="{{ $edit->nama }}">
                         </div>
                         <div class="form-group">
                             <label for="slug"> Slug </label>
-                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
                         </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-sm">
-                            <i class="fa fa-plus"></i> Tambah
+                            <i class="fa fa-save"></i> Simpan
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-refresh"></i> Batal
                         </button>
                     </div>
                 </form>

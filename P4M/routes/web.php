@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PostController;
 use App\Models\Model\Kategori;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,11 @@ Route::prefix("page")->group(function() {
         Route::get("/dashboard", [AppController::class, "dashboard"]);
 
         // Kategori
-        Route::resource("/kategori/", KategoriController::class);
         Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
+        Route::resource("/kategori", KategoriController::class);
+
+        // Post
+        Route::resource("/blog", PostController::class);
+
     });
 });
