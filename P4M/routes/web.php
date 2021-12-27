@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pengunjung/layouts/main');
 });
+
+Route::prefix("admin")->group(function() {
+    Route::get("/template", function() {
+        return view("admin/layouts/main");
+    });
+});
