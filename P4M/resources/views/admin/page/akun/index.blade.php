@@ -25,7 +25,7 @@
                         Data Akun
                     </h3>
                     <div class="pull-right">
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
                             <i class="fa fa-plus"></i> Tambah Data
                         </button>
                     </div>
