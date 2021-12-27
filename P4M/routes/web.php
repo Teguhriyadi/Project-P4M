@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pengunjung/layouts/main');
+    return view('pengunjung/page/home');
 });
 
 Route::prefix("page")->group(function() {
@@ -35,4 +35,12 @@ Route::prefix("page")->group(function() {
         Route::resource("/blog", PostController::class);
 
     });
+});
+
+Route::get('/galeri', function () {
+    return view('pengunjung/page/galeri');
+});
+
+Route::get('/berita', function () {
+    return view('pengunjung/page/berita');
 });

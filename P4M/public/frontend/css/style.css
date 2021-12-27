@@ -17,17 +17,21 @@
 .top-left  { text-align:left; }
 .top-right  {  text-align:right; }
 @media only screen and (max-width:768px) {
+	.academy-blog-posts #deskripsi { height: 250px }
 	.top-left { text-align:center; }
 	.top-right { text-align:center; }
 }
 @media only screen and (max-width:480px) {
+	.academy-blog-posts #deskripsi { height: 180px }
 	.top-area { display:none; }
 	.top-left { display:none; }
 	.top-right { display:none; }
 }
+
+
 #main { margin-bottom:30px; }
 .main {  }
-.main_title { font-size:24px; font-weight:500; text-transform:uppercase; }
+.main_title {  font-weight:500; text-transform:uppercase; }
 .main_body { text-align:justify; line-height: 2; font-weight:normal; }
 
 #widget { background-color: #eef3f6; padding: 20px; margin-bottom:30px; }
@@ -49,3 +53,5 @@
 #tabelview td{ padding:5px 0px; border-bottom:1px solid #EAEAEA; vertical-align:top; text-align:left; text-transform:capitalize; }
 #tabelview a:link, a:visited { text-decoration:none; color:#555555; }
 #tabelview a:hover { text-decoration:none; color:#000000; }
+
+.academy-blog-posts #deskripsi { height: 200px }
