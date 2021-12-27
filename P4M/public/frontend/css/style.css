@@ -1,0 +1,51 @@
+#view { display:table; width:100%; border-bottom:1px solid #EAEAEA; padding:5px 0px; }
+.view_label { float:left; width:25%; text-transform:capitalize; vertical-align:top; text-align:left; padding:5px 0px;  }
+.view_dot { float:left; width:3%; vertical-align:top; text-align:left; padding:5px 0px; }
+.view_content { float:left; width:72%; vertical-align:top; text-align:left; padding:5px 0px; }
+@media only screen and (max-width:768px) {
+	.view_label { width:35%; }
+	.view_dot { display:3%; }
+	.view_content { width:62%; }
+}
+@media only screen and (max-width:480px) {
+	.view_label { float:none; width:100%; font-weight:bold; }
+	.view_dot { float:none; display:none; }
+	.view_content { float:none; width:100%; }
+}
+
+.top-area { background:#f5f7fa; padding:5px 0px; }
+.top-left  { text-align:left; }
+.top-right  {  text-align:right; }
+@media only screen and (max-width:768px) {
+	.top-left { text-align:center; }
+	.top-right { text-align:center; }
+}
+@media only screen and (max-width:480px) {
+	.top-area { display:none; }
+	.top-left { display:none; }
+	.top-right { display:none; }
+}
+#main { margin-bottom:30px; }
+.main {  }
+.main_title { font-size:24px; font-weight:500; text-transform:uppercase; }
+.main_body { text-align:justify; line-height: 2; font-weight:normal; }
+
+#widget { background-color: #eef3f6; padding: 20px; margin-bottom:30px; }
+.widget {  }
+.widget_title { font-size:20px; font-weight:500; text-transform:uppercase; }
+.widget_body { padding:10px 0px; font-weight:normal; }
+
+#footer-widget { margin-bottom:20px; }
+.footer-widget {  }
+.footer-widget_title { font-size:15px; font-weight:500; text-transform:uppercase; color: #ffffff; }
+.footer-widget_body { padding:10px 0px; color: #808080; font-weight:normal; }
+
+#kalender { width:100%; border-left:1px solid #606060; border-top:1px solid #606060; }
+#kalender th{ border-bottom:1px solid #606060; border-right:1px solid #606060; background:#CCFFCC; text-align:center; font-weight:400;}
+#kalender td{ border-bottom:1px solid #606060; border-right:1px solid #606060; background:#FFFFFF; text-align:center; }
+
+#tabelview { text-align:center; color:#555555; }
+#tabelview tr:hover{ vertical-align:top }
+#tabelview td{ padding:5px 0px; border-bottom:1px solid #EAEAEA; vertical-align:top; text-align:left; text-transform:capitalize; }
+#tabelview a:link, a:visited { text-decoration:none; color:#555555; }
+#tabelview a:hover { text-decoration:none; color:#000000; }
