@@ -23,15 +23,7 @@
                                     <h4><a href="/berita/{{ $berita->slug }}"  class="post-title" style="font-size: 18px">{{ $berita->judul }}</a></h4>
                                     <div class="post-meta">
                                         <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
-<<<<<<< HEAD
                                         <p class="text-dark">{{ $berita->kutipan }} ...</p>
-                                        <a href="{{ url('/berita/'.$berita->slug) }}" class="mt-3 btn btn-primary text-white">
-                                            <i class="fa fa-search"></i> Selengkapnya
-                                        </a>
-=======
-                                        <p class="text-dark">{{ $berita->kutipan }}</p>
-                                        
->>>>>>> be9a100be186ff5a95aa947db6076b0d3b03d3cf
                                     </div>
                                 </div>
                                 <a href="/berita/{{ $berita->slug }}" class="mt-3 btn btn-primary text-white">
