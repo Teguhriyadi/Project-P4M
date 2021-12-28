@@ -25,7 +25,12 @@ class UserController extends Controller
             "data_berita" => Berita::paginate(6)
         ];
 
-        return view("/pengunjung/page/berita", $data);
+        return view("/pengunjung/page/berita/index", $data);
+    }
+
+    public function detailBerita($slug)
+    {
+        return view("/pengunjung/page/berita/detail");
     }
 
     public function galeri()
