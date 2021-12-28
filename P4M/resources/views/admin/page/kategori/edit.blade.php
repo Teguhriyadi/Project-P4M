@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box">
-                <form action="{{ url('/page/admin/kategori') }}/{{ $edit->slug }}" method="POST">
+                <form action="{{ url('/page/admin/kategori') }}/{{ $edit->slug }}" method="POST" id="editKategori">
                     @method('PUT')
                     @csrf
                     <div class="box-header">
@@ -55,6 +55,11 @@
                     <h3 class="box-title">
                         Data Kategori
                     </h3>
+                    <div class="pull-right">
+                        <a href="{{ url('/page/admin/kategori') }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-arrow-left"></i> Kembali
+                        </a>
+                    </div>
                 </div>
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">

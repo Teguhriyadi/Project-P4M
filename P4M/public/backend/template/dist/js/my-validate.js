@@ -28,6 +28,31 @@
 					form.submit();
 				}
 			});
+
+            $("#editKategori").validate({
+				ignore: "",
+				rules: {
+					nama: {
+						required: true
+					},
+					slug: {
+						required: true
+					}
+				},
+
+				messages: {
+					nama: {
+						required: "Nama harap di isi!"
+					},
+					slug: {
+						required: "Slug harap di isi!"
+					}
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
 		}
 	}
 
