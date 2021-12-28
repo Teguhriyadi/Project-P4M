@@ -16,13 +16,18 @@
 .top-area { background:#f5f7fa; padding:5px 0px; }
 .top-left  { text-align:left; }
 .top-right  {  text-align:right; }
+
+@media only screen and (max-width:992px) {
+	.academy-blog-posts #deskripsi { height: 150px !important }
+}
+
 @media only screen and (max-width:768px) {
-	.academy-blog-posts #deskripsi { height: 250px }
+	/* .academy-blog-posts #deskripsi { height: 150px !important } */
 	.top-left { text-align:center; }
 	.top-right { text-align:center; }
 }
 @media only screen and (max-width:480px) {
-	.academy-blog-posts #deskripsi { height: 180px }
+	.academy-blog-posts #deskripsi { height: 125px !important }
 	.top-area { display:none; }
 	.top-left { display:none; }
 	.top-right { display:none; }
@@ -54,4 +59,4 @@
 #tabelview a:link, a:visited { text-decoration:none; color:#555555; }
 #tabelview a:hover { text-decoration:none; color:#000000; }
 
-.academy-blog-posts #deskripsi { height: 200px }
+.academy-blog-posts #deskripsi { height: 100px }

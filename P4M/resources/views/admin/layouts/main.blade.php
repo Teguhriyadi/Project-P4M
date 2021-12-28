@@ -12,13 +12,15 @@
 	<meta name="keywords" content="Sistem Informasi Desa Arahan Lor"./>
 	<meta name="copyright" content="Team P4M"./>
 	<meta name="author" content="Team P4M"./>
-
+    
     <link rel="icon" href="{{ url('/frontend/') }}/img/logo-kabupaten.png">
     @include('admin/layouts/partials/css/style2')
-
+    
     @yield('page_css')
-
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    @include('admin/layouts/partials/js/style2')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <!-- Site wrapper -->
@@ -51,7 +53,6 @@
     </div>
 
 
-    @include('admin/layouts/partials/js/style2')
 
     @yield('page_scripts')
 

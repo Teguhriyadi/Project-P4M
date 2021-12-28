@@ -15,3 +15,4 @@
 
 <link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+<script src="{{ url('/backend/template') }}/bower_components/jquery/dist/jquery.min.js"></script>

@@ -1,5 +1,5 @@
 <!-- jQuery 3 -->
-<script src="{{ url('/backend/template') }}/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ url('/backend/template') }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -9,6 +9,7 @@
 <!-- AdminLTE App -->
 <script src="{{ url('/backend/template') }}/dist/js/adminlte.min.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/jquery.validate.min.js"></script>
+<script src="{{ url('/backend/template') }}/dist/js/additional-methods.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('/backend/template') }}/dist/js/demo.js"></script>
 

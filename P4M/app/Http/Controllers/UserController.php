@@ -31,9 +31,14 @@ class UserController extends Controller
     public function detailBerita($slug)
     {
         $data = [
+<<<<<<< HEAD
             "detail" => Berita::where("slug", $slug)->first()
         ];
 
+=======
+            "berita" => Berita::where("slug", $slug)->first()
+        ];
+>>>>>>> be9a100be186ff5a95aa947db6076b0d3b03d3cf
         return view("/pengunjung/page/berita/detail", $data);
     }
 

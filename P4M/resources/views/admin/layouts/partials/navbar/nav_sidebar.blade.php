@@ -55,7 +55,8 @@
             <li class="header">Hubungi Kami</li>
             <li>
                 <a href="{{ url('/page/admin/kontak') }}">
-                   <i class="fa fa-phone"></i> Kontak
+                   <i class="fa fa-phone"></i>
+                   <span>Kontak</span>
                 </a>
             </li>
             <li class="header">Akun</li>

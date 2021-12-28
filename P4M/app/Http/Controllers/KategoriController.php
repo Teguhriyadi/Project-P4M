@@ -15,11 +15,7 @@ class KategoriController extends Controller
     */
     public function index()
     {
-        $data = [
-            "data_kategori" => Kategori::all()
-        ];
-
-        return view("/admin/page/kategori/index", $data);
+        return view("/admin/page/kategori/index");
     }
 
     /**
@@ -40,9 +36,13 @@ class KategoriController extends Controller
     */
     public function store(Request $request)
     {
-        Kategori::create($request->all());
+        $cek = Kategori::create($request->all());
 
-        return redirect()->back();
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
     }
 
     /**
@@ -51,9 +51,60 @@ class KategoriController extends Controller
     * @param  \App\Models\Model\Kategori  $kategori
     * @return \Illuminate\Http\Response
     */
-    public function show(Kategori $kategori)
+    public function show(Request $request)
     {
-        //
+        $columns = array(
+            0 => 'nama'
+        );
+
+        $totalData = Kategori::count();
+
+        $totalFiltered = $totalData;
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if (empty($request->input('search.value'))) {
+            $kategori = Kategori::offset($start)
+                                ->limit($limit)
+                                ->orderBy($order, $dir)
+                                ->get();
+        } else {
+            $search = $request->input('search.value');
+
+            $kategori = Kategori::where('nama', 'like', "%{$search}%")
+                                ->offset($start)
+                                ->limit($limit)
+                                ->orderBy($order, $dir)
+                                ->get();
+
+            $totalFiltered = Kategori::where('nama', 'like', "%{$search}%")->count();
+        }
+
+        $data = array();
+
+        if (!empty($kategori)) {
+            $no = 1;
+            foreach ($kategori as $k) {
+                $nestedData['no'] = $no++;
+                $nestedData['slug'] = $k->slug;
+                $nestedData['nama'] = $k->nama;
+                $nestedData['aksi'] = $k->nama;
+
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw" => intval($request->input('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data
+        );
+
+        return response()->json($json_data);
     }
 
     /**
