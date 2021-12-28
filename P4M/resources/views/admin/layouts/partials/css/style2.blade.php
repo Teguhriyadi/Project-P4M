@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/select2/dist/css/select2.min.css">
+
 <!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/bootstrap/dist/css/bootstrap.min.css">
 <!-- Font Awesome -->
@@ -11,3 +13,4 @@
 <link rel="stylesheet" href="{{ url('/backend/template') }}/dist/css/skins/_all-skins.min.css">
 
 <link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+

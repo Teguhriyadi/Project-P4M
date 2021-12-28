@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Model\Kategori;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        User::create([
+            "name" => "admin",
+            "email" => "admin@gmail.com",
+            "password" => bcrypt("password")
+        ]);
+
+        User::create([
+           "name" => "user",
+           "email" => "user@gmail.com",
+           "password" => bcrypt("password")
+        ]);
+
         Kategori::create([
             "nama" => "Web Programming",
             "slug" => "web-programming"
