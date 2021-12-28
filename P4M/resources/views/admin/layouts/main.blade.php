@@ -50,6 +50,7 @@
 
     </div>
 
+
     @include('admin/layouts/partials/js/style2')
 
     @yield('page_scripts')

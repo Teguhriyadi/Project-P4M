@@ -62,6 +62,8 @@ Route::prefix("page")->group(function() {
             Route::resource("/berita", BeritaController::class);
 
             // Galeri
+            Route::get("/galeri/edit", [GaleriController::class, "edit"]);
+            Route::put("/galeri/simpan", [GaleriController::class, "update"]);
             Route::resource("/galeri", GaleriController::class);
 
             // Akun

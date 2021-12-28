@@ -11,5 +11,5 @@ class Galeri extends Model
 
     protected $table = "tb_galeri";
 
-    protected $guarded = [''];
+    protected $guarded = ['id'];
 }

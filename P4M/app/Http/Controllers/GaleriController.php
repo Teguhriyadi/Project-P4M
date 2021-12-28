@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Model\Galeri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
@@ -70,9 +71,13 @@ class GaleriController extends Controller
      * @param  \App\Models\Model\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function edit(Galeri $galeri)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => Galeri::where("id", $request->id)->first()
+        ];
+
+        return view("admin/page/galeri/edit", $data);
     }
 
     /**
@@ -84,7 +89,22 @@ class GaleriController extends Controller
      */
     public function update(Request $request, Galeri $galeri)
     {
-        //
+        $validasi = $request->validate([
+            "judul" => "required",
+            "gambar" => "image|file|max|1024"
+        ]);
+
+        if ($request->file("gambar")) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validasi["gambar"] = $request->file("gambar")->store("galeri");
+        }
+
+        Galeri::where("id", $request->id)->update($validasi);
+
+        return back();
     }
 
     /**

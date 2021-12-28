@@ -47,9 +47,9 @@
                                         <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100">
                                     </td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-sm">
+                                        <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
-                                        </a>
+                                        </button>
                                         <form action="" style="display: inline;">
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm">
@@ -107,11 +107,43 @@
 </div>
 <!-- END -->
 
+<!-- Edit Data -->
+<div class="modal fade" id="modal-default-edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-pencil"></i> Edit Data Galeri
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/galeri/simpan') }}" method="POST" enctype="multipart/form-data">
+                @method("PUT")
+                @csrf
+                <div class="modal-body" id="modal-content-edit">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-edit"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
 @endsection
 
 @section('page_scripts')
 
-<script>
+<script type="text/javascript">
 
     function previewImage()
     {
@@ -126,6 +158,19 @@
         oFReader.onload = function(oFREvent) {
             gambarPreview.src = oFREvent.target.result;
         }
+    }
+
+    function editDataGaleri(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/galeri/edit') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
     }
 
 </script>

@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="slug"> Slug </label>
-                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" readonly>
                         </div>
                     </div>
                     <div class="box-footer">
