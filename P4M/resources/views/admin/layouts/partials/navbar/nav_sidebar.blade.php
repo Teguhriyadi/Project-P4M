@@ -67,7 +67,21 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('/page/admin/akun') }}"><i class="fa fa-circle-o"></i> Users </a></li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-circle-o"></i> Profil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/page/admin/alamat') }}">
+                            <i class="fa fa-circle-o"></i> Alamat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/page/admin/akun') }}">
+                            <i class="fa fa-circle-o"></i> Users
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

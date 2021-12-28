@@ -24,7 +24,7 @@
                                     <div class="post-meta">
                                         <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
                                         <p class="text-dark">{{ $berita->kutipan }} ...</p>
-                                        <a href="/berita/blog" class="mt-3 btn btn-primary text-white">
+                                        <a href="{{ url('/berita/'.$berita->slug) }}" class="mt-3 btn btn-primary text-white">
                                             <i class="fa fa-search"></i> Selengkapnya
                                         </a>
                                     </div>

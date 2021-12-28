@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
@@ -71,6 +72,9 @@ Route::prefix("page")->group(function() {
 
             // Kontak
             Route::get("/kontak/", [KontakController::class, "index"]);
+
+            // Alamat
+            Route::resource("/alamat", AlamatController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
 
