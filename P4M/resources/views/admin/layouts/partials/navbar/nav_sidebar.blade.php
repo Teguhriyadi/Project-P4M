@@ -42,7 +42,12 @@
                     </li>
                     <li>
                         <a href="{{ url('/page/admin/blog/') }}">
-                            <i class="fa fa-circle-o"></i> Post
+                            <i class="fa fa-circle-o"></i> Berita
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/page/admin/galeri') }}">
+                            <i class="fa fa-circle-o"></i> Galeri
                         </a>
                     </li>
                 </ul>

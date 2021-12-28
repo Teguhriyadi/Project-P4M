@@ -25,7 +25,7 @@
                         Data Kategori
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/blog/create') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/berita/create') }}" class="btn btn-primary btn-sm">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>
@@ -35,31 +35,16 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th>Nama Kategori</th>
+                                <th class="text-center">Nama Kategori</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
-<script>
-    const nama = document.querySelector('#nama');
-    const slug = document.querySelector('#slug');
-
-    nama.addEventListener('change', function() {
-        fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
-    })
-
-</script>
 
 @endsection

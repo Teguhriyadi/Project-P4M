@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
@@ -39,12 +41,17 @@ Route::prefix("page")->group(function() {
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
 
-            // Post
-            Route::resource("/blog", PostController::class);
-            Route::get("/logout", [LoginController::class, "logout"]);
+            // Berita
+            Route::resource("/berita", BeritaController::class);
+
+            // Galeri
+            Route::resource("/galeri", GaleriController::class);
 
             // Akun
             Route::resource("/akun", AkunController::class);
+
+            Route::get("/logout", [LoginController::class, "logout"]);
+
         });
     });
 });

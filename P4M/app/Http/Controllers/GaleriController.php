@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Blog;
-use App\Models\Model\Kategori;
+use App\Models\Model\Galeri;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class GaleriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view("/admin/page/blog/index");
+        $data = [
+            "data_galeri" => Galeri::all()
+        ];
+
+        return view("/admin/page/galeri/index", $data);
     }
 
     /**
@@ -25,11 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = [
-            "data_kategori" => Kategori::all()
-        ];
-
-        return view("/admin/page/blog/form_tambah", $data);
+        //
     }
 
     /**
@@ -40,16 +39,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        echo "hay";
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Model\Blog  $blog
+     * @param  \App\Models\Model\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Galeri $galeri)
     {
         //
     }
@@ -57,10 +56,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Model\Blog  $blog
+     * @param  \App\Models\Model\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Galeri $galeri)
     {
         //
     }
@@ -69,10 +68,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Blog  $blog
+     * @param  \App\Models\Model\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Galeri $galeri)
     {
         //
     }
@@ -80,10 +79,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Model\Blog  $blog
+     * @param  \App\Models\Model\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Galeri $galeri)
     {
         //
     }
