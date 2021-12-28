@@ -51,16 +51,16 @@
 							<div class="classynav">
 								<ul>
 									<li>
-										<a href="/" title="Beranda">Beranda</a>
+										<a href="{{ url('/') }}" title="Beranda">Beranda</a>
 									</li>
 									<li>
-										<a href="/berita" title="Berita">Berita</a>
+										<a href="{{ url('/berita') }}" title="Berita">Berita</a>
 									</li>
 									<li>
-										<a href="/galeri" title="Galeri">Galeri</a>
+										<a href="{{ url('/galeri') }}" title="Galeri">Galeri</a>
 									</li>
 									<li>
-										<a href="/kontak" title="Kontak">Kontak</a>
+										<a href="{{ url('/kontak') }}" title="Kontak">Kontak</a>
 									</li>
 								</ul>
 							</div>

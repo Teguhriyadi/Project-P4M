@@ -7,7 +7,9 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Model\Kategori;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pengunjung/page/home');
-});
+Route::get("/", [UserController::class, "index"]);
+Route::get("/galeri", [UserController::class, "galeri"]);
+Route::get("/berita", [UserController::class, "berita"]);
+Route::get("/kontak", [UserController::class, "kontak"]);
 
 Route::prefix("page")->group(function() {
 
@@ -54,12 +57,4 @@ Route::prefix("page")->group(function() {
 
         });
     });
-});
-
-Route::get('/galeri', function () {
-    return view('pengunjung/page/galeri');
-});
-
-Route::get('/berita', function () {
-    return view('pengunjung/page/berita');
 });
