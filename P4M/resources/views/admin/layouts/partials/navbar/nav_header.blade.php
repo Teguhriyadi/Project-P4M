@@ -51,7 +51,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ url('/backend/template') }}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">{{ auth()->user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -59,7 +59,7 @@
                             <img src="{{ url('/backend/template') }}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
+                                {{ auth()->user()->name }} - Web Developer
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
