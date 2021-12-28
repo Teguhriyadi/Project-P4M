@@ -39,7 +39,17 @@ class GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasi = $request->validate([
+            "gambar" => "image|file"
+        ]);
+
+        if ($request->file("gambar")) {
+            $validasi["gambar"] = $request->file("gambar")->store("galeri");
+        }
+
+        Galeri::create($validasi);
+
+        return redirect()->back();
     }
 
     /**
