@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Berita;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,11 @@ class UserController extends Controller
 
     public function berita()
     {
-        return view("/pengunjung/page/berita");
+        $data = [
+            "data_berita" => Berita::all()
+        ];
+
+        return view("/pengunjung/page/berita", $data);
     }
 
     public function galeri()
