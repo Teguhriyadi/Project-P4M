@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pengunjung/layouts/main');
+    return view('pengunjung/page/home');
 });
 
 Route::prefix("page")->group(function() {
@@ -30,4 +30,12 @@ Route::prefix("page")->group(function() {
         Route::resource("/kategori/", KategoriController::class);
         Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
     });
+});
+
+Route::get('/galeri', function () {
+    return view('pengunjung/page/galeri');
+});
+
+Route::get('/berita', function () {
+    return view('pengunjung/page/berita');
 });
