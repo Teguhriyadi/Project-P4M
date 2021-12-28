@@ -4,7 +4,7 @@
 
 @section('page_content')
 
-<div class="row">
+<div class="row mt-5">
     <div class="col-md-6">
         <div id="widget">
             <div class="widget">

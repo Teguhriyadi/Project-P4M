@@ -4,9 +4,8 @@
 
 @section('page_content')
 
-<div id="main">
+<div id="main" class="mt-5">
     <div class="main">
-        <div class="main_title h2 mb-5">Berita</div>
         <div class="main_body">
             <div class="academy-blog-posts">
                 <div class="row">
@@ -25,7 +24,7 @@
                                     <div class="post-meta">
                                         <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
                                         <p class="text-dark">{{ $berita->kutipan }} ...</p>
-                                        <a href="/berita/blog" class="mt-3 btn btn-primary">
+                                        <a href="/berita/blog" class="mt-3 btn btn-primary text-white">
                                             <i class="fa fa-search"></i> Selengkapnya
                                         </a>
                                     </div>

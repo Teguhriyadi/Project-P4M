@@ -4,17 +4,10 @@
 
 @section('page_content')
 
-<div class="row">
+<div class="row mt-5">
     <div class="col-md-8">
         <div id="main">
             <div class="main">
-                <div class="main_title"></div>
-                <div class="main_body"></div>
-            </div>
-        </div>
-        <div id="main">
-            <div class="main">
-                <div class="main_title">Galeri</div>
                 <div class="main_body">
                     <div class="academy-blog-posts">
                         <div class="row">
@@ -31,6 +24,8 @@
                                 </div>
                             </div>
                             @endforeach
+                        </div>
+                        <div style="display: flex; justify-content: end;">
                             {{ $data_galeri->links() }}
                         </div>
                     </div>
