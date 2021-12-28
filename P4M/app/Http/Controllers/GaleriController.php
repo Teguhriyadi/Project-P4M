@@ -40,6 +40,7 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $validasi = $request->validate([
+            "judul" => "required",
             "gambar" => "image|file"
         ]);
 

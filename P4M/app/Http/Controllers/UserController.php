@@ -11,13 +11,18 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view("/pengunjung/page/home");
+        $data = [
+            "data_berita" => Berita::orderBy("created_at", "DESC")->paginate(3),
+            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(3)
+        ];
+
+        return view("/pengunjung/page/home", $data);
     }
 
     public function berita()
     {
         $data = [
-            "data_berita" => Berita::all()
+            "data_berita" => Berita::paginate(6)
         ];
 
         return view("/pengunjung/page/berita", $data);
@@ -26,7 +31,7 @@ class UserController extends Controller
     public function galeri()
     {
         $data = [
-            "data_galeri" => Galeri::orderBy("created_at", "DESC")->get()
+            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(6)
         ];
 
         return view("/pengunjung/page/galeri", $data);

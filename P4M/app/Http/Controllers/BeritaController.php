@@ -55,7 +55,7 @@ class BeritaController extends Controller
         ]);
 
         if($request->file("image")) {
-            $validatedData["image"] = $request->file('image')->store('post-images');
+            $validatedData["image"] = $request->file('image')->store('berita');
         }
 
         $validatedData['user_id'] = auth()->user()->id;

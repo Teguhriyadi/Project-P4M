@@ -83,6 +83,10 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="judul"> Judul </label>
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Masukkan Judul">
+                    </div>
+                    <div class="form-group">
                         <label for="gambar"> Gambar </label>
                         <img class="gambar-preview img-fluid mb-3" width="300">
                         <br>

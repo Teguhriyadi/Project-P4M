@@ -29,6 +29,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            {{ $data_galeri->links() }}
                         </div>
                     </div>
                 </div>

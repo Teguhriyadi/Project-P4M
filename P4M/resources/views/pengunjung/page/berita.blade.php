@@ -29,6 +29,9 @@
                             </div>
                         </div>
                         @endforeach
+                        <div class="d-flex justify-content-end">
+                            {{ $data_berita->links() }}
+                        </div>
                     @else
                     <h1 class="text-center">
                         Belum Ada Postingan
