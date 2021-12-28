@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Berita;
+use App\Models\Model\Galeri;
+use App\Models\Model\Kontak;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,11 +25,22 @@ class UserController extends Controller
 
     public function galeri()
     {
-        return view("/pengunjung/page/galeri");
+        $data = [
+            "data_galeri" => Galeri::orderBy("created_at", "DESC")->get()
+        ];
+
+        return view("/pengunjung/page/galeri", $data);
     }
 
     public function kontak()
     {
         return view("/pengunjung/page/kontak");
+    }
+
+    public function kirim_pesan(Request $request)
+    {
+        Kontak::create($request->all());
+
+        return redirect()->back();
     }
 }
