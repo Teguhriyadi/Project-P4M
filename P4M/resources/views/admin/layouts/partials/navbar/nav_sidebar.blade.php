@@ -59,6 +59,12 @@
                     <li><a href="{{ url('/page/admin/akun') }}"><i class="fa fa-circle-o"></i> Users </a></li>
                 </ul>
             </li>
+            <li>
+                <a href="{{ url('/page/admin/template_surat') }}">
+                    <i class="fa fa-book"></i>
+                    <span>Template Surat</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

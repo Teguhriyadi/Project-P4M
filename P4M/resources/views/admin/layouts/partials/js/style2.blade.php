@@ -1,5 +1,5 @@
 <!-- jQuery 3 -->
-<script src="{{ url('/backend/template') }}/bower_components/jquery/dist/jquery.min.js"></script>
+{{-- <script src="{{ url('/backend/template') }}/bower_components/jquery/dist/jquery.min.js"></script> --}}
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ url('/backend/template') }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -16,6 +16,7 @@
 <script src="{{ url('/backend/template') }}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="{{ url('/backend/template') }}/bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/my-validate.js"></script>
+<script src="{{ url('/backend/template') }}/dist/js/my-ajax.js"></script>
 
 <script>
     $(function() {

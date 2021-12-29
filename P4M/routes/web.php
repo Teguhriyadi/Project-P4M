@@ -5,7 +5,10 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TemplateSuratController;
+
 use App\Models\Model\Kategori;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pengunjung/page/home');
+});
+
+Route::get('/galeri', function () {
+    return view('pengunjung/page/galeri');
+});
+
+Route::get('/berita', function () {
+    return view('pengunjung/page/berita');
 });
 
 Route::prefix("page")->group(function() {
@@ -45,14 +56,8 @@ Route::prefix("page")->group(function() {
 
             // Akun
             Route::resource("/akun", AkunController::class);
+            Route::resource("/template_surat", TemplateSuratController::class);
         });
     });
 });
 
-Route::get('/galeri', function () {
-    return view('pengunjung/page/galeri');
-});
-
-Route::get('/berita', function () {
-    return view('pengunjung/page/berita');
-});
