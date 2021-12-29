@@ -89,7 +89,7 @@
 	<footer class="footer-area">
 		<div class="bottom-footer-area">
 			<div class="container">
-				<p>Copyright &copy; 2020 Hakim</p>
+				<p>Copyright &copy; 2021-{{ date('Y') }} Arahan Lor</p>
 			</div>
 		</div>
 	</footer>
