@@ -31,43 +31,45 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-center">No.</th>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data_akun as $akun)
-                            <tr>
-                                <td class="text-center">{{ $loop->iteration }}.</td>
-                                <td>{{ $akun->name }}</td>
-                                <td>{{ $akun->username }}</td>
-                                <td class="text-center">{{ $akun->email }}</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-
-                                    @if ($akun->username == auth()->user()->username)
-
-                                    @else
-                                    <form action="" method="POST" style="display: inline;">
-                                        @csrf
-                                        <button class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash-o"></i>
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No.</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data_akun as $akun)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td>{{ $akun->name }}</td>
+                                    <td>{{ $akun->username }}</td>
+                                    <td class="text-center">{{ $akun->email }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                            <i class="fa fa-edit"></i>
                                         </button>
-                                    </form>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+    
+                                        @if ($akun->username == auth()->user()->username)
+    
+                                        @else
+                                        <form action="" method="POST" style="display: inline;">
+                                            @csrf
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
