@@ -24,8 +24,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", [UserController::class, "index"]);
+
+// Galeri
 Route::get("/galeri", [UserController::class, "galeri"]);
-Route::get("/berita", [UserController::class, "berita"]);
+
+// Berita
+Route::prefix("berita")->group(function() {
+    // Semua Berita
+    Route::get("/", [UserController::class, "berita"]);
+
+    // Berita Selengkapnya
+    Route::get('/{slug}',[UserController::class, "detailBerita"]);
+});
+
+// Kontak
 Route::get("/kontak", [UserController::class, "kontak"]);
 
 Route::prefix("page")->group(function() {

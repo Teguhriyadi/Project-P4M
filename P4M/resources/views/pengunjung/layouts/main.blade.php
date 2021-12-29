@@ -75,12 +75,9 @@
 			</div>
 		</div>
 	</header>
-	<section class="hero-area">
-		<div class="hero-slides owl-carousel">
-			<div class="single-hero-slide bg-img" style="background-image: url('{{ url('/frontend') }}/img/kantor-desa.jpeg');">
-			</div>
-		</div>
-	</section>
+	
+	@include('pengunjung/layouts/breadcumb')
+
 	<section class="about-us-area section-padding-50">
 		<div class="container">
 			@yield('page_content')

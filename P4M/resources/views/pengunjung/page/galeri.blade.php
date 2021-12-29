@@ -1,5 +1,7 @@
 @extends('pengunjung/layouts/main')
 
+@section('title', 'Galeri')
+
 @section('page_content')
 
 <div class="row"> 

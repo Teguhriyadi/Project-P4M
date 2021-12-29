@@ -13,7 +13,12 @@ class UserController extends Controller
 
     public function berita()
     {
-        return view("/pengunjung/page/berita");
+        return view("/pengunjung/page/berita/index");
+    }
+
+    public function detailBerita($slug)
+    {
+        return view("/pengunjung/page/berita/detail");
     }
 
     public function galeri()

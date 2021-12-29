@@ -1,5 +1,7 @@
 @extends('pengunjung/layouts/main')
 
+@section('title', 'Kontak')
+
 @section('page_content')
 
 <div class="row">
