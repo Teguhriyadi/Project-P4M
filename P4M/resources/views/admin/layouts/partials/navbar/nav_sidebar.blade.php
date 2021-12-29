@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/page/admin/blog/') }}">
+                        <a href="{{ url('/page/admin/berita/') }}">
                             <i class="fa fa-circle-o"></i> Berita
                         </a>
                     </li>
@@ -51,6 +51,12 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="header">Hubungi Kami</li>
+            <li>
+                <a href="{{ url('/page/admin/kontak') }}">
+                   <i class="fa fa-phone"></i> Kontak
+                </a>
             </li>
             <li class="header">Akun</li>
             <li class="treeview">

@@ -5,6 +5,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,7 @@ Route::prefix("berita")->group(function() {
 
 // Kontak
 Route::get("/kontak", [UserController::class, "kontak"]);
+Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
 
 Route::prefix("page")->group(function() {
 
@@ -64,6 +66,9 @@ Route::prefix("page")->group(function() {
 
             // Akun
             Route::resource("/akun", AkunController::class);
+
+            // Kontak
+            Route::get("/kontak/", [KontakController::class, "index"]);
 
             Route::get("/logout", [LoginController::class, "logout"]);
 

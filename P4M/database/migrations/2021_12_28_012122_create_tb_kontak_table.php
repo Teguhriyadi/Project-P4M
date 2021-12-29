@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbGaleriTable extends Migration
+class CreateTbKontakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateTbGaleriTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_galeri', function (Blueprint $table) {
+        Schema::create('tb_kontak', function (Blueprint $table) {
             $table->id();
-            $table->string("gambar");
+            $table->string('nama', 255);
+            $table->string('email', 150);
+            $table->string('no_hp', 100);
+            $table->text('pesan');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateTbGaleriTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_galeri');
+        Schema::dropIfExists('tb_kontak');
     }
 }
