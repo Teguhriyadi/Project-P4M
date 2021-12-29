@@ -1,3 +1,7 @@
+@extends('pengunjung/layouts/main')
+
+@section('page_content')
+
 <div class="row"> 
     <div class="col-md-8">
         <div id="main">
@@ -15,7 +19,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -26,7 +30,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -37,7 +41,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -48,7 +52,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -59,7 +63,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -70,7 +74,7 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="./img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="/frontend/img/logo-kabupaten.png" alt="" style="width: 100%; margin: 0 auto;">
                                     </div>
                                     <div style="height:110px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
@@ -102,3 +106,5 @@
         </div>
     </div>
 </div>
+    
+@endsection
