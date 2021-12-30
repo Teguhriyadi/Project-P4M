@@ -5,6 +5,8 @@
     @media only screen and (max-width: 378px) {
         .kepala-desa {
             width: 100%;
+            /* background-color: rgb(67, 70, 252);
+            linear-gradient(to right, rgb(0, 4, 255), rgb(67, 70, 252)); */
         } 
     }
 </style>

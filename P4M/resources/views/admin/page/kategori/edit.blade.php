@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="slug"> Slug </label>
-                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
+                            <input type="text" class="form-control" readonly name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
                         </div>
                     </div>
                     <div class="box-footer">

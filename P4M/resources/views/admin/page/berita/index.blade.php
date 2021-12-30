@@ -22,7 +22,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Kategori
+                        Data Berita
                     </h3>
                     <div class="pull-right">
                         <a href="{{ url('/page/admin/berita/create') }}" class="btn btn-primary btn-sm">
@@ -35,7 +35,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th class="text-center">Nama Kategori</th>
+                                <th class="text-center">Judul Berita</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>

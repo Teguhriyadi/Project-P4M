@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box">
-                <form id="gambar" action="{{ url('/page/admin/kategori/') }}" method="POST" id="tambahKategori">
+                <form id="tambahKategori" action="{{ url('/page/admin/kategori/') }}" method="POST">
                     @csrf
                     <div class="box-header">
                         <h3 class="box-title">

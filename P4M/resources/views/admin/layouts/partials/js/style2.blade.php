@@ -9,6 +9,7 @@
 <!-- AdminLTE App -->
 <script src="{{ url('/backend/template') }}/dist/js/adminlte.min.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/jquery.validate.min.js"></script>
+<script src="{{ url('/backend/template') }}/dist/js/additional-methods.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('/backend/template') }}/dist/js/demo.js"></script>
 
