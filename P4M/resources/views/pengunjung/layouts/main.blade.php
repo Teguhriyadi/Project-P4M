@@ -12,25 +12,61 @@
 	<meta name="author" content="hakim"./>
 
 	@include('pengunjung/layouts/partials/css/style_css')
+	<style>
+		.header-content img {
+			margin: -5px 10px 0 0;
+			width: 80px;
+		}
 
+		.header-content a b {
+			font-size:22px;
+			font-weight:400;
+			text-transform:uppercase;
+		}
+
+		.header-content a span {
+			font-size:16px;
+			font-weight:400;
+		}
+
+		@media only screen and (max-width: 378px) {
+			.header-area {
+				height: 160px;
+			}
+
+			.header-content img {
+				margin-top: 10px;
+				width: 50px
+			}
+
+			.header-content .brand {
+				margin-top: -15px;
+			}
+
+			.header-content a b {
+				font-size:18px;
+			}
+		}
+	</style>
 </head>
 <body>
 	<header class="header-area">
 		<div class="top-header">
 			<div class="container">
 				<div class="header-content align-items-center justify-content-between" >
+					<img src="{{ url('/frontend') }}/img/logo-kabupaten.png" alt="Sistem Informasi Desa Arahan Lor" align="left" />
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-7 col-xs-12 col-sm-12 mt-md-2 brand">
 							<a href="" title="Sistem Informasi Desa Arahan Lor">
-								<img src="{{ url('/frontend') }}/img/logo-kabupaten.png" alt="Sistem Informasi Desa Arahan Lor" align="left" width="80" style="margin:-5px 10px 0 0"./>
-								<b style="font-size:22px;margin-top:20px;font-weight:400;text-transform:uppercase;">Sistem Informasi Desa Arahan Lor</b><br/>
-								<span style="font-size:16px;font-weight:400;">Kec. Arahan, Kab. Indramayu, Jawa Barat </span>
+								<b>Sistem Informasi Desa Arahan Lor</b><br/>
+								<span>Kec. Arahan, Kab. Indramayu, Jawa Barat </span>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><div class="academy-main-menu">
+		</div>
+		<div class="academy-main-menu">
 			<div class="classy-nav-container breakpoint-off">
 				<div class="container">
 					<nav class="classy-navbar justify-content-between" id="academyNav">

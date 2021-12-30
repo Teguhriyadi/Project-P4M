@@ -31,6 +31,8 @@
                                 </div>
                             </div>
                             @endforeach
+                        </div>
+                        <div style="display: flex; justify-content: end;">
                             {{ $data_galeri->links() }}
                         </div>
                     </div>
