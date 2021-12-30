@@ -4,9 +4,8 @@
 
 @section('page_content')
 
-<div id="main">
+<div id="main" class="mt-5">
     <div class="main">
-        <div class="main_title h2 mb-5">Berita</div>
         <div class="main_body">
             <div class="academy-blog-posts">
                 <div class="row">

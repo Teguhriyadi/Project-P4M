@@ -13,7 +13,7 @@
     <div class="col-md-8">
         <div id="main">
             <div class="main">
-                <div class="main_title">Prakata Kepala Desa</div>
+                <h3 class="main_title mb-3">Prakata Kepala Desa</h3>
                 <div class="main_body">
                     <div class="row">
                         <div class="col-md-12">
