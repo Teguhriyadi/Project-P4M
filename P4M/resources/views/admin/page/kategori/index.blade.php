@@ -20,8 +20,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box">
-                <form id="tambahKategori" action="{{ url('/page/admin/kategori/') }}" method="POST">
-                    @csrf
+                {{-- <form id="tambahKategori" action="{{ url('/page/admin/kategori/') }}" method="POST"> --}}
                     <div class="box-header">
                         <h3 class="box-title">
                             <i class="fa fa-plus"></i> Form Tambah Kategori
@@ -31,18 +30,15 @@
                         <div class="form-group">
                             <label for="nama"> Nama Kategori </label>
                             <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori">
-                        </div>
-                        <div class="form-group">
-                            <label for="slug"> Slug </label>
-                            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" readonly>
+                            <input type="hidden" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" readonly>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
+                        <button id="tambahKategori" class="btn btn-success btn-sm">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
         <div class="col-md-8">
@@ -53,7 +49,7 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="kategoriTable" class="table table-bordered table-striped" width="100%">
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
@@ -61,26 +57,7 @@
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($data_kategori as $kategori)
-                            <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $kategori->nama }}</td>
-                                <td class="text-center">
-                                    <a href="{{ url('/page/admin/kategori') }}/{{ $kategori->slug }}/edit" class="btn btn-warning btn-sm">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <form action="{{ url('/page/admin/kategori') }}/{{ $kategori->slug }}" method="POST" style="display: inline;">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -99,6 +76,40 @@
             .then(data => slug.value = data.slug)
     })
 
+    $(document).ready(function() {
+        $("#kategoriTable").dataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/page/admin/kategori/showall') }}",
+            columns: [
+                {data: 'no'},
+                {data: 'nama'},
+                {data: 'aksi'},
+            ]
+        });
+
+        $("body").on('click', "#tambahKategori", function() {
+            let nama = $("#nama").val().trim();
+            let slug = $("#slug").val().trim();
+
+            $.ajax({
+                url: "{{ url('/page/admin/kategori') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    nama: nama,
+                    slug: slug,
+                },
+                success: function(response) {
+                    if (response == 1) {
+                        location.reload();
+                    } else {
+                        location.reload();
+                    }
+                }
+            })
+        });
+    });
 </script>
 
 @endsection
