@@ -12,7 +12,12 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li>
+            <a href="{{ url('/page/admin/kategori') }}">
+                Data Kategori
+            </a>
+        </li>
+        <li class="active">Edit Kategori</li>
     </ol>
 </section>
 

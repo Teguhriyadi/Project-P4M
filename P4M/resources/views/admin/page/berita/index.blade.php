@@ -12,7 +12,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Blog</li>
+        <li class="active">Data Berita</li>
     </ol>
 </section>
 
