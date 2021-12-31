@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="beritaTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
@@ -67,15 +67,13 @@
 
 
 <script>
-    const nama = document.querySelector('#nama');
-    const slug = document.querySelector('#slug');
-
-    nama.addEventListener('change', function() {
-        fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
+    $(function (){
+        $('#beritaTable').DataTable({
+            columnDefs: [
+                { orderable: false, targets: [0,2] }
+            ],
+        })
     })
-
 </script>
 
 @endsection

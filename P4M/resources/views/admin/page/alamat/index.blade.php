@@ -66,14 +66,14 @@
             <div class="box">
                 @if ($data_alamat->count())
                     @foreach ($data_alamat as $alamat)
-                    <form action="{{ url('/page/admin/alamat') }}/{{ $alamat->id }}" method="POST">
+                    <form action="{{ url('/page/admin/alamat') }}/{{ $alamat->id }}" method="POST" id="formAlamat">
                         @method("PUT")
                         @csrf
                     @endforeach
 
                     @else
 
-                    <form action="{{ url('/page/admin/alamat') }}" method="POST">
+                    <form action="{{ url('/page/admin/alamat') }}" method="POST" id="formAlamat">
                     @csrf
 
                 @endif

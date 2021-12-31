@@ -41,7 +41,7 @@ class AlamatController extends Controller
     {
         Alamat::create($request->all());
 
-        return back();
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat anda berhasil ditambahkan', 'success')</script>");
     }
 
     /**
@@ -81,7 +81,7 @@ class AlamatController extends Controller
             "alamat" => $request->alamat
         ]);
 
-        return back();
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat anda berhasil diperbaharui', 'success')</script>");
     }
 
     /**

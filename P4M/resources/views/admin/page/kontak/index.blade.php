@@ -27,7 +27,7 @@
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="kontaktable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -62,5 +62,15 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(function (){
+        $('#kontaktable').DataTable({
+            columnDefs: [
+                { orderable: false, targets: [0,4] }
+            ],
+        })
+    })
+</script>
 
 @endsection
