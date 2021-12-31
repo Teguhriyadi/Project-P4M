@@ -39,7 +39,7 @@ class KategoriController extends Controller
         $cek = Kategori::create($request->all());
 
         if ($cek) {
-            echo "Hay";
+            echo 1;
         } else {
             echo 2;
         }

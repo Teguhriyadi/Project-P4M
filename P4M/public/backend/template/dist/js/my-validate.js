@@ -5,43 +5,43 @@
 		setupFormValidation: function()
 		{
 			// Bagian Kategori
-			$("#tambahKategori").validate({
-				ignore: "",
-				rules: {
-					nama: {
-						required: true
-					}
-				},
+			// $("#tambahKategori").validate({
+			// 	ignore: "",
+			// 	rules: {
+			// 		nama: {
+			// 			required: true
+			// 		}
+			// 	},
 
-				messages: {
-					nama: {
-						required: "Nama harap di isi!"
-					}
-				},
+			// 	messages: {
+			// 		nama: {
+			// 			required: "Nama harap di isi!"
+			// 		}
+			// 	},
 
-				submitHandler: function(form) {
-					form.submit();
-				}
-			});
+			// 	submitHandler: function(form) {
+			// 		form.submit();
+			// 	}
+			// });
 
-            $("#editKategori").validate({
-				ignore: "",
-				rules: {
-					nama: {
-						required: true
-					}
-				},
+            // $("#editKategori").validate({
+			// 	ignore: "",
+			// 	rules: {
+			// 		nama: {
+			// 			required: true
+			// 		}
+			// 	},
 
-				messages: {
-					nama: {
-						required: "Nama harap di isi!"
-					}
-				},
+			// 	messages: {
+			// 		nama: {
+			// 			required: "Nama harap di isi!"
+			// 		}
+			// 	},
 
-				submitHandler: function(form) {
-					form.submit();
-				}
-			});
+			// 	submitHandler: function(form) {
+			// 		form.submit();
+			// 	}
+			// });
 
 			// Bagian Berita
 			$("#tambahBerita").validate({

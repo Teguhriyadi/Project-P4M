@@ -19,26 +19,25 @@
 <section class="content">
     <div class="row">
         <div class="col-md-4">
-            <div class="box">
-                {{-- <form id="tambahKategori" action="{{ url('/page/admin/kategori/') }}" method="POST"> --}}
-                    <div class="box-header">
-                        <h3 class="box-title">
-                            <i class="fa fa-plus"></i> Form Tambah Kategori
-                        </h3>
+            <div class="box" id="">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-plus"></i> Form Tambah Kategori
+                    </h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="nama"> Nama Kategori </label>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori">
+                        <label class="error hidden" for="judul">Judul harap di isi!</label>
+                        <input type="hidden" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" readonly>
                     </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="nama"> Nama Kategori </label>
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori">
-                            <input type="hidden" class="form-control" name="slug" id="slug" placeholder="Masukkan Slug" readonly>
-                        </div>
-                    </div>
-                    <div class="box-footer">
-                        <button id="tambahKategori" class="btn btn-success btn-sm">
-                            <i class="fa fa-plus"></i> Tambah
-                        </button>
-                    </div>
-                {{-- </form> --}}
+                </div>
+                <div class="box-footer">
+                    <button id="tambahKategori" class="btn btn-success btn-sm">
+                        <i class="fa fa-plus"></i> Tambah
+                    </button>
+                </div>
             </div>
         </div>
         <div class="col-md-8">
@@ -71,6 +70,7 @@
     const slug = document.querySelector('#slug');
 
     nama.addEventListener('change', function() {
+        $(".error").addClass('hidden');
         fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
@@ -91,23 +91,33 @@
         $("body").on('click', "#tambahKategori", function() {
             let nama = $("#nama").val().trim();
             let slug = $("#slug").val().trim();
-
-            $.ajax({
-                url: "{{ url('/page/admin/kategori') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    nama: nama,
-                    slug: slug,
-                },
-                success: function(response) {
-                    if (response == 1) {
-                        location.reload();
-                    } else {
-                        location.reload();
+            
+            if (nama == "") {
+                $(".error").removeClass('hidden');
+            } else {
+                $.ajax({
+                    url: "{{ url('/page/admin/kategori') }}",
+                    type: "POST",
+                    data: {
+                        nama: nama,
+                        slug: slug,
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            swal("Success")
+                            swal({
+                                title: "Selamat!",
+                                text: "Data anda berhasil ditambahkan!",
+                                icon: "success",
+                            }).then((success) => {
+                                location.reload();
+                            });
+                        } else {
+                            location.reload();
+                        }
                     }
-                }
-            })
+                })
+            }
         });
     });
 </script>
