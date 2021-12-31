@@ -15,11 +15,16 @@
                             <div class="col-md-4 col-sm-6 col-xs-6">
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
-                                        <img src="{{ url('/storage/'.$galeri->gambar) }}" alt="" style="width: 100%; margin: 0 auto;">
+                                        <img src="{{ url('/storage/'.$galeri->gambar) }}" alt="" style="width: 100%; margin: 0 auto; height: 180px">
                                     </div>
-                                    <div style="height:110px">
+                                    <div style="height:100px">
                                         <h4><a href="#"  class="post-title" style="font-size: 18px">Kebersihan Lingkungan</a></h4>
-                                        <div class="post-meta"><p>Posting: {{ $galeri->created_at->formatLocalized("%d %B %Y") }} </p></div>
+                                        <div class="post-meta">
+                                            @php
+                                                setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+                                            @endphp
+                                            <p>Posting: {{ $galeri->created_at->formatLocalized("%d %B %Y") }} </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

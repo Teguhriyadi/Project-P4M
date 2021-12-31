@@ -31,7 +31,7 @@
             <div class="form-group">
               <label for="judul"> Judul </label>
               <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul">
-              <input type="text" class="form-control" name="slug" id="slug" placeholder="Slug">
+              <input type="hidden" readonly class="form-control" name="slug" id="slug" placeholder="Slug">
             </div>
             <div class="form-group">
               <label for="body"> Isi Konten </label>
@@ -78,7 +78,7 @@
   const slug = document.querySelector('#slug');
   
   title.addEventListener('change', function() {
-    fetch('/page/admin/blog/checkSlug?title=' + title.value)
+    fetch('/page/admin/berita/checkSlug?title=' + title.value)
     .then(response => response.json())
     .then(data => slug.value = data.slug)
   })

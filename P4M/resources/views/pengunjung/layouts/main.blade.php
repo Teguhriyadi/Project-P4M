@@ -50,6 +50,9 @@
 	</style>
 </head>
 <body>
+	@if (session('message'))
+	{!! session('message') !!}            
+	@endif
 	<header class="header-area">
 		<div class="top-header">
 			<div class="container">

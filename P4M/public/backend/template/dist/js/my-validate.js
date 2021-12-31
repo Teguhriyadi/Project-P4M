@@ -4,26 +4,6 @@
 	{
 		setupFormValidation: function()
 		{
-			// Bagian Kategori
-			$("#tambahKategori").validate({
-				ignore: "",
-				rules: {
-					nama: {
-						required: true
-					}
-				},
-
-				messages: {
-					nama: {
-						required: "Nama harap di isi!"
-					}
-				},
-
-				submitHandler: function(form) {
-					form.submit();
-				}
-			});
-
             $("#editKategori").validate({
 				ignore: "",
 				rules: {

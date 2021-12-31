@@ -59,8 +59,9 @@ Route::prefix("page")->group(function() {
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
-
+            
             // Berita
+            Route::get("/berita/checkSlug", [BeritaController::class, "checkSlug"]);
             Route::resource("/berita", BeritaController::class);
 
             // Galeri
