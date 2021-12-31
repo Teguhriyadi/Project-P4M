@@ -11,6 +11,7 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Models\Model\Kategori;
@@ -86,6 +87,9 @@ Route::prefix("page")->group(function() {
 
             // Hak Akses
             Route::resource("/hak_akses", HakAksesController::class);
+
+            // TerakhirLogin
+            Route::resource("/terakhir_login", TerakhirLoginController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
 

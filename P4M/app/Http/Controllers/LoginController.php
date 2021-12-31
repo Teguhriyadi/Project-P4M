@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\TerakhirLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,11 @@ class LoginController extends Controller
 
     public function logout()
     {
+
+        TerakhirLogin::create([
+            "nama" => auth()->user()->name,
+        ]);
+
         Auth::logout();
 
         request()->session()->invalidate();

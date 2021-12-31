@@ -84,6 +84,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('/page/admin/terakhir_login') }}">
+                            <i class="fa fa-circle-o"></i> Terakhir Login
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ url('/page/admin/akun') }}">
                             <i class="fa fa-circle-o"></i> Users
                         </a>
