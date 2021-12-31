@@ -4,6 +4,7 @@
 	{
 		setupFormValidation: function()
 		{
+			// Bagian Kategori
             $("#editKategori").validate({
 				ignore: "",
 				rules: {
@@ -56,6 +57,26 @@
 					body: {
 						required: "Konten harap di isi!"
 					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Alamat
+            $("#editKategori").validate({
+				ignore: "",
+				rules: {
+					nama: {
+						required: true
+					}
+				},
+
+				messages: {
+					nama: {
+						required: "Nama harap di isi!"
+					}
 				},
 
 				submitHandler: function(form) {

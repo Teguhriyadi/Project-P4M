@@ -93,6 +93,18 @@
 										<a href="{{ url('/') }}" title="Beranda">Beranda</a>
 									</li>
 									<li>
+										<a href="{{ url('/') }}" title="Profil">Profil</a>
+									</li>
+									<li>
+										<a href="{{ url('/') }}" title="Visi Dan Misi">Visi Dan Misi</a>
+									</li>
+									<li>
+										<a href="{{ url('/') }}" title="Struktur Organisasi">Struktur Organisasi</a>
+									</li>
+									<li>
+										<a href="{{ url('/berita') }}" title="Data Penduduk">Data Penduduk</a>
+									</li>
+									<li>
 										<a href="{{ url('/berita') }}" title="Berita">Berita</a>
 									</li>
 									<li>
