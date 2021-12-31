@@ -9,6 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
 use App\Models\Model\Kategori;
 use App\Models\User;
@@ -73,6 +74,7 @@ Route::prefix("page")->group(function() {
             // Kontak
             Route::get("/kontak/", [KontakController::class, "index"]);
 
+            Route::resource("/profil", ProfilController::class);
             // Alamat
             Route::resource("/alamat", AlamatController::class);
 

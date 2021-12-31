@@ -18,7 +18,6 @@
 <script src="{{ url('/backend/template') }}/bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/my-validate.js"></script>
 
-
 <script>
     $(function() {
         $(".select2").select2()

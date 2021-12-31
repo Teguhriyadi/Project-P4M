@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Alamat;
 use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
@@ -41,7 +42,8 @@ class UserController extends Controller
     public function galeri()
     {
         $data = [
-            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(6)
+            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(6),
+            "data_alamat" => Alamat::paginate(1)
         ];
 
         return view("/pengunjung/page/galeri", $data);
@@ -49,7 +51,11 @@ class UserController extends Controller
 
     public function kontak()
     {
-        return view("/pengunjung/page/kontak");
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("/pengunjung/page/kontak", $data);
     }
 
     public function kirim_pesan(Request $request)
