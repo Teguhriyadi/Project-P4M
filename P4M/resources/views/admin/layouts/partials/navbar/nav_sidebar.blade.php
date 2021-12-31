@@ -74,6 +74,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('/page/admin/visi_misi') }}">
+                            <i class="fa fa-circle-o"></i> Visi & Misi
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ url('/page/admin/alamat') }}">
                             <i class="fa fa-circle-o"></i> Alamat
                         </a>

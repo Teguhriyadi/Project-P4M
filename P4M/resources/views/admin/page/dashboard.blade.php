@@ -84,3 +84,22 @@
 </section>
 
 @endsection
+
+@section('page_scripts')
+
+@if (session("success"))
+
+<script type="text/javascript">
+
+    swal({
+        title: "Berhasil!",
+        text: "{{ session('success') }}",
+        icon: "success",
+        button: "OK",
+    });
+
+</script>
+
+@endif
+
+@endsection
