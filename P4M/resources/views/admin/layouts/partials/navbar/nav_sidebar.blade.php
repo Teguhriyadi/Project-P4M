@@ -88,6 +88,11 @@
                             <i class="fa fa-circle-o"></i> Users
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/page/admin/hak_akses') }}">
+                            <i class="fa fa-circle-o"></i> Hak Akses
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
@@ -82,6 +83,9 @@ Route::prefix("page")->group(function() {
 
             // Visi & Misi
             Route::resource("/visi_misi", VisiMisiController::class);
+
+            // Hak Akses
+            Route::resource("/hak_akses", HakAksesController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
 
