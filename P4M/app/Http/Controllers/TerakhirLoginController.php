@@ -14,7 +14,11 @@ class TerakhirLoginController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            "data_terakhir_login" => TerakhirLogin::all()
+        ];
+
+        return view("/admin/page/terakhir_login/index", $data);
     }
 
     /**
