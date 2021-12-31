@@ -95,7 +95,7 @@
         $("body").on('click', "#tambahKategori", function() {
             let nama = $("#nama").val().trim();
             let slug = $("#slug").val().trim();
-            
+
             if (nama == "") {
                 $(".error").removeClass('hidden');
             } else {
@@ -125,7 +125,7 @@
 
         $("body").on('click', "#hapusKategori", function() {
             let id = $(this).data("id");
-            
+
             swal({
                 title: "Apakah anda yakin?",
                 text: "Data ini akan dihapus!",

@@ -6,6 +6,7 @@ use App\Models\Model\Alamat;
 use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
+use App\Models\Model\Profil;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,6 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $data = [
+            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1),
             "data_berita" => Berita::orderBy("created_at", "DESC")->paginate(3),
             "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(3)
         ];

@@ -18,7 +18,7 @@ class ProfilController extends Controller
             "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1)
         ];
 
-        return view("admin/page/profil/index", $data);
+        return view("admin/page/profil/data", $data);
     }
 
     /**
