@@ -87,13 +87,13 @@
 
 @section('page_scripts')
 
-@if (session("sukses"))
+@if (session("success"))
 
 <script type="text/javascript">
 
     swal({
         title: "Berhasil!",
-        text: "{{ session('sukses') }}",
+        text: "{{ session('success') }}",
         icon: "success",
         button: "OK",
     });

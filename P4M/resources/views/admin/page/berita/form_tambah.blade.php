@@ -35,7 +35,9 @@
             </div>
             <div class="form-group">
               <label for="body"> Isi Konten </label>
-              <textarea name="body" class="form-control" placeholder="Masukkan Body" rows="5"></textarea>
+              <textarea name="body" class="form-control" placeholder="Masukkan Body" rows="10" cols="80">
+                  Silahkan Isi Konten disini...
+              </textarea>
             </div>
           </div>
         </div>
@@ -76,13 +78,27 @@
 <script>
   const title = document.querySelector('#judul');
   const slug = document.querySelector('#slug');
-  
+
   title.addEventListener('change', function() {
     fetch('/page/admin/berita/checkSlug?title=' + title.value)
     .then(response => response.json())
     .then(data => slug.value = data.slug)
   })
-  
+
+</script>
+
+@endsection
+
+@section('page_scripts')
+
+<script src="{{ url('/backend/template') }}/bower_components/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+        CKEDITOR.replace('body')
+    })
+
 </script>
 
 @endsection

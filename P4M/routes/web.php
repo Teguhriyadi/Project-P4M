@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisiMisiController;
 use App\Models\Model\Kategori;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +60,7 @@ Route::prefix("page")->group(function() {
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
-            
+
             // Berita
             Route::get("/berita/checkSlug", [BeritaController::class, "checkSlug"]);
             Route::resource("/berita", BeritaController::class);
@@ -78,6 +79,9 @@ Route::prefix("page")->group(function() {
             Route::resource("/profil", ProfilController::class);
             // Alamat
             Route::resource("/alamat", AlamatController::class);
+
+            // Visi & Misi
+            Route::resource("/visi_misi", VisiMisiController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
 
