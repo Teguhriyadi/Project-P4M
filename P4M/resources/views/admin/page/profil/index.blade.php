@@ -61,16 +61,14 @@
                         @if ($data_profil->count())
                             @foreach ($data_profil as $profil)
                                 @if ($profil->gambar)
-                                <img src="{{ url('/storage/'.$profil->gambar) }}" class="gamba-preview img-fluid" style="width: 300px; margin-bottom: 5px;">
+                                <img src="{{ url('/storage/'.$profil->gambar) }}" class="gambar-preview img-fluid d-block" style="width: 300px; margin-bottom: 5px;">
                                 @else
                                 <img class="gambar-preview img-fluid" style="width: 100px; margin-bottom: 5px">
                                 @endif
-
                                 <input type="file" class="form-control" name="gambar" id="gambar">
                             @endforeach
                         @else
-                        <img class="gambar-preview img-fluid" style="width: 100px; margin-bottom: 5px">
-                        <input onchange="previewImage()" type="file" name="gambar" id="gambar" class="form-control">
+
                         @endif
                     </div>
                     <div class="box-footer">
