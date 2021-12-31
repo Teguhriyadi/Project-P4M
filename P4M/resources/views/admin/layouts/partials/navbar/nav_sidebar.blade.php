@@ -69,7 +69,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="">
+                        <a href="{{ url('/page/admin/profil') }}">
                             <i class="fa fa-circle-o"></i> Profil
                         </a>
                     </li>

@@ -12,12 +12,14 @@
                     Kontak
                 </div>
                 <div class="widget_body">
+                    @foreach ($data_alamat as $alamat)
                     <b>Alamat :</b>
-                    <p>Arahan Lor kecamatan Arahan, Indramayu, Jawa Barat, Indonesia.</p>
+                    <p>{{ $alamat->alamat }}</p>
                     <b><i class="fa fa-phone"></i> Telepon :</b>
-                    <p>0000000</p>
+                    <p> {{ $alamat->no_telepon }} </p>
                     <b><i class="fa fa-desktop"></i> Website :</b>
-                    <p>arahanlor.go.id</p>
+                    <p>{{ $alamat->website }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

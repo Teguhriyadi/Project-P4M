@@ -19,7 +19,6 @@
 <script src="{{ url('/backend/template') }}/dist/js/sweetalert.min.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/my-validate.js"></script>
 
-
 <script>
     $(function() {
         $(".select2").select2()

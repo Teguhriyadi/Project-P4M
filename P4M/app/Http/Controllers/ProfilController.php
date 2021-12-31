@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Alamat;
+use App\Models\Model\Profil;
 use Illuminate\Http\Request;
 
-class AlamatController extends Controller
+class ProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class AlamatController extends Controller
     public function index()
     {
         $data = [
-            "data_alamat" => Alamat::orderBy("created_at", "DESC")->paginate(1)
+            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1)
         ];
 
-        return view("admin/page/alamat/index", $data);
+        return view("admin/page/profil/index", $data);
     }
 
     /**
@@ -39,18 +39,27 @@ class AlamatController extends Controller
      */
     public function store(Request $request)
     {
-        Alamat::create($request->all());
+        $validatedData = $request->validate([
+            "deskripsi" => "required",
+            "gambar" => "image|file|max:1024"
+        ]);
 
-        return back();
+        if($request->file("gambar")) {
+            $validatedData["gambar"] = $request->file('gambar')->store('profil');
+        }
+
+        Profil::create($validatedData);
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Model\Alamat  $alamat
+     * @param  \App\Models\Model\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function show(Alamat $alamat)
+    public function show(Profil $profil)
     {
         //
     }
@@ -58,10 +67,10 @@ class AlamatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Model\Alamat  $alamat
+     * @param  \App\Models\Model\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alamat $alamat)
+    public function edit(Profil $profil)
     {
         //
     }
@@ -70,27 +79,21 @@ class AlamatController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Alamat  $alamat
+     * @param  \App\Models\Model\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alamat $alamat)
+    public function update(Request $request, Profil $profil)
     {
-        Alamat::where("id", $alamat->id)->update([
-            "website" => $request->website,
-            "no_telepon" => $request->no_telepon,
-            "alamat" => $request->alamat
-        ]);
-
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Model\Alamat  $alamat
+     * @param  \App\Models\Model\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alamat $alamat)
+    public function destroy(Profil $profil)
     {
         //
     }
