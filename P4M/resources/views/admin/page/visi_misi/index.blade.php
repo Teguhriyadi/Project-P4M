@@ -53,7 +53,16 @@
                             </div>
                             @endforeach
                         @else
-
+                        <div class="form-group">
+                            <textarea name="visi" id="visi" cols="80" rows="10">
+                                Visi
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="misi" id="misi" cols="80" rows="10">
+                                Misi
+                            </textarea>
+                        </div>
                         @endif
                     </div>
                     <div class="box-footer">
