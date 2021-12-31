@@ -81,11 +81,15 @@
             processing: true,
             serverSide: true,
             ajax: "{{ url('/page/admin/kategori/showall') }}",
+            columnDefs: [
+                { orderable: false, targets: [0,2] }
+            ],
+            order: [[ 1, 'asc' ]],
             columns: [
                 {data: 'no'},
                 {data: 'nama'},
                 {data: 'aksi'},
-            ]
+            ],
         });
 
         $("body").on('click', "#tambahKategori", function() {

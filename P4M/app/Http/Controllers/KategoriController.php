@@ -54,7 +54,7 @@ class KategoriController extends Controller
     public function show(Request $request)
     {
         $columns = array(
-            0 => 'nama'
+            1 => 'nama'
         );
 
         $totalData = Kategori::count();

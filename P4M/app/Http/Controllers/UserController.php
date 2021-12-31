@@ -62,6 +62,6 @@ class UserController extends Controller
     {
         Kontak::create($request->all());
 
-        return redirect()->back();
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Pesan anda berhasil dikirim', 'success')</script>");
     }
 }

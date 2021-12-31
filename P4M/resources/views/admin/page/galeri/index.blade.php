@@ -18,7 +18,7 @@
 
 <section class="content">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
@@ -35,6 +35,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
+                                <th class="text-center">Judul Galeri</th>
                                 <th class="text-center">Gambar</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -43,6 +44,7 @@
                             @foreach ($data_galeri as $galeri)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">{{ $galeri->judul }}.</td>
                                     <td class="text-center">
                                         <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100">
                                     </td>
