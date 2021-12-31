@@ -6,14 +6,10 @@ use App\Models\Model\Berita;
 use App\Models\Model\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BeritaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data = [
@@ -24,11 +20,6 @@ class BeritaController extends Controller
         return view("admin/page/berita/index", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $data = [
@@ -38,12 +29,6 @@ class BeritaController extends Controller
         return view("admin/page/berita/form_tambah", $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -63,51 +48,33 @@ class BeritaController extends Controller
 
         Berita::create($validatedData);
 
-        return redirect("/page/admin/berita");
+        return redirect("/page/admin/berita")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
     public function show(Berita $berita)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Berita $berita)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Berita $berita)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Berita $berita)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Berita::class, 'slug', $request->title);
+
+        return response()->json(['slug' => $slug]);
     }
 }

@@ -12,14 +12,20 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
-                            <div class="blog-post-thumb mb-15">
-                                <img src="{{ url('storage/'.$berita->image) }}" alt="" style="width: 100%; margin: 0 auto; height: 700px">
-                            </div>
                             <h2 class="font-weight-bold">{{ $berita->judul }}</h2>
                             <div class="post-meta">
-                                <p>Posting: {{ date('d F Y', strtotime($berita->created_at)) }}</p>
+                                @php
+                                    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+                                @endphp
+                                <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
                             </div>
-                            {{ $berita->body }}
+                            <div class="blog-post-thumb mb-5">
+                                <img src="{{ url('storage/'.$berita->image) }}" alt="" style="width: 100%; margin: 0 auto; height: 700px">
+                            </div>
+                            
+                            <div>
+                                {{ $berita->body }}
+                            </div>
 
                         </div>
                     </div>

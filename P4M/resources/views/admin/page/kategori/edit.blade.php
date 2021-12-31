@@ -37,10 +37,7 @@
                         <div class="form-group">
                             <label for="nama"> Nama Kategori </label>
                             <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori" value="{{ $edit->nama }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="slug"> Slug </label>
-                            <input type="text" class="form-control" readonly name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
+                            <input type="hidden" class="form-control" readonly name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
                         </div>
                     </div>
                     <div class="box-footer">

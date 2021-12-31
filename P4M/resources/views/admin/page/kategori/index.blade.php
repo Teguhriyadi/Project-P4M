@@ -104,7 +104,6 @@
                     },
                     success: function(response) {
                         if (response == 1) {
-                            swal("Success")
                             swal({
                                 title: "Selamat!",
                                 text: "Data anda berhasil ditambahkan!",
@@ -118,6 +117,41 @@
                     }
                 })
             }
+        });
+
+        $("body").on('click', "#hapusKategori", function() {
+            let id = $(this).data("id");
+            
+            swal({
+                title: "Apakah anda yakin?",
+                text: "Data ini akan dihapus!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "{{ url('/page/admin/kategori') }}/"+id,
+                        type: "post",
+                        data: { _method: 'delete', id: id },
+                        success: function(response) {
+                            if (response == 1) {
+                                swal({
+                                    title: "Selamat!",
+                                    text: "Data anda berhasil dihapus!",
+                                    icon: "success",
+                                }).then((success) => {
+                                    location.reload();
+                                });
+                            } else {
+                                location.reload();
+                            }
+                        }
+                    })
+                } else {
+                    swal("Data tidak jadi dihapus!");
+                }
+            });
         });
     });
 </script>

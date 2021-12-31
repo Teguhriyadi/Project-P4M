@@ -25,6 +25,10 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
+        
+        @if (session('message'))
+        {!! session('message') !!}            
+        @endif
 
         @include('admin/layouts/partials/navbar/nav_header')
 
