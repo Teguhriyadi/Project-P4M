@@ -14,11 +14,7 @@ class HakAksesController extends Controller
      */
     public function index()
     {
-        $data = [
-            "data_hak_akses" => HakAkses::orderBy("nama_hak_akses", "DESC")->get()
-        ];
-
-        return view("admin/page/hak_akses/index", $data);
+        return view("admin/page/hak_akses/index");
     }
 
     /**
@@ -39,9 +35,14 @@ class HakAksesController extends Controller
      */
     public function store(Request $request)
     {
-        HakAkses::create($request->all());
+        $cek = HakAkses::create($request->all());
 
-        return back();
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+        
     }
 
     /**
@@ -50,9 +51,19 @@ class HakAksesController extends Controller
      * @param  \App\Models\Model\HakAkses  $hakAkses
      * @return \Illuminate\Http\Response
      */
-    public function show(HakAkses $hakAkses)
+    public function show()
     {
+        $hakAkses = HakAkses::orderBy("nama_hak_akses", "DESC")->get();
 
+        $data = array();
+
+        foreach ($hakAkses as $ha) {
+            $data[] = array(
+                'nama' => $ha->nama_hak_akses,
+            );
+        }
+
+        return response()->json($data);
     }
 
     /**

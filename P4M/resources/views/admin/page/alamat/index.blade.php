@@ -18,7 +18,7 @@
 
 <section class="content">
     <div class="row">
-        <form action="{{ url('/page/admin/alamat') }}" method="POST">
+        <form action="{{ url('/page/admin/alamat') }}" method="POST" >
             @csrf
             <div class="col-md-4">
                 <div class="box">
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </form>
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <div class="box">
                 @if ($data_alamat->count())
                     @foreach ($data_alamat as $alamat)
@@ -126,7 +126,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
     </div>
 </section>
 

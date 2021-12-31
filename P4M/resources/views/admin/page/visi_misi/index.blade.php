@@ -21,11 +21,11 @@
         <div class="col-md-12">
             @if ($data_visi_misi->count())
                 @foreach ($data_visi_misi as $visi_misi)
-                <form action="{{ url('/page/admin/visi_misi') }}/{{ $visi_misi->id }}" method="POST">
+                <form action="{{ url('/page/admin/visi_misi') }}/{{ $visi_misi->id }}" id="formVisiMisi" method="POST">
                     @method("PUT")
                 @endforeach
             @else
-            <form action="{{ url('/page/admin/visi_misi') }}" method="POST">
+            <form action="{{ url('/page/admin/visi_misi') }}" method="POST" id="formVisiMisi">
             @endif
                 @csrf
                 <div class="box box-info">
@@ -41,19 +41,36 @@
                     <div class="box-body">
                         @if ($data_visi_misi->count())
                             @foreach ($data_visi_misi as $visi_misi)
-                            <div class="form-group">
-                                <textarea name="visi" id="visi" cols="80" rows="10">
-                                    {{ $visi_misi->visi }}
-                                </textarea>
+                            <div class="form-group row">
+                                <h3 for="visi" class="col-sm-2">Visi</h3>
+                                <div class="col-sm-10">
+                                    <textarea name="visi" id="visi" cols="80" rows="10">
+                                        {{ $visi_misi->visi }}
+                                    </textarea>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <textarea name="misi" id="misi" cols="80" rows="10">
-                                    {{ $visi_misi->misi }}
-                                </textarea>
+                            <div class="form-group row">
+                                <h3 for="misi" class="col-sm-2 control-label">Misi</h3>
+                                <div class="col-sm-10">
+                                    <textarea name="misi" id="misi" cols="80" rows="10">
+                                        {{ $visi_misi->misi }}
+                                    </textarea>
+                                </div>
                             </div>
                             @endforeach
                         @else
-
+                        <div class="form-group row">
+                            <h3 for="visi" class="col-sm-2">Visi</h3>
+                            <div class="col-sm-10">
+                                <textarea name="visi" id="visi" cols="80" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <h3 for="misi" class="col-sm-2 control-label">Misi</h3>
+                            <div class="col-sm-10">
+                                <textarea name="misi" id="misi" cols="80" rows="10"></textarea>
+                            </div>
+                        </div>
                         @endif
                     </div>
                     <div class="box-footer">

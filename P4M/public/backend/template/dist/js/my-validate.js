@@ -64,19 +64,78 @@
 				}
 			});
 
-			// Bagian Alamat
-            $("#editKategori").validate({
+			// Bagian Visi Misi
+            $("#formVisiMisi").validate({
 				ignore: "",
 				rules: {
-					nama: {
+					visi: {
+						required: true
+					},
+					misi: {
 						required: true
 					}
 				},
 
 				messages: {
-					nama: {
-						required: "Nama harap di isi!"
+					visi: {
+						required: "Visi harap di isi!"
+					},
+					misi: {
+						required: "Misi harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Galeri
+			$("#formTambahGaleri").validate({
+				ignore: "",
+				rules: {
+					judul: {
+						required: true
+					},
+					gambar: {
+						required: true,
+						accept: "image/*"
 					}
+				},
+
+				messages: {
+					judul: {
+						required: "Judul harap di isi!"
+					},
+					gambar: {
+						required: "Misi harap di isi!",
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			$("#formEditGaleri").validate({
+				ignore: "",
+				rules: {
+					judul: {
+						required: true
+					},
+					gambar: {
+						accept: "image/*"
+					}
+				},
+
+				messages: {
+					judul: {
+						required: "Judul harap di isi!"
+					},
+					gambar: {
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					},
 				},
 
 				submitHandler: function(form) {
