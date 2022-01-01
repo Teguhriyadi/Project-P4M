@@ -19,50 +19,40 @@
             </div>
         </form>
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Home</li>
+            <li class="header">Dashboard</li>
             <li>
                 <a href="{{ url('/page/admin/dashboard') }}">
-                    <i class="fa fa-book"></i>
+                    <i class="fa fa-tachometer"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="header">Menu</li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bars"></i> <span>Daftar Menu</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li class="header">Daftar Menu</li>
+            <li>
+                <a href="{{ url('/page/admin/kategori/') }}">
+                    <i class="fa fa-th"></i> Kategori
                 </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{ url('/page/admin/kategori/') }}">
-                            <i class="fa fa-circle-o"></i> Kategori
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/page/admin/berita/') }}">
-                            <i class="fa fa-circle-o"></i> Berita
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/page/admin/galeri') }}">
-                            <i class="fa fa-circle-o"></i> Galeri
-                        </a>
-                    </li>
-                </ul>
+            </li>
+            <li>
+                <a href="{{ url('/page/admin/berita/') }}">
+                    <i class="fa fa-newspaper-o"></i> Berita
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/page/admin/galeri') }}">
+                    <i class="glyphicon glyphicon-picture"></i> Galeri
+                </a>
             </li>
             <li class="header">Hubungi Kami</li>
             <li>
                 <a href="{{ url('/page/admin/kontak') }}">
-                   <i class="fa fa-phone"></i>
-                   <span>Kontak</span>
+                    <i class="fa fa-phone"></i>
+                    <span>Kontak</span>
                 </a>
             </li>
-            <li class="header">Akun</li>
+            <li class="header">Pengaturan</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-gears"></i> <span>Pengaturan</span>
+                    <i class="fa fa-home"></i> <span>Pengaturan Desa</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -83,14 +73,24 @@
                             <i class="fa fa-circle-o"></i> Alamat
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/page/admin/terakhir_login') }}">
-                            <i class="fa fa-circle-o"></i> Terakhir Login
-                        </a>
-                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user-circle"></i> <span>Pengaturan Akun</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
                     <li>
                         <a href="{{ url('/page/admin/akun') }}">
                             <i class="fa fa-circle-o"></i> Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/page/admin/terakhir_login') }}">
+                            <i class="fa fa-circle-o"></i> Terakhir Login
                         </a>
                     </li>
                     <li>
