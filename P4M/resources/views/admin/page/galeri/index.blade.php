@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for="gambar"> Gambar </label>
-                        <img class="gambar-preview img-fluid mb-3" width="300">
+                        <img class="gambar-preview img-fluid" width="300">
                         <br>
                         <input type="file" class="form-control" name="gambar" id="gambar" onchange="previewImage()">
                     </div>

@@ -179,6 +179,58 @@
 					form.submit();
 				}
 			});
+
+			$("#formTambahProfil").validate({
+				ignore: "",
+				rules: {
+					deskripsi: {
+						required: true
+					},
+					gambar: {
+						required: true,
+						accept: "image/*"
+					}
+				},
+
+				messages: {
+					deskripsi: {
+						required: "Deskripsi harap di isi!"
+					},
+					gambar: {
+						required: "Gambar harap di isi!",
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			$("#formEditProfil").validate({
+				ignore: "",
+				rules: {
+					deskripsi: {
+						required: true
+					},
+					gambar: {
+						accept: "image/*"
+					}
+				},
+
+				messages: {
+					deskripsi: {
+						required: "Deskripsi harap di isi!"
+					},
+					gambar: {
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
 		}
 	}
 

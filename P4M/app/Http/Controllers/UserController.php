@@ -16,7 +16,8 @@ class UserController extends Controller
         $data = [
             "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1),
             "data_berita" => Berita::orderBy("created_at", "DESC")->paginate(3),
-            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(3)
+            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(3),
+            "data_alamat" => Alamat::paginate(1)
         ];
 
         return view("/pengunjung/page/home", $data);

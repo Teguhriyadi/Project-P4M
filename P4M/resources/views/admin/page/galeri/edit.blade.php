@@ -8,7 +8,7 @@
     <label for="gambar"> Gambar </label>
     @if ($edit->gambar)
     <br>
-    <img src="{{ url('/storage/'.$edit->gambar) }}" class="gambar-preview img-fluid mb-3 col-sm-5 d-block">
+    <img src="{{ url('/storage/'.$edit->gambar) }}" class="gambar-preview img-fluid mb-3 col-sm-5 d-block" style="margin-bottom: 10px">
     @else
     <img class="gambar-preview img-fluid mb-3" width="300">
     @endif

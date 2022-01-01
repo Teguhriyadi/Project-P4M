@@ -20,13 +20,13 @@
     <div class="row">
         @if($data_profil->count())
         @foreach ($data_profil as $profil)
-        <form action="{{ url('/page/admin/profil') }}/{{ $profil->id }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/page/admin/profil') }}/{{ $profil->id }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
             @method("PUT")
             @csrf
             <input type="hidden" name="oldImage" value="{{ $profil->gambar }}">
         @endforeach
         @else
-        <form action="{{ url('/page/admin/profil') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/page/admin/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
             @csrf
         @endif
             <div class="col-md-8">
@@ -41,17 +41,19 @@
                         </h3>
                     </div>
                     <div class="box-body">
-                        @if ($data_profil->count())
-                            @foreach ($data_profil as $profil)
-                            <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
-                                {{ $profil->deskripsi }}
-                            </textarea>
-                            @endforeach
-                        @else
-                        <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
-                            Silahkan Isi Profil Desa
-                        </textarea>
-                        @endif
+                        <div class="form-group">
+                            @if ($data_profil->count())
+                                @foreach ($data_profil as $profil)
+                                <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
+                                    {{ $profil->deskripsi }}
+                                </textarea>
+                                @endforeach
+                            @else
+                                <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
+                                    Silahkan Isi Profil Desa
+                                </textarea>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
