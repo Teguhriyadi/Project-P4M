@@ -20,7 +20,7 @@ class VisiMisiController extends Controller
     {
         VisiMisi::create($request->all());
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data visi & misi berhasil ditambahkan', 'success')</script>");
     }
 
     public function update(Request $request, VisiMisi $visiMisi)
@@ -30,6 +30,6 @@ class VisiMisiController extends Controller
             "misi" => $request->misi
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data visi & misi berhasil diubah', 'success')</script>");
     }
 }

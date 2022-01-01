@@ -23,7 +23,7 @@
                             <img class="img-fluid kepala-desa" src="{{ url('/storage/'.$profil->gambar) }}" alt="" width="250" align="left" style="margin:5px 20px 20px 0px">
                             {!! $profil->deskripsi !!}
                             @endforeach
-                        </div>
+                        </div>  
                     </div>
                 </div>
             </div>

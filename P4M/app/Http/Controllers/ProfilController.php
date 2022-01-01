@@ -52,6 +52,6 @@ class ProfilController extends Controller
 
         Profil::where("id", $id)->update($validasi);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Profil desa berhasil dirubah', 'success')</script>");
     }
 }

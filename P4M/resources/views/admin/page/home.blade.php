@@ -92,7 +92,7 @@
                         Terakhir Login
                     </h3>
                     <div class="pull-right">
-                        <a href="" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/terakhir_login') }}" class="btn btn-primary btn-sm">
                             <i class="fa fa-search"></i> Selengkapnya
                         </a>
                     </div>

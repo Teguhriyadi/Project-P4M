@@ -22,21 +22,23 @@
 </section>
 
 <div class="content">
-  <form id="tambahBerita" action="{{ url('/page/admin/berita/') }}" method="POST" enctype="multipart/form-data">
+  <form id="tambahBerita" action="{{ url('/page/admin/berita/'.$edit->slug) }}" method="POST" enctype="multipart/form-data">
+    @method("PUT")
     @csrf
+    <input type="hidden" name="oldImage" value="{{ $edit->image }}">
     <div class="row">
       <div class="col-md-8">
         <div class="box">
           <div class="box-body">
             <div class="form-group">
               <label for="judul"> Judul </label>
-              <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul">
-              <input type="hidden" readonly class="form-control" name="slug" id="slug" placeholder="Slug">
+              <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="{{ $edit->judul }}">
+              <input type="hidden" readonly class="form-control" name="slug" id="slug" placeholder="Slug" value="{{ $edit->slug }}">
             </div>
             <div class="form-group">
               <label for="body"> Isi Konten </label>
               <textarea name="body" class="form-control" placeholder="Masukkan Body" rows="10" cols="80">
-                  Silahkan Isi Konten disini...
+                  {{ $edit->body }}
               </textarea>
             </div>
           </div>
@@ -50,21 +52,31 @@
               <select name="kategori_id" class="form-control select2" id="kategori_id" style="width: 100%">
                 <option value="" selected="selected">- Pilih -</option>
                 @foreach ($data_kategori as $kategori)
-                <option value="{{ $kategori->id }}">
-                  {{ $kategori->nama }}
-                </option>
+                    @if ($edit->kategori_id == $kategori->id)
+                    <option value="{{ $kategori->id }}" selected>
+                        {{ $kategori->nama }}
+                      </option>
+                    @else
+                    <option value="{{ $kategori->id }}">
+                        {{ $kategori->nama }}
+                      </option>
+                    @endif
                 @endforeach
               </select>
             </div>
             <div class="form-group">
               <label for="image"> Gambar </label>
+              @if($edit->image)
+              <img class="gambar-preview" src="{{ url('/storage/'.$edit->image) }}" style="width: 300px">
+              @else
               <img class="gambar-preview" style="width: 300px;">
+              @endif
               <input onchange="previewImage()" type="file" class="form-control" name="image" id="image">
             </div>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-              <i class="fa fa-plus"></i> Tambah
+            <button type="submit" class="btn btn-success btn-sm">
+              <i class="fa fa-edit"></i> Simpan
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
               <i class="fa fa-refresh"></i> Batal
