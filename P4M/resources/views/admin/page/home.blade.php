@@ -124,6 +124,7 @@
     </div>
 </section>
 
+
 @endsection
 
 @section('page_scripts')
