@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Geografis;
 use App\Models\Model\Profil;
+use App\Models\Model\WilayahGeografis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,7 +13,9 @@ class ProfilController extends Controller
     public function index()
     {
         $data = [
-            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1)
+            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1),
+            "data_geografis" => Geografis::orderBy("id", "DESC")->paginate(1),
+            "data_wilayah" => WilayahGeografis::orderBy("batas", "DESC")->get()
         ];
 
         return view("admin/page/profil/index", $data);

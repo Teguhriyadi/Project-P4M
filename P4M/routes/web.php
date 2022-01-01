@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\GeografisController;
 use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
+use App\Http\Controllers\WilayahGeografisController;
+use App\Models\Model\WilayahGeografis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,7 +100,12 @@ Route::prefix("page")->group(function() {
             // Kontak
             Route::get("/kontak/", [KontakController::class, "index"]);
 
+            // Profil Desa
             Route::resource("/profil", ProfilController::class);
+            Route::resource("geografis", GeografisController::class);
+            Route::get("/wilayah_geografis/edit", [WilayahGeografisController::class, "edit"]);
+            Route::put("/wlayah_geografis/simpan", [WilayahGeografisController::class, "update"]);
+            Route::resource("wilayah_geografis", WilayahGeografisController::class);
             // Alamat
             Route::resource("/alamat", AlamatController::class);
 
