@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\RtRw;
 use App\Models\Model\Alamat;
 use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
@@ -123,9 +124,34 @@ class UserController extends Controller
     public function dataDesa()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1)
+            "data_alamat" => Alamat::paginate(1),
         ];
 
         return view("pengunjung/page/data_desa/index", $data);
+    }
+
+    public function dataRtRw(Request $request)
+    {
+        $dataDusun = '';
+        
+        if ($request->tahun) {
+            $dataDusun = RtRw::where('tahun', $request->tahun)->get();
+        } else {
+            $dataDusun = RtRw::all();
+        }
+        
+        $data = array();
+
+        foreach ($dataDusun as $dd) {
+            $data[] = array(
+                'dusun' => $dd->dusun,
+                'tahun' => $dd->tahun,
+                'laki_laki' => $dd->laki_laki,
+                'perempuan' => $dd->perempuan,
+                'jumlah' => $dd->jumlah,
+            );
+        }
+
+        return response()->json($data);
     }
 }
