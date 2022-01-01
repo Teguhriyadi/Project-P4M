@@ -9,13 +9,10 @@ use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
-use App\Models\Model\Kategori;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +43,7 @@ Route::prefix("berita")->group(function() {
 // Kontak
 Route::get("/kontak", [UserController::class, "kontak"]);
 Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
+Route::get("/profil", [UserController::class, "profil"]);
 
 Route::prefix("page")->group(function() {
 

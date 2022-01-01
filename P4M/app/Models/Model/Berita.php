@@ -30,7 +30,7 @@ class Berita extends Model
     {
         return [
             'slug' => [
-                'source' => 'nama'
+                'source' => 'judul'
             ]
         ];
     }

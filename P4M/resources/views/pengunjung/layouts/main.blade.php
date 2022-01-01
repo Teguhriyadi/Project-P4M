@@ -51,7 +51,7 @@
 </head>
 <body>
 	@if (session('message'))
-	{!! session('message') !!}            
+	{!! session('message') !!}
 	@endif
 	<header class="header-area">
 		<div class="top-header">
@@ -93,7 +93,7 @@
 										<a href="{{ url('/') }}" title="Beranda">Beranda</a>
 									</li>
 									<li>
-										<a href="{{ url('/') }}" title="Profil">Profil</a>
+										<a href="{{ url('/profil') }}" title="Profil">Profil</a>
 									</li>
 									<li>
 										<a href="{{ url('/') }}" title="Visi Dan Misi">Visi Dan Misi</a>
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 	</header>
-	
+
 	@include('pengunjung/layouts/breadcumb')
 
 	<section class="about-us-area section-padding-50">

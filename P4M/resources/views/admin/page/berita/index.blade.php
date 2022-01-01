@@ -45,12 +45,16 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $berita->getCategory->nama }}</td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/berita/'.$berita->slug) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                        <form action="{{ url('/page/admin/berita/') }}/{{ $berita->slug }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
                                         <a href="" class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>

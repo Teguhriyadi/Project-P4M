@@ -66,4 +66,9 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', "<script>swal('Selamat!', 'Pesan anda berhasil dikirim', 'success')</script>");
     }
+
+    public function profil()
+    {
+        return view("pengunjung/page/profil");
+    }
 }
