@@ -44,9 +44,9 @@
                             @foreach ($data_galeri as $galeri)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
-                                    <td class="text-center">{{ $galeri->judul }}.</td>
+                                    <td class="text-center">{{ $galeri->judul }}</td>
                                     <td class="text-center">
-                                        <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100">
+                                        <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100" height="70">
                                     </td>
                                     <td class="text-center">
                                         <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">

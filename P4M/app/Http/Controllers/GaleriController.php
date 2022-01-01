@@ -51,7 +51,7 @@ class GaleriController extends Controller
 
         Galeri::create($validasi);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     /**
@@ -104,7 +104,7 @@ class GaleriController extends Controller
 
         Galeri::where("id", $request->id)->update($validasi);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     /**
