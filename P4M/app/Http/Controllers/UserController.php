@@ -70,6 +70,46 @@ class UserController extends Controller
 
     public function profil()
     {
-        return view("pengunjung/page/profil");
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("pengunjung/page/profil/index", $data);
+    }
+
+    public function visiMisi()
+    {
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("pengunjung/page/pemerintahan_desa/visi_misi", $data);
+    }
+    
+    public function pemerintahanDesa()
+    {
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("pengunjung/page/pemerintahan_desa/index", $data);
+    }
+    
+    public function strukturOrganisasi()
+    {
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("pengunjung/page/pemerintahan_desa/struktur_organisasi", $data);
+    }
+
+    public function dataDesa()
+    {
+        $data = [
+            "data_alamat" => Alamat::paginate(1)
+        ];
+
+        return view("pengunjung/page/data_desa/index", $data);
     }
 }

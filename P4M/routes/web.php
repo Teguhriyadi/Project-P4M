@@ -43,8 +43,29 @@ Route::prefix("berita")->group(function() {
 // Kontak
 Route::get("/kontak", [UserController::class, "kontak"]);
 Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
-Route::get("/profil", [UserController::class, "profil"]);
 
+// Profil
+Route::prefix('profil')->group(function () {
+    Route::get("/", [UserController::class, "profil"]);
+});
+
+// Pemerintahan Desa
+Route::prefix('pemerintahan-desa')->group(function () {
+    Route::get('/', [UserController::class, 'pemerintahanDesa']);
+
+    // Visi Misi
+    Route::get('/visi-misi', [UserController::class, 'visiMisi']);
+
+    // Struktur Organisasi
+    Route::get('/struktur-organisasi', [UserController::class, 'strukturOrganisasi']);
+});
+
+// Data Desa
+Route::prefix('/data-desa')->group(function () {
+    Route::get('/', [UserController::class, 'dataDesa']);
+});
+
+// Admin
 Route::prefix("page")->group(function() {
 
     Route::group(["middleware" => ["guest"]], function() {

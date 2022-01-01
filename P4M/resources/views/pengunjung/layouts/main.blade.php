@@ -96,13 +96,13 @@
 										<a href="{{ url('/profil') }}" title="Profil">Profil</a>
 									</li>
 									<li>
-										<a href="{{ url('/') }}" title="Visi Dan Misi">Visi Dan Misi</a>
+										<a href="{{ url('/pemerintahan-desa') }}" title="Pemerintahan Desa">Pemerintahan Desa</a>
 									</li>
 									<li>
-										<a href="{{ url('/') }}" title="Struktur Organisasi">Struktur Organisasi</a>
+										<a href="{{ url('/data-desa') }}" title="Data Desa">Data Desa</a>
 									</li>
 									<li>
-										<a href="{{ url('/berita') }}" title="Data Penduduk">Data Penduduk</a>
+										<a href="{{ url('/data-penduduk') }}" title="Data Penduduk">Data Penduduk</a>
 									</li>
 									<li>
 										<a href="{{ url('/berita') }}" title="Berita">Berita</a>
