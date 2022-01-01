@@ -14,23 +14,6 @@ class WilayahGeografisController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\WilayahGeografis  $wilayahGeografis
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WilayahGeografis $wilayahGeografis)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\WilayahGeografis  $wilayahGeografis
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $data = [
@@ -52,12 +35,6 @@ class WilayahGeografisController extends Controller
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\WilayahGeografis  $wilayahGeografis
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         WilayahGeografis::where("id", $id)->delete();

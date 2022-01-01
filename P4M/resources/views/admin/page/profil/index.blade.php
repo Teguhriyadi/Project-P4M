@@ -21,15 +21,15 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li>
+                    <li class="active">
                         <a href="#tab_1" data-toggle="tab">Profil Desa</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#tab_2" data-toggle="tab">Letak Geografis Desa</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="tab_1">
+                    <div class="tab-pane active" id="tab_1">
                         <div class="row">
                             @if ($data_profil->count())
                             @foreach ($data_profil as $profil)
@@ -112,7 +112,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane active" id="tab_2">
+                        <div class="tab-pane" id="tab_2">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="box">
