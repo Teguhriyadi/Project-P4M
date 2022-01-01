@@ -14,4 +14,9 @@ class WilayahGeografis extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getGeografis()
+    {
+        return $this->belongsTo("App\Models\Model\Geografis", "geografis_id", "id");
+    }
 }
