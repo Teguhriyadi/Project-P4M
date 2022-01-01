@@ -36,6 +36,7 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Judul Berita</th>
+                                <th class="text-center">Kategori</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -43,6 +44,7 @@
                             @foreach ($data_berita as $berita)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td class="text-center">{{ $berita->judul }}</td>
                                     <td class="text-center">{{ $berita->getCategory->nama }}</td>
                                     <td class="text-center">
                                         <a href="{{ url('/page/admin/berita/'.$berita->slug) }}/edit" class="btn btn-warning btn-sm">
@@ -55,7 +57,7 @@
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
-                                        <a href="" class="btn btn-info btn-sm">
+                                        <a href="{{ url('/berita/'.$berita->slug) }}" class="btn btn-info btn-sm" target="_blank">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>
@@ -74,7 +76,7 @@
     $(function (){
         $('#beritaTable').DataTable({
             columnDefs: [
-                { orderable: false, targets: [0,2] }
+                { orderable: false, targets: [0,3] }
             ],
         })
     })

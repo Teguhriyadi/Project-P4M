@@ -64,6 +64,43 @@
 				}
 			});
 
+			$("#editBerita").validate({
+				ignore: "",
+				rules: {
+					judul: {
+						required: true
+					},
+					kategori_id: {
+						required: true
+					},
+					image: {
+						accept: "image/*"
+					},
+					body: {
+						required: true
+					},
+				},
+
+				messages: {
+					judul: {
+						required: "Judul harap di isi!"
+					},
+					kategori_id: {
+						required: "Kategori harap di isi!"
+					},
+					image: {
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					},
+					body: {
+						required: "Konten harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
 			// Bagian Visi Misi
             $("#formVisiMisi").validate({
 				ignore: "",

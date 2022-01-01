@@ -22,7 +22,7 @@
 </section>
 
 <div class="content">
-  <form id="tambahBerita" action="{{ url('/page/admin/berita/'.$edit->slug) }}" method="POST" enctype="multipart/form-data">
+  <form id="editBerita" action="{{ url('/page/admin/berita/'.$edit->slug) }}" method="POST" enctype="multipart/form-data">
     @method("PUT")
     @csrf
     <input type="hidden" name="oldImage" value="{{ $edit->image }}">
@@ -67,9 +67,9 @@
             <div class="form-group">
               <label for="image"> Gambar </label>
               @if($edit->image)
-              <img class="gambar-preview" src="{{ url('/storage/'.$edit->image) }}" style="width: 300px">
+              <img class="gambar-preview" src="{{ url('/storage/'.$edit->image) }}" style="width: 100%; margin-bottom: 10px">
               @else
-              <img class="gambar-preview" style="width: 300px;">
+              <img class="gambar-preview" style="width: 100%; margin-bottom: 10px">
               @endif
               <input onchange="previewImage()" type="file" class="form-control" name="image" id="image">
             </div>

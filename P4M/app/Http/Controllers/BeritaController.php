@@ -91,12 +91,12 @@ class BeritaController extends Controller
 
         Berita::where("slug", $slug)->update($validatedData);
 
-        return redirect("/page/admin/berita")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+        return redirect("/page/admin/berita")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     public function destroy(Berita $berita)
     {
-
+        
     }
 
     public function checkSlug(Request $request)
