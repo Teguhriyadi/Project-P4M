@@ -7,6 +7,9 @@ use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
 use App\Models\Model\Profil;
+use App\Models\Model\Geografis;
+use App\Models\Model\WilayahGeografis;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -75,6 +78,17 @@ class UserController extends Controller
         ];
 
         return view("pengunjung/page/profil/index", $data);
+    }
+    
+    public function wilayah()
+    {
+        $data = [
+            "data_alamat" => Alamat::paginate(1),
+            "data_geografis" => Geografis::paginate(1),
+            "data_wgeografis" => WilayahGeografis::all(),
+        ];
+
+        return view("pengunjung/page/profil/wilayah", $data);
     }
 
     public function visiMisi()

@@ -15,11 +15,7 @@
         </div>
         <hr/>
     </div>
-    <div class="col-md-4">
-        @include('pengunjung/page/profil/submenu')
-
-        @include('pengunjung/widget/widget_kontak')
-    </div>
+    @include('pengunjung/page/profil/submenu')
 </div>
 
 @endsection

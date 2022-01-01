@@ -5,19 +5,23 @@
         margin-bottom: 10px;
     }
 </style>
+<div class="col-md-4">
 
-<div id="widget">
-    <div class="widget">
-        <div class="widget_title">Sub Menu</div>
-        <div class="widget_body">
-            <ul>
-                <li>
-                    <a href="" class="text-primary">Sejarah Desa</a>
-                </li>
-                <li>
-                    <a href="" class="text-primary">Wilayah Desa</a>
-                </li>
-            </ul>
+    <div id="widget">
+        <div class="widget">
+            <div class="widget_title">Sub Menu</div>
+            <div class="widget_body">
+                <ul>
+                    <li>
+                        <a href="/profil/sejarah-desa" class="text-primary">Sejarah Desa</a>
+                    </li>
+                    <li>
+                        <a href="/profil/wilayah-desa" class="text-primary">Wilayah Desa</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    
+    @include('pengunjung/widget/widget_kontak')
 </div>
