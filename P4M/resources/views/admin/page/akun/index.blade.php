@@ -39,6 +39,7 @@
                                     <th>Name</th>
                                     <th>Username</th>
                                     <th class="text-center">Email</th>
+                                    <th class="text-center">Hak Akses</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -49,13 +50,14 @@
                                     <td>{{ $akun->name }}</td>
                                     <td>{{ $akun->username }}</td>
                                     <td class="text-center">{{ $akun->email }}</td>
+                                    <td class="text-center">{{ $akun->getHakAkses->nama_hak_akses }}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <button onclick="editDataAkun({{$akun->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-    
+
                                         @if ($akun->username == auth()->user()->username)
-    
+
                                         @else
                                         <form action="" method="POST" style="display: inline;">
                                             @csrf
@@ -88,7 +90,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Akun
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/akun') }}" method="POST">
+            <form action="{{ url('/page/admin/akun') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -116,6 +118,30 @@
                             <div class="form-group">
                                 <label for="password"> Password </label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="hak_akses"> Hak Akses </label>
+                                <select name="hak_akses_id" class="form-control select2" id="hak_akses_id" style="width: 100%;">
+                                    <option value="" selected>- Pilih -</option>
+                                    @foreach ($data_hak_akses as $hak_akses)
+                                    <option value="{{ $hak_akses->id }}">
+                                        {{ $hak_akses->nama_hak_akses }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="gambar"> Gambar </label>
+                                <img class="gambar-preview" style="width: 300px;">
+                                <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
                             </div>
                         </div>
                     </div>
@@ -174,6 +200,42 @@
         .then(response => response.json())
         .then(data => slug.value = data.slug)
     })
+
+</script>
+
+@endsection
+
+@section('page_scripts')
+
+<script type="text/javascript">
+
+    function editDataAkun(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/akun/edit') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        })
+    }
+
+    function previewImage()
+    {
+        const gambar = document.querySelector("#gambar");
+        const gambarPreview = document.querySelector(".gambar-preview");
+
+        gambarPreview.style.display = "block";
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(gambar.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            gambarPreview.src = oFREvent.target.result;
+        }
+    }
 
 </script>
 

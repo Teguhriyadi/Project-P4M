@@ -95,6 +95,7 @@ Route::prefix("page")->group(function() {
             Route::resource("/galeri", GaleriController::class);
 
             // Akun
+            Route::get("/akun/edit", [AkunController::class, "edit"]);
             Route::resource("/akun", AkunController::class);
 
             // Kontak

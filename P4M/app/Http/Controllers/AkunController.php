@@ -2,73 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\HakAkses;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data = [
-            "data_akun" => User::all()
+            "data_akun" => User::all(),
+            "data_hak_akses" => HakAkses::orderBy("nama_hak_akses", "DESC")->get()
         ];
 
         return view("admin/page/akun/index", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        User::create([
-            "name" => $request->name,
-            "username" => $request->username,
-            "email" => $request->email,
-            "password" => bcrypt($request->password)
+
+        $validasi = $request->validate([
+            "name" => "required",
+            "username" => "required",
+            "email" => "required|unique:users",
+            "hak_akses_id" => "required",
+            "gambar" => "image|file|max:1024"
         ]);
+
+        if ($request->gambar) {
+            $validasi['gambar'] = $request->file("gambar")->store("akun");
+        }
+
+        $validasi["password"] = bcrypt($request->password);
+
+        User::create($validasi);
 
         return back()->with("success", "Data Berhasil di Tambahkan");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
+    public function edit(Request $request)
     {
-        //
-    }
+        $data = [
+            "edit" => User::where("id", $request->id)->first()
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
+        return view("admin/page/akun/edit", $data);
     }
 
     /**
