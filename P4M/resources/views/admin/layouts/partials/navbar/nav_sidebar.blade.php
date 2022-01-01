@@ -33,6 +33,22 @@
                     <i class="glyphicon glyphicon-picture"></i> Galeri
                 </a>
             </li>
+            <li class="header">Penduduk</li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span>Data Penduduk</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ url('/page/admin/rt_rw') }}">
+                            <i class="fa fa-circle-o"></i> Data RT / RW
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="header">Hubungi Kami</li>
             <li>
                 <a href="{{ url('/page/admin/kontak') }}">

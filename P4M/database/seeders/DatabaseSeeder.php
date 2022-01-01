@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Model\HakAkses;
 use App\Models\Model\Kategori;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -56,6 +57,14 @@ class DatabaseSeeder extends Seeder
         Kategori::create([
             "nama" => "Web 123",
             "slug" => "web-123"
+        ]);
+
+        HakAkses::create([
+            "nama_hak_akses" => "Administrator"
+        ]);
+
+        HakAkses::create([
+            "nama_hak_akses" => "Super Admin"
         ]);
 
     }

@@ -11,6 +11,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RtRwController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
@@ -115,6 +116,11 @@ Route::prefix("page")->group(function() {
 
             // Visi & Misi
             Route::resource("/visi_misi", VisiMisiController::class);
+
+            // RT dan RW
+            Route::put("rt_rw/simpan", [RtRwController::class, "update"]);
+            Route::get("/rt_rw/edit", [RtRwController::class, "edit"]);
+            Route::resource("/rt_rw", RtRwController::class);
 
             // Hak Akses
             Route::resource("/hak_akses", HakAksesController::class);
