@@ -15,11 +15,8 @@
         </div>
         <hr/>
     </div>
-    <div class="col-md-4">
-        @include('pengunjung/page/pemerintahan_desa/submenu')
-        
-        @include('pengunjung/widget/widget_kontak')
-    </div>
+    
+    @include('pengunjung/page/pemerintahan_desa/submenu')
 </div>
 
 @endsection

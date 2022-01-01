@@ -7,6 +7,7 @@ use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
 use App\Models\Model\Profil;
+use App\Models\Model\VisiMisi;
 use App\Models\Model\Geografis;
 use App\Models\Model\WilayahGeografis;
 
@@ -94,7 +95,8 @@ class UserController extends Controller
     public function visiMisi()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1)
+            "data_alamat" => Alamat::paginate(1),
+            "data_visimisi" => VisiMisi::paginate(1)
         ];
 
         return view("pengunjung/page/pemerintahan_desa/visi_misi", $data);
