@@ -41,30 +41,11 @@
                 </a>
             </li>
             <li class="header">Pengaturan</li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-home"></i> <span>Pengaturan Desa</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li>
+                <a href="{{ url('/page/admin/profil') }}">
+                    <i class="fa fa-home"></i>
+                    <span>Pengaturan Desa</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{ url('/page/admin/profil') }}">
-                            <i class="fa fa-circle-o"></i> Profil
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/page/admin/visi_misi') }}">
-                            <i class="fa fa-circle-o"></i> Visi & Misi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/page/admin/alamat') }}">
-                            <i class="fa fa-circle-o"></i> Alamat
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="treeview">
                 <a href="#">
