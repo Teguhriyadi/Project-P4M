@@ -27,7 +27,7 @@
                         <i class="fa fa-edit"></i> Edit Struktur Pemerintahan
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/struktur_pemerintahan/'.$edit->id) }}" method="POST">
+                <form id="editStruktur" action="{{ url('/page/admin/struktur_pemerintahan/'.$edit->id) }}" method="POST">
                     @method("PUT")
                     @csrf
                     <div class="box-body">

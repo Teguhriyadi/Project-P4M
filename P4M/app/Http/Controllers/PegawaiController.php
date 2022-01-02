@@ -20,7 +20,7 @@ class PegawaiController extends Controller
     {
         Pegawai::create($request->all());
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)
@@ -43,13 +43,13 @@ class PegawaiController extends Controller
             "alamat" => $request->alamat
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     public function destroy($id)
     {
         Pegawai::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }

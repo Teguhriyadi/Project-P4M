@@ -96,7 +96,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Pegawai
                 </h4>
             </div>
-            <form class="form-horizontal" action="{{ url('/page/admin/pegawai') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
+            <form class="form-horizontal" action="{{ url('/page/admin/pegawai') }}" method="POST" enctype="multipart/form-data" id="tambahPegawai">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -166,7 +166,7 @@
                     <i class="fa fa-edit"></i> Edit Data Pegawai
                 </h4>
             </div>
-            <form class="form-horizontal" action="{{ url('/page/admin/pegawai/simpan') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
+            <form class="form-horizontal" action="{{ url('/page/admin/pegawai/simpan') }}" method="POST" enctype="multipart/form-data" id="editPegawai">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">

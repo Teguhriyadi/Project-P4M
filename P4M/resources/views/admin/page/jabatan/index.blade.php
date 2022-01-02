@@ -25,7 +25,7 @@
                         <i class="fa fa-plus"></i> Tambah Data Jabatan
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/jabatan') }}" method="POST">
+                <form id="tambahJabatan" action="{{ url('/page/admin/jabatan') }}" method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">

@@ -25,7 +25,7 @@ class StrukturPemerintahanController extends Controller
     {
         StrukturPemerintahan::create($request->all());
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit($id)
@@ -54,7 +54,7 @@ class StrukturPemerintahanController extends Controller
             "pegawai_id" => $request->pegawai_id
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     /**
@@ -67,6 +67,6 @@ class StrukturPemerintahanController extends Controller
     {
         StrukturPemerintahan::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }

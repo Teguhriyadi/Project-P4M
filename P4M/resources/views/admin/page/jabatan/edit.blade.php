@@ -25,7 +25,7 @@
                         <i class="fa fa-edit"></i> Edit Data Jabatan
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/jabatan/'.$edit->id) }}" method="POST">
+                <form id="editJabatan" action="{{ url('/page/admin/jabatan/'.$edit->id) }}" method="POST">
                     @method("PUT")
                     @csrf
                     <div class="box-body">
