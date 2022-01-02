@@ -10,7 +10,7 @@ class RtRwController extends Controller
     public function index()
     {
         $data = [
-            "data_rt_rw" => RtRw::orderBy("dusun", "ASC")->get()
+            "data_rt_rw" => RtRw::orderBy("tahun", "ASC")->get()
         ];
 
         return view("admin/page/rt_rw/index", $data);
@@ -26,7 +26,7 @@ class RtRwController extends Controller
             "jumlah" => $request->laki_laki + $request->perempuan
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)
@@ -55,7 +55,7 @@ class RtRwController extends Controller
             "jumlah" => $request->laki_laki + $request->perempuan
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     /**
@@ -68,6 +68,6 @@ class RtRwController extends Controller
     {
         RtRw::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }

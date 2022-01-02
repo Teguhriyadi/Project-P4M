@@ -13,7 +13,7 @@ class GeografisController extends Controller
             "deskripsi" => $request->deskripsi_geografis
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function update(Request $request, $id)
@@ -22,6 +22,6 @@ class GeografisController extends Controller
             "deskripsi" => $request->deskripsi_geografis
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 }

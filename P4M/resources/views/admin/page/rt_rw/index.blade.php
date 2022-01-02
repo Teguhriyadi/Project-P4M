@@ -42,6 +42,7 @@
                                     <th class="text-center">Laki - Laki</th>
                                     <th class="text-center">Perempuan</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tahun</th>
                                     <td class="text-center">Aksi</td>
                                 </tr>
                             </thead>
@@ -53,6 +54,7 @@
                                         <td class="text-center">{{ $data->laki_laki  }}</td>
                                         <td class="text-center">{{ $data->perempuan }}</td>
                                         <td class="text-center">{{ $data->jumlah }}</td>
+                                        <td class="text-center">{{ $data->tahun }}</td>
                                         <td class="text-center">
                                             <button onclick="editDataRtRw({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                                 <i class="fa fa-edit"></i>

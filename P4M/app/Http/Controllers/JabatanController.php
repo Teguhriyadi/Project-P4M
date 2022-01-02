@@ -25,7 +25,7 @@ class JabatanController extends Controller
     {
         Jabatan::create($request->all());
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit($id)
@@ -51,7 +51,7 @@ class JabatanController extends Controller
             "nama_jabatan" => $request->nama_jabatan
         ]);
 
-        return back();
+        return redirect('page/admin/jabatan')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     /**
@@ -64,6 +64,6 @@ class JabatanController extends Controller
     {
         Jabatan::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }
