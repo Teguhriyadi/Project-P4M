@@ -25,7 +25,7 @@
                         <i class="fa fa-plus"></i> Tambah Data Hak Akses
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/hak_akses/'.$edit->id) }}" method="POST">
+                <form action="{{ url('/page/admin/hak_akses/'.$edit->id) }}" method="POST" id="editHakAkses">
                     @method("PUT")
                     @csrf
                     <div class="box-body">

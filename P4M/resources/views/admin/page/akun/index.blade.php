@@ -90,7 +90,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Akun
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/akun') }}" method="POST" enctype="multipart/form-data">
+            <form id="tambahAkun" action="{{ url('/page/admin/akun') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -172,7 +172,7 @@
                     <i class="fa fa-plus"></i> Edit Data Akun
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/akun') }}" method="POST">
+            <form id="editAkun" action="{{ url('/page/admin/akun') }}" method="POST">
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
 

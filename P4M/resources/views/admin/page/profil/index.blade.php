@@ -39,11 +39,11 @@
                         <div class="row">
                             @if ($data_profil->count())
                             @foreach ($data_profil as $profil)
-                            <form action="{{ url('/page/admin/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('/page/admin/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
                                 @method("PUT")
                                 @endforeach
                                 @else
-                                <form action="{{ url('/page/admin/profil') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ url('/page/admin/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
                                     @endif
                                     @csrf
                                     <div class="col-md-8">
@@ -129,11 +129,11 @@
                                         </div>
                                         @if ($data_geografis->count())
                                         @foreach ($data_geografis as $geografis)
-                                        <form action="{{ url('/page/admin/geografis/'.$geografis->id) }}" method="POST">
+                                        <form action="{{ url('/page/admin/geografis/'.$geografis->id) }}" method="POST" id="formGeografis">
                                             @method("PUT")
                                             @endforeach
                                             @else
-                                            <form action="{{ url('/page/admin/geografis') }}" method="POST">
+                                            <form action="{{ url('/page/admin/geografis') }}" method="POST" id="formGeografis">
                                                 @endif
                                                 @csrf
                                                 <div class="box-body">
@@ -237,11 +237,11 @@
                                             </div>
                                             @if ($data_visi_misi->count())
                                             @foreach ($data_visi_misi as $visi_misi)
-                                            <form action="{{ url('/page/admin/visi_misi/'.$visi_misi->id) }}" method="POST">
+                                            <form action="{{ url('/page/admin/visi_misi/'.$visi_misi->id) }}" method="POST" id="formVisiMisi">
                                                 @method("PUT")
                                                 @endforeach
                                                 @else
-                                                <form action="{{ url('/page/admin/visi_misi') }}" method="POST">
+                                                <form action="{{ url('/page/admin/visi_misi') }}" method="POST" id="formVisiMisi">
                                                     @endif
                                                     @csrf
                                                     <div class="box-body">
@@ -306,11 +306,11 @@
                                     <div class="row">
                                         @if ($data_alamat->count())
                                         @foreach ($data_alamat as $alamat)
-                                        <form action="{{ url('/page/admin/alamat/'.$alamat->id) }}" method="POST">
+                                        <form action="{{ url('/page/admin/alamat/'.$alamat->id) }}" method="POST" id="formAlamat">
                                             @method("PUT")
                                         @endforeach
                                         @else
-                                        <form action="{{ url('/page/admin/alamat') }}" method="POST">
+                                        <form action="{{ url('/page/admin/alamat') }}" method="POST" id="formAlamat">
                                         @endif
                                             @csrf
                                             <div class="col-md-4">
@@ -407,7 +407,7 @@
                                         <i class="fa fa-plus"></i> Tambah Data
                                     </h4>
                                 </div>
-                                <form action="{{ url('/page/admin/wilayah_geografis/') }}" method="POST">
+                                <form action="{{ url('/page/admin/wilayah_geografis/') }}" method="POST" id="tambahWilayah">
                                     @csrf
                                     @foreach ($data_geografis as $geografis)
                                     <input type="hidden" name="geografis_id" value="{{ $geografis->id }}">
@@ -452,7 +452,7 @@
                                         <i class="fa fa-pencil"></i> Edit Data
                                     </h4>
                                 </div>
-                                <form action="{{ url('/page/admin/wilayah_geografis/simpan') }}" method="POST">
+                                <form action="{{ url('/page/admin/wilayah_geografis/simpan') }}" method="POST" id="editWilayah">
                                     @method("PUT")
                                     @csrf
                                     @foreach ($data_geografis as $geografis)

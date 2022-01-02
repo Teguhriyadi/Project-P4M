@@ -37,7 +37,7 @@ class AkunController extends Controller
 
         User::create($validasi);
 
-        return back()->with("success", "Data Berhasil di Tambahkan");
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)

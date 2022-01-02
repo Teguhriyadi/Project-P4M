@@ -500,6 +500,246 @@
 					form.submit();
 				}
 			});
+
+			// Bagian Geografis
+			$("#formGeografis").validate({
+				ignore: "",
+				rules: {
+					deskripsi_geografis: {
+						required: true
+					},
+				},
+
+				messages: {
+					deskripsi_geografis: {
+						required: "Deskripsi harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Wilayah
+			$("#tambahWilayah").validate({
+				ignore: "",
+				rules: {
+					batas: {
+						required: true
+					},
+					desa: {
+						required: true
+					},
+					kecamatan: {
+						required: true
+					},
+				},
+
+				messages: {
+					batas: {
+						required: "Batas harap di isi!"
+					},
+					desa: {
+						required: "Desa harap di isi!"
+					},
+					kecamatan: {
+						required: "Kecamatan harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			$("#editWilayah").validate({
+				ignore: "",
+				rules: {
+					batas: {
+						required: true
+					},
+					desa: {
+						required: true
+					},
+					kecamatan: {
+						required: true
+					},
+				},
+
+				messages: {
+					batas: {
+						required: "Batas harap di isi!"
+					},
+					desa: {
+						required: "Desa harap di isi!"
+					},
+					kecamatan: {
+						required: "Kecamatan harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Alamat
+			$("#formAlamat").validate({
+				ignore: "",
+				rules: {
+					website: {
+						required: true
+					},
+					no_telepon: {
+						required: true
+					},
+					alamat: {
+						required: true
+					},
+				},
+
+				messages: {
+					website: {
+						required: "Website harap di isi!"
+					},
+					no_telepon: {
+						required: "Telepon harap di isi!"
+					},
+					alamat: {
+						required: "Alamat harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Akun
+			$("#tambahAkun").validate({
+				ignore: "",
+				rules: {
+					name: {
+						required: true
+					},
+					username: {
+						required: true
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						required: true
+					},
+					hak_akses_id: {
+						required: true
+					},
+					gambar: {
+						required: true,
+						accept: "image/*"
+					}
+				},
+
+				messages: {
+					name: {
+						required: "Nama harap di isi!"
+					},
+					username: {
+						required: "Username harap di isi!"
+					},
+					email: {
+						required: "Email harap di isi!",
+						email: "Masukan email valid!"
+					},
+					password: {
+						required: "Password harap di isi!"
+					},
+					hak_akses_id: {
+						required: "Hak akses harap di isi!"
+					},
+					gambar: {
+						required: "Gambar harap di isi!",
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					}
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			$("#editAkun").validate({
+				ignore: "",
+				rules: {
+					name: {
+						required: true
+					},
+					username: {
+						required: true
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						required: true
+					},
+					hak_akses_id: {
+						required: true
+					},
+					gambar: {
+						accept: "image/*"
+					}
+				},
+
+				messages: {
+					name: {
+						required: "Nama harap di isi!"
+					},
+					username: {
+						required: "Username harap di isi!"
+					},
+					email: {
+						required: "Email harap di isi!",
+						email: "Masukan email valid!"
+					},
+					password: {
+						required: "Password harap di isi!"
+					},
+					hak_akses_id: {
+						required: "Hak akses harap di isi!"
+					},
+					gambar: {
+						accept: "Tipe file harus gambar (jpg, png, jpeg)"
+					}
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+			// Bagian Hak Ases
+			$("#editHakAkses").validate({
+				ignore: "",
+				rules: {
+					nama_hak_akses: {
+						required: true
+					},
+				},
+
+				messages: {
+					nama_hak_akses: {
+						required: "Hak akses harap di isi!"
+					},
+				},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
 		}
 	}
 

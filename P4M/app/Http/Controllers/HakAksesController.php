@@ -98,7 +98,7 @@ class HakAksesController extends Controller
             "nama_hak_akses" => $request->nama_hak_akses
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     /**
@@ -111,6 +111,6 @@ class HakAksesController extends Controller
     {
         HakAkses::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }
