@@ -88,8 +88,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th>Jabatan</th>
                                     <th>Staf</th>
+                                    <th>Jabatan</th>
                                     <th>Pegawai</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
