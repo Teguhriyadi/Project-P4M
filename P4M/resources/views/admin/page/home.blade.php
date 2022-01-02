@@ -118,22 +118,12 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            {{-- <ul id="ul-data">
-                <li>
-                @foreach ($data_struktur as $struktur)
-                    @if ($struktur->staf_id == 1)
-                    {{ $struktur->getPegawai->nama }} ({{ $struktur->getJabatan->nama_jabatan }})
-                    @else
-                    <ul>
-                        <li class="middle-level">
-                            {{ $struktur->getPegawai->nama }} ({{ $struktur->getJabatan->nama_jabatan }})
-                        </li>
-                    </ul>
-                    @endif
-                    @endforeach
-                </li>
-            </ul> --}}
-            <div id="chart-container"></div>
+
+            <div style="display: none">
+                <ul id="mainContainer" class="clearfix"></ul>
+            </div>
+            <div id="main"></div>
+
         </div>
         <div class="col-md-6">
             <div class="box">
@@ -176,14 +166,35 @@
 
 <script src="{{ url('/backend/template') }}/bower_components/orgchart/js/jquery.orgchart.js"></script>
 
-<script>
-    $(function() {
+<script type='text/javascript'>
+    $(function(){
+        var members;
+        $.ajax({
+            url:'/page/admin/dashboard/json',
+            type: 'get',
+            dataType: "json",
+            success: function(data){
+                members=data;
+                for(var i = 0; i < members.length; i++){
+                    var member = members[i];
+                    if(i==0){
+                        $("#mainContainer").append("<li id="+member.id+">"+member.pegawai+" ( "+member.jabatan+" )</li>")
+                    }else{
+                        if($('#pr_'+member.staf).length<=0){
+                            $('#'+member.staf).append("<ul id='pr_"+member.staf+"'><li id="+member.id+">"+member.pegawai+" ( "+member.jabatan+" )</li></ul>")
+                        }
+                        else{
+                            $('#pr_'+member.staf).append("<li id="+member.id+">"+member.pegawai+" ( "+member.jabatan+" )</li>")
+                        }  
+                    }
+                }
+                $("#main").orgchart({
+                    'data' : $("#mainContainer"),
+                });	    
+            }
+        })
 
-        $('#chart-container').orgchart({
-        'data' : $('#ul-data')
-        });
-
-    });
+    }); 
 </script>
 
 @endsection
