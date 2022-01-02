@@ -119,8 +119,8 @@
     <div class="row">
         <div class="col-md-6">
             <ul id="ul-data">
-                @foreach ($data_struktur as $struktur)
                 <li>
+                @foreach ($data_struktur as $struktur)
                     @if ($struktur->getJabatan->nama_jabatan == "Kuwu")
                     {{ $struktur->getPegawai->nama }} ({{ $struktur->getJabatan->nama_jabatan }})
                     @else
@@ -130,8 +130,8 @@
                         </li>
                     </ul>
                     @endif
+                    @endforeach
                 </li>
-                @endforeach
             </ul>
             <div id="chart-container"></div>
         </div>
