@@ -117,7 +117,7 @@ class UserController extends Controller
     {
         $data = [
             "data_alamat" => Alamat::paginate(1),
-            "data_organisasi" => StrukturPemerintahan::all()
+            "data_struktur" => StrukturPemerintahan::all()
         ];
 
         return view("pengunjung/page/pemerintahan_desa/struktur_organisasi", $data);
