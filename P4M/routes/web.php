@@ -14,11 +14,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
+use App\Http\Controllers\StrukturPemerintahanController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
 use App\Models\Model\Pegawai;
+use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
 use Illuminate\Support\Facades\Route;
 
@@ -111,6 +113,9 @@ Route::prefix("page")->group(function() {
             Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
             Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
             Route::resource("/pegawai", PegawaiController::class);
+
+            // Struktur Pemerintahan
+            Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
 
             // Akun
             Route::get("/akun/edit", [AkunController::class, "edit"]);

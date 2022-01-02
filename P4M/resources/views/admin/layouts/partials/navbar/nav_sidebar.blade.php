@@ -75,6 +75,11 @@
                             <i class="fa fa-circle-o"></i> Pegawai
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/page/admin/struktur_pemerintahan') }}">
+                            <i class="fa fa-circle-o"></i> Struktur Pemerintahan
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="header">Pengaturan</li>
