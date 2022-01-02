@@ -14,7 +14,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
-use App\Http\Controllers\StrukturPemerintahanController;
+use App\Http\Controllers\StafController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
@@ -108,6 +108,9 @@ Route::prefix("page")->group(function() {
 
             // Jabatan
             Route::resource("/jabatan", JabatanController::class);
+
+            // Staf
+            Route::resource("/staf", StafController::class);
 
             // Pegawai
             Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
