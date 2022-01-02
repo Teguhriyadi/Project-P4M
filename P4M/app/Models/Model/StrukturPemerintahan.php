@@ -15,11 +15,16 @@ class StrukturPemerintahan extends Model
 
     public $timestamps = false;
 
-    protected $with = ['getJabatan', 'getPegawai'];
+    protected $with = ['getJabatan', 'getStaf' , 'getPegawai'];
 
     public function getJabatan()
     {
         return $this->belongsTo("App\Models\Model\Jabatan", "jabatan_id", "id");
+    }
+
+    public function getStaf()
+    {
+        return $this->belongsTo("App\Models\Model\Staf", "staf_id", "id");
     }
 
     public function getPegawai()

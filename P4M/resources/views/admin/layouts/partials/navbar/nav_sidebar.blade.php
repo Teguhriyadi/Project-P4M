@@ -18,19 +18,19 @@
                 </a>
             </li>
             <li class="header">Daftar Menu</li>
-            <li>
+            <li class="treeview">
                 <a href="{{ url('/page/admin/kategori/') }}">
-                    <i class="fa fa-th"></i> Kategori
+                    <i class="fa fa-th"></i> <span>Kategori</span>
                 </a>
             </li>
-            <li>
+            <li class="treeview">
                 <a href="{{ url('/page/admin/berita/') }}">
-                    <i class="fa fa-newspaper-o"></i> Berita
+                    <i class="fa fa-newspaper-o"></i> <span>Berita</span>
                 </a>
             </li>
-            <li>
+            <li class="treeview">
                 <a href="{{ url('/page/admin/galeri') }}">
-                    <i class="glyphicon glyphicon-picture"></i> Galeri
+                    <i class="glyphicon glyphicon-picture"></i> <span>Galeri</span>
                 </a>
             </li>
             <li class="header">Penduduk</li>
@@ -58,6 +58,11 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ url('/page/admin/staf') }}">
+                            <i class="fa fa-circle-o"></i> Staf
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ url('/page/admin/jabatan') }}">
                             <i class="fa fa-circle-o"></i> Jabatan
