@@ -83,7 +83,19 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-
+            <ul>
+                @foreach ($data_struktur as $struktur)
+                    @if ($struktur->getJabatan->nama_jabatan == "Kepala Desa")
+                    <li>{{ $struktur->getPegawai->nama }}</li>
+                    @else
+                    <ul>
+                        <li>
+                            {{ $struktur->getPegawai->nama }}
+                        </li>
+                    </ul>
+                    @endif
+                @endforeach
+            </ul>
         </div>
         <div class="col-md-6">
             <div class="box">
