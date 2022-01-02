@@ -10,7 +10,7 @@ class RtRwController extends Controller
     public function index()
     {
         $data = [
-            "data_rt_rw" => RtRw::orderBy("dusun", "DESC")->get()
+            "data_rt_rw" => RtRw::orderBy("dusun", "ASC")->get()
         ];
 
         return view("admin/page/rt_rw/index", $data);

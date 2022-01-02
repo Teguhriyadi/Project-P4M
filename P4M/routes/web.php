@@ -71,6 +71,9 @@ Route::prefix('pemerintahan-desa')->group(function () {
 // Data Desa
 Route::prefix('/data-desa')->group(function () {
     Route::get('/', [UserController::class, 'dataDesa']);
+
+    // Data RT / RW
+    Route::post('/rt-rw', [UserController::class, 'dataRtRw']);
 });
 
 // Admin

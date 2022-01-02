@@ -73,7 +73,7 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $hak_akses->nama_hak_akses }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/hak_akses/'.$hak_akses->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/hak_akses/'.$hak_akses->id.'/edit') }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form style="display: inline;" action="{{ url('/page/admin/hak_akses/'.$hak_akses->id) }}" method="POST">

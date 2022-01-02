@@ -60,6 +60,8 @@ class HakAksesController extends Controller
         foreach ($hakAkses as $ha) {
             $data[] = array(
                 'nama' => $ha->nama_hak_akses,
+                'edit' =>'<a href="/page/admin/hak_akses/'.$ha->id.'/edit" class="btn btn-warning" style="margin-right: 10px"><i class="fa fa-edit"></a>',
+                'hapus' => '<a href="" class="btn btn-danger" style="margin-right: 10px"><i class="fa fa-trash"></a>'
             );
         }
 

@@ -131,7 +131,8 @@
 
                         noCell.innerHTML = no++;
                         aksesCell.innerHTML = val['nama'];
-                        aksiCell.innerHTML = val['nama'];
+                        aksiCell.innerHTML = val['edit'];
+                        aksiCell.innerHTML += val['hapus'];
                     }
                 }
             }
