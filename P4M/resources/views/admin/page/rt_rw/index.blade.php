@@ -146,7 +146,7 @@
                     <i class="fa fa-edit"></i> Edit Data RT / RW
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/rt_rw/simpan') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
+            <form id="editDusun" action="{{ url('/page/admin/rt_rw/simpan') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">

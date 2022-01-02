@@ -27,7 +27,7 @@
                         <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/struktur_pemerintahan') }}" method="POST">
+                <form id="tambahStruktur" action="{{ url('/page/admin/struktur_pemerintahan') }}" method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
