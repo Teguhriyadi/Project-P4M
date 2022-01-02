@@ -7,6 +7,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\GeografisController;
 use App\Http\Controllers\HakAksesController;
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
@@ -97,6 +98,9 @@ Route::prefix("page")->group(function() {
             Route::get("/galeri/edit", [GaleriController::class, "edit"]);
             Route::put("/galeri/simpan", [GaleriController::class, "update"]);
             Route::resource("/galeri", GaleriController::class);
+
+            // Jabatan
+            Route::resource("/jabatan", JabatanController::class);
 
             // Akun
             Route::get("/akun/edit", [AkunController::class, "edit"]);

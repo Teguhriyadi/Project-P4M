@@ -33,6 +33,11 @@
                     <i class="glyphicon glyphicon-picture"></i> Galeri
                 </a>
             </li>
+            <li>
+                <a href="{{ url('/page/admin/jabatan') }}">
+                    <i class="fa fa-bars"></i> Jabatan
+                </a>
+            </li>
             <li class="header">Penduduk</li>
             <li class="treeview">
                 <a href="#">
