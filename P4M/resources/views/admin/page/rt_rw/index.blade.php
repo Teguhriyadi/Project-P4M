@@ -88,7 +88,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Galeri
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/rt_rw') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
+            <form id="tambahDusun" action="{{ url('/page/admin/rt_rw') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">

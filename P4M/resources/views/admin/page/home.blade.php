@@ -3,6 +3,41 @@
 @section('page_title', 'Dashboard')
 
 @section('page_content')
+<link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/orgchart/css/jquery.orgchart.css">
+
+<style type="text/css">
+    #ul-data { display: none; width: 40%; vertical-align: top; }
+    #chart-container { display: inline-block; width: 100%; }
+    #ul-data li { font-size: 1.5rem; }
+    #chart-container {
+        position: relative;
+        height: 420px;
+        border: 1px solid #aaa;
+        margin: 0.5rem;
+        overflow: auto;
+        text-align: center;
+    }
+
+    .orgchart .node .title {
+        font-size: 1.3rem;
+        width: 200px;
+        height: 2em;
+    }
+
+    .orgchart { background: #fff; }
+    .orgchart td.left, .orgchart td.right, .orgchart td.top { border-color: #aaa; }
+    .orgchart td>.down { background-color: #aaa; }
+    .orgchart .middle-level .title { background-color: #006699; }
+    .orgchart .middle-level .content { border-color: #006699; }
+    .orgchart .product-dept .title { background-color: #009933; }
+    .orgchart .product-dept .content { border-color: #009933; }
+    .orgchart .rd-dept .title { background-color: #993366; }
+    .orgchart .rd-dept .content { border-color: #993366; }
+    .orgchart .pipeline1 .title { background-color: #996633; }
+    .orgchart .pipeline1 .content { border-color: #996633; }
+    .orgchart .frontend1 .title { background-color: #cc0066; }
+    .orgchart .frontend1 .content { border-color: #cc0066; }
+</style>
 
 <section class="content-header">
     <h1>
@@ -83,19 +118,22 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <ul>
+            <ul id="ul-data">
                 @foreach ($data_struktur as $struktur)
-                    @if ($struktur->getJabatan->nama_jabatan == "Kepala Desa")
-                    <li>{{ $struktur->getPegawai->nama }}</li>
+                <li>
+                    @if ($struktur->getJabatan->nama_jabatan == "Kuwu")
+                    {{ $struktur->getPegawai->nama }} ({{ $struktur->getJabatan->nama_jabatan }})
                     @else
                     <ul>
-                        <li>
-                            {{ $struktur->getPegawai->nama }}
+                        <li class="middle-level">
+                            {{ $struktur->getPegawai->nama }} ({{ $struktur->getJabatan->nama_jabatan }})
                         </li>
                     </ul>
                     @endif
+                </li>
                 @endforeach
             </ul>
+            <div id="chart-container"></div>
         </div>
         <div class="col-md-6">
             <div class="box">
@@ -136,10 +174,22 @@
     </div>
 </section>
 
+<script src="{{ url('/backend/template') }}/bower_components/orgchart/js/jquery.orgchart.js"></script>
+
+<script>
+    $(function() {
+
+        $('#chart-container').orgchart({
+        'data' : $('#ul-data')
+        });
+
+    });
+</script>
 
 @endsection
 
 @section('page_scripts')
+
 
 @if (session("success"))
 

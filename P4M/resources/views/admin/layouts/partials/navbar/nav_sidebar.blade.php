@@ -49,13 +49,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="header">Hubungi Kami</li>
-            <li>
-                <a href="{{ url('/page/admin/kontak') }}">
-                    <i class="fa fa-phone"></i>
-                    <span>Kontak</span>
-                </a>
-            </li>
             <li class="header">Petugas</li>
             <li class="treeview">
                 <a href="#">
@@ -81,6 +74,13 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="header">Hubungi Kami</li>
+            <li>
+                <a href="{{ url('/page/admin/kontak') }}">
+                    <i class="fa fa-phone"></i>
+                    <span>Kontak</span>
+                </a>
             </li>
             <li class="header">Pengaturan</li>
             <li>

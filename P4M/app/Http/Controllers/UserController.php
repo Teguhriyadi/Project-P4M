@@ -11,6 +11,7 @@ use App\Models\Model\Profil;
 use App\Models\Model\VisiMisi;
 use App\Models\Model\Geografis;
 use App\Models\Model\WilayahGeografis;
+use App\Models\Model\StrukturPemerintahan;
 
 use Illuminate\Http\Request;
 
@@ -115,7 +116,8 @@ class UserController extends Controller
     public function strukturOrganisasi()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1)
+            "data_alamat" => Alamat::paginate(1),
+            "data_organisasi" => StrukturPemerintahan::all()
         ];
 
         return view("pengunjung/page/pemerintahan_desa/struktur_organisasi", $data);

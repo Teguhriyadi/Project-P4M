@@ -17,7 +17,7 @@
                         <a href="/pemerintahan-desa/visi-misi" class="text-primary">Visi Misi</a>
                     </li>
                     <li>
-                        <a href="" class="text-primary">Struktur Organisasi</a>
+                        <a href="/pemerintahan-desa/struktur-organisasi" class="text-primary">Struktur Organisasi</a>
                     </li>
                 </ul>
             </div>

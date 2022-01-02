@@ -12,7 +12,7 @@ class AppController extends Controller
     {
         $data = [
             "data_terakhir_login" => TerakhirLogin::orderBy("terakhir_login", "DESC")->paginate(10),
-            "data_struktur" => StrukturPemerintahan::orderBy("id", "DESC")->get()
+            "data_struktur" => StrukturPemerintahan::orderBy("id", "asc")->get()
         ];
 
         return view("/admin/page/home", $data);

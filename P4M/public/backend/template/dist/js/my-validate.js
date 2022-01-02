@@ -180,6 +180,7 @@
 				}
 			});
 
+			// Bagian Profil
 			$("#formTambahProfil").validate({
 				ignore: "",
 				rules: {
@@ -231,6 +232,8 @@
 					form.submit();
 				}
 			});
+
+			// Bagian Dusun
 		}
 	}
 
