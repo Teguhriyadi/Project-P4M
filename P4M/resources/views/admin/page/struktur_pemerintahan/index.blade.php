@@ -26,9 +26,6 @@
                     <h3 class="box-title">
                         <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
                     </h3>
-                    <div class="box-title">
-
-                    </div>
                 </div>
                 <form id="tambahStruktur" action="{{ url('/page/admin/struktur_pemerintahan') }}" method="POST">
                     @csrf
@@ -84,6 +81,11 @@
                     <h3 class="box-title">
                         <i class="fa fa-sign-out"></i> Struktur Pemerintahan
                     </h3>
+                    <div class="pull-right">
+                        <a href="{{ url('/page/admin/struktur_pemerintahan/show') }}">
+                            <i class="fa fa-search"></i> Lihat Struktur Pemerintahan
+                        </a>
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">

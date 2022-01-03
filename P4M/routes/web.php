@@ -116,6 +116,7 @@ Route::prefix("page")->group(function() {
             Route::resource("/pegawai", PegawaiController::class);
 
             // Struktur Pemerintahan
+            Route::get("/struktur_pemerintahan/show", [StrukturPemerintahanController::class, "show"]);
             Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
 
             // Akun
