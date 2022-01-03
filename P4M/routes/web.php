@@ -8,10 +8,12 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\GeografisController;
 use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\JenisSDAController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
 use App\Http\Controllers\StrukturPemerintahanController;
@@ -112,6 +114,14 @@ Route::prefix("page")->group(function() {
             Route::post("/tahun/aktifkan", [TahunController::class, "aktifkan"]);
             Route::post("/tahun/non-aktifkan", [TahunController::class, "non_aktifkan"]);
             Route::resource("/tahun", TahunController::class);
+
+            // Potensi
+            Route::get("/potensi", [PotensiController::class, "index"]);
+
+            // Sumber Daya Alam
+            Route::get("/jenis_sda/edit", [JenisSDAController::class, "edit"]);
+            Route::put("/jenis_sda/simpan", [JenisSDAController::class, "update"]);
+            Route::resource("/jenis_sda", JenisSDAController::class);
 
             // Jabatan
             Route::resource("/jabatan", JabatanController::class);

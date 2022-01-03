@@ -33,7 +33,7 @@
                     <i class="glyphicon glyphicon-picture"></i> <span>Galeri</span>
                 </a>
             </li>
-            <li class="header">Penduduk</li>
+            <li class="header">Data Desa</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Data Penduduk</span>
@@ -48,6 +48,11 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="{{ url('/page/admin/potensi') }}">
+                    <i class="fa fa-bars"></i> Data Potensi
+                </a>
             </li>
             <li class="header">Pengaturan</li>
             <li>
