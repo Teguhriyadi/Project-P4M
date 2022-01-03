@@ -93,6 +93,7 @@ Route::prefix("page")->group(function() {
         Route::prefix("admin")->group(function() {
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
+            Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
 
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
