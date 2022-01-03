@@ -22,11 +22,6 @@ class StrukturPemerintahan extends Model
         return $this->belongsTo("App\Models\Model\Jabatan", "jabatan_id", "id");
     }
 
-    public function getStaf()
-    {
-        return $this->belongsTo("App\Models\Model\Staf", "staf_id", "id");
-    }
-
     public function getPegawai()
     {
         return $this->belongsTo("App\Models\Model\Pegawai", "pegawai_id", "id");

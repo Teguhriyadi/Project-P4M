@@ -17,7 +17,6 @@ class CreateTbStrukturPemerintahanTable extends Migration
             $table->id();
             $table->foreignId("jabatan_id");
             $table->foreignId("pegawai_id");
-            $table->foreignId("staf_id");
         });
     }
 
