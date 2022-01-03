@@ -56,17 +56,26 @@ class TahunController extends Controller
     public function aktifkan(Request $request)
     {
 
+        $data = Tahun::where("status", "1")->first();
+
+        if ($data) {
+            Tahun::where("status", "1")->update([
+                "status" => "0"
+            ]);
+        }
+
         Tahun::where("id", $request->id)->update([
-            "tahun" => 1
+            "status" => "1"
         ]);
 
         return back();
+
     }
 
     public function non_aktifkan(Request $request)
     {
         Tahun::where("id", $request->id)->update([
-            "tahun" => 0
+            "status" => "0"
         ]);
 
         return back();

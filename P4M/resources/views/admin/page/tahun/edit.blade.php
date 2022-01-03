@@ -75,19 +75,19 @@
                                     <td class="text-center">{{ $tahun->tahun }}</td>
                                     <td class="text-center">
                                         @if ($tahun->status == 0)
-                                        <form action="" method="POST">
-                                            @method("PUT")
+                                        <form action="{{ url('/page/admin/tahun/aktifkan') }}" method="POST">
                                             @csrf
+                                            <input type="hidden" name="id" value="{{ $tahun->id }}">
                                             <button type="submit" class="btn btn-success btn-sm">
-                                                <i class="fa fa-checklist"></i> Aktifkan
+                                                <i class="fa fa-check"></i> Aktifkan
                                             </button>
                                         </form>
                                         @else
-                                        <form action="" method="POST">
-                                            @method("PUT")
+                                        <form action="{{ url('/page/admin/tahun/non-aktifkan') }}" method="POST">
                                             @csrf
+                                            <input type="hidden" name="id" value="{{ $tahun->id }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-checklist"></i> Non-Aktifkan
+                                                <i class="fa fa-close"></i> Non-Aktifkan
                                             </button>
                                         </form>
                                         @endif

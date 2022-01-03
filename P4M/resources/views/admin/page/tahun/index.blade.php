@@ -75,7 +75,7 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $tahun->id }}">
                                             <button type="submit" class="btn btn-success btn-sm">
-                                                <i class="fa fa-checklist"></i> Aktifkan
+                                                <i class="fa fa-check"></i> Aktifkan
                                             </button>
                                         </form>
                                         @else
@@ -83,7 +83,7 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $tahun->id }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-checklist"></i> Non-Aktifkan
+                                                <i class="fa fa-close"></i> Non-Aktifkan
                                             </button>
                                         </form>
                                         @endif
