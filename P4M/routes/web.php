@@ -15,6 +15,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
 use App\Http\Controllers\StrukturPemerintahanController;
+use App\Http\Controllers\TahunController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
@@ -89,7 +90,7 @@ Route::prefix("page")->group(function() {
         Route::post("/post_login", [LoginController::class, "post_login"]);
     });
 
-    //Route::group(["middleware" => ["auth"]], function() {
+    Route::group(["middleware" => ["auth"]], function() {
         Route::prefix("admin")->group(function() {
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
@@ -108,6 +109,11 @@ Route::prefix("page")->group(function() {
             Route::put("/galeri/simpan", [GaleriController::class, "update"]);
             Route::resource("/galeri", GaleriController::class);
 
+            // Tahun
+            Route::post("/tahun/aktifkan", [TahunController::class, "aktifkan"]);
+            Route::post("/tahun/non-aktifkan", [TahunController::class, "non_aktifkan"]);
+            Route::resource("/tahun", TahunController::class);
+
             // Jabatan
             Route::resource("/jabatan", JabatanController::class);
 
@@ -122,7 +128,7 @@ Route::prefix("page")->group(function() {
 
             // Akun
             Route::get("/akun/edit", [AkunController::class, "edit"]);
-            Route::resource("/akun", AkunController::class)->middleware('admin');
+            Route::resource("/akun", AkunController::class);
 
             // Kontak
             Route::get("/kontak/", [KontakController::class, "index"]);
@@ -153,5 +159,5 @@ Route::prefix("page")->group(function() {
             Route::get("/logout", [LoginController::class, "logout"]);
 
         });
-    //});
+    });
 });
