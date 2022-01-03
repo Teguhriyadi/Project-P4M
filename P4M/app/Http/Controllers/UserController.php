@@ -122,6 +122,14 @@ class UserController extends Controller
 
         return view("pengunjung/page/pemerintahan_desa/struktur_organisasi", $data);
     }
+    
+    public function strukturOrganisasiShow()
+    {
+        $data = [
+            "data_struktur" => StrukturPemerintahan::all()
+        ];
+        return view("pengunjung/page/pemerintahan_desa/struktur_organisasi_show", $data); 
+    }
 
     public function dataDesa()
     {

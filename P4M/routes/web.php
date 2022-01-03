@@ -70,6 +70,7 @@ Route::prefix('pemerintahan-desa')->group(function () {
 
     // Struktur Organisasi
     Route::get('/struktur-organisasi', [UserController::class, 'strukturOrganisasi']);
+    Route::get('/struktur-organisasi/show', [UserController::class, 'strukturOrganisasiShow']);
 });
 
 // Data Desa
