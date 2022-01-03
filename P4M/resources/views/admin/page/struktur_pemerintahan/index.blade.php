@@ -52,17 +52,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="staf_id"> Staf </label>
-                            <select name="staf_id" id="staf_id" class="form-control select2" style="width: 100%;">
-                                <option value="" selected>- Pilih -</option>
-                                @foreach ($data_staf as $staf)
-                                    <option value="{{ $staf->id }}">
-                                        {{ $staf->staf }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
@@ -88,7 +77,6 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th>Staf</th>
                                     <th>Jabatan</th>
                                     <th>Pegawai</th>
                                     <th class="text-center">Aksi</th>
@@ -98,7 +86,6 @@
                                 @foreach ($data_struktur as $data)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $data->getStaf->staf }}</td>
                                         <td>{{ $data->getJabatan->nama_jabatan }}</td>
                                         <td>{{ $data->getPegawai->nama }}</td>
                                         <td class="text-center">

@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
            "username" => "user",
            "email" => "user@gmail.com",
            "password" => bcrypt("password"),
-           "hak_akses_id" => 1
+           "hak_akses_id" => 2
         ]);
 
         Kategori::create([
