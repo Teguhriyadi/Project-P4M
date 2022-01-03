@@ -49,6 +49,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="header">Pengaturan</li>
+            <li>
+                <a href="{{ url('/page/admin/tahun') }}">
+                    <i class="fa fa-users"></i> <span>Tahun</span>
+                </a>
+            </li>
             <li class="header">Petugas</li>
             <li class="treeview">
                 <a href="#">
