@@ -18,17 +18,17 @@
                 </a>
             </li>
             <li class="header">Daftar Menu</li>
-            <li class="treeview">
+            <li>
                 <a href="{{ url('/page/admin/kategori/') }}">
                     <i class="fa fa-th"></i> <span>Kategori</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li>
                 <a href="{{ url('/page/admin/berita/') }}">
                     <i class="fa fa-newspaper-o"></i> <span>Berita</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li>
                 <a href="{{ url('/page/admin/galeri') }}">
                     <i class="glyphicon glyphicon-picture"></i> <span>Galeri</span>
                 </a>
@@ -94,6 +94,7 @@
                     <span>Pengaturan Desa</span>
                 </a>
             </li>
+            @can("admin")
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user-circle"></i> <span>Pengaturan Akun</span>
@@ -119,6 +120,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
         </ul>
     </section>
 </aside>
