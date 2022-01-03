@@ -26,6 +26,9 @@
                     <h3 class="box-title">
                         <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
                     </h3>
+                    <div class="box-title">
+
+                    </div>
                 </div>
                 <form id="tambahStruktur" action="{{ url('/page/admin/struktur_pemerintahan') }}" method="POST">
                     @csrf
@@ -48,6 +51,17 @@
                                 @foreach ($data_pegawai as $pegawai)
                                     <option value="{{ $pegawai->id }}">
                                         {{ $pegawai->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="staf_id"> Sejajar </label>
+                            <select name="staf_id" id="staf_id" class="form-control select2" style="width: 100%">
+                                <option value="" selected>- Pilih -</option>
+                                @foreach ($data_jabatan as $data)
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->nama_jabatan }}
                                     </option>
                                 @endforeach
                             </select>

@@ -23,7 +23,15 @@ class StrukturPemerintahanController extends Controller
 
     public function store(Request $request)
     {
-        StrukturPemerintahan::create($request->all());
+        $get = $request->staf_id;
+
+        $ambil = StrukturPemerintahan::where("jabatan_id", $get)->first();
+
+        StrukturPemerintahan::create([
+            "jabatan_id" => $request->jabatan_id,
+            "pegawai_id" => $request->pegawai_id,
+            "staf_id" => $ambil->id
+        ]);
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }

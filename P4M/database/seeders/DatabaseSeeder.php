@@ -67,5 +67,8 @@ class DatabaseSeeder extends Seeder
             "nama_hak_akses" => "Super Admin"
         ]);
 
+        $this->call(JabatanSeeder::class);
+        $this->call(PegawaiSeeder::class);
+
     }
 }

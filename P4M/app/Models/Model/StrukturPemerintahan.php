@@ -15,7 +15,7 @@ class StrukturPemerintahan extends Model
 
     public $timestamps = false;
 
-    protected $with = ['getJabatan', 'getStaf' , 'getPegawai'];
+    protected $with = ['getJabatan' , 'getPegawai'];
 
     public function getJabatan()
     {

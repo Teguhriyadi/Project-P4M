@@ -59,11 +59,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="{{ url('/page/admin/staf') }}">
-                            <i class="fa fa-circle-o"></i> Staf
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ url('/page/admin/jabatan') }}">
                             <i class="fa fa-circle-o"></i> Jabatan
                         </a>
