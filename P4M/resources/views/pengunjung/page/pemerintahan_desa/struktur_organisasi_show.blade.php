@@ -92,19 +92,17 @@
 </style>
 </style>
 <div class="row mt-5">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div id="main">
       <div class="main">
         <div class="main_body">
-          <button onclick="location.href='/pemerintahan-desa/struktur-organisasi/show'" class="btn btn-primary text-white"><i class="fa fa-search"></i> Selengkapnya</button>
+          <button onclick="location.href='/pemerintahan-desa/struktur-organisasi'" class="btn btn-warning text-white"><i class="fa fa-arrow-left"></i> Kembali</button>
           <div id="tree"></div>
         </div>
       </div>
     </div>
     <hr/>
   </div>
-  
-  @include('pengunjung/page/pemerintahan_desa/submenu')
 </div>
 
 <script src="{{ url('/backend/template') }}/bower_components/orgchart/orgchart.js"></script>

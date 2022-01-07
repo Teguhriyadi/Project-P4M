@@ -51,7 +51,7 @@
             </li>
             <li>
                 <a href="{{ url('/page/admin/potensi') }}">
-                    <i class="fa fa-bars"></i> Data Potensi
+                    <i class="fa fa-bars"></i> <span>Data Potensi</span>
                 </a>
             </li>
             <li class="header">Pengaturan</li>

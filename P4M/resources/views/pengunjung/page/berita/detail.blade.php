@@ -24,7 +24,7 @@
                             </div>
                             
                             <div>
-                                {{ $berita->body }}
+                                {!! $berita->body !!}
                             </div>
 
                         </div>

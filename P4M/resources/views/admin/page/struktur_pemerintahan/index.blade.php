@@ -1,12 +1,13 @@
 @extends('admin.layouts.main')
 
 @section('page_title', 'Dashboard')
+@section('page_subtitle', 'Data Struktur Pemerintahan')
 
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Struktur Pemerintahan
+        @yield('page_subtitle')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -14,7 +15,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li class="active">@yield('page_subtitle')</li>
     </ol>
 </section>
 
@@ -35,9 +36,14 @@
                             <select name="jabatan_id" id="jabatan_id" class="form-control select2" style="width: 100%">
                                 <option value="" selected>- Pilih -</option>
                                 @foreach ($data_jabatan as $data)
-                                    <option value="{{ $data->id }}">
-                                        {{ $data->nama_jabatan }}
-                                    </option>
+                                @php
+                                $cek_jabatan = App\Models\Model\StrukturPemerintahan::where('jabatan_id', $data->id)->first();
+                                @endphp
+                                @if (!$cek_jabatan)
+                                <option value="{{ $data->id }}">
+                                    {{ $data->nama_jabatan }}
+                                </option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
@@ -46,9 +52,14 @@
                             <select name="pegawai_id" id="pegawai_id" class="form-control select2" style="width: 100%;">
                                 <option value="" selected>- Pilih -</option>
                                 @foreach ($data_pegawai as $pegawai)
-                                    <option value="{{ $pegawai->id }}">
-                                        {{ $pegawai->nama }}
-                                    </option>
+                                @php
+                                $cek_pegawai = App\Models\Model\StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
+                                @endphp
+                                @if (!$cek_pegawai)
+                                <option value="{{ $pegawai->id }}">
+                                    {{ $pegawai->nama }}
+                                </option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
@@ -57,9 +68,9 @@
                             <select name="staf_id" id="staf_id" class="form-control select2" style="width: 100%">
                                 <option value="" selected>- Pilih -</option>
                                 @foreach ($data_jabatan as $data)
-                                    <option value="{{ $data->id }}">
-                                        {{ $data->nama_jabatan }}
-                                    </option>
+                                <option value="{{ $data->id }}">
+                                    {{ $data->nama_jabatan }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -100,23 +111,23 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_struktur as $data)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $data->getJabatan->nama_jabatan }}</td>
-                                        <td>{{ $data->getPegawai->nama }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <form action="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}" method="POST" style="display: inline;">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $data->getJabatan->nama_jabatan }}</td>
+                                    <td>{{ $data->getPegawai->nama }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <form action="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

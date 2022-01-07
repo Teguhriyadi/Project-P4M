@@ -16,8 +16,8 @@ class PegawaiSeeder extends Seeder
     {
         Pegawai::create([
             "nik" => "123456",
-            "nama" => "Mohammad Ilham Teguhriyadi",
-            "email" => "ilham.teguh55@gmail.com",
+            "nama" => "Dedi S",
+            "email" => "dedi@gmail.com",
             "jenis_kelamin" => "L",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"
@@ -25,8 +25,8 @@ class PegawaiSeeder extends Seeder
 
         Pegawai::create([
             "nik" => "123457",
-            "nama" => "Ahmad Fauzi",
-            "email" => "ahmad.fauzi@gmail.com",
+            "nama" => "Wahyudi",
+            "email" => "wahyudi@gmail.com",
             "jenis_kelamin" => "L",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"
@@ -34,8 +34,8 @@ class PegawaiSeeder extends Seeder
 
         Pegawai::create([
             "nik" => "123458",
-            "nama" => "Teguhriyadi",
-            "email" => "teguhriyadi@gmail.com",
+            "nama" => "Bambang Tubagus",
+            "email" => "bambang@gmail.com",
             "jenis_kelamin" => "L",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"
@@ -43,8 +43,8 @@ class PegawaiSeeder extends Seeder
 
         Pegawai::create([
             "nik" => "123459",
-            "nama" => "Riyadi",
-            "email" => "riyadi@gmail.com",
+            "nama" => "Eka K. S.Pd",
+            "email" => "eka@gmail.com",
             "jenis_kelamin" => "L",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"
@@ -52,9 +52,54 @@ class PegawaiSeeder extends Seeder
 
         Pegawai::create([
             "nik" => "123460",
-            "nama" => "Ahmad",
-            "email" => "ahmad@gmail.com",
+            "nama" => "Sudarno",
+            "email" => "sudarno@gmail.com",
             "jenis_kelamin" => "L",
+            "no_hp" => "12345",
+            "alamat" => "Bandung Raya"
+        ]);
+
+        Pegawai::create([
+            "nik" => "123461",
+            "nama" => "Heryani",
+            "email" => "heryani@gmail.com",
+            "jenis_kelamin" => "P",
+            "no_hp" => "12345",
+            "alamat" => "Bandung Raya"
+        ]);
+
+        Pegawai::create([
+            "nik" => "123462",
+            "nama" => "Cah Abdul Soleh",
+            "email" => "abdul@gmail.com",
+            "jenis_kelamin" => "L",
+            "no_hp" => "12345",
+            "alamat" => "Bandung Raya"
+        ]);
+
+        Pegawai::create([
+            "nik" => "123463",
+            "nama" => "Kalimatusadiyah",
+            "email" => "kalimatusadiyah@gmail.com",
+            "jenis_kelamin" => "P",
+            "no_hp" => "12345",
+            "alamat" => "Bandung Raya"
+        ]);
+
+        Pegawai::create([
+            "nik" => "123464",
+            "nama" => "Rio Herdiawan",
+            "email" => "rio@gmail.com",
+            "jenis_kelamin" => "L",
+            "no_hp" => "12345",
+            "alamat" => "Bandung Raya"
+        ]);
+
+        Pegawai::create([
+            "nik" => "123465",
+            "nama" => "Kuniasih",
+            "email" => "kurniasih@gmail.com",
+            "jenis_kelamin" => "P",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"
         ]);

@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+<style>
+  
+</style>
+
 <section class="content-header">
     <h1>
         Data Struktur Pemerintahan
@@ -34,7 +38,7 @@
 
 <script type='text/javascript'>
   var chart = new OrgChart(document.getElementById("tree"), {
-    template: 'mila',
+    template: 'polina',
     mouseScrool: OrgChart.action.scroll,
     enableDragDrop: true,
     nodeBinding: {
@@ -43,7 +47,7 @@
       img_0: "img"
     },
     nodes: [
-    <?php foreach($data_struktur as $struktur) {
+      <?php foreach($data_struktur as $struktur) {
       echo '{ id: '.$struktur->id.', pid: '.$struktur->staf_id.', name: "'.$struktur->getPegawai->nama.'", title: "'.$struktur->getJabatan->nama_jabatan.'", img:"/gambar/gambar_user.png" },';
     } ?>
     ]
