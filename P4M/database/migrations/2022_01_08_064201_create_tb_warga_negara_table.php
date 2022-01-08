@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbWarganegaraTable extends Migration
+class CreateTbWargaNegaraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTbWarganegaraTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_warganegara', function (Blueprint $table) {
+        Schema::create('tb_warga_negara', function (Blueprint $table) {
             $table->id();
-            $table->string("nama");
+            $table->string('nama');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateTbWarganegaraTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_warganegara');
+        Schema::dropIfExists('tb_warga_negara');
     }
 }
