@@ -4,23 +4,24 @@
 
 @section('page_content')
 
-<div class="row mt-5">
-    <div class="col-md-8">
-        <div id="main">
-            <div class="main">
-                <div class="main_body">
-                    @foreach ($data_visimisi as $visimisi)
-                        {!! $visimisi->visi !!}
-                        <br>
-                        {!! $visimisi->misi !!}
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <hr/>
+<div id="printableArea">
+    <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">Visi Misi Desa Arahan Lor</font></h4>
+    <div class="post_commentbox">
+        <span class="meta_date">
+            <i class="fa fa-user"></i>Administrator&nbsp;
+            <i class="fa fa-eye"></i>0 Kali Dibaca&nbsp;
+        </span>
     </div>
-    
-    @include('pengunjung/page/pemerintahan_desa/submenu')
+    <div class="single_page_content" style="margin-bottom:10px;">
+        
+       @foreach ($data_visimisi as $vm)
+           {!! $vm->visi !!}
+           <br>
+           {!! $vm->misi !!}
+       @endforeach        
+        
+    </div>
 </div>
+
 
 @endsection

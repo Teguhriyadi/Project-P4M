@@ -70,7 +70,7 @@ Route::prefix('profil')->group(function () {
 });
 
 // Pemerintahan Desa
-Route::prefix('pemerintahan-desa')->group(function () {
+Route::prefix('pemerintahan')->group(function () {
     Route::get('/', [UserController::class, 'pemerintahanDesa']);
 
     // Visi Misi
@@ -82,11 +82,11 @@ Route::prefix('pemerintahan-desa')->group(function () {
 });
 
 // Data Desa
-Route::prefix('/data-desa')->group(function () {
+Route::prefix('/data')->group(function () {
     Route::get('/', [UserController::class, 'dataDesa']);
 
-    // Data RT / RW
-    Route::post('/rt-rw', [UserController::class, 'dataRtRw']);
+    // Data Wilayah Administratif
+    Route::get('/wilayah-administratif', [UserController::class, 'wilayahAdministratif']);
 });
 
 // Admin
