@@ -41,6 +41,8 @@
     </div>
     <div class="col-md-4">
         @include('pengunjung/widget/widget_berita_terbaru')
+        @include('pengunjung/widget/widget_maps_desa')
+        @include('pengunjung/widget/widget_maps_kantor_desa')
         @include('pengunjung/widget/widget_kontak')
     </div>
 </div>

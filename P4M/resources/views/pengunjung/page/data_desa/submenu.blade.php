@@ -22,5 +22,7 @@
         </div>
     </div>
     @include('pengunjung/widget/widget_berita_terbaru')
+    @include('pengunjung/widget/widget_maps_desa')
+    @include('pengunjung/widget/widget_maps_kantor_desa')
     @include('pengunjung/widget/widget_kontak')
 </div>

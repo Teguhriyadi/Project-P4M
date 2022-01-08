@@ -6,7 +6,7 @@
     }
 </style>
 <div class="col-md-4">
-
+    
     <div id="widget">
         <div class="widget">
             <div class="widget_title">Sub Menu</div>
@@ -24,5 +24,7 @@
     </div>
     
     @include('pengunjung/widget/widget_berita_terbaru')
+    @include('pengunjung/widget/widget_maps_desa')
+    @include('pengunjung/widget/widget_maps_kantor_desa')
     @include('pengunjung/widget/widget_kontak')
 </div>

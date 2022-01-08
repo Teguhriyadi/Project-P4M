@@ -1,32 +1,32 @@
 @php
     use App\Models\Model\Berita;
+    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
     $berita = Berita::latest()->paginate(6);
 @endphp
-<div id="widget">
-    <div class="widget">
-        <div class="widget_title">Berita Terbaru</div>
-        <div class="widget_body">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            @foreach ($berita as $b)
-                            <a href="{{ url('/berita/'.$b->slug) }}">
-                                <ul class="list-group log-information bubble-sheet">
-                                    <li class="list-group-item">
-                                        <p>
-                                            <span class="text-dark">{!! $b->judul !!}</span>
-                                            <br>
-                                            <small class="content-color-secondary"><i class="fa fa-calendar"></i> Posting: {{ $b->created_at->formatLocalized("%d %B %Y") }}</small>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="single_bottom_rightbar">
+    <h2>
+        <i class="fa fa-archive"></i>
+        Berita Terbaru
+    </h2>
+    <div class="tab-content" style="padding-top: 0;">
+        <div id="" class="active" role="">
+            @foreach ($berita as $b)
+            <table id="ul-menu">
+                <tr>
+                    <td colspan="2">
+                        <span class="meta_date">{{ $b->created_at->formatLocalized("%d %B %Y") }} | <i class="fa fa-eye"></i> 0 Kali</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" align="justify">
+                        <a href="/berita/{{ $b->slug }}">
+                            <img width="25%" style="float:left; margin:0 8px 4px 0;" class="img-fluid img-thumbnail" src="{{ url('storage/'.$b->image) }}"/>
+                            <small><font color="green">{{ $b->judul }}</font></small>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            @endforeach
         </div>
     </div>
 </div>

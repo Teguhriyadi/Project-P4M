@@ -31,7 +31,7 @@ class UserController extends Controller
     public function berita()
     {
         $data = [
-            "data_berita" => Berita::paginate(6)
+            "data_berita" => Berita::latest()->paginate(6)
         ];
 
         return view("/pengunjung/page/berita/index", $data);
