@@ -12,6 +12,4 @@ class JenisSDK extends Model
     protected $table = "tb_jenis_sdk";
 
     protected $guarded = [''];
-
-    public $timestamps = false;
 }

@@ -21,6 +21,7 @@ class CreateTbPegawaiTable extends Migration
             $table->enum("jenis_kelamin", ["L", "P"]);
             $table->string("no_hp");
             $table->text("alamat");
+            $table->timestamps();
         });
     }
 

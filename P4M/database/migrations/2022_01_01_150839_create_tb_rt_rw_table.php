@@ -20,6 +20,7 @@ class CreateTbRtRwTable extends Migration
             $table->double('laki_laki');
             $table->double('perempuan');
             $table->double('jumlah');
+            $table->timestamps();
         });
     }
 

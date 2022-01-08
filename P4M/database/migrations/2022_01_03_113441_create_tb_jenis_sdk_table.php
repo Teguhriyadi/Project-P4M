@@ -19,6 +19,7 @@ class CreateTbJenisSdkTable extends Migration
             $table->string('jumlah_anggota');
             $table->string('lokasi');
             $table->integer('tahun_id');
+            $table->timestamps();
         });
     }
 
