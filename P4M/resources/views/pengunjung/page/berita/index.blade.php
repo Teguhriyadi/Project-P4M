@@ -26,7 +26,7 @@
                                             setlocale(LC_ALL, 'id_ID', 'id', 'ID');
                                         @endphp
                                         <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
-                                        <p class="text-dark">{{ $berita->kutipan }} ...</p>
+                                        <p class="text-dark">{!! $berita->kutipan !!} ...</p>
                                     </div>
                                 </div>
                                 <a href="/berita/{{ $berita->slug }}" class="mt-3 btn btn-primary text-white">
