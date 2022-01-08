@@ -14,4 +14,9 @@ class Jabatan extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getPemerintahan()
+    {
+        return $this->belongsTo(StrukturPemerintahan::class, 'id', 'jabatan_id');
+    }
 }
