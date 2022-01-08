@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Pekerjaan;
+use App\Models\Model\PendudukPekerjaan;
 use Illuminate\Http\Request;
 
-class PekerjaanController extends Controller
+class PendudukPekerjaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PekerjaanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Model\Pekerjaan  $pekerjaan
+     * @param  \App\Models\Model\PendudukPekerjaan  $pendudukPekerjaan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pekerjaan $pekerjaan)
+    public function show(PendudukPekerjaan $pendudukPekerjaan)
     {
         //
     }
@@ -52,10 +52,10 @@ class PekerjaanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Model\Pekerjaan  $pekerjaan
+     * @param  \App\Models\Model\PendudukPekerjaan  $pendudukPekerjaan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pekerjaan $pekerjaan)
+    public function edit(PendudukPekerjaan $pendudukPekerjaan)
     {
         //
     }
@@ -64,10 +64,10 @@ class PekerjaanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Pekerjaan  $pekerjaan
+     * @param  \App\Models\Model\PendudukPekerjaan  $pendudukPekerjaan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pekerjaan $pekerjaan)
+    public function update(Request $request, PendudukPekerjaan $pendudukPekerjaan)
     {
         //
     }
@@ -75,10 +75,10 @@ class PekerjaanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Model\Pekerjaan  $pekerjaan
+     * @param  \App\Models\Model\PendudukPekerjaan  $pendudukPekerjaan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pekerjaan $pekerjaan)
+    public function destroy(PendudukPekerjaan $pendudukPekerjaan)
     {
         //
     }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Model\Pekerjaan;
+use App\Models\Model\PendudukPekerjaan;
 use Illuminate\Database\Seeder;
 
 class PekerjaanSeeder extends Seeder
@@ -14,19 +15,19 @@ class PekerjaanSeeder extends Seeder
      */
     public function run()
     {
-        Pekerjaan::create([
+        PendudukPekerjaan::create([
             "nama" => "Polisi"
         ]);
 
-        Pekerjaan::create([
+        PendudukPekerjaan::create([
             "nama" => "PNS"
         ]);
 
-        Pekerjaan::create([
+        PendudukPekerjaan::create([
             "nama" => "Guru"
         ]);
 
-        Pekerjaan::create([
+        PendudukPekerjaan::create([
             "nama" => "Belum Bekerja"
         ]);
     }
