@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\PendudukSex;
+use App\Models\PendudukUmur;
 use Illuminate\Http\Request;
 
-class PendudukStatusController extends Controller
+class PendudukumurController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PendudukStatusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
+     * @param  \App\Models\PendudukUmur  $pendudukUmur
      * @return \Illuminate\Http\Response
      */
-    public function show(PendudukSex $pendudukSex)
+    public function show(PendudukUmur $pendudukUmur)
     {
         //
     }
@@ -52,10 +52,10 @@ class PendudukStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
+     * @param  \App\Models\PendudukUmur  $pendudukUmur
      * @return \Illuminate\Http\Response
      */
-    public function edit(PendudukSex $pendudukSex)
+    public function edit(PendudukUmur $pendudukUmur)
     {
         //
     }
@@ -64,10 +64,10 @@ class PendudukStatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
+     * @param  \App\Models\PendudukUmur  $pendudukUmur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PendudukSex $pendudukSex)
+    public function update(Request $request, PendudukUmur $pendudukUmur)
     {
         //
     }
@@ -75,10 +75,10 @@ class PendudukStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
+     * @param  \App\Models\PendudukUmur  $pendudukUmur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PendudukSex $pendudukSex)
+    public function destroy(PendudukUmur $pendudukUmur)
     {
         //
     }
