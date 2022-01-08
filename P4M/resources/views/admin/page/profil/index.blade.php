@@ -33,6 +33,9 @@
                     <li>
                         <a href="#tab_4" data-toggle="tab">Alamat</a>
                     </li>
+                    <li>
+                        <a href="#tab_5" data-toggle="tab">Teks Berjalan</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -389,6 +392,60 @@
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">
+                                                        @if ($data_teks_berjalan->count())
+                                                        <i class="fa fa-edit"></i> Edit Data Teks Berjalan
+                                                        @else
+                                                        <i class="fa fa-plus"></i> Tambah Data Teks Berjalan
+                                                        @endif
+
+                                                    </h3>
+                                                </div>
+                                                @if ($data_teks_berjalan->count())
+                                                    @foreach ($data_teks_berjalan as $teks)
+                                                    <form action="{{ url('/page/admin/teks_berjalan/'.$teks->id) }}" method="POST">
+                                                        @method("PUT")
+                                                    @endforeach
+                                                @else
+                                                <form action="{{ url('/page/admin/teks_berjalan') }}" method="POST">
+                                                @endif
+                                                    @csrf
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label for="teks"> Teks </label>
+                                                            @if ($data_teks_berjalan->count())
+                                                            @foreach ($data_teks_berjalan as $teks)
+                                                            <input type="text" class="form-control" name="teks" placeholder="Masukkan Teks" value="{{ $teks->teks }}">
+                                                            @endforeach
+                                                            @else
+                                                            <input type="text" class="form-control" name="teks" placeholder="Masukkan Teks">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        @if ($data_teks_berjalan->count())
+                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                            <i class="fa fa-pencil"></i> Simpan
+                                                        </button>
+                                                        @else
+                                                        <button type="submit" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-plus"></i> Tambah
+                                                        </button>
+                                                        @endif
+                                                        <button type="reset" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-refresh"></i> Batal
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

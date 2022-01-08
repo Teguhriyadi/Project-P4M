@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\Alamat;
 use App\Models\Model\Geografis;
 use App\Models\Model\Profil;
+use App\Models\Model\TeksBerjalan;
 use App\Models\Model\VisiMisi;
 use App\Models\Model\WilayahGeografis;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class ProfilController extends Controller
             "data_geografis" => Geografis::orderBy("id", "DESC")->paginate(1),
             "data_wilayah" => WilayahGeografis::orderBy("batas", "DESC")->get(),
             "data_visi_misi" => VisiMisi::orderBy("created_at", "DESC")->paginate(1),
-            "data_alamat" => Alamat::orderBy("created_at", "DESC")->paginate(1)
+            "data_alamat" => Alamat::orderBy("created_at", "DESC")->paginate(1),
+            "data_teks_berjalan" => TeksBerjalan::orderBy("created_at", "DESC")->paginate(1)
         ];
 
         return view("admin/page/profil/index", $data);
