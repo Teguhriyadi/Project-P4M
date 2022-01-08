@@ -38,6 +38,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PendudukKawinSeeder::class);
         $this->call(PendudukHubunganSeeder::class);
         $this->call(PendudukStatusSeeder::class);
+        $this->call(CacatSeeder::class);
+        $this->call(RefPindahSeeder::class);
+        $this->call(PeristiwaSeeder::class);
 
     }
 }
