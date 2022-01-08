@@ -5,11 +5,13 @@ namespace App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Geografis extends Model
+class PendudukAsuransi extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_geografis";
+    protected $table = "tb_penduduk_asuransi";
 
     protected $guarded = [''];
+
+    public $timestamps = false;
 }
