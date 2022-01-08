@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Model\PendudukSex;
 use Illuminate\Database\Seeder;
 
 class PendudukSexSeeder extends Seeder
@@ -13,6 +14,12 @@ class PendudukSexSeeder extends Seeder
      */
     public function run()
     {
-        //
+        PendudukSex::create([
+            "nama" => "LAKI-LAKI"
+        ]);
+
+        PendudukSex::create([
+            "nama" => "PEREMPUAN"
+        ]);
     }
 }

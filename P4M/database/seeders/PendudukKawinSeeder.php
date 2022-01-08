@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Model\PendudukKawin;
 use Illuminate\Database\Seeder;
 
 class PendudukKawinSeeder extends Seeder
@@ -13,6 +14,20 @@ class PendudukKawinSeeder extends Seeder
      */
     public function run()
     {
-        //
+        PendudukKawin::create([
+            "nama" => "BELUM KAWIN"
+        ]);
+
+        PendudukKawin::create([
+            "nama" => "KAWIN"
+        ]);
+
+        PendudukKawin::create([
+            "nama" => "CERAI HIDUP"
+        ]);
+
+        PendudukKawin::create([
+            "nama" => "CERAI MATI"
+        ]);
     }
 }
