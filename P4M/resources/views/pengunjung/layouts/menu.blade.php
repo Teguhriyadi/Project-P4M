@@ -26,10 +26,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Profil Wilayah Desa</a>
+                                <a href="/profil/sejarah-desa">Sejarah Desa</a>
                             </li>
                             <li>
-                                <a href="">Sejarah Desa</a>
+                                <a href="/profil/wilayah-desa">Profil Wilayah Desa</a>
+                            </li>
+                            <li>
+                                <a href="">Arti Lambang Desa</a>
                             </li>
                         </ul>
                     </li>
@@ -37,10 +40,10 @@
                         <a class="dropdown-toggle" href="#">Pemerintahan Desa<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Visi dan Misi</a>
+                                <a href="/pemerintahan/visi-misi">Visi dan Misi</a>
                             </li>
                             <li>
-                                <a href="">Pemerintah Desa</a>
+                                <a href="/pemerintahan/pemerintah-desa">Pemerintah Desa</a>
                             </li>
                         </ul>
                     </li>
@@ -48,25 +51,22 @@
                         <a class="dropdown-toggle" href="">Data Desa<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Data Wilayah Administratif</a>
+                                <a href="/data/wilayah-administratif">Data Wilayah Administratif</a>
                             </li>
                             <li>
-                                <a href="">Data Pendidikan dalam KK</a>
+                                <a href="/data/pendidikan">Data Pendidikan</a>
                             </li>
                             <li>
-                                <a href="">Data Pendidikan Ditempuh</a>
+                                <a href="/data/pekerjaan">Data Pekerjaan</a>
                             </li>
                             <li>
-                                <a href="">Data Pekerjaan</a>
+                                <a href="/data/agama">Data Agama</a>
                             </li>
                             <li>
-                                <a href="">Data Agama</a>
+                                <a href="/data/jenis-kelamin">Data Jenis Kelamin</a>
                             </li>
                             <li>
-                                <a href="">Data Jenis Kelamin</a>
-                            </li>
-                            <li>
-                                <a href="">Data Warga Negara</a>
+                                <a href="/data/warga-negara">Data Warga Negara</a>
                             </li>
                         </ul>
                     </li>
@@ -74,15 +74,15 @@
                         <a class="dropdown-toggle" href="#">Regulasi<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Produk Hukum</a>
+                                <a href="/regulasi/produk-hukum">Produk Hukum</a>
                             </li>
                             <li>
-                                <a href="">Informasi Publik</a>
+                                <a href="/regulasi/informasi-publik">Informasi Publik</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="peta">Peta</a>
+                        <a class="dropdown-toggle" href="/peta">Peta</a>
                     </li>
                     <li class=""><a href="/berita">Berita</a></li>           
                 </ul>

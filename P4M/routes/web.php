@@ -62,6 +62,9 @@ Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
 Route::prefix('profil')->group(function () {
     Route::get("/", [UserController::class, "profil"]);
 
+    // Sejarah Desa
+    Route::get("/sejarah-desa", [UserController::class, "sejarah"]);
+    
     // Wilayah Desa
     Route::get("/wilayah-desa", [UserController::class, "wilayah"]);
 });
