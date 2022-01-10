@@ -1,44 +1,26 @@
 @extends('pengunjung/layouts/main')
 
 @section('page_content')
-<style>
-    @media only screen and (max-width: 378px) {
-        .kepala-desa {
-            width: 100%;
-            /* background-color: rgb(67, 70, 252);
-            linear-gradient(to right, rgb(0, 4, 255), rgb(67, 70, 252)); */
-        }
-    }
-</style>
-
-<div class="row">
-    <div class="col-md-8">
-        <div id="main">
-            <div class="main">
-                <h3 class="main_title mb-3">Prakata Kepala Desa</h3>
-                <div class="main_body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @foreach ($data_profil as $profil)
-                            <img class="img-fluid kepala-desa" src="{{ url('/storage/'.$profil->gambar) }}" alt="" width="300" align="left" style="margin:5px 20px 20px 0px">
-                            {!! $profil->deskripsi !!}
-                            @endforeach
-                        </div>  
+<div class="single_category wow fadeInDown">
+    <div class="archive_style_1">
+        <div class="business_category_left wow fadeInDown">
+            <ul class="fashion_catgnav">
+                <li style="border-bottom: none">
+                    <div class="catgimg2_container2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="artikel/2016/8/26/sejarah-desa" title="Baca Selengkapnya" style="font-weight:bold">
+                                    <img src="https://storage.googleapis.com/s.mysch.id/picture/21977216kepala.jpeg" width="300" class="img-fluid img-thumbnail " style="float:left; margin:5px 20px 20px 0;" alt="Sejarah Desa" />
+                                </a>
+                                <div style="text-align: justify; margin-bottom: 2rem;">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, voluptates ullam aliquid sapiente obcaecati provident dicta quo nobis expedita rem asperiores aperiam mollitia animi esse adipisci placeat, error suscipit harum! Nihil aperiam magni dignissimos ullam culpa reiciendis! Consectetur veniam minus deserunt dolore provident, delectus eveniet autem quaerat enim obcaecati quisquam, ut consequuntur. Maxime esse excepturi odit, ullam culpa animi at ea voluptatibus error libero asperiores adipisci veritatis ratione doloremque iusto nesciunt provident voluptatum nisi, voluptas consectetur. Optio, nesciunt neque possimus ducimus voluptatum iure perferendis odio? Nemo soluta at quo. Reiciendis tempora beatae esse deserunt unde eos nihil, possimus asperiores provident rerum quidem in non nostrum illum saepe, odit dolorem impedit optio sed consectetur et. Non odio unde consectetur pariatur expedita vel excepturi saepe! Aliquid dolorem omnis quaerat corrupti nostrum et nulla sint eius repellendus asperiores fuga ea vero, architecto cumque voluptate sit deserunt pariatur quisquam! Adipisci aperiam et nulla non laboriosam aspernatur, soluta natus iste! Neque quis perferendis, iste harum saepe veritatis accusamus impedit placeat. Doloremque temporibus assumenda dolore rem incidunt necessitatibus, sunt blanditiis impedit laboriosam adipisci ratione placeat cum asperiores! Unde voluptates nostrum et ad dolorem consequatur ipsum animi non quos reiciendis officia ducimus at inventore neque eaque, quo perferendis. Quia, accusamus possimus et cumque fugiat necessitatibus? Facere mollitia, vitae obcaecati nostrum assumenda exercitationem incidunt! Voluptatum repudiandae, cumque distinctio nam adipisci sequi est autem quasi debitis placeat consectetur dignissimos quia repellat incidunt fugiat hic blanditiis beatae sed possimus? Culpa commodi autem molestias, cupiditate quasi, voluptate corporis facere, quae veniam nisi dolores ab nemo necessitatibus at. Aperiam dolore voluptate magnam recusandae hic animi praesentium accusamus neque quo autem dolorem nobis numquam quas blanditiis, tenetur doloribus natus asperiores soluta, iure ex tempora dolorum officia amet. Totam hic in ipsam recusandae laboriosam temporibus cupiditate distinctio fuga, ullam, cumque vero corrupti veniam sint!
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
-        <hr/>
-        
-        @include('pengunjung/widget/widget_berita')
-        <hr/>
-        
-        @include('pengunjung/widget/widget_galeri_terbaru')
-        <hr/>
-    </div>
-    <div class="col-md-4">
-        @include('pengunjung/widget/widget_berita_terbaru')
-        @include('pengunjung/widget/widget_kontak')
     </div>
 </div>
 

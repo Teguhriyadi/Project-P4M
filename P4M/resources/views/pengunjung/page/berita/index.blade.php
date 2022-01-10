@@ -4,49 +4,42 @@
 
 @section('page_content')
 
-<div id="main" class="mt-5">
-    <div class="main">
-        <div class="main_body">
-            <div class="academy-blog-posts">
-                <div class="row">
-                    @if ($data_berita->count())
-                        @foreach ($data_berita as $berita)
-                        <div class="col-md-4 col-sm-6 col-xs-6">
-                            <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
-                                <div class="blog-post-thumb mb-15">
-                                    <span class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, .7)">{{ $berita->getCategory->nama }}</span>
-                                    <a href="/berita/{{ $berita->slug }}">
-                                        <img src="{{ url('storage/'.$berita->image) }}" alt="{{ $berita->judul }}" style="width: 100%; margin: 0 auto; height: 300px">
-                                    </a>
-                                </div>
-                                <div id="deskripsi">
-                                    <h4><a href="/berita/{{ $berita->slug }}"  class="post-title" style="font-size: 18px">{{ $berita->judul }}</a></h4>
-                                    <div class="post-meta">
-                                        @php
-                                            setlocale(LC_ALL, 'id_ID', 'id', 'ID');
-                                        @endphp
-                                        <p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }}</p>
-                                        <p class="text-dark">{!! $berita->kutipan !!} ...</p>
-                                    </div>
-                                </div>
-                                <a href="/berita/{{ $berita->slug }}" class="mt-3 btn btn-primary text-white">
-                                    <i class="fa fa-search"></i> Selengkapnya
-                                </a>
-                            </div>
+<div class="single_category wow fadeInDown">
+    <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <span class="title_text">Artikel</span> </h2>
+</div>
+<div class="single_category wow fadeInDown">
+    <div class="archive_style_1">
+        @foreach ($data_berita as $berita)
+        <div class="business_category_left wow fadeInDown">
+            <ul class="fashion_catgnav">
+                <li>
+                    <div class="catgimg2_container2">
+                        <h5 class="catg_titile">
+                            <a href="/berita/{!! $berita->slug !!}" title="Baca Selengkapnya">{!! $berita->judul !!}</a>
+                        </h5>
+                        <div class="post_commentbox">
+                            <span class="meta_date">26 Agustus 2016&nbsp;
+                                <i class="fa fa-user"></i>Administrator&nbsp;
+                                <i class="fa fa-eye"></i>0 Kali&nbsp;
+                                <i class="fa fa-comments"></i>0&nbsp;
+                            </span>
                         </div>
-                        @endforeach
-                        <div class="d-flex justify-content-end">
-                            {{ $data_berita->links() }}
+                        <a href="/berita/{!! $berita->slug !!}" title="Baca Selengkapnya" style="font-weight:bold">
+                            <img src="/storage/{!! $berita->image !!}" height="200" width="300px" class="img-fluid img-thumbnail hidden-sm hidden-xs" style="float:left; margin:0 8px 4px 0;" alt="{!! $berita->judul !!}" />
+                            <img src="/storage/{!! $berita->image !!}" width="100%" class="img-fluid img-thumbnail hidden-lg hidden-md" style="float:left; margin:0 8px 4px 0;" alt="{!! $berita->judul !!}" />
+                        </a>
+                        <div style="text-align: justify;" class="hidden-sm hidden-xs">
+                            {!! $berita->kutipan !!}
                         </div>
-                    @else
-                    <h1 class="text-center">
-                        Belum Ada Postingan
-                    </h1>
-                    @endif
-                </div>
-            </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        @endforeach
+        <div class="d-flex justify-content-end">
+            {{ $data_berita->links() }}
         </div>
     </div>
-</div>
+</div>  
 
 @endsection
