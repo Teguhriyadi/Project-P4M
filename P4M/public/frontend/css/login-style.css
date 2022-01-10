@@ -1,16 +1,16 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #888;
-    line-height: 30px;
-    text-align: center;
-    background-color: #337ab7;
-	  background: url('/frontend/img/kantor-desa.jpeg') no-repeat center fixed; /*gambar background */
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #888;
+	line-height: 30px;
+	text-align: center;
+	background-color: #337ab7;
+	background: url('/frontend/img/kantor-desa.jpeg') no-repeat center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 }
 
 strong { font-weight: 500; }
@@ -18,22 +18,22 @@ strong { font-weight: 500; }
 a, a:hover, a:focus {
 	color: #263238;
 	text-decoration: none;
-    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+	-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
 h1, h2 {
 	margin-top: 10px;
 	font-size: 38px;
-    font-weight: 100;
-    color: #555;
-    line-height: 50px;
+	font-weight: 100;
+	color: #555;
+	line-height: 50px;
 }
 
 h3 {
 	font-size: 22px;
-    font-weight: 300;
-    color: #555;
-    line-height: 20px;
+	font-weight: 300;
+	color: #555;
+	line-height: 20px;
 }
 
 img { max-width: 100%; }
@@ -49,10 +49,10 @@ img { max-width: 100%; }
 	padding: 16px 20px 0 20px;
 	background: #263238;
 	font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    color: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	font-weight: 300;
+	line-height: 16px;
+	color: #fff;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 .btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
 
@@ -75,10 +75,10 @@ img { max-width: 100%; }
 	background: rgba(0, 0, 0, 0.3);
 	border: 1px solid #fff;
 	font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    color: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	font-weight: 300;
+	line-height: 16px;
+	color: #fff;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 .btn-link-2:hover, .btn-link-2:focus,
 .btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
@@ -87,7 +87,7 @@ img { max-width: 100%; }
 /***** Top content *****/
 
 .inner-bg {
-    padding: 30px 0 0 0;
+	padding: 30px 0 0 0;
 }
 
 .top-content .text {
@@ -155,9 +155,9 @@ img { max-width: 100%; }
 
 .form-bottom form button.btn {
 	width: 70%;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
 }
 
 .form-bottom form .input-error {
@@ -180,9 +180,9 @@ img { max-width: 100%; }
 
 .form-page form button.btn {
 	width: 70%;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
 }
 
 .form-page form .input-error {
@@ -195,15 +195,15 @@ img { max-width: 100%; }
 @media (min-width: 768px) and (max-width: 991px) {}
 
 @media (max-width: 767px) {
-
+	
 	.inner-bg { padding: 60px 0 110px 0; }
-
+	
 }
 
 @media (max-width: 415px) {
-
+	
 	h1, h2 { font-size: 32px; }
-
+	
 }
 
 .login-footer {
@@ -224,13 +224,13 @@ img { max-width: 100%; }
 }
 .login-footer-top > h1{
 	font-size: 25px;
-    color: #0c83c5;
-    margin-top: 5px;
-    margin-bottom: -10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-shadow: 4px 4px 4px #000;
-    -webkit-text-stroke: 1px #fff;
+	color: #0c83c5;
+	margin-top: 5px;
+	margin-bottom: -10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 4px 4px 4px #000;
+	-webkit-text-stroke: 1px #fff;
 }
 .login-footer-top > h2{
 	font-size: 18px;
@@ -263,19 +263,19 @@ img { max-width: 100%; }
 
 /* custom toastr success */
 .toast-success {
-  background-color: #00cb18;
+	background-color: #00cb18;
 }
 /* custom toastr error */
 .toast-error {
-  background-color: #ef4836;
+	background-color: #ef4836;
 }
 /* custom toastr info */
 .toast-info {
-  background-color: #4b8df8;
+	background-color: #4b8df8;
 }
 /* custom toastr warning */
 .toast-warning {
-  background-color: #ffb848;
+	background-color: #ffb848;
 }
 .toast-message {
 	font-size: 12px;
@@ -285,9 +285,9 @@ img { max-width: 100%; }
 }
 .error {
 	color: #ff5f32;
-    font-size: 0.7em;
-    text-align: center;
-    padding-top: 10px;
+	font-size: 0.7em;
+	text-align: center;
+	padding-top: 10px;
 }
 
 .login {

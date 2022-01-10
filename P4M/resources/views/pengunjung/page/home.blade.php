@@ -30,13 +30,14 @@
         </div>
         <hr/>
         
-        @include('pengunjung/widget/widget_berita_terbaru')
+        @include('pengunjung/widget/widget_berita')
         <hr/>
         
         @include('pengunjung/widget/widget_galeri_terbaru')
         <hr/>
     </div>
     <div class="col-md-4">
+        @include('pengunjung/widget/widget_berita_terbaru')
         @include('pengunjung/widget/widget_kontak')
     </div>
 </div>

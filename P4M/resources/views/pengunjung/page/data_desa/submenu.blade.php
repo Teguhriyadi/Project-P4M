@@ -21,5 +21,6 @@
             </div>
         </div>
     </div>
+    @include('pengunjung/widget/widget_berita_terbaru')
     @include('pengunjung/widget/widget_kontak')
 </div>

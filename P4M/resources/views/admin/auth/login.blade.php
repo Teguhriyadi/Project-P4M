@@ -20,7 +20,7 @@
           <div class="row justify-content-center">
             <div class="col-sm-4 col-sm-offset-4 form-box">
               <div class="form-top">
-                <a href="/"><img src="/frontend/img/logo-desa.png" alt="Arahan Lor" class="img-responsive" /></a>
+                <a href="/"><img src="/frontend/img/logo-desa.png" alt="Arahan Lor" class="img-responsive" height="200" /></a>
                 <div class="login-footer-top">
                   <h1>Desa Arahan Lor</h1>
                   <h3>Desa Arahan Lor, kecamatan Arahan, Indramayu, Jawa Barat, Indonesia.</h3>
@@ -40,7 +40,7 @@
                     <button type="submit" class="btn">MASUK</button>
                   </form>
                   <hr/>
-                  <div class="login-footer-bottom"><a href="/">Karya TI.C</a></div>
+                  <div class="login-footer-bottom"><a href="/">Kembali</a></div>
                 </div>
               </div>
             </div>

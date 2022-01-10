@@ -20,10 +20,9 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1),
-            "data_berita" => Berita::orderBy("created_at", "DESC")->paginate(3),
-            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(3),
-            "data_alamat" => Alamat::paginate(1)
+            "data_profil" => Profil::latest()->paginate(1),
+            "data_berita" => Berita::latest()->paginate(6),
+            "data_galeri" => Galeri::latest()->paginate(6),
         ];
 
         return view("/pengunjung/page/home", $data);
@@ -52,7 +51,6 @@ class UserController extends Controller
     {
         $data = [
             "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(6),
-            "data_alamat" => Alamat::paginate(1)
         ];
 
         return view("/pengunjung/page/galeri", $data);
@@ -61,7 +59,7 @@ class UserController extends Controller
     public function kontak()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1)
+            'data_alamat' => Alamat::paginate(1)
         ];
 
         return view("/pengunjung/page/kontak", $data);
@@ -76,17 +74,12 @@ class UserController extends Controller
 
     public function profil()
     {
-        $data = [
-            "data_alamat" => Alamat::paginate(1)
-        ];
-
-        return view("pengunjung/page/profil/index", $data);
+        return view("pengunjung/page/profil/index");
     }
     
     public function wilayah()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1),
             "data_geografis" => Geografis::paginate(1),
             "data_wgeografis" => WilayahGeografis::all(),
         ];
@@ -97,7 +90,6 @@ class UserController extends Controller
     public function visiMisi()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1),
             "data_visimisi" => VisiMisi::paginate(1)
         ];
 
@@ -106,17 +98,12 @@ class UserController extends Controller
     
     public function pemerintahanDesa()
     {
-        $data = [
-            "data_alamat" => Alamat::paginate(1)
-        ];
-
-        return view("pengunjung/page/pemerintahan_desa/index", $data);
+        return view("pengunjung/page/pemerintahan_desa/index");
     }
     
     public function strukturOrganisasi()
     {
         $data = [
-            "data_alamat" => Alamat::paginate(1),
             "data_struktur" => StrukturPemerintahan::all()
         ];
 
@@ -133,11 +120,7 @@ class UserController extends Controller
 
     public function dataDesa()
     {
-        $data = [
-            "data_alamat" => Alamat::paginate(1),
-        ];
-
-        return view("pengunjung/page/data_desa/index", $data);
+        return view("pengunjung/page/data_desa/index");
     }
 
     public function dataRtRw(Request $request)

@@ -1,27 +1,30 @@
-<div id="main">
-    <div class="main">
-        <div class="main_title">Berita Terbaru</div>
-        <div class="main_body">
-            <div class="academy-blog-posts">
-                <div class="row">
-                    @foreach ($data_berita as $berita)
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
-                            <div class="blog-post-thumb mb-15">
-                                <a href="{{ url('/berita/'.$berita->slug) }}">
-                                    <img src="{{ url('storage/'.$berita->image) }}" alt="" style="width: 100%; margin: 0 auto; height: 150px">
-                                </a>
-                            </div>
-                            <div style="height:60px">
-                                <h4><a href="{{ url('/berita/'.$berita->slug) }}"  class="post-title" style="font-size: 18px">{{ $berita->judul }}</a></h4>
-                                @php
-                                    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
-                                @endphp
-                                <div class="post-meta"><p>Posting: {{ $berita->created_at->formatLocalized("%d %B %Y") }} </p></div>
-                            </div>
+@php
+    use App\Models\Model\Berita;
+    $berita = Berita::latest()->paginate(6);
+@endphp
+<div id="widget">
+    <div class="widget">
+        <div class="widget_title">Berita Terbaru</div>
+        <div class="widget_body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach ($berita as $b)
+                            <a href="{{ url('/berita/'.$b->slug) }}">
+                                <ul class="list-group log-information bubble-sheet">
+                                    <li class="list-group-item">
+                                        <p>
+                                            <span class="text-dark">{!! $b->judul !!}</span>
+                                            <br>
+                                            <small class="content-color-secondary"><i class="fa fa-calendar"></i> Posting: {{ $b->created_at->formatLocalized("%d %B %Y") }}</small>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </a>
+                            @endforeach
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>
