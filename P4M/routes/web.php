@@ -9,6 +9,7 @@ use App\Http\Controllers\GeografisController;
 use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\JenisSDAController;
+use App\Http\Controllers\JenisSDKController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
@@ -123,6 +124,11 @@ Route::prefix("page")->group(function() {
             Route::get("/jenis_sda/edit", [JenisSDAController::class, "edit"]);
             Route::put("/jenis_sda/simpan", [JenisSDAController::class, "update"]);
             Route::resource("/jenis_sda", JenisSDAController::class);
+
+            // Sumber Daya Kelembagaan
+            Route::get("/jenis_sdk/edit", [JenisSDKController::class, "edit"]);
+            Route::put("/jenis_sdk/simpan", [JenisSDKController::class, "update"]);
+            Route::resource("/jenis_sdk", JenisSDKController::class);
 
             // Jabatan
             Route::resource("/jabatan", JabatanController::class);
