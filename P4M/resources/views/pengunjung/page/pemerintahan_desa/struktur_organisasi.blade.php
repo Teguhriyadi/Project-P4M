@@ -91,20 +91,17 @@
   
 </style>
 </style>
-<div class="row mt-5">
-  <div class="col-md-8">
-    <div id="main">
-      <div class="main">
-        <div class="main_body">
-          <button onclick="location.href='/pemerintahan-desa/struktur-organisasi/show'" class="btn btn-primary text-white"><i class="fa fa-search"></i> Selengkapnya</button>
-          <div id="tree"></div>
-        </div>
-      </div>
-    </div>
-    <hr/>
+<div id="printableArea">
+  <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">Profil Wilayah Desa Arahan Lor</font></h4>
+  <div class="post_commentbox">
+    <span class="meta_date">
+      <i class="fa fa-user"></i>Administrator&nbsp;
+      <i class="fa fa-eye"></i>0 Kali Dibaca&nbsp;
+    </span>
   </div>
-  
-  @include('pengunjung/page/pemerintahan_desa/submenu')
+  <div class="single_page_content" style="margin-bottom:10px;">
+    <div id="tree"></div>
+  </div>
 </div>
 
 <script src="{{ url('/backend/template') }}/bower_components/orgchart/orgchart.js"></script>

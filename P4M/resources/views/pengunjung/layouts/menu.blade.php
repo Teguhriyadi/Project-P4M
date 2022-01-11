@@ -43,7 +43,7 @@
                                 <a href="/pemerintahan/visi-misi">Visi dan Misi</a>
                             </li>
                             <li>
-                                <a href="/pemerintahan/pemerintah-desa">Pemerintah Desa</a>
+                                <a href="/pemerintahan/struktur-organisasi">Struktur Organisasi</a>
                             </li>
                         </ul>
                     </li>
@@ -67,17 +67,6 @@
                             </li>
                             <li>
                                 <a href="/data/warga-negara">Data Warga Negara</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">Regulasi<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/regulasi/produk-hukum">Produk Hukum</a>
-                            </li>
-                            <li>
-                                <a href="/regulasi/informasi-publik">Informasi Publik</a>
                             </li>
                         </ul>
                     </li>
