@@ -16,6 +16,7 @@ class CreateTbGeografisTable extends Migration
         Schema::create('tb_geografis', function (Blueprint $table) {
             $table->id();
             $table->text("deskripsi");
+            $table->timestamps();
         });
     }
 

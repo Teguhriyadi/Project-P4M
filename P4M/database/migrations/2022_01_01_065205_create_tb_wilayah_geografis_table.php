@@ -19,6 +19,7 @@ class CreateTbWilayahGeografisTable extends Migration
             $table->string('batas', 100);
             $table->string('desa', 100);
             $table->string('kecamatan', 100);
+            $table->timestamps();
         });
     }
 

@@ -12,6 +12,4 @@ class Geografis extends Model
     protected $table = "tb_geografis";
 
     protected $guarded = [''];
-
-    public $timestamps = false;
 }

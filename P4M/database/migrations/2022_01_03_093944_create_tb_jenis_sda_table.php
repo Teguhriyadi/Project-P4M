@@ -18,6 +18,7 @@ class CreateTbJenisSdaTable extends Migration
             $table->string('jenis');
             $table->string('luas');
             $table->string('lokasi');
+            $table->timestamps();
         });
     }
 
