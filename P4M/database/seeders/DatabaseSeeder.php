@@ -69,6 +69,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call(JabatanSeeder::class);
         $this->call(PegawaiSeeder::class);
+        $this->call(AgamaSeeder::class);
+        $this->call(PekerjaanSeeder::class);
+        $this->call(WargaNegara::class);
+        $this->call(VisiMisiSeeder::class);
+        
+        $this->call(AlamatSeeder::class);
+        $this->call(GeografisSeeder::class);
+        $this->call(WilayahGeografisSeeder::class);
 
     }
 }

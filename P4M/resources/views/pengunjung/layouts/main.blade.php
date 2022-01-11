@@ -1,4 +1,6 @@
-
+@php
+    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+@endphp
 <!DOCTYPE html>
 <html>
 <head>

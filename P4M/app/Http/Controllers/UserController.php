@@ -76,6 +76,11 @@ class UserController extends Controller
     {
         return view("pengunjung/page/profil/index");
     }
+
+    public function sejarah()
+    {
+        return view("pengunjung/page/profil/sejarah");
+    }
     
     public function wilayah()
     {
