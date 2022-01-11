@@ -15,6 +15,11 @@ class CreateTbProfilTable extends Migration
     {
         Schema::create('tb_profil', function (Blueprint $table) {
             $table->id();
+            $table->string("nama_desa");
+            $table->string("kecamatan");
+            $table->string("provinsi");
+            $table->string("negara");
+            $table->string("kode_pos");
             $table->text('deskripsi');
             $table->string('gambar');
             $table->timestamps();
