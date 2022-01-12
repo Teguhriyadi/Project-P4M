@@ -25,7 +25,7 @@
                         <i class="fa fa-plus"></i> Tambah Data Hak Akses
                     </h3>
                 </div>
-                <form action="{{ url('/page/admin/hak_akses/'.$edit->id) }}" method="POST" id="editHakAkses">
+                <form action="{{ url('/page/admin/pengaturan/hak_akses/'.$edit->id) }}" method="POST" id="editHakAkses">
                     @method("PUT")
                     @csrf
                     <div class="box-body">
@@ -42,7 +42,7 @@
                             <i class="fa fa-refresh"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <a href="{{ url('/page/admin/hak_akses') }}" class="btn btn-info btn-sm">
+                            <a href="{{ url('/page/admin/pengaturan/hak_akses') }}" class="btn btn-info btn-sm">
                                 <i class="fa fa-sign-out"></i> Kembali
                             </a>
                         </div>
@@ -73,10 +73,10 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $hak_akses->nama_hak_akses }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/hak_akses/'.$hak_akses->id.'/edit') }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/pengaturan/hak_akses/'.$hak_akses->id.'/edit') }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <form style="display: inline;" action="{{ url('/page/admin/hak_akses/'.$hak_akses->id) }}" method="POST">
+                                        <form style="display: inline;" action="{{ url('/page/admin/pengaturan/hak_akses/'.$hak_akses->id) }}" method="POST">
                                             @method("DELETE")
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm">

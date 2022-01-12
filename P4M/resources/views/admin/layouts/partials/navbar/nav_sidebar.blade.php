@@ -300,7 +300,7 @@
                             <i class="fa fa-circle-o"></i> Hak Akses
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/pengaturan/akun') ? 'active' : '' }}">
+                    <li class="{{ Request::is('page/admin/pengaturan/terakhir_login') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pengaturan/terakhir_login') }}">
                             <i class="fa fa-circle-o"></i> Catatan Login
                         </a>

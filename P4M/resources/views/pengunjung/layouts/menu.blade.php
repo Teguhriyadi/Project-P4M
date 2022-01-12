@@ -31,9 +31,6 @@
                             <li>
                                 <a href="/profil/wilayah-desa">Profil Wilayah Desa</a>
                             </li>
-                            <li>
-                                <a href="">Arti Lambang Desa</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">

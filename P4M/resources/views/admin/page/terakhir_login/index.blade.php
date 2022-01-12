@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Catatan Login')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Kategori
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -20,11 +22,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">
-                        Data Terakhir Login
-                    </h3>
-                </div>
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>

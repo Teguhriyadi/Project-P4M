@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Hak Akses')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Kategori
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -22,14 +24,14 @@
             <div class="box" id="">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-plus"></i> Tambah Data Hak Akses
+                        <i class="fa fa-plus"></i> Tambah Data @yield('title')
                     </h3>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="nama_hak_akses"> Hak Akses </label>
-                        <input type="text" class="form-control" name="nama_hak_akses" id="nama_hak_akses" placeholder="Masukkan Hak Akses">
-                        <label class="error hidden" for="nama_hak_akses">Hak akses harap di isi!</label>
+                        <label for="nama_hak_akses"> @yield('title') </label>
+                        <input type="text" class="form-control" name="nama_hak_akses" id="nama_hak_akses" placeholder="Masukkan @yield('title')">
+                        <label class="error hidden" for="nama_hak_akses">@yield('title') harap di isi!</label>
                     </div>
                 </div>
                 <div class="box-footer">
@@ -46,7 +48,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Hak Akses
+                        Data @yield('title')
                     </h3>
                 </div>
                 <div class="box-body">
@@ -58,7 +60,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th class="text-center">Nama Hak Akses</th>
+                                    <th class="text-center">@yield('title')</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -82,7 +84,7 @@
                 $(".error").removeClass('hidden');
             } else {
                 $.ajax({
-                    url: "{{ url('/page/admin/hak_akses') }}",
+                    url: "{{ url('/page/admin/pengaturan/hak_akses') }}",
                     type: "POST",
                     data: {nama_hak_akses: nama},
                     success: function (response) {
@@ -116,7 +118,7 @@
         table.innerHTML = '';
 
         $.ajax({
-            url: '{{ url("page/admin/hak_akses/show") }}',
+            url: '{{ url("page/admin/pengaturan/hak_akses/show") }}',
             type: "get",
             success: function(response) {
                 let no = 1;

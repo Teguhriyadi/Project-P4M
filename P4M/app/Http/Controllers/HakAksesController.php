@@ -60,8 +60,8 @@ class HakAksesController extends Controller
         foreach ($hakAkses as $ha) {
             $data[] = array(
                 'nama' => $ha->nama_hak_akses,
-                'edit' =>'<a href="/page/admin/hak_akses/'.$ha->id.'/edit" class="btn btn-warning" style="margin-right: 10px"><i class="fa fa-edit"></a>',
-                'hapus' => '<form style="display: inline;" action="/page/admin/hak_akses/'.$ha->id.'" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="_token" value="'.csrf_token().'" /><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></form>'
+                'edit' =>'<a href="/page/admin/pengaturan/hak_akses/'.$ha->id.'/edit" class="btn btn-warning" style="margin-right: 10px"><i class="fa fa-edit"></a>',
+                'hapus' => '<form style="display: inline;" action="/page/admin/pengaturan/hak_akses/'.$ha->id.'" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="_token" value="'.csrf_token().'" /><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></form>'
             );
         }
 

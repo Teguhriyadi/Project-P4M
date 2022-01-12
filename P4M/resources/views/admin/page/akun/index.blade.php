@@ -19,6 +19,15 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
@@ -55,12 +64,13 @@
                                         <button onclick="editDataAkun({{$akun->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-
+                                        
                                         @if ($akun->username == auth()->user()->username)
-
+                                        
                                         @else
-                                        <form action="" method="POST" style="display: inline;">
+                                        <form action="{{ url('page/admin/pengaturan/akun/'.$akun->id) }}" method="POST" style="display: inline;">
                                             @csrf
+                                            @method("delete")
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
@@ -90,7 +100,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Akun
                 </h4>
             </div>
-            <form id="tambahAkun" action="{{ url('/page/admin/akun') }}" method="POST" enctype="multipart/form-data">
+            <form id="tambahAkun" action="{{ url('/page/admin/pengaturan/akun') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -172,10 +182,11 @@
                     <i class="fa fa-plus"></i> Edit Data Akun
                 </h4>
             </div>
-            <form id="editAkun" action="{{ url('/page/admin/akun') }}" method="POST">
+            <form id="editAkun" action="{{ url('/page/admin/pengaturan/akun') }}" method="POST">
                 @csrf
+                @method('patch')
                 <div class="modal-body" id="modal-content-edit">
-
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -191,28 +202,16 @@
 </div>
 <!-- END -->
 
-<script>
-    const nama = document.querySelector('#nama');
-    const slug = document.querySelector('#slug');
-
-    nama.addEventListener('change', function() {
-        fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
-        .then(response => response.json())
-        .then(data => slug.value = data.slug)
-    })
-
-</script>
-
 @endsection
 
 @section('page_scripts')
 
 <script type="text/javascript">
-
+    
     function editDataAkun(id)
     {
         $.ajax({
-            url : "{{ url('/page/admin/akun/edit') }}",
+            url : "{{ url('/page/admin/pengaturan/akun/edit') }}",
             type : "GET",
             data : { id : id },
             success : function(data) {
@@ -221,22 +220,22 @@
             }
         })
     }
-
+    
     function previewImage()
     {
         const gambar = document.querySelector("#gambar");
         const gambarPreview = document.querySelector(".gambar-preview");
-
+        
         gambarPreview.style.display = "block";
-
+        
         const oFReader = new FileReader();
         oFReader.readAsDataURL(gambar.files[0]);
-
+        
         oFReader.onload = function(oFREvent) {
             gambarPreview.src = oFREvent.target.result;
         }
     }
-
+    
 </script>
 
 @endsection

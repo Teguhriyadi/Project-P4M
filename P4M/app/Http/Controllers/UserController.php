@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\RtRw;
 use App\Models\Model\Peta;
 use App\Models\Model\Alamat;
-use App\Models\Model\Berita;
+use App\Models\Model\Artikel;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
 use App\Models\Model\Profil;
@@ -27,7 +27,7 @@ class UserController extends Controller
     {
         $data = [
             "data_profil" => Profil::latest()->paginate(1),
-            "data_berita" => Berita::latest()->paginate(6),
+            "data_berita" => Artikel::latest()->paginate(6),
             "data_galeri" => Galeri::latest()->paginate(6),
         ];
         
@@ -37,7 +37,7 @@ class UserController extends Controller
     public function artikel()
     {
         $data = [
-            "data_berita" => Berita::latest()->paginate(6)
+            "data_berita" => Artikel::latest()->paginate(6)
         ];
         
         return view("/pengunjung/page/berita/index", $data);
@@ -46,8 +46,8 @@ class UserController extends Controller
     public function detailArtikel($slug)
     {
         $data = [
-            "detail" => Berita::where("slug", $slug)->first(),
-            "berita" => Berita::where("slug", $slug)->first()
+            "detail" => Artikel::where("slug", $slug)->first(),
+            "berita" => Artikel::where("slug", $slug)->first()
         ];
         
         return view("/pengunjung/page/berita/detail", $data);
