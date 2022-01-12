@@ -17,6 +17,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PendudukAgamaController;
 use App\Http\Controllers\PendudukPekerjaanController;
 use App\Http\Controllers\PendudukPendidikanController;
+use App\Http\Controllers\PendudukSexController;
 use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
@@ -153,7 +154,11 @@ Route::prefix("page")->group(function() {
                 Route::get("/agama/edit", [PendudukAgamaController::class, "edit"]);
                 Route::put("/agama/simpan", [PendudukAgamaController::class, "update"]);
                 Route::resource("/agama", PendudukAgamaController::class);
+
                 // Jenis Kelamin
+                Route::get("/jenis-kelamin/edit", [PendudukSexController::class, "edit"]);
+                Route::put("/jenis-kelamin/simpan", [PendudukSexController::class, "update"]);
+                Route::resource("/jenis-kelamin", PendudukSexController::class);
                 // Warga Negara
             });
 

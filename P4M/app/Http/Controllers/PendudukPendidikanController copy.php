@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\PendudukSex;
+use App\Models\Model\PendudukPendidikan;
 use Illuminate\Http\Request;
 
-class PendudukSexController extends Controller
+class PendudukPendidikanController extends Controller
 {
     public function index()
     {
         $data = [
-            "data_penduduk_sex" => PendudukSex::orderBy("nama", "DESC")->get()
+            'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->get()
         ];
 
-        return view("/admin/page/penduduk/sex/data_sex", $data);
+        return view("/admin/page/penduduk/pendidikan/data_pendidikan", $data);
     }
 
     public function store(Request $request)
     {
-        PendudukSex::create($request->all());
+        PendudukPendidikan::create($request->all());
 
         return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
@@ -26,15 +26,15 @@ class PendudukSexController extends Controller
     public function edit(Request $request)
     {
         $data = [
-            "edit" => PendudukSex::where("id", $request->id)->first()
+            "edit" => PendudukPendidikan::where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/penduduk/sex/edit_data_sex", $data);
+        return view("/admin/page/penduduk/pendidikan/edit_data_pendidikan", $data);
     }
 
     public function update(Request $request)
     {
-        PendudukSex::where("id", $request->id)->update([
+        PendudukPendidikan::where("id", $request->id)->update([
             "nama" => $request->nama
         ]);
 
@@ -43,7 +43,7 @@ class PendudukSexController extends Controller
 
     public function destroy($id)
     {
-        PendudukSex::where("id", $id)->delete();
+        PendudukPendidikan::where("id", $id)->delete();
 
         return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Hapus', 'success')</script>");
     }
