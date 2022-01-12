@@ -74,6 +74,7 @@
                         <a class="dropdown-toggle" href="/peta">Peta</a>
                     </li>
                     <li class=""><a href="/artikel">Artikel</a></li>           
+                    <li class=""><a href="/galeri">Galeri</a></li>           
                 </ul>
             </div>
         </div>

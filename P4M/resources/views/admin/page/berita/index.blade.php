@@ -25,7 +25,7 @@
                         Data Berita
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/berita/create') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/web/artikel/create') }}" class="btn btn-primary btn-sm">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>

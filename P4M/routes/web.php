@@ -55,7 +55,7 @@ Route::get("/galeri", [UserController::class, "galeri"]);
 Route::prefix("artikel")->group(function() {
     // Semua Artikel
     Route::get("/", [UserController::class, "artikel"]);
-
+    
     // Artikel Selengkapnya
     Route::get('/{slug}',[UserController::class, "detailArtikel"]);
 });
@@ -67,10 +67,10 @@ Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
 // Profil
 Route::prefix('profil')->group(function () {
     Route::get("/", [UserController::class, "profil"]);
-
+    
     // Sejarah Desa
     Route::get("/sejarah-desa", [UserController::class, "sejarah"]);
-
+    
     // Wilayah Desa
     Route::get("/wilayah-desa", [UserController::class, "wilayah"]);
 });
@@ -78,10 +78,10 @@ Route::prefix('profil')->group(function () {
 // Pemerintahan Desa
 Route::prefix('pemerintahan')->group(function () {
     Route::get('/', [UserController::class, 'pemerintahanDesa']);
-
+    
     // Visi Misi
     Route::get('/visi-misi', [UserController::class, 'visiMisi']);
-
+    
     // Struktur Organisasi
     Route::get('/struktur-organisasi', [UserController::class, 'strukturOrganisasi']);
     Route::get('/struktur-organisasi/show', [UserController::class, 'strukturOrganisasiShow']);
@@ -96,7 +96,7 @@ Route::prefix('/data')->group(function () {
     
     // Pendidikan
     Route::get('/pendidikan', [UserController::class, 'pendidikan']);
-
+    
     // Pekerjaan
     Route::get('/pekerjaan', [UserController::class, 'pekerjaan']);
     
@@ -108,105 +108,107 @@ Route::prefix('/data')->group(function () {
     
     // Warga Negara
     Route::get('/warga-negara', [UserController::class, 'wargaNegara']);
-
+    
 });
 
 Route::get('/peta', [UserController::class, 'peta']);
 
 // Admin
 Route::prefix("page")->group(function() {
-
+    
     Route::group(["middleware" => ["guest"]], function() {
         Route::get("/login", [LoginController::class, "login"])->name("login");
         Route::post("/post_login", [LoginController::class, "post_login"]);
     });
-
+    
     Route::group(["middleware" => ["auth"]], function() {
         Route::prefix("admin")->group(function() {
             Route::get("/", [AppController::class, "dashboard"]);
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
             Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
-
+            
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
-
-            // Berita
-            Route::get("/berita/checkSlug", [BeritaController::class, "checkSlug"]);
-            Route::resource("/berita", BeritaController::class);
-
-            // Galeri
-            Route::get("/galeri/edit", [GaleriController::class, "edit"]);
-            Route::put("/galeri/simpan", [GaleriController::class, "update"]);
-            Route::resource("/galeri", GaleriController::class);
-
+            
+            Route::prefix('web')->group(function () {
+                // Artikel
+                Route::get("/artikel/checkSlug", [BeritaController::class, "checkSlug"]);
+                Route::resource("/artikel", BeritaController::class);
+                
+                // Galeri
+                Route::get("/galeri/edit", [GaleriController::class, "edit"]);
+                Route::put("/galeri/simpan", [GaleriController::class, "update"]);
+                Route::resource("/galeri", GaleriController::class);
+            });
+            
             // Tahun
             Route::post("/tahun/aktifkan", [TahunController::class, "aktifkan"]);
             Route::post("/tahun/non-aktifkan", [TahunController::class, "non_aktifkan"]);
             Route::resource("/tahun", TahunController::class);
-
+            
             // Potensi
             Route::get("/potensi", [PotensiController::class, "index"]);
-
+            
             // Sumber Daya Alam
             Route::get("/jenis_sda/edit", [JenisSDAController::class, "edit"]);
             Route::put("/jenis_sda/simpan", [JenisSDAController::class, "update"]);
             Route::resource("/jenis_sda", JenisSDAController::class);
-
+            
             // Sumber Daya Kelembagaan
             Route::get("/jenis_sdk/edit", [JenisSDKController::class, "edit"]);
             Route::put("/jenis_sdk/simpan", [JenisSDKController::class, "update"]);
             Route::resource("/jenis_sdk", JenisSDKController::class);
-
+            
             Route::prefix("data")->group(function() {
                 // Pendidikan
                 Route::get("/pendidikan/edit", [PendudukPendidikanController::class, "edit"]);
                 Route::put("/pendidikan/simpan", [PendudukPendidikanController::class, "update"]);
                 Route::resource("/pendidikan", PendudukPendidikanController::class);
-
+                
                 // Pekerjaan
                 Route::get("/pekerjaan/edit", [PendudukPekerjaanController::class, "edit"]);
                 Route::put("/pekerjaan/simpan", [PendudukPekerjaanController::class, "update"]);
                 Route::resource("/pekerjaan", PendudukPekerjaanController::class);
-
+                
                 // Agama
                 Route::get("/agama/edit", [PendudukAgamaController::class, "edit"]);
                 Route::put("/agama/simpan", [PendudukAgamaController::class, "update"]);
                 Route::resource("/agama", PendudukAgamaController::class);
-
+                
                 // Jenis Kelamin
                 Route::get("/jenis-kelamin/edit", [PendudukSexController::class, "edit"]);
                 Route::put("/jenis-kelamin/simpan", [PendudukSexController::class, "update"]);
                 Route::resource("/jenis-kelamin", PendudukSexController::class);
-
+                
                 // Warga Negara
                 Route::get("/warga-negara/edit", [PendudukWargaNegaraController::class, "edit"]);
                 Route::put("/warga-negara/simpan", [PendudukWargaNegaraController::class, "update"]);
                 Route::resource("/warga-negara", PendudukWargaNegaraController::class);
             });
-
+            
             Route::prefix("/pemerintahan")->group(function() {
                 // Jabatan
                 Route::resource("/jabatan", JabatanController::class);
-
+                
                 // Pegawai
                 Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
                 Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
                 Route::resource("/pegawai", PegawaiController::class);
-
+                
                 // Struktur Pemerintahan
                 Route::get("/struktur_pemerintahan/show", [StrukturPemerintahanController::class, "show"]);
                 Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
             });
-
+            
             // Akun
             Route::get("/akun/edit", [AkunController::class, "edit"]);
             Route::resource("/akun", AkunController::class);
-
+            
             // Kontak
             Route::get("/kontak", [KontakController::class, "index"]);
-
+            
             // Profil Desa
             Route::resource("/profil", ProfilController::class);
             Route::resource("geografis", GeografisController::class);
@@ -215,24 +217,24 @@ Route::prefix("page")->group(function() {
             Route::resource("wilayah_geografis", WilayahGeografisController::class);
             // Alamat
             Route::resource("/alamat", AlamatController::class);
-
+            
             // Teks Berjalan
             Route::resource("/teks_berjalan", TeksBerjalanController::class);
-
+            
             // Visi & Misi
             Route::resource("/visi_misi", VisiMisiController::class);
-
+            
             // RT dan RW
             Route::put("rt_rw/simpan", [RtRwController::class, "update"]);
             Route::get("/rt_rw/edit", [RtRwController::class, "edit"]);
             Route::resource("/rt_rw", RtRwController::class);
-
+            
             // Hak Akses
             Route::resource("/hak_akses", HakAksesController::class);
-
+            
             // TerakhirLogin
             Route::resource("/terakhir_login", TerakhirLoginController::class);
-
+            
             Route::get("/logout", [LoginController::class, "logout"]);
             
             Route::prefix("/peta")->group(function() {
@@ -246,7 +248,7 @@ Route::prefix("page")->group(function() {
                 Route::post("/kantor", [PetaController::class, "kantorStore"]);
                 Route::put("/kantor", [PetaController::class, "kantorUpdate"]);
             });
-
+            
         });
     });
 });
