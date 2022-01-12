@@ -29,4 +29,42 @@ class Penduduk extends Model
     {
         return $this->hasOne(PendudukKawin::class, "id", "status_kawin");
     }
+    
+    public function getHubungan()
+    {
+        return $this->hasOne(PendudukHubungan::class, "id", "id_hubungan");
+    }
+    
+    public function getKelamin()
+    {
+        return $this->hasOne(PendudukSex::class, "id", "id_sex");
+    }
+    
+    public function getAgama()
+    {
+        return $this->hasOne(PendudukAgama::class, "id", "id_agama");
+    }
+    
+    public function getWargaNegara()
+    {
+        return $this->hasOne(PendudukWargaNegara::class, "id", "id_warga_negara");
+    }
+
+    // Dusun
+
+    // RT
+
+    // RW
+
+    public function getStatusHidup($id)
+    {
+        $data = array(
+            1 => 'HIDUP',
+            2 => 'MENINGGAL'
+        );
+
+        $hasil = $data[$id];
+
+        return $hasil;
+    }
 }

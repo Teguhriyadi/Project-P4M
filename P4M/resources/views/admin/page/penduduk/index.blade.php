@@ -59,10 +59,8 @@ setLocale(LC_ALL, 'id', 'ID')
                                     <th>Dusun</th>
                                     <th>RW</th>
                                     <th>RT</th>
-                                    <th>Pendidikan</th>
+                                    <th>Status Hidup</th>
                                     <th>Umur</th>
-                                    <th>Pekerjaan</th>
-                                    <th>Status Kawin</th>
                                     <th>Tanggal Terdaftar</th>
                                     <th>Tanggal Diubah</th>
                                 </tr>
@@ -76,7 +74,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                             <button type="button" class="btn btn-social btn-flat btn-info btn-sm" data-toggle="dropdown"><i class='fa fa-arrow-circle-down'></i> Pilih Aksi</button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
-                                                    <a href="" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-list-ol"></i> Lihat Detail Biodata Penduduk</a>
+                                                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$p->id) }}" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-list-ol"></i> Lihat Detail Biodata Penduduk</a>
                                                 </li>
                                                 <li>
                                                     <a href="" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-edit"></i> Ubah Biodata Penduduk</a>
@@ -97,10 +95,8 @@ setLocale(LC_ALL, 'id', 'ID')
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>{{ $p->getPendidikan->nama }}</td>
+                                    <td>{{ $p->getStatusHidup($p->status_hidup) }}</td>
                                     <td>{{ date("y") - date('y', strtotime($p->tgl_lahir)) }}</td>
-                                    <td>{{ $p->getPekerjaan->nama }}</td>
-                                    <td>{{ $p->getKawin->nama }}</td>
                                     <td>{{ $p->created_at->formatLocalized("%d %B %Y") }}</td>
                                     <td>{{ $p->updated_at->formatLocalized("%d %B %Y") }}</td>
                                 </tr>
