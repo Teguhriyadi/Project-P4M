@@ -18,7 +18,7 @@
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Menu</li>
-            <li>
+            <li class="{{ Request::is('page/admin/dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/page/admin/dashboard') }}">
                     <i class="fa fa-tachometer"></i>
                     <span>Dashboard</span>
@@ -44,7 +44,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::is('page/admin/dashboard') ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-archive"></i> <span>Data Desa</span>
                     <span class="pull-right-container">

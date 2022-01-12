@@ -61,7 +61,22 @@
 			</section>
 		</div>
 	</div>
-	
+	<script>
+		let kotak = [];
+		let n, m;
+
+		for (let n = 1; n <= 20; n = n+1) {
+			kotak[n] = n + 3;
+		}
+
+		for (let n = 1; n <= 20; n = n+4) {
+			if (n % 2 != 0) {
+				console.log("kosong");
+			} else {
+				console.log(kotak[n]);
+			}
+		}
+	</script>
 	@include('pengunjung.layouts.foot')
 	
 </body>
