@@ -30,6 +30,11 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            "nama_desa" => "required",
+            "kecamatan" => "required",
+            "provinsi" => "required",
+            "negara" => "required",
+            "kode_pos" => "required",
             "deskripsi" => "required",
             "gambar" => "image|file|max:1024"
         ]);
@@ -46,6 +51,11 @@ class ProfilController extends Controller
     public function update(Request $request, $id)
     {
         $validasi = $request->validate([
+            "nama_desa" => "required",
+            "kecamatan" => "required",
+            "provinsi" => "required",
+            "negara" => "required",
+            "kode_pos" => "required",
             "deskripsi" => "required",
             "gambar" => "image|file|max:1024"
         ]);

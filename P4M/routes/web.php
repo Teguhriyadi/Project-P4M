@@ -14,6 +14,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PendudukPendidikanController;
 use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RtRwController;
@@ -64,7 +65,7 @@ Route::prefix('profil')->group(function () {
 
     // Sejarah Desa
     Route::get("/sejarah-desa", [UserController::class, "sejarah"]);
-    
+
     // Wilayah Desa
     Route::get("/wilayah-desa", [UserController::class, "wilayah"]);
 });
@@ -99,6 +100,7 @@ Route::prefix("page")->group(function() {
 
     Route::group(["middleware" => ["auth"]], function() {
         Route::prefix("admin")->group(function() {
+            Route::get("/", [AppController::class, "dashboard"]);
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
             Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
@@ -134,17 +136,30 @@ Route::prefix("page")->group(function() {
             Route::put("/jenis_sdk/simpan", [JenisSDKController::class, "update"]);
             Route::resource("/jenis_sdk", JenisSDKController::class);
 
-            // Jabatan
-            Route::resource("/jabatan", JabatanController::class);
+            Route::prefix("data")->group(function() {
+                // Pendidikan
+                Route::get("/pendidikan/edit", [PendudukPendidikanController::class, "edit"]);
+                Route::put("/pendidikan/simpan", [PendudukPendidikanController::class, "update"]);
+                Route::resource("/pendidikan", PendudukPendidikanController::class);
+                // Pekerjaan
+                // Agama
+                // Jenis Kelamin
+                // Warga Negara
+            });
 
-            // Pegawai
-            Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
-            Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
-            Route::resource("/pegawai", PegawaiController::class);
+            Route::prefix("/pemerintahan")->group(function() {
+                // Jabatan
+                Route::resource("/jabatan", JabatanController::class);
 
-            // Struktur Pemerintahan
-            Route::get("/struktur_pemerintahan/show", [StrukturPemerintahanController::class, "show"]);
-            Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
+                // Pegawai
+                Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
+                Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
+                Route::resource("/pegawai", PegawaiController::class);
+
+                // Struktur Pemerintahan
+                Route::get("/struktur_pemerintahan/show", [StrukturPemerintahanController::class, "show"]);
+                Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
+            });
 
             // Akun
             Route::get("/akun/edit", [AkunController::class, "edit"]);
