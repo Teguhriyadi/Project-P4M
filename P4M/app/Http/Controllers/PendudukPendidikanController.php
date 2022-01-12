@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class PendudukPendidikanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/penduduk/pendidikan/data_pendidikan", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        PendudukPendidikan::create($request->all());
+
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\PendudukPendidikan  $pendudukPendidikan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PendudukPendidikan $pendudukPendidikan)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => PendudukPendidikan::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/penduduk/pendidikan/edit_data_pendidikan", $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\PendudukPendidikan  $pendudukPendidikan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PendudukPendidikan $pendudukPendidikan)
+    public function update(Request $request)
     {
-        //
+        PendudukPendidikan::where("id", $request->id)->update([
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\PendudukPendidikan  $pendudukPendidikan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PendudukPendidikan $pendudukPendidikan)
+    public function destroy($id)
     {
-        //
-    }
+        PendudukPendidikan::where("id", $id)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\PendudukPendidikan  $pendudukPendidikan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PendudukPendidikan $pendudukPendidikan)
-    {
-        //
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class PendudukSexController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            "data_penduduk_sex" => PendudukSex::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/penduduk/sex/data_sex", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        PendudukSex::create($request->all());
+
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PendudukSex $pendudukSex)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => PendudukSex::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/penduduk/sex/edit_data_sex", $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PendudukSex $pendudukSex)
+    public function update(Request $request)
     {
-        //
+        PendudukSex::where("id", $request->id)->update([
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PendudukSex $pendudukSex)
+    public function destroy($id)
     {
-        //
-    }
+        PendudukSex::where("id", $id)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\PendudukSex  $pendudukSex
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PendudukSex $pendudukSex)
-    {
-        //
+        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }
