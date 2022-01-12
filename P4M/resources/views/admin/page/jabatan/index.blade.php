@@ -25,7 +25,7 @@
                         <i class="fa fa-plus"></i> Tambah Data Jabatan
                     </h3>
                 </div>
-                <form id="tambahJabatan" action="{{ url('/page/admin/jabatan') }}" method="POST">
+                <form id="tambahJabatan" action="{{ url('/page/admin/pemerintahan/jabatan') }}" method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
@@ -67,10 +67,10 @@
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $jabatan->nama_jabatan }}</td>
                                         <td class="text-center">
-                                            <a href="{{ url('/page/admin/jabatan/'.$jabatan->id) }}/edit" class="btn btn-warning btn-sm">
+                                            <a href="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}/edit" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{ url('/page/admin/jabatan/'.$jabatan->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}" method="POST" style="display: inline;">
                                                 @method("DELETE")
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">

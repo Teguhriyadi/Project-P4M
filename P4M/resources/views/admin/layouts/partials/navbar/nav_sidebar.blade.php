@@ -44,7 +44,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::is('/page/admin/pemerintahan/pegawai') ? 'active' : '' }} ">
                 <a href="#">
                     <i class="fa fa-archive"></i> <span>Data Desa</span>
                     <span class="pull-right-container">

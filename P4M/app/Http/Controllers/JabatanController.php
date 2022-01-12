@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class JabatanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data = [
@@ -38,28 +33,15 @@ class JabatanController extends Controller
         return view("admin/page/jabatan/edit", $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Jabatan  $jabatan
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         Jabatan::where("id", $id)->update([
             "nama_jabatan" => $request->nama_jabatan
         ]);
 
-        return redirect('page/admin/jabatan')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        return redirect('page/admin/pemerintahan/jabatan')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\Jabatan  $jabatan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Jabatan::where("id", $id)->delete();

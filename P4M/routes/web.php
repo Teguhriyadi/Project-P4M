@@ -3,7 +3,7 @@
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\GeografisController;
 use App\Http\Controllers\HakAksesController;
@@ -112,14 +112,6 @@ Route::prefix("page")->group(function() {
             Route::get("/dashboard", [AppController::class, "dashboard"]);
             Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
 
-            // Kategori
-            Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
-            Route::resource("/kategori", KategoriController::class);
-
-            // Berita
-            Route::get("/berita/checkSlug", [BeritaController::class, "checkSlug"]);
-            Route::resource("/berita", BeritaController::class);
-
             // Galeri
             Route::get("/galeri/edit", [GaleriController::class, "edit"]);
             Route::put("/galeri/simpan", [GaleriController::class, "update"]);
@@ -218,17 +210,33 @@ Route::prefix("page")->group(function() {
             Route::resource("/terakhir_login", TerakhirLoginController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
-            
+
             Route::prefix("/peta")->group(function() {
                 // CRUD Peta Desa
                 Route::get("/desa", [PetaController::class, "desa"]);
                 Route::post("/desa", [PetaController::class, "desaStore"]);
                 Route::put("/desa", [PetaController::class, "desaUpdate"]);
-                
+
                 // CRUD Peta Kantor
                 Route::get("/kantor", [PetaController::class, "kantor"]);
                 Route::post("/kantor", [PetaController::class, "kantorStore"]);
                 Route::put("/kantor", [PetaController::class, "kantorUpdate"]);
+            });
+
+            Route::prefix("/web")->group(function() {
+
+                // Kategori
+                Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
+                Route::resource("/kategori", KategoriController::class);
+
+                // Artikel
+                Route::get("/artikel/checkSlug", [ArtikelController::class, "checkSlug"]);
+                Route::resource("/artikel", ArtikelController::class);
+                // Komentar
+                // Galeri
+                // Slider
+                // Teks Berjalan
+                // Pengunjung
             });
 
         });
