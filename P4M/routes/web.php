@@ -95,6 +95,8 @@ Route::prefix('/data')->group(function () {
     Route::get('/wilayah-administratif', [UserController::class, 'wilayahAdministratif']);
 });
 
+Route::get('/peta', [UserController::class, 'peta']);
+
 // Admin
 Route::prefix("page")->group(function() {
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\RtRw;
+use App\Models\Model\Peta;
 use App\Models\Model\Alamat;
 use App\Models\Model\Berita;
 use App\Models\Model\Galeri;
@@ -87,6 +88,7 @@ class UserController extends Controller
         $data = [
             "data_geografis" => Geografis::paginate(1),
             "data_wgeografis" => WilayahGeografis::all(),
+            "peta" => Peta::first(),
         ];
         
         return view("pengunjung/page/profil/wilayah", $data);
@@ -128,10 +130,17 @@ class UserController extends Controller
         return view("pengunjung/page/data_desa/index");
     }
     
-    public function wilayahAdministratif(Request $request)
+    public function wilayahAdministratif()
     {
         $dataDusun = RtRw::all();
         
         return view("pengunjung/page/data_desa/wilayah-administratif", compact('dataDusun'));
+    }
+
+    public function peta()
+    {
+        $peta = Peta::first();
+
+        return view("pengunjung/page/peta/index", compact('peta'));
     }
 }
