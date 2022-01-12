@@ -62,6 +62,38 @@
                                             </div>
                                             <div class="box-body">
                                                 <div class="form-group">
+                                                    <label for="nama_desa"> Nama Desa </label>
+                                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Masukkan Nama Desa">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="kecamatan"> Kecamatan </label>
+                                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukkan Kecamatan">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="provinsi"> Provinsi </label>
+                                                            <input type="text" class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Data Provinsi">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="negara"> Negara </label>
+                                                            <input type="text" class="form-control" name="negara" id="negara" placeholder="Masukkan Negara">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="kode_pos"> Kode Pos </label>
+                                                            <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="deskripsi"> Deskripsi </label>
                                                     @if ($data_profil->count())
                                                     @foreach ($data_profil as $profil)
