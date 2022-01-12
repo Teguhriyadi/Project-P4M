@@ -13,6 +13,11 @@ use App\Models\Model\VisiMisi;
 use App\Models\Model\Geografis;
 use App\Models\Model\WilayahGeografis;
 use App\Models\Model\StrukturPemerintahan;
+use App\Models\Model\PendudukSex;
+use App\Models\Model\PendudukAgama;
+use App\Models\Model\PendudukPendidikan;
+use App\Models\Model\PendudukPekerjaan;
+use App\Models\Model\PendudukWargaNegara;
 
 use Illuminate\Http\Request;
 
@@ -29,7 +34,7 @@ class UserController extends Controller
         return view("/pengunjung/page/home", $data);
     }
     
-    public function berita()
+    public function artikel()
     {
         $data = [
             "data_berita" => Berita::latest()->paginate(6)
@@ -38,7 +43,7 @@ class UserController extends Controller
         return view("/pengunjung/page/berita/index", $data);
     }
     
-    public function detailBerita($slug)
+    public function detailArtikel($slug)
     {
         $data = [
             "detail" => Berita::where("slug", $slug)->first(),
@@ -128,6 +133,36 @@ class UserController extends Controller
     public function dataDesa()
     {
         return view("pengunjung/page/data_desa/index");
+    }
+    
+    public function pendidikan()
+    {
+        $pendidikan = PendudukPendidikan::all();
+        return view("pengunjung/page/data_desa/pendidikan", compact("pendidikan"));
+    }
+    
+    public function pekerjaan()
+    {
+        $pekerjaan = PendudukPekerjaan::all();
+        return view("pengunjung/page/data_desa/pekerjaan", compact("pekerjaan"));
+    }
+    
+    public function agama()
+    {
+        $agama = PendudukAgama::all();
+        return view("pengunjung/page/data_desa/agama", compact("agama"));
+    }
+    
+    public function jenisKelamin()
+    {
+        $jk = PendudukSex::all();
+        return view("pengunjung/page/data_desa/jk", compact("jk"));
+    }
+    
+    public function wargaNegara()
+    {
+        $wargaNegara = PendudukWargaNegara::all();
+        return view("pengunjung/page/data_desa/warga-negara", compact("wargaNegara"));
     }
     
     public function wilayahAdministratif()
