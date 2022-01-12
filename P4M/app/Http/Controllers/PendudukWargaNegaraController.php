@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\PendudukPendidikan;
+use App\Models\Model\PendudukWargaNegara;
 use Illuminate\Http\Request;
 
-class PendudukPendidikanController extends Controller
+class PendudukWargaNegaraController extends Controller
 {
     public function index()
     {
         $data = [
-            'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->get()
+            "data_penduduk_warga_negara" => PendudukWargaNegara::orderBy("nama", "DESC")->get()
         ];
 
-        return view("/admin/page/penduduk/pendidikan/data_pendidikan", $data);
+        return view("/admin/page/penduduk/warga_negara/data_warga_negara", $data);
     }
 
     public function store(Request $request)
     {
-        PendudukPendidikan::create($request->all());
+        PendudukWargaNegara::create($request->all());
 
         return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
@@ -26,15 +26,15 @@ class PendudukPendidikanController extends Controller
     public function edit(Request $request)
     {
         $data = [
-            "edit" => PendudukPendidikan::where("id", $request->id)->first()
+            "edit" => PendudukWargaNegara::where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/penduduk/pendidikan/edit_data_pendidikan", $data);
+        return view("/admin/page/penduduk/warga_negara/edit_data_warga_negara", $data);
     }
 
     public function update(Request $request)
     {
-        PendudukPendidikan::where("id", $request->id)->update([
+        PendudukWargaNegara::where("id", $request->id)->update([
             "nama" => $request->nama
         ]);
 
@@ -43,7 +43,7 @@ class PendudukPendidikanController extends Controller
 
     public function destroy($id)
     {
-        PendudukPendidikan::where("id", $id)->delete();
+        PendudukWargaNegara::where("id", $id)->delete();
 
         return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Hapus', 'success')</script>");
     }
