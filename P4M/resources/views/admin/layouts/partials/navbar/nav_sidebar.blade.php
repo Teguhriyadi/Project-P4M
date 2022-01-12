@@ -65,6 +65,11 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li class="{{ Request::is('page/admin/data/dusun') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/data/dusun') }}">
+                            <i class="fa fa-circle-o"></i> Data Dusun
+                        </a>
+                    </li>
                     <li class="{{ Request::is('page/admin/data/pendidikan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/pendidikan') }}">
                             <i class="fa fa-circle-o"></i> Data Pendidikan
@@ -88,6 +93,11 @@
                     <li class="{{ Request::is('page/admin/data/warga-negara') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/warga-negara') }}">
                             <i class="fa fa-circle-o"></i> Data Warga Negara
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/data/warga-negara') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/data/golongan-darah') }}">
+                            <i class="fa fa-circle-o"></i> Data Golongan Darah
                         </a>
                     </li>
                 </ul>

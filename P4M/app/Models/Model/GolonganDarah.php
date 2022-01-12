@@ -10,4 +10,8 @@ class GolonganDarah extends Model
     use HasFactory;
 
     protected $table = "tb_golongan_darah";
+
+    protected $guarded = [''];
+
+    public $timestamps = false;
 }

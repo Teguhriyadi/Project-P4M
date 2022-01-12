@@ -1,5 +1,5 @@
 <div id="navarea">
-    
+
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -70,8 +70,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="/peta">Peta</a>
                     </li>
-                    <li class=""><a href="/artikel">Artikel</a></li>           
-                    <li class=""><a href="/galeri">Galeri</a></li>           
+                    <li class=""><a href="/artikel">Artikel</a></li>
+                    <li class=""><a href="/galeri">Galeri</a></li>
                 </ul>
             </div>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbRtRwTable extends Migration
+class CreateTbDusunTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateTbRtRwTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_rt_rw', function (Blueprint $table) {
+        Schema::create('tb_dusun', function (Blueprint $table) {
             $table->id();
-            $table->string('dusun');
-            $table->integer('tahun');
-            $table->double('laki_laki');
-            $table->double('perempuan');
-            $table->double('jumlah');
+            $table->string("dusun");
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateTbRtRwTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_rt_rw');
+        Schema::dropIfExists('tb_dusun');
     }
 }
