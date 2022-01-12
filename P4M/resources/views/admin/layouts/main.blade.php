@@ -23,7 +23,7 @@
     @include('admin/layouts/partials/js/style2')
 
 </head>
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-green fixed sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
 

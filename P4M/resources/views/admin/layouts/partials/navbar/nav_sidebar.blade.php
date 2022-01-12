@@ -1,7 +1,20 @@
 <style>
     .slimScrollBar {
-        background: #3c8dbc !important;
-        opacity: .7 !important;
+        background: gray !important;
+        opacity: .5 !important;
+    }
+    .skin-green .sidebar-menu>li.active>a {
+        border-left-color: #00a65a;
+    }
+    .skin-green .sidebar-menu>li>.treeview-menu {
+        padding-left: 0;
+        margin-right: 0;
+    }
+    .skin-green .sidebar-menu>li>.treeview-menu>li.active>i {
+        padding-left: 100px;
+    }
+    .skin-green .sidebar-menu>li>.treeview-menu>li.active {
+        background-color: #00a65a;
     }
 </style>
 
@@ -44,9 +57,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview
-                {{ Request::is('page/admin/data/pendidikan') ? 'active' : '' }}
-            ">
+            <li class="treeview {{ Request::segment(3)=='data' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-archive"></i> <span>Data Desa</span>
                     <span class="pull-right-container">
@@ -54,34 +65,34 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/data/pendidikan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/pendidikan') }}">
                             <i class="fa fa-circle-o"></i> Data Pendidikan
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/data/pekerjaan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/pekerjaan') }}">
                             <i class="fa fa-circle-o"></i> Data Pekerjaan
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/data/agama') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/agama') }}">
                             <i class="fa fa-circle-o"></i> Data Agama
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/data/jenis-kelamin') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/jenis-kelamin') }}">
                             <i class="fa fa-circle-o"></i> Data Jenis Kelamin
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/data/warga-negara') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/warga-negara') }}">
                             <i class="fa fa-circle-o"></i> Data Warga Negara
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='pemerintahan' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-balance-scale "></i> <span>Pemerintahan Desa</span>
                     <span class="pull-right-container">
@@ -89,17 +100,17 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/pemerintahan/jabatan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
                             <i class="fa fa-circle-o"></i> Jabatan
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/pemerintahan/pegawai') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">
                             <i class="fa fa-circle-o"></i> Pegawai
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/pemerintahan/struktur_pemerintahan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}">
                             <i class="fa fa-circle-o"></i> Struktur Pemerintahan
                         </a>

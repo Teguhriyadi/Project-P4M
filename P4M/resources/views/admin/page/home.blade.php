@@ -17,7 +17,7 @@
     <li class="active">Blank page</li>
   </ol>
 </section>
-
+{{-- {{ request()->segment(3) }} --}}
 <section class="content">
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
