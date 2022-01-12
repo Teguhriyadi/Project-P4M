@@ -5,13 +5,14 @@ namespace App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Agama extends Model
+class PendudukAgama extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_agama";
+    protected $table = "tb_penduduk_agama";
 
     protected $guarded = [''];
 
     public $timestamps = false;
+
 }

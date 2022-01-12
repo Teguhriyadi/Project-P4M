@@ -14,6 +14,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PendudukAgamaController;
+use App\Http\Controllers\PendudukPekerjaanController;
 use App\Http\Controllers\PendudukPendidikanController;
 use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\ProfilController;
@@ -141,8 +143,16 @@ Route::prefix("page")->group(function() {
                 Route::get("/pendidikan/edit", [PendudukPendidikanController::class, "edit"]);
                 Route::put("/pendidikan/simpan", [PendudukPendidikanController::class, "update"]);
                 Route::resource("/pendidikan", PendudukPendidikanController::class);
+
                 // Pekerjaan
+                Route::get("/pekerjaan/edit", [PendudukPekerjaanController::class, "edit"]);
+                Route::put("/pekerjaan/simpan", [PendudukPekerjaanController::class, "update"]);
+                Route::resource("/pekerjaan", PendudukPekerjaanController::class);
+
                 // Agama
+                Route::get("/agama/edit", [PendudukAgamaController::class, "edit"]);
+                Route::put("/agama/simpan", [PendudukAgamaController::class, "update"]);
+                Route::resource("/agama", PendudukAgamaController::class);
                 // Jenis Kelamin
                 // Warga Negara
             });
