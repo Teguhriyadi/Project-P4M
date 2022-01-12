@@ -51,13 +51,13 @@ Route::get("/", [UserController::class, "index"]);
 // Galeri
 Route::get("/galeri", [UserController::class, "galeri"]);
 
-// Berita
-Route::prefix("berita")->group(function() {
-    // Semua Berita
-    Route::get("/", [UserController::class, "berita"]);
+// Artikel
+Route::prefix("artikel")->group(function() {
+    // Semua Artikel
+    Route::get("/", [UserController::class, "artikel"]);
 
-    // Berita Selengkapnya
-    Route::get('/{slug}',[UserController::class, "detailBerita"]);
+    // Artikel Selengkapnya
+    Route::get('/{slug}',[UserController::class, "detailArtikel"]);
 });
 
 // Kontak
@@ -93,6 +93,22 @@ Route::prefix('/data')->group(function () {
 
     // Data Wilayah Administratif
     Route::get('/wilayah-administratif', [UserController::class, 'wilayahAdministratif']);
+
+    // Pendidikan
+    Route::get('/pendidikan', [UserController::class, 'pendidikan']);
+
+    // Pekerjaan
+    Route::get('/pekerjaan', [UserController::class, 'pekerjaan']);
+
+    // Agama
+    Route::get('/agama', [UserController::class, 'agama']);
+
+    // Jenis Kelamin
+    Route::get('/jenis-kelamin', [UserController::class, 'jenisKelamin']);
+
+    // Warga Negara
+    Route::get('/warga-negara', [UserController::class, 'wargaNegara']);
+
 });
 
 Route::get('/peta', [UserController::class, 'peta']);
@@ -112,10 +128,20 @@ Route::prefix("page")->group(function() {
             Route::get("/dashboard", [AppController::class, "dashboard"]);
             Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
 
-            // Galeri
-            Route::get("/galeri/edit", [GaleriController::class, "edit"]);
-            Route::put("/galeri/simpan", [GaleriController::class, "update"]);
-            Route::resource("/galeri", GaleriController::class);
+            // Kategori
+            Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
+            Route::resource("/kategori", KategoriController::class);
+
+            Route::prefix('web')->group(function () {
+                // Artikel
+                Route::get("/artikel/checkSlug", [BeritaController::class, "checkSlug"]);
+                Route::resource("/artikel", BeritaController::class);
+
+                // Galeri
+                Route::get("/galeri/edit", [GaleriController::class, "edit"]);
+                Route::put("/galeri/simpan", [GaleriController::class, "update"]);
+                Route::resource("/galeri", GaleriController::class);
+            });
 
             // Tahun
             Route::post("/tahun/aktifkan", [TahunController::class, "aktifkan"]);

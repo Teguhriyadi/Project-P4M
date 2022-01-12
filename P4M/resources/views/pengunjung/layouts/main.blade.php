@@ -1,5 +1,5 @@
 @php
-    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+    // setlocale(LC_ALL, 'id_ID', 'id', 'ID');
 @endphp
 <!DOCTYPE html>
 <html>
@@ -27,45 +27,15 @@
 					<div class="col-lg-9 col-md-9">
 						<div class="content_bottom_left" style="margin-bottom:10px;">
 							<div class="archive_style_1">
-								<div style="margin-top:10px;">
-									<marquee onmouseover="this.stop()" onmouseout="this.start()">
-										<span class="teks" style="font-family: Oswald; padding-right: 50px;">
-											Ini contoh teks berjalan. Isi dengan tulisan yang menampilkan suatu ciri atau kegiatan penting di desa anda.
-											<a href="artikel/" rel="noopener noreferrer" title="Baca Selengkapnya"></a>
-										</span>
-									</marquee>
-								</div>
 								
-								<style type="text/css">
-									.slick_slider img {
-										width: 100%;
-									}
-									.slick_slider, .cycle-slideshow {
-										max-height: 350px;
-										border: 5px solid #e5e5e500;
-										display: block;
-										position: relative;
-										/*margin: 0px auto;*/
-										overflow: hidden;
-									}
-									.textgambar{
-										position: absolute;
-										left: 20px;
-										top: 280px;
-										color: black;
-										font-weight: bold;
-										font-family: Oswald;
-										
-										background-color: #ffffff;
-										border: 1px solid black;
-										border-radius: 3px;
-										padding: 5px;
-										opacity: 0.6;
-										filter: alpha(opacity=60); /* For IE8 and earlier */
-									}
-								</style>
-								<div class="slick_slider" style="margin-bottom:5px;">
-								</div>
+								@include('pengunjung.layouts.teks-berjalan')
+								
+								@if (Request::is('/'))
+
+								@include('pengunjung.layouts.sliders')
+
+								@endif
+								
 							</div>
 							@yield('page_content')
 						</div>

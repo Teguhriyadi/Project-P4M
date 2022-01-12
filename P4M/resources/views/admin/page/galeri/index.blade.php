@@ -81,7 +81,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Galeri
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/galeri') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
+            <form action="{{ url('/page/admin/web/galeri') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -121,7 +121,7 @@
                     <i class="fa fa-pencil"></i> Edit Data Galeri
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/galeri/simpan') }}" method="POST" enctype="multipart/form-data" id="formEditGaleri">
+            <form action="{{ url('/page/admin/web/galeri/simpan') }}" method="POST" enctype="multipart/form-data" id="formEditGaleri">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">

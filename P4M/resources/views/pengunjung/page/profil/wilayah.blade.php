@@ -39,7 +39,15 @@
         </div>
 
         @if (!empty($peta))
-        {!! $peta->wilayah_desa !!}
+        <style>
+            #mapWilDesa iframe {
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+        <div id="mapWilDesa">
+            {!! $peta->wilayah_desa !!}
+        </div>
         @endif
 
     </div>
