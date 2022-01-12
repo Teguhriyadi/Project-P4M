@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Model\WargaNegara;
+use App\Models\Model\PendudukWargaNegara;
 use Illuminate\Database\Seeder;
 
 class WargaNegaraSeeder extends Seeder
@@ -14,11 +14,11 @@ class WargaNegaraSeeder extends Seeder
      */
     public function run()
     {
-        WargaNegara::create([
+        PendudukWargaNegara::create([
             "nama" => "WNI"
         ]);
 
-        WargaNegara::create([
+        PendudukWargaNegara::create([
             "nama" => "WNA"
         ]);
     }

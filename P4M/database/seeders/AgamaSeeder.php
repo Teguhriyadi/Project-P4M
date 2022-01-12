@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Model\Agama;
+use App\Models\Model\PendudukAgama;
 use Illuminate\Database\Seeder;
 
 class AgamaSeeder extends Seeder
@@ -14,27 +14,27 @@ class AgamaSeeder extends Seeder
      */
     public function run()
     {
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "ISLAM"
         ]);
 
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "KRISTEN"
         ]);
 
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "HINDU"
         ]);
 
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "BUDDHA"
         ]);
 
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "KONGHUCU"
         ]);
 
-        Agama::create([
+        PendudukAgama::create([
             "nama" => "Dan Lain - Lain"
         ]);
 
