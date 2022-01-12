@@ -4,7 +4,7 @@
         opacity: .5 !important;
     }
     .skin-green .sidebar-menu>li.active>a {
-        border-left-color: #00a65a;
+        border-left-color: #008d4c;
     }
     .skin-green .sidebar-menu>li>.treeview-menu {
         padding-left: 0;
@@ -14,7 +14,7 @@
         padding-left: 100px;
     }
     .skin-green .sidebar-menu>li>.treeview-menu>li.active {
-        background-color: #00a65a;
+        background-color: #008d4c;
     }
 </style>
 
@@ -37,7 +37,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='info' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i> <span>Info Desa</span>
                     <span class="pull-right-container">
@@ -45,12 +45,12 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/info/profil') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/info/profil') }}">
                             <i class="fa fa-circle-o"></i> Profil Desa
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/info/administratif') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/info/administratif') }}">
                             <i class="fa fa-circle-o"></i> Wilayah Administratif
                         </a>
@@ -117,7 +117,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='kependudukan' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Kependudukan</span>
                     <span class="pull-right-container">
@@ -125,14 +125,14 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/kependudukan/penduduk') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/kependudukan/penduduk') }}">
                             <i class="fa fa-circle-o"></i> Penduduk
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='surat' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>Layanan Surat</span>
                     <span class="pull-right-container">
@@ -140,24 +140,34 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
-                        <a href="{{ url('/page/admin/surat/pengaturan') }}">
-                            <i class="fa fa-circle-o"></i> Pengaturan Surat
+                    <li class="{{ Request::is('page/admin/surat/klasifikasi') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/klasifikasi') }}">
+                            <i class="fa fa-circle-o"></i> Klasifikasi Surat
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/surat/permohonan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/permohonan') }}">
                             <i class="fa fa-circle-o"></i> Permohonan Surat
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/surat/masuk') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/masuk') }}">
+                            <i class="fa fa-circle-o"></i> Surat Masuk
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/surat/keluar') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/keluar') }}">
+                            <i class="fa fa-circle-o"></i> Surat Keluar
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/surat/arsip') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/arsip') }}">
                             <i class="fa fa-circle-o"></i> Arsip Surat
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='sumber' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-institution"></i> <span>Sumber Daya</span>
                     <span class="pull-right-container">
@@ -165,24 +175,24 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/sumber/alam') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sumber/alam') }}">
                             <i class="fa fa-circle-o"></i> Sumber Daya Alam
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/sumber/manusia') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sumber/manusia') }}">
                             <i class="fa fa-circle-o"></i> Sumber Daya Manusia
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/sumber/kelembagaan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sumber/kelembagaan') }}">
                             <i class="fa fa-circle-o"></i> Sumber Daya Kelembagaan
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='sarana' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-map-signs"></i> <span>Sarana Prasarana</span>
                     <span class="pull-right-container">
@@ -190,29 +200,29 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/sarana/pendidikan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sarana/pendidikan') }}">
                             <i class="fa fa-circle-o"></i> Sarana Pendidikan
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/sarana/keagamaan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sarana/keagamaan') }}">
                             <i class="fa fa-circle-o"></i> Sarana Keagamaan
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/sarana/tempat-usaha') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sarana/tempat-usaha') }}">
                             <i class="fa fa-circle-o"></i> Sarana Tempat Usaha
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/sarana/olahraga') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/sarana/olahraga') }}">
                             <i class="fa fa-circle-o"></i> Sarana Olahraga
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='peta' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-map"></i> <span>Pemetaan</span>
                     <span class="pull-right-container">
@@ -220,19 +230,19 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/peta/desa') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/peta/desa') }}">
                             <i class="fa fa-circle-o"></i> Peta Desa
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/peta/kantor') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/peta/kantor') }}">
                             <i class="fa fa-circle-o"></i> Peta Kantor Desa
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='web' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-desktop"></i> <span>Admin WEB</span>
                     <span class="pull-right-container">
@@ -240,49 +250,39 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ Request::is('page/admin/web/kategori') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/kategori') }}">
                             <i class="fa fa-circle-o"></i> Kategori
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/web/artikel') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/artikel') }}">
                             <i class="fa fa-circle-o"></i> Artikel
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/web/komentar') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/komentar') }}">
                             <i class="fa fa-circle-o"></i> Komentar
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/web/galeri') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/galeri') }}">
                             <i class="fa fa-circle-o"></i> Galeri
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/page/admin/web/slider') }}">
-                            <i class="fa fa-circle-o"></i> Slider
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/page/admin/web/teks-berjalan') }}">
-                            <i class="fa fa-circle-o"></i> Teks Berjalan
-                        </a>
-                    </li>
-                    <li>
+                    <li class="{{ Request::is('page/admin/web/pengunjung') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/pengunjung') }}">
                             <i class="fa fa-circle-o"></i> Pengunjung
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('page/admin/kotak-pesan') ? 'active' : '' }}">
+                <a href="{{ url('/page/admin/kotak-pesan') }}">
                     <i class="fa fa-inbox"></i> <span>Kotak Pesan</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::segment(3)=='pengaturan' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-gear"></i> <span>Pengaturan</span>
                     <span class="pull-right-container">
@@ -290,18 +290,18 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
-                        <a href="{{ url('/page/admin/akun') }}">
+                    <li class="{{ Request::is('page/admin/pengaturan/akun') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pengaturan/akun') }}">
                             <i class="fa fa-circle-o"></i> Pengaturan Akun
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/page/admin/hak_akses') }}">
+                    <li class="{{ Request::is('page/admin/pengaturan/hak_akses') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pengaturan/hak_akses') }}">
                             <i class="fa fa-circle-o"></i> Hak Akses
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/page/admin/terakhir_login') }}">
+                    <li class="{{ Request::is('page/admin/pengaturan/akun') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pengaturan/terakhir_login') }}">
                             <i class="fa fa-circle-o"></i> Catatan Login
                         </a>
                     </li>
