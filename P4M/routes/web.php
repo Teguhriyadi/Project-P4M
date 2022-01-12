@@ -24,6 +24,7 @@ use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
+use App\Http\Controllers\PetaController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -151,7 +152,7 @@ Route::prefix("page")->group(function() {
             Route::resource("/akun", AkunController::class);
 
             // Kontak
-            Route::get("/kontak/", [KontakController::class, "index"]);
+            Route::get("/kontak", [KontakController::class, "index"]);
 
             // Profil Desa
             Route::resource("/profil", ProfilController::class);
@@ -180,6 +181,18 @@ Route::prefix("page")->group(function() {
             Route::resource("/terakhir_login", TerakhirLoginController::class);
 
             Route::get("/logout", [LoginController::class, "logout"]);
+            
+            Route::prefix("/peta")->group(function() {
+                // CRUD Peta Desa
+                Route::get("/desa", [PetaController::class, "desa"]);
+                Route::post("/desa", [PetaController::class, "desaStore"]);
+                Route::put("/desa", [PetaController::class, "desaUpdate"]);
+                
+                // CRUD Peta Kantor
+                Route::get("/kantor", [PetaController::class, "kantor"]);
+                Route::post("/kantor", [PetaController::class, "kantorStore"]);
+                Route::put("/kantor", [PetaController::class, "kantorUpdate"]);
+            });
 
         });
     });

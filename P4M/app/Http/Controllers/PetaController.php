@@ -7,79 +7,53 @@ use Illuminate\Http\Request;
 
 class PetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function desa()
     {
-        //
+        $desa = Peta::select("id", "wilayah_desa")->first();
+
+        return view("admin/page/peta/desa", compact('desa'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function desaUpdate(Request $request)
     {
-        //
+        $cek = Peta::where("id", $request->id)->first();
+
+        if ($cek) {
+            Peta::where("id", $cek->id)->update(['wilayah_desa'=>$request->url]);
+
+            return back();
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function desaStore(Request $request)
     {
-        //
+        Peta::create(['wilayah_desa' => $request->url]);
+
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\Peta  $peta
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Peta $peta)
+    public function kantor()
     {
-        //
+        $kantor = Peta::select("id", "lokasi_kantor")->first();
+
+        return view("admin/page/peta/kantor", compact('kantor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\Peta  $peta
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Peta $peta)
+    public function kantorUpdate(Request $request)
     {
-        //
+        $cek = Peta::where("id", $request->id)->first();
+
+        if ($cek) {
+            Peta::where("id", $cek->id)->update(['lokasi_kantor'=>$request->url]);
+
+            return back();
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Peta  $peta
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Peta $peta)
+    public function kantorStore(Request $request)
     {
-        //
-    }
+        Peta::create(['lokasi_kantor' => $request->url]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\Peta  $peta
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Peta $peta)
-    {
-        //
+        return back();
     }
 }

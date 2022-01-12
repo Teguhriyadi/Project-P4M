@@ -15,8 +15,8 @@ class CreateTbPetaTable extends Migration
     {
         Schema::create('tb_peta', function (Blueprint $table) {
             $table->id();
-            $table->text("wilayah_desa");
-            $table->text("lokasi_kantor");
+            $table->text("wilayah_desa")->nullable();
+            $table->text("lokasi_kantor")->nullable();
         });
     }
 
