@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbSyaratSuratTable extends Migration
+class CreateTbRefSyaratSuratTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTbSyaratSuratTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_syarat_surat', function (Blueprint $table) {
+        Schema::create('tb_ref_syarat_surat', function (Blueprint $table) {
             $table->id();
-            $table->integer("surat_format_id");
-            $table->integer("ref_syarat_id");
+            $table->string("ref_syarat_nama");
         });
     }
 
@@ -27,6 +26,6 @@ class CreateTbSyaratSuratTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_syarat_surat');
+        Schema::dropIfExists('tb_ref_syarat_surat');
     }
 }

@@ -168,6 +168,16 @@
                             <i class="fa fa-circle-o"></i> Klasifikasi Surat
                         </a>
                     </li>
+                    <li class="{{ Request::is('page/admin/surat/ref_syarat') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/ref_syarat') }}">
+                            <i class="fa fa-circle-o"></i> Referensi Syarat Surat
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/surat/syarat') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/syarat') }}">
+                            <i class="fa fa-circle-o"></i> Syarat Surat
+                        </a>
+                    </li>
                     <li class="{{ Request::is('page/admin/surat/permohonan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/permohonan') }}">
                             <i class="fa fa-circle-o"></i> Permohonan Surat

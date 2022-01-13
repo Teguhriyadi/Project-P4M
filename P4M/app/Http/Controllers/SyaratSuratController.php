@@ -7,14 +7,13 @@ use Illuminate\Http\Request;
 
 class SyaratSuratController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            "data_syarat_surat" => SyaratSurat::orderBy("syarat_nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/surat/syarat/data_syarat_surat", $data);
     }
 
     /**

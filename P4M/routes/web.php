@@ -33,8 +33,10 @@ use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\PendudukController;
+use App\Http\Controllers\RefSyaratSuratController;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
+use App\Http\Controllers\SyaratSuratController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -239,9 +241,19 @@ Route::prefix("page")->group(function() {
             });
 
             Route::prefix("surat")->group(function() {
+
+                // Klasifikasi Surat
                 Route::get("/klasifikasi/edit", [KlasifikasiSuratController::class, "edit"]);
                 Route::put("/klasifikasi/simpan", [KlasifikasiSuratController::class, "update"]);
                 Route::resource("/klasifikasi", KlasifikasiSuratController::class);
+
+                // Referensi Syarat Surat
+                Route::get("/ref_syarat/edit", [RefSyaratSuratController::class, "edit"]);
+                Route::put("/ref_syarat/simpan", [RefSyaratSuratController::class, "update"]);
+                Route::resource("/ref_syarat", RefSyaratSuratController::class);
+
+                // Syarat Surat
+                Route::resource("/syarat", SyaratSuratController::class);
             });
 
             Route::prefix('/pengaturan')->group(function () {
