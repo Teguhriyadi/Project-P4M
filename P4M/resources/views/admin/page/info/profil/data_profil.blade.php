@@ -33,11 +33,11 @@
                         <div class="row">
                             @if ($data_profil->count())
                             @foreach ($data_profil as $profil)
-                            <form action="{{ url('/page/admin/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
+                            <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
                                 @method("PUT")
                                 @endforeach
                                 @else
-                                <form action="{{ url('/page/admin/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
+                                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
                                     @endif
                                     @csrf
                                     <div class="col-md-8">
@@ -270,86 +270,6 @@
                         </div>
                     </section>
 
-                    <!-- Tambah Data -->
-                    <div class="modal fade" id="modal-default">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">
-                                        <i class="fa fa-plus"></i> Tambah Data
-                                    </h4>
-                                </div>
-                                <form action="{{ url('/page/admin/wilayah_geografis/') }}" method="POST" id="tambahWilayah">
-                                    @csrf
-                                    @foreach ($data_geografis as $geografis)
-                                    <input type="hidden" name="geografis_id" value="{{ $geografis->id }}">
-                                    @endforeach
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="batas"> Batas </label>
-                                            <input type="text" class="form-control" name="batas" id="batas" placeholder="Batas">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="desa"> Desa </label>
-                                            <input type="text" class="form-control" name="desa" id="desa" placeholder="Masukkan Nama Desa">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kecamatan"> Kecamatan </label>
-                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                                            <i class="fa fa-refresh"></i> Batal
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> Tambah
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END -->
-
-                    <!-- Tambah Data -->
-                    <div class="modal fade" id="modal-default-edit">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title">
-                                        <i class="fa fa-pencil"></i> Edit Data
-                                    </h4>
-                                </div>
-                                <form action="{{ url('/page/admin/wilayah_geografis/simpan') }}" method="POST" id="editWilayah">
-                                    @method("PUT")
-                                    @csrf
-                                    @foreach ($data_geografis as $geografis)
-                                    <input type="hidden" name="geografis_id" value="{{ $geografis->id }}">
-                                    @endforeach
-                                    <div class="modal-body" id="modal-content-edit">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                                            <i class="fa fa-refresh"></i> Batal
-                                        </button>
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fa fa-edit"></i> Simpan
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END -->
-
                     @endsection
 
                     @section('page_scripts')
@@ -360,9 +280,6 @@
 
                         $(function() {
                             CKEDITOR.replace('deskripsi'),
-                            CKEDITOR.replace('deskripsi_geografis'),
-                            CKEDITOR.replace('visi'),
-                            CKEDITOR.replace('misi'),
                             CKEDITOR.replace('alamat')
                         })
 
