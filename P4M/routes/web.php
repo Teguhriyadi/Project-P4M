@@ -37,6 +37,7 @@ use App\Http\Controllers\RefSyaratSuratController;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\SyaratSuratController;
+use App\Http\Controllers\SuratFormatController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -251,6 +252,12 @@ Route::prefix("page")->group(function() {
                 Route::get("/ref_syarat/edit", [RefSyaratSuratController::class, "edit"]);
                 Route::put("/ref_syarat/simpan", [RefSyaratSuratController::class, "update"]);
                 Route::resource("/ref_syarat", RefSyaratSuratController::class);
+
+                // Surat Format
+                Route::get("/format/edit", [SuratFormatController::class, "edit"]);
+                Route::put("/format/simpan", [SuratFormatController::class, "update"]);
+                Route::resource("/format", SuratFormatController::class);
+
 
                 // Syarat Surat
                 Route::resource("/syarat", SyaratSuratController::class);

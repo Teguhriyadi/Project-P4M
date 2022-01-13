@@ -173,6 +173,11 @@
                             <i class="fa fa-circle-o"></i> Referensi Syarat Surat
                         </a>
                     </li>
+                    <li class="{{ Request::is('page/admin/surat/format') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/format') }}">
+                            <i class="fa fa-circle-o"></i> Surat Format
+                        </a>
+                    </li>
                     <li class="{{ Request::is('page/admin/surat/syarat') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/syarat') }}">
                             <i class="fa fa-circle-o"></i> Syarat Surat
