@@ -5,7 +5,7 @@
 @section('page_content')
 
 <div id="printableArea">
-    
+
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald; margin-bottom: 5rem;">@yield('title')</h2>
         <center><div id="piechart"></div></center>
@@ -19,15 +19,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($jk as $jk)
+                    @foreach ($jk as $j)
                     <tr>
                         <th>{!! $loop->iteration !!}</th>
-                        <td>{!! $jk->nama !!}</td>
+                        <td>{!! $j->nama !!}</td>
                         <td>
-                            @if ($jk->getCountPenduduk->count() == 0)
+                            @if ($j->getCountPenduduk->count() == 0)
                             0
                             @else
-                            {!! ($jk->getCountPenduduk->count() / $penduduk) * 100 !!}
+                            {!! ($j->getCountPenduduk->count() / $penduduk) * 100 !!}
                             @endif
                             %
                         </td>
@@ -45,17 +45,17 @@
 <script>
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    
+
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
-        <?php foreach($jk as $jk) : ?>
-        ['{{ $jk->nama }}', {{ $jk->getCountPenduduk->count() }}],
+        <?php foreach($jk as $j) : ?>
+        ['{{ $j->nama }}', {{ $j->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
-        
+
         var options = {'width':550, 'height':400};
-        
+
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
     }
