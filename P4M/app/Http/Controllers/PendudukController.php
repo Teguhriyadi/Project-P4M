@@ -83,6 +83,8 @@ class PendudukController extends Controller
             "status_kawin" => "required",
         ]);
 
+        $validatedData["status_hidup"] = 1;
+
         Penduduk::create($validatedData);
 
         return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");;
@@ -96,7 +98,9 @@ class PendudukController extends Controller
     */
     public function show($id)
     {
-        //
+        $penduduk = Penduduk::first('id', $id)->first();
+
+        return view('admin/page/penduduk/show', compact('penduduk'));
     }
     
     /**

@@ -28,6 +28,7 @@ class CreateTbPendudukTable extends Migration
             $table->integer('id_pendidikan');
             $table->integer('id_pekerjaan');
             $table->integer('status_kawin');
+            $table->integer('status_hidup');
             $table->integer('id_warga_negara');
             $table->string('nik_ayah', 100);
             $table->string('nik_ibu', 100);

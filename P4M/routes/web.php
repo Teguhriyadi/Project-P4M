@@ -216,7 +216,9 @@ Route::prefix("page")->group(function() {
                 Route::resource("/terakhir_login", TerakhirLoginController::class);
             });
 
+            // Kependudukan
             Route::prefix('/kependudukan')->group(function () {
+                // Penduduk
                 Route::resource('/penduduk', PendudukController::class);
             });
             
