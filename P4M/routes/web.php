@@ -171,6 +171,13 @@ Route::prefix("page")->group(function() {
 
             Route::prefix("info")->group(function() {
                 Route::resource("/profil", ProfilController::class);
+                Route::resource("/visi-misi", VisiMisiController::class);
+
+                Route::resource("/geografis", GeografisController::class);
+
+                Route::get("/wilayah_geografis/edit", [WilayahGeografisController::class, "edit"]);
+                Route::put("/wilayah_geografis/simpan", [WilayahGeografisController::class, "update"]);
+                Route::resource("/wilayah_geografis", WilayahGeografisController::class);
             });
 
             Route::prefix("data")->group(function() {

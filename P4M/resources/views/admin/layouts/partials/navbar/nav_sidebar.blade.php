@@ -63,6 +63,11 @@
                             <i class="fa fa-circle-o"></i> Letak Geografis
                         </a>
                     </li>
+                    <li class="{{ Request::is('page/admin/info/wilayah_geografis') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/info/wilayah_geografis') }}">
+                            <i class="fa fa-circle-o"></i> Wilayah Geografis
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ Request::segment(3)=='data' ? 'active' : '' }}">
