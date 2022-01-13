@@ -172,8 +172,9 @@ class UserController extends Controller
     
     public function wargaNegara()
     {
-        $wargaNegara = PendudukWargaNegara::all();
-        return view("pengunjung/page/data_desa/warga-negara", compact("wargaNegara"));
+        $wargaNegara = PendudukWargaNegara::withCount('getCountPenduduk')->get();
+        $penduduk = $this->penduduk;
+        return view("pengunjung/page/data_desa/warga-negara", compact("wargaNegara", "penduduk"));
     }
     
     public function wilayahAdministratif()

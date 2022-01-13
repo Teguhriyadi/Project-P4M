@@ -39,13 +39,6 @@
     </div>
 </div>
 
-<script>
-    // Rumus jangan dihapus
-    // let jumlah = ({{ $p->getCountPenduduk->count() }} / {{ $penduduk }});
-    // let hasil = jumlah * 100;
-    // console.log(hasil.toFixed(2));
-</script>
-
 @endsection
 
 @section('page_scripts')
