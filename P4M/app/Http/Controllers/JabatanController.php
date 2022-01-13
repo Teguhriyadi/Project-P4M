@@ -18,7 +18,14 @@ class JabatanController extends Controller
 
     public function store(Request $request)
     {
-        Jabatan::create($request->all());
+        $nama_jabatan = $request->nama_jabatan;
+        $data = Jabatan::where("nama_jabatan", $nama_jabatan)->count();
+
+        if ($data) {
+            return back()->with('message', "<script>swal('Maaf!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            Jabatan::create($request->all());
+        }
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
@@ -35,9 +42,17 @@ class JabatanController extends Controller
 
     public function update(Request $request, $id)
     {
-        Jabatan::where("id", $id)->update([
-            "nama_jabatan" => $request->nama_jabatan
-        ]);
+        $nama_jabatan = $request->nama_jabatan;
+
+        $data = Jabatan::where("nama_jabatan", $nama_jabatan)->count();
+
+        if ($data) {
+            return back()->with('message', "<script>swal('Maaf!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            Jabatan::where("id", $id)->update([
+                "nama_jabatan" => $request->nama_jabatan
+            ]);
+        }
 
         return redirect('page/admin/pemerintahan/jabatan')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }

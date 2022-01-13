@@ -50,10 +50,11 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        @if (auth()->user()->gambar)
-                        <img src="{{ url('storage/'.auth()->user()->gambar) }}" class="user-image" alt="User Image">
-                        @else
+
+                        @if (empty(auth()->user()->gambar))
                         <img src="{{ url('gambar/gambar_user.png') }}" class="user-image" alt="User Image">
+                        @else
+                        <img src="{{ url('storage/'.auth()->user()->gambar) }}" class="user-image" alt="User Image">
                         @endif
                         <span class="hidden-xs">{{ auth()->user()->name }}</span>
                     </a>

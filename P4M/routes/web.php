@@ -165,18 +165,22 @@ Route::prefix("page")->group(function() {
             Route::put("/jenis_sdk/simpan", [JenisSDKController::class, "update"]);
             Route::resource("/jenis_sdk", JenisSDKController::class);
 
+            Route::prefix("info")->group(function() {
+                Route::resource("/profil", ProfilController::class);
+            });
+
             Route::prefix("data")->group(function() {
 
                 // Dusun
                 Route::get("/dusun/edit", [DusunController::class, "edit"]);
                 Route::put("/dusun/simpan", [DusunController::class, "update"]);
                 Route::resource("/dusun", DusunController::class);
-                
+
                 // RT
                 Route::get("/rt/edit", [RtController::class, "edit"]);
                 Route::put("/rt/simpan", [RtController::class, "update"]);
                 Route::resource("/rt", RtController::class);
-                
+
                 // RW
                 Route::get("/rw/edit", [RwController::class, "edit"]);
                 Route::put("/rw/simpan", [RwController::class, "update"]);
@@ -247,7 +251,7 @@ Route::prefix("page")->group(function() {
             });
 
             // Profil Desa
-            Route::resource("/profil", ProfilController::class);
+
             Route::resource("geografis", GeografisController::class);
             Route::get("/wilayah_geografis/edit", [WilayahGeografisController::class, "edit"]);
             Route::put("/wlayah_geografis/simpan", [WilayahGeografisController::class, "update"]);

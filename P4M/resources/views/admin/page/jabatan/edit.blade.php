@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Kategori
+        Data Jabatan
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +12,12 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li>
+            <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
+                <i class="fa fa-gavel"></i> Data Jabatan
+            </a>
+        </li>
+        <li class="active">Edit Data Jabatan</li>
     </ol>
 </section>
 
@@ -36,11 +41,16 @@
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success btn-sm">
-                            <i class="fa fa-plus"></i> Simpan
+                            <i class="fa fa-edit"></i> Simpan
                         </button>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-refresh"></i> Batal
                         </button>
+                        <div class="pull-right">
+                            <a href="{{ url('/page/admin/pemerintahan/jabatan') }}" class="btn btn-info btn-sm">
+                                <i class="fa fa-sign-out"></i> Kembali
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>

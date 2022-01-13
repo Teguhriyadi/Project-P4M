@@ -5,10 +5,10 @@
 @section('page_content')
 
 <div id="printableArea">
-    
+
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald">@yield('title')</h2>
-        
+
         <div class="table-responsive">
             <table class="table table-bordered" id="tablePenduduk">
                 <thead>
@@ -21,21 +21,19 @@
                 </thead>
                 <tbody>
                     @foreach ($dataDusun as $data)
-                    @php
-                        use App\Models\Model\PendudukSex;
-                        $cowo = Penduduk::
-                    @endphp
+                        @php
+                            $data_sex = DB::table("tb_penduduk_sex")->get();
+                        @endphp
                         <tr>
                             <td>{!! $data->dusun !!}</td>
-                            <td>{!! $data->getPenduduk->nama !!}</td>
-                            <td>{!! $data->getPenduduk->nama !!}</td>
+
                             <td>{!! $data->getCountPenduduk->count() !!}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>      
-        
+        </div>
+
     </div>
 </div>
 

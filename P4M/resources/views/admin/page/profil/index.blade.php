@@ -256,7 +256,7 @@
                                             </div>
                                             <div class="box-body">
                                                 <div class="table-responsive">
-                                                    <table id="example1" class="table table-bordered table-striped">
+                                                    <table id="example1" class="table table-bordered table-striped" width="100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Batas</th>
