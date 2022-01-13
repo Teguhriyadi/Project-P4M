@@ -30,6 +30,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
 use App\Http\Controllers\PetaController;
+use App\Http\Controllers\PendudukController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -214,9 +215,10 @@ Route::prefix("page")->group(function() {
                 // TerakhirLogin
                 Route::resource("/terakhir_login", TerakhirLoginController::class);
             });
-            
-            // Kontak
-            Route::get("/kontak", [KontakController::class, "index"]);
+
+            Route::prefix('/kependudukan')->group(function () {
+                Route::resource('/penduduk', PendudukController::class);
+            });
             
             // Profil Desa
             Route::resource("/profil", ProfilController::class);

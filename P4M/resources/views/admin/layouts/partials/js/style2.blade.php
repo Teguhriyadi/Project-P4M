@@ -32,13 +32,15 @@
                 'X-CSRF-TOKEN' : "{{ csrf_token() }}"
             }
         });
-
+        
         $('.sidebar-menu').tree()
     })
 </script>
 <script>
     $(function () {
-        $('#example1').DataTable(),
+        $('#example1').DataTable({
+            scrollX: true,
+        }),
         $('#example3').DataTable()
         $('#example2').DataTable({
             'paging'      : true,
