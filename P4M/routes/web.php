@@ -258,9 +258,6 @@ Route::prefix("page")->group(function() {
                 Route::put("/format/simpan", [SuratFormatController::class, "update"]);
                 Route::resource("/format", SuratFormatController::class);
 
-
-                // Syarat Surat
-                Route::resource("/syarat", SyaratSuratController::class);
             });
 
             Route::prefix('/pengaturan')->group(function () {
