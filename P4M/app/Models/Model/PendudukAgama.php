@@ -15,4 +15,8 @@ class PendudukAgama extends Model
 
     public $timestamps = false;
 
+    public function getCountPenduduk()
+    {
+        return $this->hasMany(Penduduk::class, 'id_agama', 'id');
+    }
 }

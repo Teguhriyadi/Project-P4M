@@ -13,6 +13,7 @@ use App\Models\Model\VisiMisi;
 use App\Models\Model\Geografis;
 use App\Models\Model\WilayahGeografis;
 use App\Models\Model\StrukturPemerintahan;
+use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukSex;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikan;
@@ -23,6 +24,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $penduduk;
+
+    public function __construct() {
+        $this->penduduk = Penduduk::count();
+    }
+
     public function index()
     {
         $data = [
@@ -137,26 +144,30 @@ class UserController extends Controller
     
     public function pendidikan()
     {
-        $pendidikan = PendudukPendidikan::all();
-        return view("pengunjung/page/data_desa/pendidikan", compact("pendidikan"));
+        $pendidikan = PendudukPendidikan::withCount('getCountPenduduk')->get();
+        $penduduk = $this->penduduk;
+        return view("pengunjung/page/data_desa/pendidikan", compact("pendidikan", "penduduk"));
     }
     
     public function pekerjaan()
     {
-        $pekerjaan = PendudukPekerjaan::all();
-        return view("pengunjung/page/data_desa/pekerjaan", compact("pekerjaan"));
+        $pekerjaan = PendudukPekerjaan::withCount('getCountPenduduk')->get();
+        $penduduk = $this->penduduk;
+        return view("pengunjung/page/data_desa/pekerjaan", compact("pekerjaan", "penduduk"));
     }
     
     public function agama()
     {
-        $agama = PendudukAgama::all();
-        return view("pengunjung/page/data_desa/agama", compact("agama"));
+        $agama = PendudukAgama::withCount('getCountPenduduk')->get();
+        $penduduk = $this->penduduk;
+        return view("pengunjung/page/data_desa/agama", compact("agama", "penduduk"));
     }
     
     public function jenisKelamin()
     {
-        $jk = PendudukSex::all();
-        return view("pengunjung/page/data_desa/jk", compact("jk"));
+        $jk = PendudukSex::withCount('getCountPenduduk')->get();
+        $penduduk = $this->penduduk;
+        return view("pengunjung/page/data_desa/jk", compact("jk", "penduduk"));
     }
     
     public function wargaNegara()

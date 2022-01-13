@@ -11,6 +11,13 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
 	<title>Website Resmi Desa Arahan Lor Kecamatan Arut Selatan Kabupaten Kotawaringin Barat</title>
 	@include('pengunjung/layouts/partials/css/style_css')
+
+	<style>
+		#piechart g {
+			cursor: pointer;
+		}
+	</style>
+
 	@include('pengunjung/layouts/partials/js/style_js')
 </head>
 <body>
@@ -61,23 +68,10 @@
 			</section>
 		</div>
 	</div>
-	<script>
-		let kotak = [];
-		let n, m;
-
-		for (let n = 1; n <= 20; n = n+1) {
-			kotak[n] = n + 3;
-		}
-
-		for (let n = 1; n <= 20; n = n+4) {
-			if (n % 2 != 0) {
-				console.log("kosong");
-			} else {
-				console.log(kotak[n]);
-			}
-		}
-	</script>
+	
 	@include('pengunjung.layouts.foot')
+
+	@yield('page_scripts')
 	
 </body>
 </html>
