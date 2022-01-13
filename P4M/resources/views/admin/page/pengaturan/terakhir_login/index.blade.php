@@ -22,8 +22,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-book"></i> Catatan Pengguna Sistem
+                    </h3>
+                </div>
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped" width="100%">
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>

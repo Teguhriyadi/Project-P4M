@@ -14,7 +14,12 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li>
+            <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}">
+                <i class="fa fa-bars"></i> Struktur Pemerintahan
+            </a>
+        </li>
+        <li class="active">Edit Data Struktur Pemerintahan</li>
     </ol>
 </section>
 
@@ -27,7 +32,7 @@
                         <i class="fa fa-edit"></i> Edit Struktur Pemerintahan
                     </h3>
                 </div>
-                <form id="editStruktur" action="{{ url('/page/admin/struktur_pemerintahan/'.$edit->id) }}" method="POST">
+                <form id="editStruktur" action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$edit->id) }}" method="POST">
                     @method("PUT")
                     @csrf
                     <div class="box-body">
@@ -73,7 +78,7 @@
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-refresh"></i> Batal
                         </button>
-                        <a href="{{ url('/page/admin/struktur_pemerintahan') }}" class="pull-right btn btn-info btn-sm">
+                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" class="pull-right btn btn-info btn-sm">
                             <i class="fa fa-sign-out"></i> Kembali
                         </a>
                     </div>
@@ -89,7 +94,7 @@
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>

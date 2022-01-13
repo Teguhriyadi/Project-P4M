@@ -58,13 +58,13 @@
                         Data Kategori
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/kategori') }}" class="btn btn-danger btn-sm">
+                        <a href="{{ url('/page/admin/web/kategori') }}" class="btn btn-danger btn-sm">
                             <i class="fa fa-arrow-left"></i> Kembali
                         </a>
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped" width="100%">
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>

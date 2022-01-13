@@ -13,7 +13,7 @@ class PegawaiController extends Controller
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 
-        return view("admin/page/pegawai/index", $data);
+        return view("admin/page/pemerintahan/pegawai/index", $data);
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class PegawaiController extends Controller
             "edit" => Pegawai::where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/pegawai/edit", $data);
+        return view("/admin/page/pemerintahan/pegawai/edit", $data);
     }
 
     public function update(Request $request)

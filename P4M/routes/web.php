@@ -139,17 +139,6 @@ Route::prefix("page")->group(function() {
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
 
-            Route::prefix('web')->group(function () {
-                // Artikel
-                Route::get("/artikel/checkSlug", [BeritaController::class, "checkSlug"]);
-                Route::resource("/artikel", BeritaController::class);
-
-                // Galeri
-                Route::get("/galeri/edit", [GaleriController::class, "edit"]);
-                Route::put("/galeri/simpan", [GaleriController::class, "update"]);
-                Route::resource("/galeri", GaleriController::class);
-            });
-
             // Tahun
             Route::post("/tahun/aktifkan", [TahunController::class, "aktifkan"]);
             Route::post("/tahun/non-aktifkan", [TahunController::class, "non_aktifkan"]);
@@ -267,6 +256,8 @@ Route::prefix("page")->group(function() {
 
             });
 
+            Route::get("/kotak-pesan", [KontakController::class, "index"]);
+
             Route::prefix('/pengaturan')->group(function () {
                 // Akun
                 Route::get("/akun/edit", [AkunController::class, "edit"]);
@@ -279,18 +270,6 @@ Route::prefix("page")->group(function() {
                 // TerakhirLogin
                 Route::resource("/terakhir_login", TerakhirLoginController::class);
             });
-
-            // Profil Desa
-
-            Route::resource("geografis", GeografisController::class);
-            Route::get("/wilayah_geografis/edit", [WilayahGeografisController::class, "edit"]);
-            Route::put("/wlayah_geografis/simpan", [WilayahGeografisController::class, "update"]);
-            Route::resource("wilayah_geografis", WilayahGeografisController::class);
-            // Alamat
-            Route::resource("/alamat", AlamatController::class);
-
-            // Visi & Misi
-            Route::resource("/visi_misi", VisiMisiController::class);
 
             // Logout
             Route::get("/logout", [LoginController::class, "logout"]);
@@ -308,6 +287,11 @@ Route::prefix("page")->group(function() {
             });
 
             Route::prefix("/web")->group(function() {
+
+                // Galeri
+                Route::get("/galeri/edit", [GaleriController::class, "edit"]);
+                Route::put("/galeri/simpan", [GaleriController::class, "update"]);
+                Route::resource("/galeri", GaleriController::class);
 
                 // Kategori
                 Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);

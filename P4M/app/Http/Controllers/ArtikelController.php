@@ -18,7 +18,7 @@ class ArtikelController extends Controller
             "data_kategori" => Kategori::orderBy("nama", "ASC")->get()
         ];
 
-        return view("/admin/page/artikel/index", $data);
+        return view("/admin/page/web/artikel/index", $data);
     }
 
     public function create()
@@ -27,7 +27,7 @@ class ArtikelController extends Controller
             "data_kategori" => Kategori::orderBy("nama", "ASC")->get()
         ];
 
-        return view("admin/page/artikel/form_tambah", $data);
+        return view("admin/page/web/artikel/form_tambah", $data);
     }
 
     public function store(Request $request)
@@ -59,7 +59,7 @@ class ArtikelController extends Controller
             "edit" => Artikel::where("slug", $slug)->first()
         ];
 
-        return view("admin/page/artikel/form_edit", $data);
+        return view("/admin/page/web/artikel/form_edit", $data);
     }
 
     public function update(Request $request, $slug)
@@ -89,9 +89,15 @@ class ArtikelController extends Controller
         return redirect("/page/admin/web/artikel")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
-    public function destroy(Artikel $artikel)
+    public function destroy(Request $request, $id)
     {
+        if ($request->image) {
+            Storage::delete($request->image);
+        }
 
+        Artikel::where("id", $id)->delete();
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 
     public function checkSlug(Request $request)

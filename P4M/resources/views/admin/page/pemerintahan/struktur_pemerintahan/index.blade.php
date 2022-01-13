@@ -28,7 +28,7 @@
                         <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
                     </h3>
                 </div>
-                <form id="tambahStruktur" action="{{ url('/page/admin/struktur_pemerintahan') }}" method="POST">
+                <form id="tambahStruktur" action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
@@ -93,14 +93,14 @@
                         <i class="fa fa-sign-out"></i> Struktur Pemerintahan
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/struktur_pemerintahan/show') }}">
+                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/show') }}">
                             <i class="fa fa-search"></i> Lihat Struktur Pemerintahan
                         </a>
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
@@ -116,10 +116,10 @@
                                     <td>{{ $data->getJabatan->nama_jabatan }}</td>
                                     <td>{{ $data->getPegawai->nama }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <form action="{{ url('/page/admin/struktur_pemerintahan/'.$data->id) }}" method="POST" style="display: inline;">
+                                        <form action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm">

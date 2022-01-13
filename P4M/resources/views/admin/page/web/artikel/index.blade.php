@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Berita
+        Data Artikel
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +12,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Berita</li>
+        <li class="active">Data Artikel</li>
     </ol>
 </section>
 
@@ -22,7 +22,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Berita
+                        <i class="fa fa-edit"></i> Artikel
                     </h3>
                     <div class="pull-right">
                         <a href="{{ url('/page/admin/web/artikel/create') }}" class="btn btn-primary btn-sm">
@@ -50,9 +50,10 @@
                                         <a href="{{ url('/page/admin/web/artikel/'.$artikel->slug) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <form action="{{ url('/page/admin/web/artikel/') }}/{{ $artikel->slug }}" method="POST" style="display: inline;">
+                                        <form action="{{ url('/page/admin/web/artikel/') }}/{{ $artikel->id }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
+                                            <input type="hidden" name="image" value="{{ $artikel->image }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>

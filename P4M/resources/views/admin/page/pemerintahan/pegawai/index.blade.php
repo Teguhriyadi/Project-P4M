@@ -14,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li class="active">Data Pegawai</li>
     </ol>
 </section>
 
@@ -24,7 +24,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Pegawai
+                        <i class="fa fa-user"></i> Pegawai
                     </h3>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -65,7 +65,7 @@
                                         <button onclick="editDataPegawai({{$pegawai->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="{{ url('/page/admin/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
+                                        <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm">
@@ -96,7 +96,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Pegawai
                 </h4>
             </div>
-            <form class="form-horizontal" action="{{ url('/page/admin/pegawai') }}" method="POST" enctype="multipart/form-data" id="tambahPegawai">
+            <form class="form-horizontal" action="{{ url('/page/admin/pemerintahan/pegawai') }}" method="POST" enctype="multipart/form-data" id="tambahPegawai">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -166,7 +166,7 @@
                     <i class="fa fa-edit"></i> Edit Data Pegawai
                 </h4>
             </div>
-            <form class="form-horizontal" action="{{ url('/page/admin/pegawai/simpan') }}" method="POST" enctype="multipart/form-data" id="editPegawai">
+            <form class="form-horizontal" action="{{ url('/page/admin/pemerintahan/pegawai/simpan') }}" method="POST" enctype="multipart/form-data" id="editPegawai">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -195,7 +195,7 @@
     function editDataPegawai(id)
     {
         $.ajax({
-            url : "{{ url('/page/admin/pegawai/edit') }}",
+            url : "{{ url('/page/admin/pemerintahan/pegawai/edit') }}",
             type : "GET",
             data : { id : id },
             success : function(data) {

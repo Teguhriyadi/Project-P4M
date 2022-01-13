@@ -13,7 +13,7 @@ class JabatanController extends Controller
             "data_jabatan" => Jabatan::orderBy("nama_jabatan", "DESC")->get()
         ];
 
-        return view("admin/page/jabatan/index", $data);
+        return view("admin/page/pemerintahan/jabatan/index", $data);
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class JabatanController extends Controller
             "data_jabatan" => Jabatan::where("id", "!=", $id)->orderBy("nama_jabatan", "DESC")->get()
         ];
 
-        return view("admin/page/jabatan/edit", $data);
+        return view("admin/page/pemerintahan/jabatan/edit", $data);
     }
 
     public function update(Request $request, $id)

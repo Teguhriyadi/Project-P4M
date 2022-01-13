@@ -8,32 +8,11 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class KategoriController extends Controller
 {
-    /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
     public function index()
     {
-        return view("/admin/page/kategori/index");
+        return view("/admin/page/web/kategori/index");
     }
 
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function create()
-    {
-        //
-    }
-
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
     public function store(Request $request)
     {
         $cek = Kategori::create($request->all());
@@ -45,12 +24,6 @@ class KategoriController extends Controller
         }
     }
 
-    /**
-    * Display the specified resource.
-    *
-    * @param  \App\Models\Model\Kategori  $kategori
-    * @return \Illuminate\Http\Response
-    */
     public function show(Request $request)
     {
         $columns = array(
@@ -108,12 +81,6 @@ class KategoriController extends Controller
         return response()->json($json_data);
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Models\Model\Kategori  $kategori
-    * @return \Illuminate\Http\Response
-    */
     public function edit(Kategori $kategori)
     {
         $data = [
@@ -121,16 +88,9 @@ class KategoriController extends Controller
             "data_kategori" => Kategori::where("id","!=" ,$kategori->id)->get()
         ];
 
-        return view("/admin/page/kategori/edit", $data);
+        return view("/admin/page/web/kategori/edit", $data);
     }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  \App\Models\Model\Kategori  $kategori
-    * @return \Illuminate\Http\Response
-    */
     public function update(Request $request, Kategori $kategori)
     {
         Kategori::where("id", $kategori->id)->update([
@@ -138,15 +98,9 @@ class KategoriController extends Controller
             "slug" => $request->slug
         ]);
 
-        return redirect("/page/admin/kategori")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        return redirect("/page/admin/web/kategori")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  \App\Models\Model\Kategori  $kategori
-    * @return \Illuminate\Http\Response
-    */
     public function destroy(Request $request, $id)
     {
         $cek = Kategori::destroy($id);

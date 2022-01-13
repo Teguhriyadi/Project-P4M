@@ -7,32 +7,11 @@ use Illuminate\Http\Request;
 
 class HakAksesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view("admin/page/hak_akses/index");
+        return view("admin/page/pengaturan/hak_akses/index");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $cek = HakAkses::create($request->all());
@@ -42,15 +21,9 @@ class HakAksesController extends Controller
         } else {
             echo 2;
         }
-        
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\HakAkses  $hakAkses
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         $hakAkses = HakAkses::orderBy("nama_hak_akses", "DESC")->get();
@@ -68,12 +41,6 @@ class HakAksesController extends Controller
         return response()->json($data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\HakAkses  $hakAkses
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data = [
@@ -81,16 +48,9 @@ class HakAksesController extends Controller
             "data_hak_akses" => HakAkses::where("id", "!=", $id)->orderBy("nama_hak_akses", "DESC")->get()
         ];
 
-        return view("/admin/page/hak_akses/edit", $data);
+        return view("/admin/page/pengaturan/hak_akses/edit", $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\HakAkses  $hakAkses
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
@@ -101,12 +61,6 @@ class HakAksesController extends Controller
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\HakAkses  $hakAkses
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         HakAkses::where("id", $id)->delete();

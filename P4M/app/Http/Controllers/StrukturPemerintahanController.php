@@ -18,7 +18,7 @@ class StrukturPemerintahanController extends Controller
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 
-        return view("admin/page/struktur_pemerintahan/index", $data);
+        return view("admin/page/pemerintahan/struktur_pemerintahan/index", $data);
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class StrukturPemerintahanController extends Controller
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 
-        return view("admin/page/struktur_pemerintahan/edit", $data);
+        return view("admin/page/pemerintahan/struktur_pemerintahan/edit", $data);
     }
 
     public function update(Request $request, $id)
@@ -83,6 +83,6 @@ class StrukturPemerintahanController extends Controller
             "data_struktur" => StrukturPemerintahan::orderBy("id", "asc")->get()
         ];
 
-        return view("admin/page/struktur_pemerintahan/show", $data);
+        return view("admin/page/pemerintahan/struktur_pemerintahan/show", $data);
     }
 }

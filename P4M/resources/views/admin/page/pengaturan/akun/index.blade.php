@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Akun
+        Data Pengguna Akun Sistem
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -31,7 +31,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Akun
+                        <i class="fa fa-users"></i> Data Akun Sistem
                     </h3>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
@@ -64,9 +64,9 @@
                                         <button onclick="editDataAkun({{$akun->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        
+
                                         @if ($akun->username == auth()->user()->username)
-                                        
+
                                         @else
                                         <form action="{{ url('page/admin/pengaturan/akun/'.$akun->id) }}" method="POST" style="display: inline;">
                                             @csrf
@@ -186,7 +186,7 @@
                 @csrf
                 @method('patch')
                 <div class="modal-body" id="modal-content-edit">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -207,7 +207,7 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-    
+
     function editDataAkun(id)
     {
         $.ajax({
@@ -220,22 +220,22 @@
             }
         })
     }
-    
+
     function previewImage()
     {
         const gambar = document.querySelector("#gambar");
         const gambarPreview = document.querySelector(".gambar-preview");
-        
+
         gambarPreview.style.display = "block";
-        
+
         const oFReader = new FileReader();
         oFReader.readAsDataURL(gambar.files[0]);
-        
+
         oFReader.onload = function(oFREvent) {
             gambarPreview.src = oFREvent.target.result;
         }
     }
-    
+
 </script>
 
 @endsection

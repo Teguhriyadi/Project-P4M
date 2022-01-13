@@ -13,7 +13,7 @@ class VisiMisiController extends Controller
             "data_visi_misi" => VisiMisi::orderBy("created_at", "DESC")->paginate(1)
         ];
 
-        return view("admin/page/visi_misi/index", $data);
+        return view("admin/page/info/visi_misi/index", $data);
     }
 
     public function store(Request $request)

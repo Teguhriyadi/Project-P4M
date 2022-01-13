@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Kontak
+        Data Kotak Pesan
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +12,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li class="active">Kotak Pesan</li>
     </ol>
 </section>
 
@@ -22,7 +22,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Akun
+                        <i class="fa fa-envelope-o"></i> Kotak Pesan
                     </h3>
                 </div>
                 <div class="box-body">

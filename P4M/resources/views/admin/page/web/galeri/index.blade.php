@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Galeri
+        Data Galeri
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -22,7 +22,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Kategori
+                        <i class="fa fa-image"></i> Image
                     </h3>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -52,8 +52,10 @@
                                         <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="" style="display: inline;">
+                                        <form action="{{ url('/page/admin/web/galeri/'.$galeri->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
                                             @csrf
+                                            <input type="hidden" name="gambar" value="{{ $galeri->gambar }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
@@ -165,7 +167,7 @@
     function editDataGaleri(id)
     {
         $.ajax({
-            url : "{{ url('/page/admin/galeri/edit') }}",
+            url : "{{ url('/page/admin/web/galeri/edit') }}",
             type : "GET",
             data : { id : id },
             success : function(data) {
