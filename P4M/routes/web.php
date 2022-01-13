@@ -26,7 +26,6 @@ use App\Http\Controllers\PotensiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\StrukturPemerintahanController;
 use App\Http\Controllers\TahunController;
-use App\Http\Controllers\TeksBerjalanController;
 use App\Http\Controllers\TerakhirLoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisiMisiController;
@@ -289,9 +288,6 @@ Route::prefix("page")->group(function() {
             Route::resource("wilayah_geografis", WilayahGeografisController::class);
             // Alamat
             Route::resource("/alamat", AlamatController::class);
-
-            // Teks Berjalan
-            Route::resource("/teks_berjalan", TeksBerjalanController::class);
 
             // Visi & Misi
             Route::resource("/visi_misi", VisiMisiController::class);
