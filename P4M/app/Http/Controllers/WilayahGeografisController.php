@@ -20,7 +20,15 @@ class WilayahGeografisController extends Controller
 
     public function store(Request $request)
     {
-        WilayahGeografis::create($request->all());
+        $batas = $request->batas;
+
+        $data = WilayahGeografis::where("batas", $batas)->count();
+
+        if ($data) {
+            return back()->with('message', "<script>swal('Oops!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            WilayahGeografis::create($request->all());
+        }
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
@@ -36,12 +44,20 @@ class WilayahGeografisController extends Controller
 
     public function update(Request $request)
     {
-        WilayahGeografis::where("id", $request->id)->update([
-            "geografis_id" => $request->geografis_id,
-            "batas" => $request->batas,
-            "desa" => $request->desa,
-            "kecamatan" => $request->kecamatan
-        ]);
+        $batas = $request->batas;
+
+        $data = WilayahGeografis::where("batas", $batas)->count();
+
+        if ($data) {
+            return back()->with('message', "<script>swal('Oops!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            WilayahGeografis::where("id", $request->id)->update([
+                "geografis_id" => $request->geografis_id,
+                "batas" => $request->batas,
+                "desa" => $request->desa,
+                "kecamatan" => $request->kecamatan
+            ]);
+        }
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
