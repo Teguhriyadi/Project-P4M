@@ -33,24 +33,24 @@
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-hover" width="100%">
+                    <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th>Nama</th>
+                                    <th>Gol Darah</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data_penduduk_pendidikan as $data)
+                                @foreach ($data_golongan_darah as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">
-                                        <button onclick="editDataPendidikan({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <button onclick="editDataGolonganDarah({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="{{ url('/page/admin/data/pendidikan/'.$data->id) }}" method="POST" style="display: inline;">
+                                        <form action="{{ url('/page/admin/data/golongan-darah/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-sm">
@@ -81,12 +81,12 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pendidikan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/golongan-darah') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pendidikan">
+                        <label for="nama"> Golongan Darah </label>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Data Golongan Darah">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -116,7 +116,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pendidikan/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/golongan-darah/simpan') }}" method="POST">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -142,10 +142,10 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-    function editDataPendidikan(id)
+    function editDataGolonganDarah(id)
     {
         $.ajax({
-            url : "{{ url('/page/admin/data/pendidikan/edit') }}",
+            url : "{{ url('/page/admin/data/golongan-darah/edit') }}",
             type : "GET",
             data : { id : id },
             success : function(data) {

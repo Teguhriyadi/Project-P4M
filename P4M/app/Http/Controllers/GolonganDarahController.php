@@ -7,57 +7,29 @@ use Illuminate\Http\Request;
 
 class GolonganDarahController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            "data_golongan_darah" => GolonganDarah::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/penduduk/golongan_darah/data_golongan_darah", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        GolonganDarah::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\GolonganDarah  $golonganDarah
-     * @return \Illuminate\Http\Response
-     */
-    public function show(GolonganDarah $golonganDarah)
+    public function edit(Request $request)
     {
-        //
-    }
+        $data = [
+            "edit" => GolonganDarah::where("id", $request->id)->first()
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\GolonganDarah  $golonganDarah
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(GolonganDarah $golonganDarah)
-    {
-        //
+        return view("/admin/page/penduduk/golongan_darah/edit_data_golongan_darah", $data);
     }
 
     /**
@@ -67,19 +39,19 @@ class GolonganDarahController extends Controller
      * @param  \App\Models\Model\GolonganDarah  $golonganDarah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GolonganDarah $golonganDarah)
+    public function update(Request $request)
     {
-        //
+        GolonganDarah::where("id", $request->id)->update([
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\GolonganDarah  $golonganDarah
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(GolonganDarah $golonganDarah)
+    public function destroy($id)
     {
-        //
+        GolonganDarah::where("id", $id)->delete();
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

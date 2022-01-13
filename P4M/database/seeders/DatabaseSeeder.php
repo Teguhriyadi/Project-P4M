@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Model\GolonganDarah;
 use App\Models\Model\HakAkses;
 use App\Models\Model\Kategori;
 use App\Models\User;
@@ -41,6 +42,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CacatSeeder::class);
         $this->call(RefPindahSeeder::class);
         $this->call(PeristiwaSeeder::class);
-
+        $this->call(GolonganDarahSeeder::class);
     }
 }

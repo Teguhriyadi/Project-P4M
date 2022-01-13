@@ -13,6 +13,8 @@ class Penduduk extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin'];
+
     public function getPendidikan()
     {
         return $this->hasOne(PendudukPendidikan::class, "id", "id_pendidikan");
@@ -22,7 +24,7 @@ class Penduduk extends Model
     {
         return $this->hasOne(PendudukPekerjaan::class, "id", "id_pekerjaan");
     }
-    
+
     public function getKawin()
     {
         return $this->hasOne(PendudukKawin::class, "id", "status_kawin");

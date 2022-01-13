@@ -33,7 +33,7 @@
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-hover">
+                    <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
