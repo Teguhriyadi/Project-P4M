@@ -2,6 +2,8 @@
 
 namespace App\Models\model;
 
+use App\Models\Model\Dusun;
+use App\Models\Model\GolonganDarah;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +15,7 @@ class Penduduk extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin'];
+    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin', 'getHubungan', 'getKelamin', 'getAgama', 'getWargaNegara', 'getStatusHidup'];
 
     public function getPendidikan()
     {
@@ -29,29 +31,36 @@ class Penduduk extends Model
     {
         return $this->hasOne(PendudukKawin::class, "id", "status_kawin");
     }
-    
+
     public function getHubungan()
     {
         return $this->hasOne(PendudukHubungan::class, "id", "id_hubungan");
     }
-    
+
     public function getKelamin()
     {
         return $this->hasOne(PendudukSex::class, "id", "id_sex");
     }
-    
+
     public function getAgama()
     {
         return $this->hasOne(PendudukAgama::class, "id", "id_agama");
     }
-    
+
     public function getWargaNegara()
     {
         return $this->hasOne(PendudukWargaNegara::class, "id", "id_warga_negara");
     }
 
-    // Dusun
+    public function getDusun()
+    {
+        return $this->hasOne(Dusun::class, "id", "id_dusun");
+    }
 
+    public function getGolonganDarah()
+    {
+        return $this->hasOne(GolonganDarah::class, "id", "id_golongan_darah");
+    }
     // RT
 
     // RW

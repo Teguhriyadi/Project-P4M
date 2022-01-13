@@ -16,6 +16,9 @@
     .skin-green .sidebar-menu>li>.treeview-menu>li.active {
         background-color: #008d4c;
     }
+    .skin-green .sidebar-menu>li>.treeview-menu>li a {
+        margin-left: 3px;
+    }
 </style>
 
 <aside class="main-sidebar">
@@ -71,12 +74,12 @@
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/data/rt') ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/data/dusun') }}">
+                        <a href="{{ url('/page/admin/data/rt') }}">
                             <i class="fa fa-circle-o"></i> Data RT
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/data/rw') ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/data/dusun') }}">
+                        <a href="{{ url('/page/admin/data/rw') }}">
                             <i class="fa fa-circle-o"></i> Data RW
                         </a>
                     </li>
