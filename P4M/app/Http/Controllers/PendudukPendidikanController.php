@@ -10,7 +10,7 @@ class PendudukPendidikanController extends Controller
     public function index()
     {
         $data = [
-            'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->get()
+            'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->withCount('getCountPenduduk')->get()
         ];
 
         return view("/admin/page/penduduk/pendidikan/data_pendidikan", $data);

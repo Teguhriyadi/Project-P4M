@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Dusun')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Info Profil Desa
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Info Alamat</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -25,7 +27,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> Penduduk Pendidikan
+                        <i class="fa fa-bars"></i> @yield('title')
                     </h3>
                     <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
                         <i class="fa fa-plus"></i> Tambah Data

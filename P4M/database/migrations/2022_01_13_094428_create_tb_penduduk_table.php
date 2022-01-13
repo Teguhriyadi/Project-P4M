@@ -36,6 +36,9 @@ class CreateTbPendudukTable extends Migration
             $table->string('nama_ibu', 100);
             $table->integer('id_golongan_darah')->nullable();
             $table->string('telepon', 15)->nullable();
+            $table->integer('id_dusun');
+            $table->integer('id_rt');
+            $table->integer('id_rw');
             $table->integer('berat_lahir');
             $table->integer('panjang_lahir');
             $table->integer('kelahiran_ke');

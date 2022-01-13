@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Dusun;
 use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukSex;
 use App\Models\Model\PendudukAgama;
@@ -46,6 +47,7 @@ class PendudukController extends Controller
             "data_warganegara" => PendudukWargaNegara::all(),
             "data_kawin" => PendudukKawin::all(),
             "data_darah" => GolonganDarah::all(),
+            "data_dusun" => Dusun::all(),
         ];
         
         return view("admin/page/penduduk/create", $data);

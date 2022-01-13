@@ -10,7 +10,7 @@ class PendudukAgamaController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk_agama" => PendudukAgama::orderBy("nama", "DESC")->get()
+            "data_penduduk_agama" => PendudukAgama::orderBy("nama", "DESC")->withCount('getCountPenduduk')->get()
         ];
 
         return view("/admin/page/penduduk/agama/data_agama", $data);

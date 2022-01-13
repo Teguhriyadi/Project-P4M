@@ -10,7 +10,7 @@ class PendudukPekerjaanController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk_pekerjaan" => PendudukPekerjaan::orderBy("nama", "DESC")->get()
+            "data_penduduk_pekerjaan" => PendudukPekerjaan::orderBy("nama", "DESC")->withCount('getCountPenduduk')->get()
         ];
 
         return view("/admin/page/penduduk/pekerjaan/data_pekerjaan", $data);

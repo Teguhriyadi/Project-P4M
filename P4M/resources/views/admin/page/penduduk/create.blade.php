@@ -279,6 +279,33 @@
               </div>
               
             </div>
+
+            <div class="form-group subtitle_head text-uppercase">
+              <strong>Alamat :</strong>
+            </div>
+
+            <div class="row">
+              
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telepon">Telepon</label>
+                  <input type="text" class="form-control input-sm" name="telepon" id="telepon" value="{{ old('telepon') }}">
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="id_dusun">Dusun</label>
+                  <select name="id_dusun" id="id_dusun" class="form-control input-sm">
+                    @foreach ($data_dusun as $dusun)
+                        <option value="{{ $dusun->id }}" {{ $dusun->id == old('id_dusun') }}>{{ $dusun->dusun }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
           </div>
           
           <div class="box-footer">

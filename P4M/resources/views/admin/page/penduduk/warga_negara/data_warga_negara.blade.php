@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Warga Negara')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Info Profil Desa
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,20 +14,24 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Info Alamat</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-
+            <div class="box">
+                <div class="box-body">
+                    <center><div id="piechart"></div></center>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> Penduduk Pendidikan
+                        <i class="fa fa-bars"></i> @yield('title')
                     </h3>
                     <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
                         <i class="fa fa-plus"></i> Tambah Data
@@ -153,6 +159,25 @@
                 return true;
             }
         })
+    }
+</script>
+
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Month'],
+        <?php foreach ($data_penduduk_warga_negara as $data): ?>
+        ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
+        <?php endforeach; ?>
+        ]);
+        
+        var options = {'title' : "@yield('title')", 'width':550, 'height':400};
+        
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
     }
 </script>
 

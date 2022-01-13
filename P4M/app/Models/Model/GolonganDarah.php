@@ -14,4 +14,9 @@ class GolonganDarah extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getCountPenduduk()
+    {
+        return $this->hasMany(Penduduk::class, 'id_golongan_Darah', 'id');
+    }
 }

@@ -13,8 +13,6 @@ class Artikel extends Model
 
     protected $guarded = [''];
 
-    public $timestamps = false;
-
     protected $with = ["getCategory"];
 
     public function getCategory()
