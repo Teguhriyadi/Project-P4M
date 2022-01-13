@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        Kategori
+        Data Jabatan
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +12,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li class="active">Data Jabatan</li>
     </ol>
 </section>
 

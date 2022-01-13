@@ -13,6 +13,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\JenisSDAController;
 use App\Http\Controllers\JenisSDKController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KlasifikasiSuratController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
@@ -231,6 +232,18 @@ Route::prefix("page")->group(function() {
                 Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
             });
 
+            // Kependudukan
+            Route::prefix('/kependudukan')->group(function () {
+                // Penduduk
+                Route::resource('/penduduk', PendudukController::class);
+            });
+
+            Route::prefix("surat")->group(function() {
+                Route::get("/klasifikasi/edit", [KlasifikasiSuratController::class, "edit"]);
+                Route::put("/klasifikasi/simpan", [KlasifikasiSuratController::class, "update"]);
+                Route::resource("/klasifikasi", KlasifikasiSuratController::class);
+            });
+
             Route::prefix('/pengaturan')->group(function () {
                 // Akun
                 Route::get("/akun/edit", [AkunController::class, "edit"]);
@@ -242,12 +255,6 @@ Route::prefix("page")->group(function() {
 
                 // TerakhirLogin
                 Route::resource("/terakhir_login", TerakhirLoginController::class);
-            });
-
-            // Kependudukan
-            Route::prefix('/kependudukan')->group(function () {
-                // Penduduk
-                Route::resource('/penduduk', PendudukController::class);
             });
 
             // Profil Desa

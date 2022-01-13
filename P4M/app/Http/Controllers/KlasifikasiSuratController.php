@@ -14,7 +14,11 @@ class KlasifikasiSuratController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            "data_klasifikasi_surat" => KlasifikasiSurat::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/surat/klasifikasi/data_klasifikasi_surat", $data);
     }
 
     /**
@@ -35,51 +39,34 @@ class KlasifikasiSuratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KlasifikasiSurat::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\KlasifikasiSurat  $klasifikasiSurat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(KlasifikasiSurat $klasifikasiSurat)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => KlasifikasiSurat::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/surat/klasifikasi/edit_data_klasifikasi_surat", $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\KlasifikasiSurat  $klasifikasiSurat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(KlasifikasiSurat $klasifikasiSurat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\KlasifikasiSurat  $klasifikasiSurat
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, KlasifikasiSurat $klasifikasiSurat)
     {
-        //
+        KlasifikasiSurat::where("id", $request->id)->update([
+            "kode" => $request->kode,
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\KlasifikasiSurat  $klasifikasiSurat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(KlasifikasiSurat $klasifikasiSurat)
+    public function destroy($id)
     {
-        //
+        KlasifikasiSurat::where("id", $id)->delete();
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }
