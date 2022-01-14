@@ -12,4 +12,9 @@ class Rt extends Model
     protected $table = "tb_rt";
 
     protected $fillable = ['rt', 'id_pejabat'];
+
+    public function getCountPenduduk()
+    {
+        return $this->hasMany(Penduduk::class, 'id_rt', 'id');
+    }
 }

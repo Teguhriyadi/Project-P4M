@@ -93,10 +93,12 @@ class PendudukController extends Controller
         ]);
 
         $validatedData["status_hidup"] = 1;
+        $validatedData["id_golongan_darah"] = $request->id_golongan_darah;
+        $validatedData["telepon"] = $request->telepon;
 
         Penduduk::create($validatedData);
 
-        return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");;
+        return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
     
     /**
@@ -143,6 +145,12 @@ class PendudukController extends Controller
     */
     public function destroy($id)
     {
-        //
+        $penduduk = Penduduk::where('id', $id)->first();
+
+        if ($penduduk) {
+            Penduduk::where('id', $penduduk->id)->delete();
+
+            return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        }
     }
 }

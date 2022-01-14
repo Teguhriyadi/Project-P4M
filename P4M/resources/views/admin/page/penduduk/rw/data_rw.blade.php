@@ -167,9 +167,9 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
-        <?php //foreach ($data_rw as $data): ?>
-        // ["{{ 'asep' }}", {{ 1 }}],
-        <?php //endforeach; ?>
+        <?php foreach ($data_rw as $data): ?>
+        ["{{ $data->rw }}", {{ $data->getCountPenduduk->count() }}],
+        <?php endforeach; ?>
         ]);
         
         var options = {'title' : "@yield('title')", 'width':550, 'height':400};

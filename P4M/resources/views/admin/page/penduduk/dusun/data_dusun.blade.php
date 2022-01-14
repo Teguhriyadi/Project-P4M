@@ -21,7 +21,11 @@
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-
+            <div class="box">
+                <div class="box-body">
+                    <center><div id="piechart"></div></center>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="box">
@@ -155,6 +159,25 @@
                 return true;
             }
         })
+    }
+</script>
+
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Month'],
+        <?php foreach ($data_dusun as $data): ?>
+         ["{{ $data->dusun }}", {{ $data->getCountPenduduk->count() }}],
+        <?php endforeach; ?>
+        ]);
+        
+        var options = {'title' : "@yield('title')", 'width':550, 'height':400};
+        
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
     }
 </script>
 

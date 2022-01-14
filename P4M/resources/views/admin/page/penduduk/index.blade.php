@@ -83,7 +83,11 @@ setLocale(LC_ALL, 'id', 'ID')
                                                     <a href="" target="_blank" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-print"></i> Cetak Biodata Penduduk</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-trash-o"></i> Hapus</a>
+                                                    <form action="{{ url('page/admin/kependudukan/penduduk/'.$p->id) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-trash-o"></i> Hapus</button>
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </div>

@@ -12,4 +12,9 @@ class Dusun extends Model
     protected $table = "tb_dusun";
 
     protected $guarded = [''];
+
+    public function getCountPenduduk()
+    {
+        return $this->hasMany(Penduduk::class, 'id_dusun', 'id');
+    }
 }
