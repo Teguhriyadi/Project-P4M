@@ -32,6 +32,8 @@ use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\PendudukController;
+use App\Http\Controllers\RtController;
+use App\Http\Controllers\RwController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -169,6 +171,16 @@ Route::prefix("page")->group(function() {
                 Route::get("/dusun/edit", [DusunController::class, "edit"]);
                 Route::put("/dusun/simpan", [DusunController::class, "update"]);
                 Route::resource("/dusun", DusunController::class);
+                
+                // RT
+                Route::get("/rt/edit", [RtController::class, "edit"]);
+                Route::put("/rt/simpan", [RtController::class, "update"]);
+                Route::resource("/rt", RtController::class);
+                
+                // RW
+                Route::get("/rw/edit", [RwController::class, "edit"]);
+                Route::put("/rw/simpan", [RwController::class, "update"]);
+                Route::resource("/rw", RwController::class);
 
                 // Pendidikan
                 Route::get("/pendidikan/edit", [PendudukPendidikanController::class, "edit"]);

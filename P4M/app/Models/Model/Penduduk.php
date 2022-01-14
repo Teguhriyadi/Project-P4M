@@ -15,7 +15,7 @@ class Penduduk extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin', 'getHubungan', 'getKelamin', 'getAgama', 'getWargaNegara'];
+    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin', 'getHubungan', 'getKelamin', 'getAgama', 'getWargaNegara', 'getRt', 'getRw'];
 
     public function getPendidikan()
     {
@@ -61,9 +61,16 @@ class Penduduk extends Model
     {
         return $this->hasOne(GolonganDarah::class, "id", "id_golongan_darah");
     }
-    // RT
+    
+    public function getRt()
+    {
+        return $this->hasOne(Rt::class, "id", "id_rt");
+    }
 
-    // RW
+    public function getRw()
+    {
+        return $this->hasOne(Rw::class, "id", "id_rw");
+    }
 
     public function getStatusHidup($id)
     {

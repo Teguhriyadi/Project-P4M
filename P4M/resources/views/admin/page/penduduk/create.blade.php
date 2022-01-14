@@ -304,6 +304,28 @@
                 </div>
               </div>
 
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="id_rt">RT</label>
+                  <select name="id_rt" id="id_rt" class="form-control input-sm">
+                    @foreach ($data_rt as $rt)
+                        <option value="{{ $rt->id }}" {{ $rt->id == old('id_rt') }}>{{ $rt->rt }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="id_rw">RW</label>
+                  <select name="id_rw" id="id_rw" class="form-control input-sm">
+                    @foreach ($data_rw as $rw)
+                        <option value="{{ $rw->id }}" {{ $rw->id == old('id_rw') }}>{{ $rw->rw }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
             </div>
 
           </div>

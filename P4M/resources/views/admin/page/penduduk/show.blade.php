@@ -177,17 +177,17 @@ setLocale(LC_ALL, 'id', 'ID')
                                 <tr>
                                     <td>Nomor Telepon</td>
                                     <td >:</td>
-                                    <td></td>
+                                    <td>{{ $penduduk->telepon }}</td>
                                 </tr>
                                 <tr>
                                     <td>Dusun</td>
                                     <td >:</td>
-                                    <td>MANGSIT</td>
+                                    <td>{{ $penduduk->getDusun->dusun }}</td>
                                 </tr>
                                 <tr>
                                     <td>RT/ RW</td>
                                     <td >:</td>
-                                    <td>004 / -</td>
+                                    <td>{{ $penduduk->getRt->rt }} / {{ $penduduk->getRw->rw }}</td>
                                 </tr>
                                 <tr>
                                     <th colspan="3" class="subtitle_head"><strong>STATUS PERKAWINAN DAN KESEHATAN</strong></th>

@@ -92,9 +92,9 @@ setLocale(LC_ALL, 'id', 'ID')
                                     <td>{{ $p->kk_sebelumnya }}</td>
                                     <td>{{ $p->nama_ayah }}</td>
                                     <td>{{ $p->nama_ibu }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $p->getDusun->dusun }}</td>
+                                    <td>{{ $p->getRw->rw }}</td>
+                                    <td>{{ $p->getRt->rt }}</td>
                                     <td>{{ $p->getStatusHidup($p->status_hidup) }}</td>
                                     <td>{{ date("y") - date('y', strtotime($p->tgl_lahir)) }}</td>
                                     <td>{{ $p->created_at->formatLocalized("%d %B %Y") }}</td>

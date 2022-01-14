@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbDusunTable extends Migration
+class CreateRwsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTbDusunTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_dusun', function (Blueprint $table) {
+        Schema::create('tb_rw', function (Blueprint $table) {
             $table->id();
-            $table->string("dusun");
+            $table->string('rw');
             $table->integer("id_pejabat")->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateTbDusunTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_dusun');
+        Schema::dropIfExists('tb_rw');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Rt;
+use App\Models\Model\Rw;
 use App\Models\Model\Dusun;
 use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukSex;
@@ -48,6 +50,8 @@ class PendudukController extends Controller
             "data_kawin" => PendudukKawin::all(),
             "data_darah" => GolonganDarah::all(),
             "data_dusun" => Dusun::all(),
+            "data_rt" => Rt::all(),
+            "data_rw" => Rw::all(),
         ];
         
         return view("admin/page/penduduk/create", $data);
@@ -83,6 +87,9 @@ class PendudukController extends Controller
             "nama_ayah" => "required",
             "nama_ibu" => "required",
             "status_kawin" => "required",
+            "id_rt" => "required",
+            "id_rw" => "required",
+            "id_dusun" => "required",
         ]);
 
         $validatedData["status_hidup"] = 1;
