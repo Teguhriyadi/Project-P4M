@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\RtRw;
+use App\Models\Model\Rt;
+use App\Models\Model\Rw;
+use App\Models\Model\Dusun;
 use App\Models\Model\Peta;
 use App\Models\Model\Alamat;
 use App\Models\Model\Artikel;
@@ -179,7 +181,7 @@ class UserController extends Controller
 
     public function wilayahAdministratif()
     {
-        $dataDusun = RtRw::all();
+        $dataDusun = Dusun::all();
 
         return view("pengunjung/page/data_desa/wilayah-administratif", compact('dataDusun'));
     }

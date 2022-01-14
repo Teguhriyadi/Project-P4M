@@ -17,4 +17,9 @@ class Dusun extends Model
     {
         return $this->hasMany(Penduduk::class, 'id_dusun', 'id');
     }
+    
+    public function getPenduduk()
+    {
+        return $this->hasOne(Penduduk::class, 'id_dusun', 'id');
+    }
 }
