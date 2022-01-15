@@ -4,11 +4,6 @@
 
 @section('page_content')
 
-@php
-setLocale(LC_ALL, 'id', 'ID');
-$data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
-@endphp
-
 <style>
     .subtitle_head {
         padding: 10px 50px 10px 5px;

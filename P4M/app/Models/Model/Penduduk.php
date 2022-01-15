@@ -15,7 +15,7 @@ class Penduduk extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin', 'getHubungan', 'getKelamin', 'getAgama', 'getWargaNegara', 'getRt', 'getRw'];
+    protected $with = ['getPendidikan', 'getPekerjaan', 'getKawin', 'getHubungan', 'getKelamin', 'getAgama', 'getWargaNegara', 'getDusun' , 'getRt', 'getRw'];
 
     public function getPendidikan()
     {
