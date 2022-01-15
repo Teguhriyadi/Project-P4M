@@ -61,7 +61,7 @@ class Penduduk extends Model
     {
         return $this->hasOne(GolonganDarah::class, "id", "id_golongan_darah");
     }
-    
+
     public function getRt()
     {
         return $this->hasOne(Rt::class, "id", "id_rt");

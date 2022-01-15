@@ -51,7 +51,7 @@ setLocale(LC_ALL, 'id', 'ID')
                     <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-info btn-sm"><i class="fa fa-arrow-circle-o-left"></i> Kembali</a>
                     <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/edit') }}" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-edit"></i> Ubah Biodata</a>
                 </div>
-                
+
                 <div class="box-body">
                     <div class="box-header with-border">
                         <h3 class="box-title">Biodata Penduduk (NIK : {{ $penduduk->nik }})</h3>
@@ -107,8 +107,14 @@ setLocale(LC_ALL, 'id', 'ID')
                                 </tr>
                                 <tr>
                                     <td>Tempat / Tanggal Lahir</td>
-                                    <td >:</td>
-                                    <td>{{ $penduduk->tempat_lahir }} / {{ date('d F Y', strtotime($penduduk->tgl_lahir)) }}</td>
+                                    <td>:</td>
+                                    <td>
+                                        {{ $penduduk->tempat_lahir }} /
+                                        <?php
+                                            use Carbon\Carbon;
+                                            echo $today = Carbon::now()->isoFormat('D MMMM Y');
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Anak Ke</td>
