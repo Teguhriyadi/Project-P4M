@@ -15,7 +15,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
-
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
@@ -56,18 +55,18 @@
                         @else
                         <img src="{{ url('storage/'.auth()->user()->gambar) }}" class="user-image" alt="User Image">
                         @endif
-                        <span class="hidden-xs">{{ auth()->user()->name }}</span>
+                        <span class="hidden-xs">{{ auth()->user() ? auth()->user()->name : '' }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            @if (auth()->user()->gambar)
-                            <img src="{{ url('storage/'.auth()->user()->gambar) }}" class="img-circle" alt="User Image">
-                            @else
+                            @if (empty(auth()->user()->gambar))
                             <img src="{{ url('gambar/gambar_user.png') }}" class="img-circle" alt="User Image">
+                            @else
+                            <img src="{{ url('storage/'.auth()->user()->gambar) }}" class="img-circle" alt="User Image">
                             @endif
                             <p>
-                                {{ auth()->user()->name }} - {{ auth()->user()->getHakAkses->nama_hak_akses }}
+                                {{ auth()->user() ? auth()->user()->name : '' }} - {{ auth()->user() ? auth()->user()->getHakAkses->nama_hak_akses : '' }}
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>

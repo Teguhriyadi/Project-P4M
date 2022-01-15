@@ -28,7 +28,7 @@
                 <img src="{{ url('gambar/gambar_user.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p class="text-capitalize">{{Auth::user()->name}}</p>
+                <p class="text-capitalize">{{ Auth::user() ? Auth::user()->name : '' }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -53,9 +53,14 @@
                             <i class="fa fa-circle-o"></i> Profil Desa
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/info/administratif') ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/info/administratif') }}">
-                            <i class="fa fa-circle-o"></i> Wilayah Administratif
+                    <li class="{{ Request::is('page/admin/info/visi-misi') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/info/visi-misi') }}">
+                            <i class="fa fa-circle-o"></i> Visi Misi
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/info/geografis') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/info/geografis') }}">
+                            <i class="fa fa-circle-o"></i> Letak Geografis
                         </a>
                     </li>
                 </ul>

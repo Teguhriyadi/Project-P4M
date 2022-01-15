@@ -5,7 +5,13 @@
 @section('page_content')
 
 <div class="single_category wow fadeInDown">
-    <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <span class="title_text">@yield('title')</span> </h2>
+    <h2>
+        <span class="bold_line">
+            <span></span>
+        </span>
+        <span class="solid_line"></span>
+        <span class="title_text">@yield('title')</span>
+    </h2>
 </div>
 <div class="single_category wow fadeInDown">
     <div class="archive_style_1">

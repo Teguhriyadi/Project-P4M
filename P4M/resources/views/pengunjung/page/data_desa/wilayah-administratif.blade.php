@@ -26,7 +26,8 @@
                         @endphp
                         <tr>
                             <td>{!! $data->dusun !!}</td>
-
+                            <td></td>
+                            <td></td>
                             <td>{!! $data->getCountPenduduk->count() !!}</td>
                         </tr>
                     @endforeach
