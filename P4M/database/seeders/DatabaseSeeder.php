@@ -43,5 +43,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RefPindahSeeder::class);
         $this->call(PeristiwaSeeder::class);
         $this->call(GolonganDarahSeeder::class);
+        $this->call(DusunSeeder::class);
+        $this->call(RtSeeder::class);
+        $this->call(RwSeeder::class);
     }
 }

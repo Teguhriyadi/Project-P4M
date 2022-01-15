@@ -238,6 +238,7 @@ Route::prefix("page")->group(function() {
             // Kependudukan
             Route::prefix('/kependudukan')->group(function () {
                 // Penduduk
+                Route::get('/penduduk/{id}/cetak', [PendudukController::class, "cetak"]);
                 Route::resource('/penduduk', PendudukController::class);
             });
 

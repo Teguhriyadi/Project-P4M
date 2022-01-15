@@ -49,7 +49,7 @@ setLocale(LC_ALL, 'id', 'ID')
             <div class="box">
                 <div class="box-header">
                     <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-info btn-sm"><i class="fa fa-arrow-circle-o-left"></i> Kembali</a>
-                    <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-edit"></i> Ubah Biodata</a>
+                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/edit') }}" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-edit"></i> Ubah Biodata</a>
                 </div>
                 
                 <div class="box-body">
