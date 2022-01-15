@@ -1,6 +1,11 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+@php
+    use App\Models\Model\Profil;
+	$profil = Profil::first();
+    setLocale(LC_ALL, 'id', 'ID');
+    $data = Carbon\Carbon::now();
+@endphp
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="{{ url('backend/template/plugins/cetak') }}/960.css" type="text/css" media="screen">
     <link rel="stylesheet" href="{{ url('backend/template/plugins/cetak') }}/screen.css" type="text/css" media="screen" />
@@ -135,7 +140,7 @@
             <tr>
                 <td align="center" scope="col" width="40%">Yang Bersangkutan</td>
                 <td align="center" scope="col" width="10%">&nbsp;</td>
-                <td align="center" scope="col" width="50%">Desa Arahan Lor , {{ date('d F Y') }}</td>
+                <td align="center" scope="col" width="50%">Desa Arahan Lor , {{ $data->formatLocalized("%d %B %Y") }}</td>
             </tr>
             <tr>
                 <td align="center">&nbsp;</td>

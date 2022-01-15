@@ -5,7 +5,8 @@
 @section('page_content')
 
 @php
-setLocale(LC_ALL, 'id', 'ID')
+setLocale(LC_ALL, 'id', 'ID');
+$data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
 @endphp
 
 <style>
@@ -50,6 +51,7 @@ setLocale(LC_ALL, 'id', 'ID')
                 <div class="box-header">
                     <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-info btn-sm"><i class="fa fa-arrow-circle-o-left"></i> Kembali</a>
                     <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/edit') }}" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-edit"></i> Ubah Biodata</a>
+                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/cetak') }}" class="btn btn-social btn-flat btn-primary btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak Penduduk</a>
                 </div>
 
                 <div class="box-body">
@@ -112,7 +114,8 @@ setLocale(LC_ALL, 'id', 'ID')
                                         {{ $penduduk->tempat_lahir }} /
                                         <?php
                                             use Carbon\Carbon;
-                                            echo $today = Carbon::now()->isoFormat('D MMMM Y');
+                                            $date = Carbon::parse($penduduk->tgl_lahir);
+                                            echo $date->isoFormat('D MMMM Y');
                                         ?>
                                     </td>
                                 </tr>
