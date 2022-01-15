@@ -15,75 +15,74 @@
 
 <section class="content">
     <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua">
-                    <i class="ion ion-ios-gear-outline"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">
-                        Data Users
-                    </span>
-                    <span class="info-box-number">
-                        90 <small>&</small>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua">
-                    <i class="ion ion-ios-gear-outline"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">
-                        Data Users
-                    </span>
-                    <span class="info-box-number">
-                        90 <small>&</small>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua">
-                    <i class="ion ion-ios-gear-outline"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">
-                        Data Users
-                    </span>
-                    <span class="info-box-number">
-                        90 <small>&</small>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua">
-                    <i class="ion ion-ios-gear-outline"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">
-                        Data Users
-                    </span>
-                    <span class="info-box-number">
-                        90 <small>&</small>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-6">
-
-            <div id="tree"></div>
-
+            <div class="box box-info">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-purple">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Selengkapnya <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Selengkapnya <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Selengkapnya <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Selengkapnya <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         Terakhir Login
@@ -117,6 +116,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div id="tree"></div>
+
+        </div>
+        <div class="col-md-6">
+
         </div>
     </div>
 </section>
