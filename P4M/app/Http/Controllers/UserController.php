@@ -36,7 +36,6 @@ class UserController extends Controller
     {
         $data = [
             "data_profil" => Profil::latest()->paginate(1),
-            "data_berita" => Artikel::latest()->paginate(6),
             "data_galeri" => Galeri::latest()->paginate(6),
         ];
 
@@ -46,20 +45,19 @@ class UserController extends Controller
     public function artikel()
     {
         $data = [
-            "data_berita" => Artikel::latest()->paginate(6)
+            "data_artikel" => Artikel::latest()->paginate(6)
         ];
 
-        return view("/pengunjung/page/berita/index", $data);
+        return view("/pengunjung/page/artikel/index", $data);
     }
 
     public function detailArtikel($slug)
     {
         $data = [
-            "detail" => Artikel::where("slug", $slug)->first(),
-            "berita" => Artikel::where("slug", $slug)->first()
+            "artikel" => Artikel::where("slug", $slug)->first()
         ];
 
-        return view("/pengunjung/page/berita/detail", $data);
+        return view("/pengunjung/page/artikel/detail", $data);
     }
 
     public function galeri()

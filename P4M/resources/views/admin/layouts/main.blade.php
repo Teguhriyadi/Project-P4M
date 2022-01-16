@@ -1,9 +1,13 @@
+@php
+    use App\Models\Model\Profil;
+	$profil = Profil::first();
+@endphp
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistem Informasi Desa Arahan Lor | @yield('page_title') </title>
+    <title>Desa {{ $profil ? $profil->nama_desa : 'Anonymous' }} | @yield('title') </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -13,7 +17,7 @@
 	<meta name="copyright" content="Team P4M"./>
 	<meta name="author" content="Team P4M"./>
 
-    <link rel="icon" href="{{ url('/frontend/') }}/img/logo-kabupaten.png">
+    <link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
     @include('admin/layouts/partials/css/style2')
 
     @yield('page_css')
@@ -49,7 +53,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2021-{{ date('Y') }} <a href="./">Arahan Lor</a>.</strong> All rights
+            <strong>Copyright &copy; 2021-{{ date('Y') }} <a href="./">{{ $profil ? $profil->nama_desa : 'Anonymous' }}</a>.</strong> All rights
             reserved.
         </footer>
 

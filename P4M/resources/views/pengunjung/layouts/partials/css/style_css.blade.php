@@ -1,4 +1,4 @@
-<link rel="icon" href="/frontend/img/logo-desa.png">
+
 <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
 <link rel="stylesheet" href="/frontend/css/font-awesome.min.css">
 <link rel="stylesheet" href="/frontend/css/animate.css">

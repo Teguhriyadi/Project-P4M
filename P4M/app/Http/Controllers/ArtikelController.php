@@ -45,7 +45,7 @@ class ArtikelController extends Controller
 
         $validatedData['slug'] = Str::slug($request->judul);
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['kutipan'] = Str::limit(strip_tags($request->body, 200));
+        $validatedData['kutipan'] = Str::limit(strip_tags($request->body, 1000));
 
         Artikel::create($validatedData);
 

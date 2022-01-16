@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="{{ url('/page/admin/dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>AL</b></span>
+        <span class="logo-mini"><b>{{ $profil ? $profil->nama_desa : 'Anonymous' }}</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Arahan</b> Lor</span>
+        <span class="logo-lg"><b>{{ $profil ? $profil->nama_desa : 'Anonymous' }}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

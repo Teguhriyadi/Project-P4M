@@ -1,6 +1,6 @@
 @extends('pengunjung/layouts/main')
 
-@section('title', 'Struktur Organisasi')
+@section('title', 'Struktur Organisasi Desa')
 
 @section('page_content')
 <style>
@@ -92,7 +92,7 @@
 </style>
 </style>
 <div id="printableArea">
-  <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">Profil Wilayah Desa Arahan Lor</font></h4>
+  <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">@yield('title')</font></h4>
   <div class="post_commentbox">
     <span class="meta_date">
       <i class="fa fa-user"></i>Administrator&nbsp;

@@ -9,12 +9,12 @@
                             <table>
                                 <tr>
                                     <td class="hidden-xs">
-                                        <img class="" src="/frontend/img/logo-desa.png" width="30" valign="top" alt="Arahan Lor"/>
+                                        <img class="" src="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}" width="30" valign="top" alt="Arahan Lor"/>
                                     </td>
                                     <td>
                                         <a href="">
-                                            <font size="4">Website Resmi Desa Arahan Lor</font><br />
-                                            <font size="2">Kec. Arahan Kab. Indramayu Prov. Jawa Barat</font>
+                                            <font size="4">{{ $profil ? 'Desa '.$profil->nama_desa : 'Anonymous' }}</font><br />
+                                            <font size="2">{{ $profil ? 'Kec. '.$profil->kecamatan : 'Anonymous' }} {{ $profil ? 'Kab. '.$profil->kabupaten : 'Anonymous' }} {{ $profil ? 'Prov. '.$profil->provinsi : 'Anonymous' }}</font>
                                         </a>
                                     </td>
                                 </tr>

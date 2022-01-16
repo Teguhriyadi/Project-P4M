@@ -1,5 +1,6 @@
 @php
-    // setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+    use App\Models\Model\Profil;
+	$profil = Profil::first();
 @endphp
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,8 @@
 	<meta http-equiv="encoding" content="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
-	<title>Website Resmi Desa Arahan Lor Kecamatan Arut Selatan Kabupaten Kotawaringin Barat</title>
+	<title>Desa {{ $profil ? $profil->nama_desa : 'Anonymous' }}</title>
+	<link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
 	@include('pengunjung/layouts/partials/css/style_css')
 
 	<style>
