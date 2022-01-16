@@ -20,16 +20,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#tab_1" data-toggle="tab">Profil Desa</a>
-                    </li>
-                    <li>
-                        <a href="#tab_2" data-toggle="tab">Alamat</a>
-                    </li>
-                </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab_1">
+                    <div class="tab-pane active">
                         <div class="row">
                             @if ($data_profil->count())
                             @foreach ($data_profil as $profil)
@@ -176,96 +168,6 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_2">
-                            <div class="row">
-                                @if ($data_alamat->count())
-                                @foreach ($data_alamat as $alamat)
-                                <form action="{{ url('/page/admin/alamat/'.$alamat->id) }}" method="POST" id="formAlamat">
-                                    @method("PUT")
-                                    @endforeach
-                                    @else
-                                    <form action="{{ url('/page/admin/alamat') }}" method="POST" id="formAlamat">
-                                        @endif
-                                        @csrf
-                                        <div class="col-md-4">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                    <h3 class="box-title">
-                                                        @if ($data_alamat->count())
-                                                        <i class="fa fa-pencil"></i> Edit Data Alamat
-                                                        @else
-                                                        <i class="fa fa-plus"></i> Tambah Data Alamat
-                                                        @endif
-                                                    </h3>
-                                                </div>
-                                                <div class="box-body">
-                                                    @if ($data_alamat->count())
-                                                    @foreach ($data_alamat as $alamat)
-                                                    <div class="form-group">
-                                                        <label for="website"> Website </label>
-                                                        <input type="text" class="form-control" name="website" id="website" placeholder="Masukkan Nama Website" value="{{ $alamat->website }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="no_telepon"> No. Telepon </label>
-                                                        <input type="text" class="form-control" name="no_telepon" placeholder="0" value="{{ $alamat->no_telepon }}">
-                                                    </div>
-                                                    @endforeach
-                                                    @else
-                                                    <div class="form-group">
-                                                        <label for="website"> Website </label>
-                                                        <input type="text" class="form-control" name="website" id="website" placeholder="Masukkan Nama Website">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="no_telepon"> No. Telepon </label>
-                                                        <input type="text" class="form-control" name="no_telepon" placeholder="0">
-                                                    </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                    <h3 class="box-title">
-                                                        <i class="fa fa-map"></i> Alamat
-                                                    </h3>
-                                                </div>
-                                                <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label for="alamat"> Alamat </label>
-                                                        @if ($data_alamat->count())
-                                                        @foreach ($data_alamat as $alamat)
-                                                        <textarea name="alamat" id="alamat" cols="80" rows="10">
-                                                            {{ $alamat->alamat }}
-                                                        </textarea>
-                                                        @endforeach
-                                                        @else
-                                                        <textarea name="alamat" id="alamat" cols="80" rows="10">
-                                                            Alamat
-                                                        </textarea>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="box-footer">
-                                                    @if ($data_alamat->count())
-                                                    <button type="submit" class="btn btn-success btn-sm">
-                                                        <i class="fa fa-edit"></i> Simpan
-                                                    </button>
-                                                    @else
-                                                    <button type="submit" class="btn btn-primary btn-sm">
-                                                        <i class="fa fa-plus"></i> Tambah
-                                                    </button>
-                                                    @endif
-                                                    <button type="reset" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-refresh"></i> Batal
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </section>

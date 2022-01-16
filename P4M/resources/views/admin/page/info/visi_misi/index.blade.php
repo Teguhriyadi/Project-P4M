@@ -21,11 +21,11 @@
         <div class="col-md-12">
             @if ($data_visi_misi->count())
                 @foreach ($data_visi_misi as $visi_misi)
-                <form action="{{ url('/page/admin/visi_misi') }}/{{ $visi_misi->id }}" id="formVisiMisi" method="POST">
+                <form action="{{ url('/page/admin/info/visi-misi') }}/{{ $visi_misi->id }}" id="formVisiMisi" method="POST">
                     @method("PUT")
                 @endforeach
             @else
-            <form action="{{ url('/page/admin/visi_misi') }}" method="POST" id="formVisiMisi">
+            <form action="{{ url('/page/admin/info/visi-misi') }}" method="POST" id="formVisiMisi">
             @endif
                 @csrf
                 <div class="box box-info">
