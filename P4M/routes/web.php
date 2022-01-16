@@ -262,7 +262,7 @@ Route::prefix("page")->group(function() {
                 // Akun
                 Route::get("/akun/edit", [AkunController::class, "edit"]);
                 Route::patch("/akun", [AkunController::class, "update"]);
-                Route::resource("/akun", AkunController::class);
+                Route::resource("/akun", AkunController::class)->middleware("can:admin");
 
                 // Hak Akses
                 Route::resource("/hak_akses", HakAksesController::class);

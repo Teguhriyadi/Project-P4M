@@ -40,6 +40,13 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            @can("admin")
+            <li class="treeview">
+                <a href="{{ url('/page/contoh') }}">
+                    Contoh
+                </a>
+            </li>
+            @endcan
             <li class="treeview {{ Request::segment(3)=='info' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i> <span>Info Desa</span>
@@ -325,6 +332,7 @@
                     <i class="fa fa-inbox"></i> <span>Kotak Pesan</span>
                 </a>
             </li>
+            @can("admin")
             <li class="treeview {{ Request::segment(3)=='pengaturan' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-gear"></i> <span>Pengaturan</span>
@@ -350,6 +358,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
         </ul>
     </section>
 </aside>
