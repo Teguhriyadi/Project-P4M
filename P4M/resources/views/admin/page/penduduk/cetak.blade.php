@@ -1,8 +1,7 @@
 @php
+    use Carbon\Carbon;
     use App\Models\Model\Profil;
 	$profil = Profil::first();
-    setLocale(LC_ALL, 'id', 'ID');
-    $data = Carbon\Carbon::now();
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +53,7 @@
                 </td>
                 <td>
                     <h3>BIODATA PENDUDUK WARGA NEGARA INDONESIA</h3>
-                    <h5>Kab. Indramayu , Kec. Arahan , Desa Arahan Lor </h5>
+                    <h5>{{ 'Kab. '.$profil->kabupaten }}, {{ 'Kec. '.$profil->kecamatan }}, {{ 'Desa '.$profil->nama_desa }} </h5>
                 </td>
             </tr>
         </table>
@@ -74,7 +73,7 @@
             </tr>
             <tr>
                 <td>Tanggal Lahir</td><td >:</td>
-                <td>{{ date('d-m-Y', strtotime($penduduk->tgl_lahir)) }}</td>
+                <td>{{ Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir)->isoFormat('D MMMM Y') }}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td><td >:</td>
@@ -140,12 +139,12 @@
             <tr>
                 <td align="center" scope="col" width="40%">Yang Bersangkutan</td>
                 <td align="center" scope="col" width="10%">&nbsp;</td>
-                <td align="center" scope="col" width="50%">Desa Arahan Lor , {{ $data->formatLocalized("%d %B %Y") }}</td>
+                <td align="center" scope="col" width="50%">{{ 'Desa '.$profil->nama_desa }}, {{ Carbon::now()->isoFormat("D MMMM Y") }}</td>
             </tr>
             <tr>
                 <td align="center">&nbsp;</td>
                 <td align="center">&nbsp;</td>
-                <td align="center">Kepala Desa Arahan Lor</td>
+                <td align="center">Kepala {{ 'Desa '.$profil->nama_desa }}</td>
             </tr>
             <tr>
                 <td align="center" colspan="3" height="90px">&nbsp;</td>

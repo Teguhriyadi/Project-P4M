@@ -17,6 +17,7 @@ class CreateTbProfilTable extends Migration
             $table->id();
             $table->string("nama_desa");
             $table->string("kecamatan");
+            $table->string("kabupaten");
             $table->string("provinsi");
             $table->string("negara");
             $table->string("kode_pos");

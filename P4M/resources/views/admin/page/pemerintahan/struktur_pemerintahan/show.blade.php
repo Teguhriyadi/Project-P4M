@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('page_title', 'Dashboard')
+@section('title', 'Data Struktur Pemerintahan')
 
 @section('page_content')
 
@@ -10,7 +10,7 @@
 
 <section class="content-header">
     <h1>
-        Data Struktur Pemerintahan
+      @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -18,7 +18,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 

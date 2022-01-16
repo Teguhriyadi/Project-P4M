@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Visi & Misi')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Info Profil Desa
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Info Alamat</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -32,9 +34,9 @@
                     <div class="box-header">
                         <h3 class="box-title">
                             @if ($data_visi_misi->count())
-                            <i class="fa fa-edit"></i> Edit Visi & Misi
+                            <i class="fa fa-edit"></i> Edit @yield('title')
                             @else
-                            <i class="fa fa-plus"></i> Tambah Data Visi & Misi
+                            <i class="fa fa-plus"></i> Tambah @yield('title')
                             @endif
                         </h3>
                     </div>

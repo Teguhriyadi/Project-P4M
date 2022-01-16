@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Edit Hak Akses')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Kategori
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -22,7 +24,7 @@
             <div class="box" id="">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-plus"></i> Tambah Data Hak Akses
+                        <i class="fa fa-plus"></i> Tambah @yield('title')
                     </h3>
                 </div>
                 <form action="{{ url('/page/admin/pengaturan/hak_akses/'.$edit->id) }}" method="POST" id="editHakAkses">
@@ -54,7 +56,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Data Hak Akses
+                        @yield('title')
                     </h3>
                 </div>
                 <div class="box-body">

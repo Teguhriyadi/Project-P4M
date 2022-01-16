@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Wilayah Geografis')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Wilayah Geografis
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Jabatan</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -22,7 +24,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-map-marker"></i> Wilayah Geografis
+                        <i class="fa fa-map-marker"></i> @yield('title')
                     </h3>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">

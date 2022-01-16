@@ -192,7 +192,7 @@
                     </li>
                     <li class="{{ Request::is('page/admin/surat/format') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/format') }}">
-                            <i class="fa fa-circle-o"></i> Surat Format
+                            <i class="fa fa-circle-o"></i> Format Surat
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/surat/permohonan') ? 'active' : '' }}">

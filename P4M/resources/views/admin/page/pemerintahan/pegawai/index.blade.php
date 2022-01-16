@@ -1,12 +1,12 @@
 @extends('admin.layouts.main')
 
-@section('page_title', 'Dashboard')
+@section('title', 'Data Pegawai')
 
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Pegawai
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -14,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Data Pegawai</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -93,7 +93,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Tambah Data Pegawai
+                    <i class="fa fa-plus"></i> Tambah @yield('title')
                 </h4>
             </div>
             <form class="form-horizontal" action="{{ url('/page/admin/pemerintahan/pegawai') }}" method="POST" enctype="multipart/form-data" id="tambahPegawai">
@@ -163,7 +163,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-edit"></i> Edit Data Pegawai
+                    <i class="fa fa-edit"></i> Edit @yield('title')
                 </h4>
             </div>
             <form class="form-horizontal" action="{{ url('/page/admin/pemerintahan/pegawai/simpan') }}" method="POST" enctype="multipart/form-data" id="editPegawai">

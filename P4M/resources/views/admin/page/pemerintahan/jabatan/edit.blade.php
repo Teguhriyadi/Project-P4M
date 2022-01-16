@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Edit Data Jabatan')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Jabatan
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -14,10 +16,10 @@
         </li>
         <li>
             <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
-                <i class="fa fa-gavel"></i> Data Jabatan
+                <i class="fa fa-gavel"></i> @yield('title')
             </a>
         </li>
-        <li class="active">Edit Data Jabatan</li>
+        <li class="active">Edit @yield('title')</li>
     </ol>
 </section>
 
@@ -27,7 +29,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-edit"></i> Edit Data Jabatan
+                        <i class="fa fa-edit"></i> Edit @yield('title')
                     </h3>
                 </div>
                 <form id="editJabatan" action="{{ url('/page/admin/pemerintahan/jabatan/'.$edit->id) }}" method="POST">

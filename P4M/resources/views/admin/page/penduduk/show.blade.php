@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 <style>
     .subtitle_head {
         padding: 10px 50px 10px 5px;
@@ -55,11 +59,11 @@
                         <br>
                         <p class="kecil">
                             Terdaftar pada:
-                            <i class="fa fa-clock-o"></i>{{ $penduduk->created_at->formatLocalized("%d %B %Y %H:%M:%S") }}</i>
+                            <i class="fa fa-clock-o"></i>{{ Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->created_at)->isoFormat('D MMMM Y') }}</i>
                         </p>
                         <p class="kecil">
                             Terakhir diubah:
-                            <i class="fa fa-clock-o"></i>{{ $penduduk->updated_at->formatLocalized("%d %B %Y %H:%M:%S") }}
+                            <i class="fa fa-clock-o"></i>{{ Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->updated_at)->isoFormat('D MMMM Y') }}
                             <i class="fa fa-user"></i> Administrator
                         </p>
                     </div>
@@ -108,7 +112,6 @@
                                     <td>
                                         {{ $penduduk->tempat_lahir }} /
                                         <?php
-                                            use Carbon\Carbon;
                                             $date = Carbon::parse($penduduk->tgl_lahir);
                                             echo $date->isoFormat('D MMMM Y');
                                         ?>
