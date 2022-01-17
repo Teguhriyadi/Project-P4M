@@ -1,4 +1,5 @@
-@extends('errors::minimal')
+{{-- @extends('errors::minimal') --}}
+@extends('errors.layoutme')
 
 @section('title', __('Forbidden'))
 @section('code', '403')

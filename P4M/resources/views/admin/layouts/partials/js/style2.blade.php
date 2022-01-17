@@ -33,7 +33,7 @@
                 'X-CSRF-TOKEN' : "{{ csrf_token() }}"
             }
         });
-        
+
         $('.sidebar-menu').tree()
     })
 </script>
