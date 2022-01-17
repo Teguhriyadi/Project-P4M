@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Coba;
 use App\Models\Model\Jabatan;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
@@ -84,5 +85,81 @@ class StrukturPemerintahanController extends Controller
         ];
 
         return view("admin/page/pemerintahan/struktur_pemerintahan/show", $data);
+    }
+
+    public function showChart()
+    {
+        $struktur = StrukturPemerintahan::get();
+
+        $data = array();
+
+        foreach ($struktur as $s) {
+            $data['nodes'][] = array(
+                'id' => $s->id,
+                'pid' => $s->staf_id,
+                'name' => $s->getPegawai->nama,
+                'title' => $s->getJabatan->nama_jabatan,
+            );
+        }
+
+        return response()->json($data);
+    }
+
+    public function addChart(Request $request)
+    {
+        $cek = Coba::create([
+            'id_balkan' => $request->id_balkan,
+            'pid' => $request->pid,
+            'name' => $request->name,
+            'title' => $request->title,
+        ]);
+
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
+
+    public function editChart(Request $request)
+    {
+        $cek = Coba::where('id_balkan', $request->id_balkan)->update([
+            'pid' => $request->pid,
+            'name' => $request->name,
+            'title' => $request->title,
+        ]);
+
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
+    
+    public function hapusChart($id)
+    {
+        $data = Coba::where('id_balkan', $id)->first();
+
+        $cek = Coba::where('id', $data->id)->delete();
+
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+    }
+
+    public function dropChart(Request $request)
+    {
+        // echo $request->pid;
+        $cek = StrukturPemerintahan::where("id", $request->id)->update([
+            "staf_id" => $request->staf_id
+        ]);
+
+        if ($cek) {
+            echo 1;
+        } else {
+            echo 2;
+        }
     }
 }

@@ -133,7 +133,6 @@ Route::prefix("page")->group(function() {
             Route::get("/", [AppController::class, "dashboard"]);
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
-            Route::post("/dashboard_ubah", [AppController::class, "ubah"]);
 
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
@@ -227,6 +226,11 @@ Route::prefix("page")->group(function() {
 
                 // Struktur Pemerintahan
                 Route::get("/struktur_pemerintahan/show", [StrukturPemerintahanController::class, "show"]);
+                Route::post("/struktur_pemerintahan/dropChart", [StrukturPemerintahanController::class, "dropChart"]);
+                Route::get("/struktur_pemerintahan/showChart", [StrukturPemerintahanController::class, "showChart"]);
+                Route::post("/struktur_pemerintahan/addChart", [StrukturPemerintahanController::class, "addChart"]);
+                Route::patch("/struktur_pemerintahan/editChart", [StrukturPemerintahanController::class, "editChart"]);
+                Route::delete("/struktur_pemerintahan/hapusChart/{id}", [StrukturPemerintahanController::class, "hapusChart"]);
                 Route::resource("/struktur_pemerintahan", StrukturPemerintahanController::class);
             });
 
