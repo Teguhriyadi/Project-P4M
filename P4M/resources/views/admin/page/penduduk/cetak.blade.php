@@ -154,7 +154,16 @@
                 <td align="center">&nbsp;</td>
                 <td align="center">
                     <b>
-                        Mohammad
+                        <?php
+                            $getData = DB::table("tb_struktur_pemerintahan")
+                                ->where("jabatan_id", $data->id)
+                                ->first();
+
+                            $getPegawai = DB::table("tb_pegawai")
+                                ->where("id", $getData->id)
+                                ->first();
+                        ?>
+                        {{ $getPegawai->nama }}
                     </b>
                 </td>
             </tr>

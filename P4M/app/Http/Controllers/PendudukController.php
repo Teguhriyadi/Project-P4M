@@ -11,6 +11,7 @@ use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukHubungan;
 use App\Models\Model\PendudukKawin;
 use App\Models\Model\GolonganDarah;
+use App\Models\Model\Jabatan;
 use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukPekerjaan;
 use App\Models\Model\PendudukWargaNegara;
@@ -24,10 +25,10 @@ class PendudukController extends Controller
         $data = [
             "penduduk" => Penduduk::all()
         ];
-        
+
         return view("admin/page/penduduk/index", $data);
     }
- 
+
     public function create()
     {
         $data = [
@@ -43,7 +44,7 @@ class PendudukController extends Controller
             "data_rt" => Rt::all(),
             "data_rw" => Rw::all(),
         ];
-        
+
         return view("admin/page/penduduk/create", $data);
     }
 
@@ -91,7 +92,7 @@ class PendudukController extends Controller
 
         return view('admin/page/penduduk/show', compact('penduduk'));
     }
-  
+
     public function edit(Penduduk $penduduk)
     {
         $data = [
@@ -149,7 +150,7 @@ class PendudukController extends Controller
 
         return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
-    
+
     public function destroy($id)
     {
         $penduduk = Penduduk::where('id', $id)->first();
@@ -164,6 +165,9 @@ class PendudukController extends Controller
     public function cetak($id)
     {
         $penduduk = Penduduk::where('id', $id)->first();
-        return view('admin/page/penduduk/cetak', compact('penduduk'));
+
+        $data = Jabatan::where("nama_jabatan", "Kuwu")->first();
+
+        return view('admin/page/penduduk/cetak', compact('penduduk', 'data'));
     }
 }
