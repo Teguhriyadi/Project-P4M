@@ -155,15 +155,11 @@
                 <td align="center">
                     <b>
                         <?php
-                            $getData = DB::table("tb_struktur_pemerintahan")
-                                ->where("jabatan_id", $data->id)
-                                ->first();
-
-                            $getPegawai = DB::table("tb_pegawai")
-                                ->where("id", $getData->id)
+                            use App\Models\Model\StrukturPemerintahan;
+                            $getData = StrukturPemerintahan::where("jabatan_id", $data->id)
                                 ->first();
                         ?>
-                        {{ $getPegawai->nama }}
+                        {{ $getData->getPegawai->nama }}
                     </b>
                 </td>
             </tr>

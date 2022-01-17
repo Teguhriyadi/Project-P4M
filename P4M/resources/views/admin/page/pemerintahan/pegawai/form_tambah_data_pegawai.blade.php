@@ -28,6 +28,15 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="box box-info">
                 <div class="box-header with-border">
                     <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-danger btn-sm">
@@ -58,7 +67,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ url('/page/admin/pemerintahan/pegawai/') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{ url('/page/admin/pemerintahan/pegawai/') }}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="tambahPegawai">
             @csrf
             <div class="col-md-4">
                 <div class="box box-info">
@@ -68,11 +77,9 @@
                         </h3>
                     </div>
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="foto"> Foto </label>
-                            <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
-                            <input onchange="previewImage()" type="file" class="form-control input-sm" name="foto" id="foto">
-                        </div>
+                        <label for="foto">Foto</label>
+                        <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
+                        <input onchange="previewImage()" type="file" class="form-control input-sm" name="foto" id="foto">
                     </div>
                 </div>
             </div>
