@@ -41,6 +41,11 @@
     template: 'polina',
     mouseScrool: OrgChart.action.scroll,
     enableDragDrop: true,
+    nodeMenu: {
+      edit: { text: "Edit" },
+      add: { text: "Add" },
+      remove: { text: "Remove" }
+    },
     nodeBinding: {
       field_0: "name",
       field_1: "title",
@@ -69,6 +74,15 @@
         }
       }
     })
+  })
+  chart.on('remove', function(sender, id) {
+    console.log(sender, id);
+  })
+  chart.on('update', function(sender, node) {
+    console.log(sender, node);
+  })
+  chart.on('add', function(sender, node) {
+    console.log(sender, node);
   })
 </script>
 
