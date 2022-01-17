@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Akun Sistem')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Pengguna Akun Sistem
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Akun</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -31,7 +33,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-users"></i> Data Akun Sistem
+                        <i class="fa fa-users"></i> @yield('title')
                     </h3>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -97,7 +99,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Tambah Data Akun
+                    <i class="fa fa-plus"></i> Tambah @yield('title')
                 </h4>
             </div>
             <form id="tambahAkun" action="{{ url('/page/admin/pengaturan/akun') }}" method="POST" enctype="multipart/form-data">
@@ -179,7 +181,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Edit Data Akun
+                    <i class="fa fa-plus"></i> Edit @yield('title')
                 </h4>
             </div>
             <form id="editAkun" action="{{ url('/page/admin/pengaturan/akun') }}" method="POST">

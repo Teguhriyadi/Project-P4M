@@ -12,8 +12,7 @@ class ProfilController extends Controller
     public function index()
     {
         $data = [
-            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1),
-            "data_alamat" => Alamat::orderBy("created_at", "DESC")->paginate(1)
+            "data_profil" => Profil::orderBy("created_at", "DESC")->paginate(1)
         ];
 
         return view("admin/page/info/profil/data_profil", $data);
@@ -24,6 +23,7 @@ class ProfilController extends Controller
         $validatedData = $request->validate([
             "nama_desa" => "required",
             "kecamatan" => "required",
+            "kabupaten" => "required",
             "provinsi" => "required",
             "negara" => "required",
             "kode_pos" => "required",
@@ -45,6 +45,7 @@ class ProfilController extends Controller
         $validasi = $request->validate([
             "nama_desa" => "required",
             "kecamatan" => "required",
+            "kabupaten" => "required",
             "provinsi" => "required",
             "negara" => "required",
             "kode_pos" => "required",

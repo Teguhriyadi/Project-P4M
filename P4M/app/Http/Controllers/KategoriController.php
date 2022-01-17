@@ -64,7 +64,7 @@ class KategoriController extends Controller
                 $nestedData['no'] = $no++;
                 $nestedData['slug'] = $k->slug;
                 $nestedData['nama'] = $k->nama;
-                $nestedData['aksi'] = '<a class="btn btn-warning btn-sm" href="/page/admin/kategori/'. $k->slug .'/edit" style="margin-right: 10px"><i class="fa fa-pencil"></i></a>';
+                $nestedData['aksi'] = '<a class="btn btn-warning btn-sm" href="/page/admin/web/kategori/'. $k->slug .'/edit" style="margin-right: 10px"><i class="fa fa-pencil"></i></a>';
                 $nestedData['aksi'] .= '<button class="btn btn-danger btn-sm" id="hapusKategori" data-id="'.$k->id.'"><i class="fa fa-trash-o"></i></button>';
 
                 $data[] = $nestedData;

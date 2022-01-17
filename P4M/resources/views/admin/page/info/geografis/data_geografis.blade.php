@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Letak Geografis')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Wilayah Geografis
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Jabatan</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -23,9 +25,9 @@
                 <div class="box-header">
                     <h3 class="box-title">
                         @if (empty($data_geografis))
-                        <i class="fa fa-plus"></i> Tambah Data Geografis Desa
+                        <i class="fa fa-plus"></i> Tambah @yield('title')
                         @else
-                        <i class="fa fa-edit"></i> Edit Data Geografis Desa
+                        <i class="fa fa-edit"></i> Edit @yield('title')
                         @endif
                     </h3>
                 </div>

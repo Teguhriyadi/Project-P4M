@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Artikel')
+
 @section('page_content')
 
 <section class="content-header">
   <h1>
-    Tambah Berita
+    Tambah @yield('title')
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -14,7 +16,7 @@
     </li>
     <li>
       <a href="{{ url('/page/admin/web/artikel') }}">
-        Data Berita
+        Data @yield('title')
       </a>
     </li>
     <li class="active">Tambah Artikel</li>

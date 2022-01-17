@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Kategori')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Kategori
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Kategori</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 

@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Jabatan')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Jabatan
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Jabatan</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -22,7 +24,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-plus"></i> Tambah Data Jabatan
+                        <i class="fa fa-plus"></i> Tambah @yield('title')
                     </h3>
                 </div>
                 <form id="tambahJabatan" action="{{ url('/page/admin/pemerintahan/jabatan') }}" method="POST">

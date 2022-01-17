@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('page_title', 'Dashboard')
+@section('title', 'Data Struktur Pemerintahan')
 
 @section('page_content')
 
@@ -10,7 +10,7 @@
 
 <section class="content-header">
     <h1>
-        Data Struktur Pemerintahan
+      @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -18,7 +18,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Blank page</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -41,6 +41,11 @@
     template: 'polina',
     mouseScrool: OrgChart.action.scroll,
     enableDragDrop: true,
+    nodeMenu: {
+      edit: { text: "Edit" },
+      add: { text: "Add" },
+      remove: { text: "Remove" }
+    },
     nodeBinding: {
       field_0: "name",
       field_1: "title",
@@ -69,6 +74,15 @@
         }
       }
     })
+  })
+  chart.on('remove', function(sender, id) {
+    console.log(sender, id);
+  })
+  chart.on('update', function(sender, node) {
+    console.log(sender, node);
+  })
+  chart.on('add', function(sender, node) {
+    console.log(sender, node);
   })
 </script>
 

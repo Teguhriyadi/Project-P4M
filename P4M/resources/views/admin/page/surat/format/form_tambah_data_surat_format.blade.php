@@ -1,12 +1,12 @@
 @extends('admin.layouts.main')
 
-@section('page_title', 'Dashboard')
+@section('title', 'Data Format Surat')
 
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Surat Format
+         @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -14,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
-        <li class="active">Surat Format</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 

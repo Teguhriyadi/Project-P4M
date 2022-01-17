@@ -1,10 +1,12 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Data Galeri')
+
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Galeri
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -12,7 +14,7 @@
                 <i class="fa fa-dashboard"></i> Dashboard
             </a>
         </li>
-        <li class="active">Data Galeri</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -80,7 +82,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Tambah Data Galeri
+                    <i class="fa fa-plus"></i> Tambah @yield('title')
                 </h4>
             </div>
             <form action="{{ url('/page/admin/web/galeri') }}" method="POST" enctype="multipart/form-data" id="formTambahGaleri">
@@ -120,7 +122,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-pencil"></i> Edit Data Galeri
+                    <i class="fa fa-pencil"></i> Edit @yield('title')
                 </h4>
             </div>
             <form action="{{ url('/page/admin/web/galeri/simpan') }}" method="POST" enctype="multipart/form-data" id="formEditGaleri">

@@ -5,8 +5,12 @@
 @section('page_content')
 
 @php
+<<<<<<< HEAD
 setLocale(LC_ALL, 'id', 'ID');
 $data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
+=======
+    use Carbon\Carbon;
+>>>>>>> d9e79f780e7bf1dd162a103c3b422b67be2ce886
 @endphp
 
 <style>
@@ -60,11 +64,11 @@ $data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
                         <br>
                         <p class="kecil">
                             Terdaftar pada:
-                            <i class="fa fa-clock-o"></i>{{ $penduduk->created_at->formatLocalized("%d %B %Y %H:%M:%S") }}</i>
+                            <i class="fa fa-clock-o"></i>{{ Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->created_at)->isoFormat('D MMMM Y') }}</i>
                         </p>
                         <p class="kecil">
                             Terakhir diubah:
-                            <i class="fa fa-clock-o"></i>{{ $penduduk->updated_at->formatLocalized("%d %B %Y %H:%M:%S") }}
+                            <i class="fa fa-clock-o"></i>{{ Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->updated_at)->isoFormat('D MMMM Y') }}
                             <i class="fa fa-user"></i> Administrator
                         </p>
                     </div>
@@ -113,7 +117,6 @@ $data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
                                     <td>
                                         {{ $penduduk->tempat_lahir }} /
                                         <?php
-                                            use Carbon\Carbon;
                                             $date = Carbon::parse($penduduk->tgl_lahir);
                                             echo $date->isoFormat('D MMMM Y');
                                         ?>
