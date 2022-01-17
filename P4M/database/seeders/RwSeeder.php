@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\models\Model\Rw;
+use App\Models\Model\Rw;
 
 class RwSeeder extends Seeder
 {

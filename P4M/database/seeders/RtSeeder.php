@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\models\Model\Rt;
+use App\Models\Model\Rt;
 
 class RtSeeder extends Seeder
 {
