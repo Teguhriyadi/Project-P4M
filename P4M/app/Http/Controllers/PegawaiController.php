@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Pegawai;
+use App\Models\Model\PendudukAgama;
+use App\Models\Model\PendudukPendidikanKK;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PegawaiController extends Controller
 {
@@ -16,38 +19,72 @@ class PegawaiController extends Controller
         return view("admin/page/pemerintahan/pegawai/index", $data);
     }
 
-    public function store(Request $request)
-    {
-        Pegawai::create($request->all());
-
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
-    }
-
-    public function edit(Request $request)
+    public function create()
     {
         $data = [
-            "edit" => Pegawai::where("id", $request->id)->first()
+            "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
+            "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get()
         ];
 
-        return view("/admin/page/pemerintahan/pegawai/edit", $data);
+        return view("/admin/page/pemerintahan/pegawai/form_tambah_data_pegawai", $data);
     }
 
-    public function update(Request $request)
+    public function store(Request $request)
     {
-        Pegawai::where("id", $request->id)->update([
-            "nik" => $request->nik,
-            "nama" => $request->nama,
-            "email" => $request->email,
-            "jenis_kelamin" => $request->jenis_kelamin,
-            "no_hp" => $request->no_hp,
-            "alamat" => $request->alamat
+        $validatedData = $request->validate([
+            "nama" => "required",
+            "nip" => "required",
+            "foto" => "image|file|max:1024"
         ]);
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        if($request->file("foto")) {
+            $validatedData["foto"] = $request->file('foto')->store('pegawai');
+        }
+
+        Pegawai::create($validatedData);
+
+        return redirect("/page/admin/pemerintahan/pegawai/")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
     }
 
-    public function destroy($id)
+    public function edit($id)
     {
+        $data = [
+            "edit" => Pegawai::where("id", $id)->first(),
+            "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
+            "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/pemerintahan/pegawai/form_edit_data_pegawai", $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            "nama" => "required",
+            "nip" => "required",
+            "foto" => "image|file|max:1024"
+        ]);
+
+        if($request->file("foto")) {
+
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData["foto"] = $request->file('foto')->store('pegawai');
+        }
+
+        Pegawai::where("id", $id)->update($validatedData);
+
+        return redirect("/page/admin/pemerintahan/pegawai")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        if ($request->foto) {
+            Storage::delete($request->image);
+        }
+
         Pegawai::where("id", $id)->delete();
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");

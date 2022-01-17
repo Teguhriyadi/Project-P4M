@@ -15,10 +15,24 @@ class CreateTbPegawaiTable extends Migration
     {
         Schema::create('tb_pegawai', function (Blueprint $table) {
             $table->id();
-            $table->string("nik")->unique();
-            $table->string("nama");
-            $table->string("email")->unique();
-            $table->enum("jenis_kelamin", ["L", "P"]);
+            $table->string("nama")->nullable();
+            $table->string("nip")->nullable();
+            $table->string("nik")->nullable()->unique();
+            $table->enum("status", [1, 0]);
+            $table->date("tgl_terdaftar")->nullable();
+            $table->string("foto")->nullable();
+            $table->tinyInteger("id_penduduk")->nullable();
+            $table->string("tempat_lahir", 100)->nullable();
+            $table->date("tgl_lahir")->nullable();
+            $table->tinyInteger("sex")->nullable();
+            $table->integer("pendidikan")->nullable();
+            $table->string("agama", 50)->nullable();
+            $table->string("no_sk", 30)->nullable();
+            $table->date("tgl_sk")->nullable();
+            $table->string("masa_jabatan")->nullable();
+            $table->string("pangkat", 20)->nullable();
+            $table->string("no_henti", 20)->nullable();
+            $table->date("tgl_henti");
             $table->string("no_hp");
             $table->text("alamat");
             $table->timestamps();

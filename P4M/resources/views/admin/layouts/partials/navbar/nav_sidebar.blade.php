@@ -40,13 +40,6 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            @can("admin")
-            <li class="treeview">
-                <a href="{{ url('/page/contoh') }}">
-                    Contoh
-                </a>
-            </li>
-            @endcan
             <li class="treeview {{ Request::segment(3)=='info' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i> <span>Info Desa</span>
