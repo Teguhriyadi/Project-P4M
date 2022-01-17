@@ -27,11 +27,11 @@
             <div class="row">
               @if ($data_profil->count())
               @foreach ($data_profil as $profil)
-              <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
+              <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formProfil">
                 @method("PUT")
                 @endforeach
                 @else
-                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
+                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formProfil">
                   @endif
                   @csrf
                   <div class="col-md-8">
@@ -206,6 +206,39 @@
               CKEDITOR.replace('deskripsi'),
               CKEDITOR.replace('alamat')
             })
+
+            (function($,W,D) {
+              var JQUERY4U = {};
+              JQUERY4U.UTIL =
+              {
+                setupFormValidation: function()
+                {
+                  $("#formProfil").validate({
+                    ignore: "",
+                    rules: {
+                      nama_desa: {
+                        required: true
+                      }
+                    },
+                    
+                    messages: {
+                      nama_desa: {
+                        required: "Nama desa harap di isi!"
+                      }
+                    },
+                    
+                    submitHandler: function(form) {
+                      form.submit();
+                    }
+                  });
+                }
+              }
+              
+              $(D).ready(function($) {
+                JQUERY4U.UTIL.setupFormValidation();
+              });
+              
+            })(jQuery, window, document);
             
           </script>
           

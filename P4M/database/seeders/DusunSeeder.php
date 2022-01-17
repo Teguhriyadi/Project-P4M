@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use App\models\Model\Dusun;
+use App\Models\Model\Dusun;
 
 class DusunSeeder extends Seeder
 {
