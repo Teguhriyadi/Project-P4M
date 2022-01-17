@@ -22,26 +22,26 @@
     <div class="row">
         <div class="col-md-12">
             @if ($data_visi_misi->count())
-                @foreach ($data_visi_misi as $visi_misi)
-                <form action="{{ url('/page/admin/info/visi-misi') }}/{{ $visi_misi->id }}" id="formVisiMisi" method="POST">
-                    @method("PUT")
+            @foreach ($data_visi_misi as $visi_misi)
+            <form action="{{ url('/page/admin/info/visi-misi') }}/{{ $visi_misi->id }}" id="formVisiMisi" method="POST">
+                @method("PUT")
                 @endforeach
-            @else
-            <form action="{{ url('/page/admin/info/visi-misi') }}" method="POST" id="formVisiMisi">
-            @endif
-                @csrf
-                <div class="box box-info">
-                    <div class="box-header">
-                        <h3 class="box-title">
+                @else
+                <form action="{{ url('/page/admin/info/visi-misi') }}" method="POST" id="formVisiMisi">
+                    @endif
+                    @csrf
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">
+                                @if ($data_visi_misi->count())
+                                <i class="fa fa-edit"></i> Edit @yield('title')
+                                @else
+                                <i class="fa fa-plus"></i> Tambah @yield('title')
+                                @endif
+                            </h3>
+                        </div>
+                        <div class="box-body">
                             @if ($data_visi_misi->count())
-                            <i class="fa fa-edit"></i> Edit @yield('title')
-                            @else
-                            <i class="fa fa-plus"></i> Tambah @yield('title')
-                            @endif
-                        </h3>
-                    </div>
-                    <div class="box-body">
-                        @if ($data_visi_misi->count())
                             @foreach ($data_visi_misi as $visi_misi)
                             <div class="form-group row">
                                 <h3 for="visi" class="col-sm-2">Visi</h3>
@@ -60,54 +60,58 @@
                                 </div>
                             </div>
                             @endforeach
-                        @else
-                        <div class="form-group row">
-                            <h3 for="visi" class="col-sm-2">Visi</h3>
-                            <div class="col-sm-10">
-                                <textarea name="visi" id="visi" cols="80" rows="10"></textarea>
+                            @else
+                            <div class="form-group row">
+                                <h3 for="visi" class="col-sm-2">Visi</h3>
+                                <div class="col-sm-10">
+                                    <textarea name="visi" id="visi" cols="80" rows="10"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <h3 for="misi" class="col-sm-2 control-label">Misi</h3>
-                            <div class="col-sm-10">
-                                <textarea name="misi" id="misi" cols="80" rows="10"></textarea>
+                            <div class="form-group row">
+                                <h3 for="misi" class="col-sm-2 control-label">Misi</h3>
+                                <div class="col-sm-10">
+                                    <textarea name="misi" id="misi" cols="80" rows="10"></textarea>
+                                </div>
                             </div>
+                            @endif
                         </div>
-                        @endif
+                        <div class="box-footer">
+                            @if ($data_visi_misi->count())
+                            <button type="submit" class="btn btn-success btn-sm">
+                                <i class="fa fa-edit"></i> Simpan
+                            </button>
+                            @else
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-plus"></i> Tambah
+                            </button>
+                            @endif
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-refresh"></i> Batal
+                            </button>
+                        </div>
                     </div>
-                    <div class="box-footer">
-                        @if ($data_visi_misi->count())
-                        <button type="submit" class="btn btn-success btn-sm">
-                            <i class="fa fa-edit"></i> Simpan
-                        </button>
-                        @else
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fa fa-plus"></i> Tambah
-                        </button>
-                        @endif
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
-                        </button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-
-@endsection
-
-@section('page_scripts')
-
-<script src="{{ url('/backend/template') }}/bower_components/ckeditor/ckeditor.js"></script>
-
-<script type="text/javascript">
-
-    $(function() {
-        CKEDITOR.replace('visi'),
-        CKEDITOR.replace('misi')
-    })
-
-</script>
-
-@endsection
+    </section>
+    
+    @endsection
+    
+    @section('page_scripts')
+    
+    <script src="{{ url('/backend/template') }}/bower_components/ckeditor/ckeditor.js"></script>
+    
+    <script type="text/javascript">
+        
+        (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formVisiMisi").validate({ignore:"",rules:{visi:{required:!0},misi:{required:!0},},messages:{visi:{required:"Visi harap di isi!"},misi:{required:"Visi harap di isi!"},},submitHandler:function(form){form.submit()}})}}
+        $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
+        
+        $(function() {
+            CKEDITOR.replace('visi'),
+            CKEDITOR.replace('misi')
+        })
+        
+    </script>
+    
+    @endsection
+    

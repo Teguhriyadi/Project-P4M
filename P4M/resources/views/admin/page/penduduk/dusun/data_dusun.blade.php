@@ -87,7 +87,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/dusun') }}" method="POST">
+            <form action="{{ url('/page/admin/data/dusun') }}" method="POST" id="formTambahDusun">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -122,11 +122,11 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/dusun/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/dusun/simpan') }}" method="POST" id="formEditDusun">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
-
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -148,6 +148,9 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formTambahDusun").validate({ignore:"",rules:{dusun:{required:!0},},messages:{dusun:{required:"Dusun harap di isi!"},},submitHandler:function(form){form.submit()}});$("#formEditDusun").validate({ignore:"",rules:{dusun:{required:!0},},messages:{dusun:{required:"Dusun harap di isi!"},},submitHandler:function(form){form.submit()}})}}
+    $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
+    
     function editDataDusun(id)
     {
         $.ajax({
@@ -170,7 +173,7 @@
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
         <?php foreach ($data_dusun as $data): ?>
-         ["{{ $data->dusun }}", {{ $data->getCountPenduduk->count() }}],
+        ["{{ $data->dusun }}", {{ $data->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
         

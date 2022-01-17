@@ -27,11 +27,11 @@
             <div class="row">
               @if ($data_profil->count())
               @foreach ($data_profil as $profil)
-              <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formProfil">
+              <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
                 @method("PUT")
                 @endforeach
                 @else
-                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formProfil">
+                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
                   @endif
                   @csrf
                   <div class="col-md-8">
@@ -202,43 +202,14 @@
           
           <script type="text/javascript">
             
+            (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formTambahProfil").validate({ignore:"",rules:{nama_desa:{required:!0},kecamatan:{required:!0},kabupaten:{required:!0},provinsi:{required:!0},negara:{required:!0},kode_pos:{required:!0},deskripsi:{required:!0},gambar:{required:!0,accept:'image/*'},},messages:{nama_desa:{required:"Nama desa harap diisi!"},kecamatan:{required:"Kecamatan harap diisi!"},kabupaten:{required:"Kabupaten harap diisi!"},provinsi:{required:"Provinsi harap diisi!"},negara:{required:"Negara harap diisi!"},kode_pos:{required:"Kode pos harap diisi!"},deskripsi:{required:"Deskripsi harap diisi!"},gambar:{required:"Gambar harap diisi!",accept:'Masukan format gambar'},},submitHandler:function(form){form.submit()}})
+            $("#formEditProfil").validate({ignore:"",rules:{nama_desa:{required:!0},kecamatan:{required:!0},kabupaten:{required:!0},provinsi:{required:!0},negara:{required:!0},kode_pos:{required:!0},deskripsi:{required:!0},gambar:{accept:'image/*'},},messages:{nama_desa:{required:"Nama desa harap diisi!"},kecamatan:{required:"Kecamatan harap diisi!"},kabupaten:{required:"Kabupaten harap diisi!"},provinsi:{required:"Provinsi harap diisi!"},negara:{required:"Negara harap diisi!"},kode_pos:{required:"Kode pos harap diisi!"},deskripsi:{required:"Deskripsi harap diisi!"},gambar:{accept:'Masukan format gambar'},},submitHandler:function(form){form.submit()}})}}
+            $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
+            
             $(function() {
               CKEDITOR.replace('deskripsi'),
               CKEDITOR.replace('alamat')
             })
-
-            (function($,W,D) {
-              var JQUERY4U = {};
-              JQUERY4U.UTIL =
-              {
-                setupFormValidation: function()
-                {
-                  $("#formProfil").validate({
-                    ignore: "",
-                    rules: {
-                      nama_desa: {
-                        required: true
-                      }
-                    },
-                    
-                    messages: {
-                      nama_desa: {
-                        required: "Nama desa harap di isi!"
-                      }
-                    },
-                    
-                    submitHandler: function(form) {
-                      form.submit();
-                    }
-                  });
-                }
-              }
-              
-              $(D).ready(function($) {
-                JQUERY4U.UTIL.setupFormValidation();
-              });
-              
-            })(jQuery, window, document);
             
           </script>
           

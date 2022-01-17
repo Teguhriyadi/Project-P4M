@@ -86,7 +86,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/info/wilayah_geografis') }}" method="POST">
+            <form action="{{ url('/page/admin/info/wilayah_geografis') }}" method="POST" id="formTambahWilayah">
                 @csrf
                 @if (empty($data_geografis))
                 <input type="hidden" name="geografis_id" value="1">
@@ -133,7 +133,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/info/wilayah_geografis/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/info/wilayah_geografis/simpan') }}" method="POST" id="formEditWilayah">
                 @method("PUT")
                 @csrf
                 @if (empty($data_geografis))
@@ -142,7 +142,7 @@
                 <input type="hidden" name="geografis_id" value="{{ $data_geografis->id }}">
                 @endif
                 <div class="modal-body" id="modal-content-edit">
-
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -163,6 +163,10 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    
+    (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formTambahWilayah").validate({ignore:"",rules:{batas:{required:!0},desa:{required:!0},kecamatan:{required:!0},},messages:{batas:{required:"Batas harap di isi!"},desa:{required:"Desa harap di isi!"},kecamatan:{required:"Kecamatan harap di isi!"},},submitHandler:function(form){form.submit()}});$("#formEditWilayah").validate({ignore:"",rules:{batas:{required:!0},desa:{required:!0},kecamatan:{required:!0},},messages:{batas:{required:"Batas harap di isi!"},desa:{required:"Desa harap di isi!"},kecamatan:{required:"Kecamatan harap di isi!"},},submitHandler:function(form){form.submit()}})}}
+    $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
+    
     function editDataWilayah(id)
     {
         $.ajax({
@@ -175,7 +179,7 @@
             }
         })
     }
-
+    
 </script>
 
 @endsection
