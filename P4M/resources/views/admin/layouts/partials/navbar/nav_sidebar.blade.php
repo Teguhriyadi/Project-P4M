@@ -133,17 +133,17 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('page/admin/pemerintahan/jabatan') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='jabatan' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
                             <i class="fa fa-circle-o"></i> Jabatan
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/pemerintahan/pegawai') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='pegawai' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">
                             <i class="fa fa-circle-o"></i> Pegawai
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/pemerintahan/struktur_pemerintahan') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='struktur_pemerintahan' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}">
                             <i class="fa fa-circle-o"></i> Struktur Pemerintahan
                         </a>
@@ -158,7 +158,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('page/admin/kependudukan/penduduk') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='penduduk' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/kependudukan/penduduk') }}">
                             <i class="fa fa-circle-o"></i> Penduduk
                         </a>
@@ -183,7 +183,7 @@
                             <i class="fa fa-circle-o"></i> Referensi Syarat Surat
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/format') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='format' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/format') }}">
                             <i class="fa fa-circle-o"></i> Format Surat
                         </a>

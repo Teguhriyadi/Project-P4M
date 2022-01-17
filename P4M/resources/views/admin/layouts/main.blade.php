@@ -26,6 +26,13 @@
 
     @include('admin/layouts/partials/js/style2')
 
+    <style>
+        #piechart svg {
+            width: 500px;
+            /* margin-left: 150px; */
+        }
+    </style>
+
 </head>
 <body class="hold-transition skin-green fixed sidebar-mini">
     <!-- Site wrapper -->

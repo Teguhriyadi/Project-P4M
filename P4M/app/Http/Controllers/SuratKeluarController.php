@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\JenisSDA;
 use Illuminate\Http\Request;
 
-class JenisSDAController extends Controller
+class SuratKeluarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class JenisSDAController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sumber_daya.alam.index');
+        return view('admin.page.surat.keluar.index');
     }
 
     /**
@@ -35,18 +34,16 @@ class JenisSDAController extends Controller
      */
     public function store(Request $request)
     {
-        JenisSDA::create($request->all());
-
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Model\JenisSDA  $jenisSDA
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(JenisSDA $jenisSDA)
+    public function show($id)
     {
         //
     }
@@ -54,46 +51,34 @@ class JenisSDAController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Model\JenisSDA  $jenisSDA
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $data = [
-            "edit" => JenisSDA::where("id", $request->id)->first()
-        ];
-
-        return view("admin/page/potensi/sda/edit", $data);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\JenisSDA  $jenisSDA
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        JenisSDA::where("id", $request->id)->update([
-            "jenis" => $request->jenis,
-            "luas" => $request->luas,
-            "lokasi" => $request->lokasi
-        ]);
-
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Model\JenisSDA  $jenisSDA
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        JenisSDA::where("id", $id)->delete();
-
-        return back();
+        //
     }
 }

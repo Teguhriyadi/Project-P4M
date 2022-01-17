@@ -3,6 +3,7 @@
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\ArsipSuratController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\GaleriController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\JenisSDAController;
 use App\Http\Controllers\JenisSDKController;
+use App\Http\Controllers\JenisSDMController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KlasifikasiSuratController;
 use App\Http\Controllers\KontakController;
@@ -32,11 +34,18 @@ use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WilayahGeografisController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\PendudukController;
+use App\Http\Controllers\PermohonanSuratController;
 use App\Http\Controllers\RefSyaratSuratController;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
+use App\Http\Controllers\SaranaAgamaController;
+use App\Http\Controllers\SaranaOlahragaController;
+use App\Http\Controllers\SaranaPendidikanController;
+use App\Http\Controllers\SaranaTUController;
 use App\Http\Controllers\SyaratSuratController;
 use App\Http\Controllers\SuratFormatController;
+use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\SuratMasukController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -258,6 +267,17 @@ Route::prefix("page")->group(function() {
                 Route::put("/format/simpan", [SuratFormatController::class, "update"]);
                 Route::resource("/format", SuratFormatController::class);
 
+                // Permohonan Surat
+                Route::resource("/permohonan", PermohonanSuratController::class);
+
+                // Surat Masuk
+                Route::resource("/masuk", SuratMasukController::class);
+
+                // Surat Keluar
+                Route::resource("/keluar", SuratKeluarController::class);
+
+                // Arsip Surat
+                Route::resource("/arsip", ArsipSuratController::class);
             });
 
             Route::get("/kotak-pesan", [KontakController::class, "index"]);
@@ -273,6 +293,19 @@ Route::prefix("page")->group(function() {
 
                 // TerakhirLogin
                 Route::resource("/terakhir_login", TerakhirLoginController::class);
+            });
+
+            Route::prefix('/sumber')->group(function () {
+                Route::resource("/alam", JenisSDAController::class);
+                Route::resource("/manusia", JenisSDMController::class);
+                Route::resource("/kelembagaan", JenisSDKController::class);
+            });
+
+            Route::prefix('/sarana')->group(function () {
+                Route::resource("/pendidikan", SaranaPendidikanController::class);
+                Route::resource("/keagamaan", SaranaAgamaController::class);
+                Route::resource("/olahraga", SaranaOlahragaController::class);
+                Route::resource("/tempat-usaha", SaranaTUController::class);
             });
 
             // Logout

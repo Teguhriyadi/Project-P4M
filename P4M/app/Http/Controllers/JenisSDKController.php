@@ -9,31 +9,31 @@ use Illuminate\Http\Request;
 class JenisSDKController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function index()
     {
-        //
+        return view('admin.page.sumber_daya.kelembagaan.index');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         $ambil = Tahun::where("status", "1")->first();
@@ -49,22 +49,22 @@ class JenisSDKController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\JenisSDK  $jenisSDK
-     * @return \Illuminate\Http\Response
-     */
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Model\JenisSDK  $jenisSDK
+    * @return \Illuminate\Http\Response
+    */
     public function show(JenisSDK $jenisSDK)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\JenisSDK  $jenisSDK
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param  \App\Models\Model\JenisSDK  $jenisSDK
+    * @return \Illuminate\Http\Response
+    */
     public function edit(Request $request)
     {
         $data = [
@@ -75,12 +75,12 @@ class JenisSDKController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\JenisSDK  $jenisSDK
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Model\JenisSDK  $jenisSDK
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request)
     {
         JenisSDK::where("id", $request->id)->update([
@@ -93,11 +93,11 @@ class JenisSDKController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\JenisSDK  $jenisSDK
-     * @return \Illuminate\Http\Response
-     */
+    * Remove the specified resource from storage.
+    *
+    * @param  \App\Models\Model\JenisSDK  $jenisSDK
+    * @return \Illuminate\Http\Response
+    */
     public function destroy($id)
     {
         JenisSDK::where("id", $id)->delete();
