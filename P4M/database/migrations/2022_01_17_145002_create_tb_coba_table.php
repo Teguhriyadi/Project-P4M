@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbStrukturPemerintahanTable extends Migration
+class CreateTbCobaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTbStrukturPemerintahanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_struktur_pemerintahan', function (Blueprint $table) {
+        Schema::create('tb_coba', function (Blueprint $table) {
             $table->id();
             $table->string('id_balkan')->nullable();
-            $table->foreignId("jabatan_id")->nullable();
-            $table->foreignId("pegawai_id")->nullable();
-            $table->integer("staf_id")->nullable();
+            $table->string('pid')->nullable();
+            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateTbStrukturPemerintahanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_struktur_pemerintahan');
+        Schema::dropIfExists('tb_coba');
     }
 }

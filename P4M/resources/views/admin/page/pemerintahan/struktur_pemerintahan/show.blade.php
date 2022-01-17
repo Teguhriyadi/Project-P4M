@@ -37,53 +37,40 @@
 <script src="{{ url('/backend/template') }}/bower_components/orgchart/orgchart.js"></script>
 
 <script type='text/javascript'>
-  var chart = new OrgChart(document.getElementById("tree"), {
-    template: 'polina',
-    mouseScrool: OrgChart.action.scroll,
-    enableDragDrop: true,
-    nodeMenu: {
-      edit: { text: "Edit" },
-      add: { text: "Add" },
-      remove: { text: "Remove" }
-    },
-    nodeBinding: {
-      field_0: "name",
-      field_1: "title",
-      img_0: "img"
-    },
-    nodes: [
-      <?php foreach($data_struktur as $struktur) {
-      echo '{ id: '.$struktur->id.', pid: '.$struktur->staf_id.', name: "'.$struktur->getPegawai->nama.'", title: "'.$struktur->getJabatan->nama_jabatan.'", img:"/gambar/gambar_user.png" },';
-    } ?>
-    ]
-  });
-  chart.on('click', function(sender, args){
-    sender.editUI.show(args.node.id, false);
-    return false;
-  });
-  chart.on('drop', function(sender, draggedNodeId, droppedNodeId) {
-    $.ajax({
-      url: '/page/admin/dashboard_ubah',
-      type: 'POST',
-      data: {staf_id: droppedNodeId, id: draggedNodeId},
-      success: function(response) {
-        if (response == 1) {
-          swal('Selamat!', 'Data berhasil diubah', 'success');
-        } else {
-          swal('Maaf!', 'Data gagal diubah!', 'error');
+  $.get('/page/admin/pemerintahan/struktur_pemerintahan/showChart').done(function(response) {
+    let chart = new OrgChart(document.getElementById("tree"), {
+      template: 'polina',
+      mouseScrool: OrgChart.action.scroll,
+      enableDragDrop: true,
+      nodeBinding: {
+        field_0: "name",
+        field_1: "title",
+        img_0: "img"
+      },
+      nodes: response.nodes 
+    });
+    
+    chart.on('click', function(sender, args){
+      sender.editUI.show(args.node.id, false);
+      return false;
+    });
+  
+    chart.on('drop', function(sender, draggedNodeId, droppedNodeId) {
+      $.ajax({
+        url: '/page/admin/pemerintahan/struktur_pemerintahan/dropChart',
+        type: 'POST',
+        data: {id: draggedNodeId, staf_id: droppedNodeId},
+        success: function(data) {
+          if (data == 1) {
+            swal('Wooww!', 'Data anda berhasil diubah', 'success');
+          } else {
+            swal('Ooops!', 'Data anda gagal diubah', 'error');
+          }
         }
-      }
+      })
     })
-  })
-  chart.on('remove', function(sender, id) {
-    console.log(sender, id);
-  })
-  chart.on('update', function(sender, node) {
-    console.log(sender, node);
-  })
-  chart.on('add', function(sender, node) {
-    console.log(sender, node);
-  })
+
+  });
 </script>
 
 @endsection
