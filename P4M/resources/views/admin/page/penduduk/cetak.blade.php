@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="{{ url('backend/template/plugins/cetak') }}/print.css" type="text/css" media="print" />
     <script src="{{ url('backend/template/plugins/cetak') }}/jquery.tools.min.js"></script>
     <script src="{{ url('backend/template/plugins/cetak') }}/jquery.print-preview.js" type="text/javascript" charset="utf-8"></script>
-    
+
     <script type="text/javascript">
         $(function()
         {
             $("#feature > div").scrollable({interval: 2000}).autoscroll();
-            
+
             $('#aside').prepend('<a class="print-preview">Cetak </a>');
             $('a.print-preview').printPreview();
-            
+
             var code = 80;
             $.printPreview.loadPrintPreview();
         });
@@ -152,7 +152,11 @@
             <tr>
                 <td align="center"><b>{{ $penduduk->nama }}</b></td>
                 <td align="center">&nbsp;</td>
-                <td align="center"><b>Hakim Asrori</b></td>
+                <td align="center">
+                    <b>
+                        Mohammad
+                    </b>
+                </td>
             </tr>
         </table>
     </div>

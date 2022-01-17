@@ -32,9 +32,9 @@ class CreateTbPegawaiTable extends Migration
             $table->string("masa_jabatan")->nullable();
             $table->string("pangkat", 20)->nullable();
             $table->string("no_henti", 20)->nullable();
-            $table->date("tgl_henti");
-            $table->string("no_hp");
-            $table->text("alamat");
+            $table->date("tgl_henti")->nullable();
+            $table->string("no_hp")->nullable();
+            $table->text("alamat")->nullable();
             $table->timestamps();
         });
     }
