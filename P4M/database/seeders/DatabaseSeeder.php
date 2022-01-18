@@ -46,5 +46,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DusunSeeder::class);
         $this->call(RtSeeder::class);
         $this->call(RwSeeder::class);
+        $this->call(SakitMenahunSeeder::class);
     }
 }

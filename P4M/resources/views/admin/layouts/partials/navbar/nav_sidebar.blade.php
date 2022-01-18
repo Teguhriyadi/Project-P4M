@@ -330,6 +330,11 @@
                     <i class="fa fa-inbox"></i> <span>Kotak Pesan</span>
                 </a>
             </li>
+            <li class="{{ Request::is('page/admin/kotak-pesan') ? 'active' : '' }}">
+                <a href="{{ url('/page/admin/kotak-pesan') }}">
+                    <i class="fa fa-heart"></i> <span>Bantuan</span>
+                </a>
+            </li>
             @can("admin")
             <li class="treeview {{ Request::segment(3)=='pengaturan' ? 'active' : '' }}">
                 <a href="#">
