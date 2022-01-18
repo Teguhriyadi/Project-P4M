@@ -59,7 +59,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                             <a href="{{ url('page/admin/kependudukan/penduduk/create') }}" class="btn btn-social btn-flat btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Penduduk</a>
                                         </div>
                                         <div class="box-body">
-                                            <div class="table-responsive">
+                                            <div class="table-responsive table-min-height">
                                                 <table id="example1" class="table table-bordered table-hover">
                                                     <thead>
                                                         <tr>
@@ -80,7 +80,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($penduduk as $p)
-                                                        <tr style="height: 500px">
+                                                        <tr>
                                                             <th>{{ $loop->iteration }}</th>
                                                             <td>
                                                                 <div class="btn-group">
@@ -102,7 +102,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                                                             <form action="{{ url('page/admin/kependudukan/penduduk/'.$p->id) }}" method="post">
                                                                                 @csrf
                                                                                 @method('delete')
-                                                                                <button class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-trash-o"></i> Hapus</button>
+                                                                                <button class="btn btn-social btn-flat btn-block btn-sm btn-delete"><i class="fa fa-trash-o"></i> Hapus</button>
                                                                             </form>
                                                                         </li>
                                                                     </ul>
@@ -188,6 +188,29 @@ setLocale(LC_ALL, 'id', 'ID')
         });
     }
 
+
+    $('document').ready(function()
+    {
+        $('.table').on('show.bs.dropdown', function (e) {
+            var table = $(this),
+            menu = $(e.target).find('.dropdown-menu'),
+            tableOffsetHeight = table.offset().top + table.height(),
+            menuOffsetHeight = $(e.target).offset().top + $(e.target).outerHeight(true) + menu.outerHeight(true);
+
+            // console.log(menuOffsetHeight);
+
+            if (menuOffsetHeight > tableOffsetHeight)
+            {
+                table.css("padding-bottom", menuOffsetHeight - tableOffsetHeight);
+                $('.table')[0].scrollIntoView(false);
+            }
+
+        });
+
+        $('.table').on('hide.bs.dropdown', function () {
+            $(this).css("padding-bottom", 0);
+        })
+    });
 </script>
 
 @endsection

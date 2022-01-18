@@ -35,20 +35,49 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            "data_profil" => Profil::latest()->paginate(1),
+            "data_profil" => Profil::first(),
             "data_galeri" => Galeri::latest()->paginate(6),
         ];
 
-        return view("/pengunjung/page/home", $data);
+        return view("pengunjung.page.home", $data);
     }
 
     public function artikel()
     {
         $data = [
-            "data_artikel" => Artikel::latest()->paginate(6)
+            "data_artikel" => Artikel::latest()->paginate(6),
+            "data_title" => 'Artikel',
         ];
 
         return view("/pengunjung/page/artikel/index", $data);
+    }
+
+    public function artikelCari(Request $request)
+    {
+        $data = [
+            "data_artikel" => Artikel::where("judul", "like", "%".$request->cari."%")->latest()->paginate(6),
+            "data_title" => $request->cari,
+        ];
+
+        return view("/pengunjung/page/artikel/index", $data);
+    }
+
+    public function artikelJson(Request $request)
+    {
+        $search = $request->search;
+
+        if($search == ''){
+            $artikel = Artikel::orderby('judul','asc')->select('judul')->limit(5)->get();
+        }else{
+            $artikel = Artikel::orderby('judul','asc')->select('judul')->where('judul', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+
+        $response = array();
+        foreach($artikel as $a){
+            $response[] = array("judul"=>$a->judul);
+        }
+
+        return response()->json($response);
     }
 
     public function detailArtikel($slug)
@@ -57,7 +86,11 @@ class UserController extends Controller
             "artikel" => Artikel::where("slug", $slug)->first()
         ];
 
-        return view("/pengunjung/page/artikel/detail", $data);
+        if ($data['artikel']) {
+            return view("/pengunjung/page/artikel/detail", $data);
+        } else {
+            abort(404);
+        }
     }
 
     public function galeri()

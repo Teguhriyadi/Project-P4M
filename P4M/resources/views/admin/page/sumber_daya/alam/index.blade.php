@@ -52,7 +52,7 @@
                                         <form action="{{ url('page/admin/sumber/alam/'.$da->id) }}" method="post" style="display: inline">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

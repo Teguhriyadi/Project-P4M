@@ -54,7 +54,7 @@
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="oldBerkasScan" value="{{ $data->berkas_scan }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn-delete btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

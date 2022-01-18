@@ -74,6 +74,12 @@ Route::prefix("artikel")->group(function() {
     // Semua Artikel
     Route::get("/", [UserController::class, "artikel"]);
 
+    // Pencarian Artikel
+    Route::post("/cari", [UserController::class, "artikelCari"]);
+
+    // Artikel JSON
+    Route::post("/", [UserController::class, "artikelJson"]);
+
     // Artikel Selengkapnya
     Route::get('/{slug}',[UserController::class, "detailArtikel"]);
 });

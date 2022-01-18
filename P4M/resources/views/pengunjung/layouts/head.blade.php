@@ -1,5 +1,5 @@
 <header id="header">
-			
+
     <div class="row" style="margin-bottom:3px; margin-top:5px;">
         <div class="col-lg-12 col-md-12">
             <div class="header_top">
@@ -23,11 +23,16 @@
                     </ul>
                 </div>
                 <div class="navbar-right" style="margin-right: 0px; margin-top: 15px; margin-bottom: 3px;">
-                    <form method=get action="" class="form-inline">
+                    <form method="post" action="/artikel/cari" class="form-inline">
+                        @csrf
                         <table align="center">
                             <tr>
                                 <td>
-                                    <input type="text" name="cari" maxlength="50" class="form-control" value="" placeholder="Cari Artikel">
+                                    @if (Request::is('artikel'))
+                                    <input type="text" name="cari" maxlength="50" class="form-control" value="" placeholder="Cari Artikel" onkeyup="search()" id="cari">
+                                    @else
+                                    <input type="text" name="cari" maxlength="50" class="form-control" value="" placeholder="Cari Artikel" id="cari">
+                                    @endif
                                 </td>
                                 <td>
                                     <button type="submit" class="btn btn-primary">Cari</button>

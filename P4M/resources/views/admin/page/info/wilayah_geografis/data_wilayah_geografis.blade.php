@@ -58,7 +58,7 @@
                                         <form action="{{ url('/page/admin/info/wilayah_geografis/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
@@ -142,7 +142,7 @@
                 <input type="hidden" name="geografis_id" value="{{ $data_geografis->id }}">
                 @endif
                 <div class="modal-body" id="modal-content-edit">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -163,10 +163,9 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-    
     (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formTambahWilayah").validate({ignore:"",rules:{batas:{required:!0},desa:{required:!0},kecamatan:{required:!0},},messages:{batas:{required:"Batas harap di isi!"},desa:{required:"Desa harap di isi!"},kecamatan:{required:"Kecamatan harap di isi!"},},submitHandler:function(form){form.submit()}});$("#formEditWilayah").validate({ignore:"",rules:{batas:{required:!0},desa:{required:!0},kecamatan:{required:!0},},messages:{batas:{required:"Batas harap di isi!"},desa:{required:"Desa harap di isi!"},kecamatan:{required:"Kecamatan harap di isi!"},},submitHandler:function(form){form.submit()}})}}
     $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
-    
+
     function editDataWilayah(id)
     {
         $.ajax({
@@ -179,7 +178,7 @@
             }
         })
     }
-    
+
 </script>
 
 @endsection

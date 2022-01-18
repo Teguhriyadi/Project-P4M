@@ -17,7 +17,10 @@ class PegawaiSeeder extends Seeder
         Pegawai::create([
             "nik" => "123456",
             "nama" => "Dedi S",
-            "email" => "dedi@gmail.com",
+            "no_telp" => "123456789",
+            "nip" => "123456789",
+            "status" => "1",
+            "tgl_terdaftar" => date('Y-m-d'),
             "jenis_kelamin" => "L",
             "no_hp" => "12345",
             "alamat" => "Bandung Raya"

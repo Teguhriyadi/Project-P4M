@@ -1,6 +1,6 @@
 @extends('pengunjung/layouts/main')
 
-@section('title', 'Artikel')
+@section('title', $data_title)
 
 @section('page_content')
 
@@ -50,6 +50,6 @@
             {{ $data_artikel->links() }}
         </div>
     </div>
-</div>  
+</div>
 
 @endsection

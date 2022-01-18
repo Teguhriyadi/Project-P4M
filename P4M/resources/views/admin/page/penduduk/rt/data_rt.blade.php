@@ -57,7 +57,7 @@
                                         <form action="{{ url('/page/admin/data/rt/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

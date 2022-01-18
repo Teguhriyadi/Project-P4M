@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 <section class="content-header">
     <h1>
         Dashboard
@@ -14,6 +18,10 @@
 </section>
 
 <section class="content">
+    <div class="alert alert-success" style="font-size: 17px">
+        Selamat Datang <strong>{{ auth()->user()->name }}</strong>! <br>
+        Anda login sebagai <strong>{{ auth()->user()->getHakAkses->nama_hak_akses }}</strong>.
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info">
@@ -22,13 +30,13 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-purple">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>New Orders</p>
+                                    <h3>{{ $data_dusun }}</h3>
+                                    <p>Jumlah Dusun</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="{{ url('page/admin/data/dusun') }}" class="small-box-footer">
                                     Selengkapnya <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -36,19 +44,19 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-aqua">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>New Orders</p>
+                                    <h3>{{ $data_penduduk }}</h3>
+                                    <p>Jumlah Penduduk</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="small-box-footer">
                                     Selengkapnya <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                                 <div class="inner">
@@ -77,7 +85,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -88,7 +96,7 @@
                         Terakhir Login
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/terakhir_login') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/pengaturan/terakhir_login') }}" class="btn btn-primary btn-sm">
                             <i class="fa fa-search"></i> Selengkapnya
                         </a>
                     </div>
@@ -108,7 +116,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $terakhir_login->nama }}</td>
-                                    <td class="text-center">{{ $terakhir_login->terakhir_login }}</td>
+                                    <td class="text-center">{{ Carbon::createFromFormat('Y-m-d H:i:s', $terakhir_login->terakhir_login)->isoFormat('LLLL') }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
