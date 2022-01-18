@@ -7,79 +7,43 @@ use Illuminate\Http\Request;
 
 class KeluargaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view("/admin/page/kependudukan/keluarga/data_keluarga");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\Keluarga  $keluarga
-     * @return \Illuminate\Http\Response
-     */
     public function show(Keluarga $keluarga)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\Keluarga  $keluarga
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Keluarga $keluarga)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Keluarga  $keluarga
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Keluarga $keluarga)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\Keluarga  $keluarga
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Keluarga $keluarga)
     {
         //
+    }
+
+    public function form_tambah_penduduk_masuk()
+    {
+        return view("/admin/page/kependudukan/keluarga/form_tambah_penduduk_masuk");
     }
 }

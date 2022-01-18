@@ -47,6 +47,7 @@ use App\Http\Controllers\SuratFormatController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratOnlineController;
+use App\Http\Controllers\KeluargaController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -252,6 +253,10 @@ Route::prefix("page")->group(function() {
                 Route::get('/penduduk/edit_status_dasar', [PendudukController::class, "edit_status_dasar"]);
                 Route::put('/penduduk/simpan_status_dasar', [PendudukController::class, "simpan_status_dasar"]);
                 Route::resource('/penduduk', PendudukController::class);
+
+                // Keluarga
+                Route::get('/keluarga/form_tambah_penduduk_masuk', [KeluargaController::class, "form_tambah_penduduk_masuk"]);
+                Route::resource('/keluarga', KeluargaController::class);
             });
 
             Route::prefix("surat")->group(function() {
