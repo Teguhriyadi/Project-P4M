@@ -83,7 +83,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                                     <a href="{{ url('page/admin/kependudukan/penduduk/'.$p->id.'/cetak') }}" target="_blank" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-print"></i> Cetak Biodata Penduduk</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" data-toggle="modal" data-target="#modalStatusDasar" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-sign-out"></i> Ubah Status Dasar</a>
+                                                    <a href="#" onclick="editStatusDasar({{ $p->id }})" data-remote="false" data-toggle="modal" data-target="#modalStatusDasar" class="btn btn-social btn-flat btn-block btn-sm"><i class="fa fa-sign-out"></i> Ubah Status Dasar</a>
                                                 </li>
                                                 <li>
                                                     <form action="{{ url('page/admin/kependudukan/penduduk/'.$p->id) }}" method="post">
@@ -128,36 +128,11 @@ setLocale(LC_ALL, 'id', 'ID')
                     <i class="fa fa-pencil"></i> Ubah Status Dasar
                 </h4>
             </div>
-            <form action="" method="POST" id="formEditDusun">
-                <div class="modal-body" id="modal-content-edit">
-                    <div class="form-group">
-                        <label for="status">Status Dasar Baru</label>
-                        <input type="text" class="form-control input-sm" name="status" id="status">
-                    </div>
-                    <div class="form-group">
-                        <label for="tempat_meninggal">Tempat Meninggal</label>
-                        <input type="text" class="form-control input-sm" name="tempat_meninggal" id="tempat_meninggal">
-                    </div>
-                    <div class="form-group">
-                        <label for="tujuan_pindah">Tujuan Pindah</label>
-                        <input type="text" class="form-control input-sm" name="tujuan_pindah" id="tujuan_pindah">
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat_tujuan">Alamat Tujuan Pindah</label>
-                        <input type="text" class="form-control input-sm" name="alamat_tujuan" id="alamat_tujuan">
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_peristiwa">Tanggal Peristiwa</label>
-                        <input type="date" class="form-control input-sm" name="tgl_peristiwa" id="tgl_peristiwa">
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_laporan">Tanggal Laporan</label>
-                        <input type="date" class="form-control input-sm" name="tgl_laporan" id="tgl_laporan">
-                    </div>
-                    <div class="form-group">
-                        <label for="catatan">Catatan</label>
-                        <textarea name="catatan" id="catatan" class="form-control input-sm"></textarea>
-                    </div>
+            <form action="{{ url('/page/admin/kependudukan/penduduk/simpan_status_dasar') }}" method="POST" id="formEditDusun">
+                @method("PUT")
+                @csrf
+                <div class="modal-body fetched-data" id="modal-content-edit">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -171,5 +146,26 @@ setLocale(LC_ALL, 'id', 'ID')
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('page_scripts')
+
+<script type="text/javascript">
+
+    function editStatusDasar(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/kependudukan/penduduk/edit_status_dasar') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
+    }
+
+</script>
 
 @endsection

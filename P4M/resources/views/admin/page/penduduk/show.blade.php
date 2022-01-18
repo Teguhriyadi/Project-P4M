@@ -5,12 +5,7 @@
 @section('page_content')
 
 @php
-<<<<<<< HEAD
-setLocale(LC_ALL, 'id', 'ID');
-$data = Carbon\Carbon::createFromFormat('Y-m-d', $penduduk->tgl_lahir);
-=======
     use Carbon\Carbon;
->>>>>>> d9e79f780e7bf1dd162a103c3b422b67be2ce886
 @endphp
 
 <style>
