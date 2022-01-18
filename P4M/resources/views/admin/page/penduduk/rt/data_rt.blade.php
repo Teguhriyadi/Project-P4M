@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="box">
                 <div class="box-body">
-                    <center><div id="piechart"></div></center>
+                    <div id="piechart"></div>
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
 <script>
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    
+
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
@@ -171,9 +171,9 @@
          ["{{ $data->rt }}", {{ $data->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
-        
+
         var options = {'title' : "@yield('title')", 'width':550, 'height':400};
-        
+
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
     }

@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="box">
                 <div class="box-body">
-                    <center><div id="piechart"></div></center>
+                    <div id="piechart"></div>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
@@ -150,7 +150,7 @@
 <script type="text/javascript">
     (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formTambahDusun").validate({ignore:"",rules:{dusun:{required:!0},},messages:{dusun:{required:"Dusun harap di isi!"},},submitHandler:function(form){form.submit()}});$("#formEditDusun").validate({ignore:"",rules:{dusun:{required:!0},},messages:{dusun:{required:"Dusun harap di isi!"},},submitHandler:function(form){form.submit()}})}}
     $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
-    
+
     function editDataDusun(id)
     {
         $.ajax({
@@ -168,7 +168,7 @@
 <script>
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    
+
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
@@ -176,9 +176,9 @@
         ["{{ $data->dusun }}", {{ $data->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
-        
+
         var options = {'title' : "@yield('title')", 'width':550, 'height':400};
-        
+
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
     }
