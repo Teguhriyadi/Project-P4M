@@ -14,7 +14,8 @@ class JenisSDAController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sumber_daya.alam.index');
+        $daya_alam = JenisSDA::all();
+        return view('admin.page.sumber_daya.alam.index', compact('daya_alam'));
     }
 
     /**
@@ -37,7 +38,7 @@ class JenisSDAController extends Controller
     {
         JenisSDA::create($request->all());
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
     /**
@@ -63,7 +64,7 @@ class JenisSDAController extends Controller
             "edit" => JenisSDA::where("id", $request->id)->first()
         ];
 
-        return view("admin/page/potensi/sda/edit", $data);
+        return view("admin.page.sumber_daya.alam.edit", $data);
     }
 
     /**
@@ -81,7 +82,7 @@ class JenisSDAController extends Controller
             "lokasi" => $request->lokasi
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
     /**
@@ -94,6 +95,6 @@ class JenisSDAController extends Controller
     {
         JenisSDA::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

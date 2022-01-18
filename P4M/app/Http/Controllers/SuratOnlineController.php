@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\KlasifikasiSurat;
+use App\Models\Model\PermohonanSurat;
 use Illuminate\Http\Request;
 
 class SuratOnlineController extends Controller
@@ -13,7 +15,8 @@ class SuratOnlineController extends Controller
     */
     public function index()
     {
-        return view('pengunjung.page.surat.index');
+        $jenis_surat = KlasifikasiSurat::all();
+        return view('pengunjung.page.surat.index', compact('jenis_surat'));
     }
 
     /**
@@ -34,7 +37,9 @@ class SuratOnlineController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        PermohonanSurat::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dikirm', 'success')</script>");
     }
 
     /**

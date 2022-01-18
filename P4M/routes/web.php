@@ -129,7 +129,7 @@ Route::prefix('/data')->group(function () {
 });
 
 Route::get('/peta', [UserController::class, 'peta']);
-Route::get('/surat', [SuratOnlineController::class, 'index']);
+Route::resource('/surat', SuratOnlineController::class);
 
 // Admin
 Route::prefix("page")->group(function() {
@@ -156,11 +156,6 @@ Route::prefix("page")->group(function() {
 
             // Potensi
             Route::get("/potensi", [PotensiController::class, "index"]);
-
-            // Sumber Daya Alam
-            Route::get("/jenis_sda/edit", [JenisSDAController::class, "edit"]);
-            Route::put("/jenis_sda/simpan", [JenisSDAController::class, "update"]);
-            Route::resource("/jenis_sda", JenisSDAController::class);
 
             // Sumber Daya Kelembagaan
             Route::get("/jenis_sdk/edit", [JenisSDKController::class, "edit"]);
@@ -300,7 +295,11 @@ Route::prefix("page")->group(function() {
             });
 
             Route::prefix('/sumber')->group(function () {
+                // Sumber Daya Alam
+                Route::get('/alam/edit', [JenisSDAController::class, 'edit']);
+                Route::patch('/alam', [JenisSDAController::class, 'update']);
                 Route::resource("/alam", JenisSDAController::class);
+
                 Route::resource("/manusia", JenisSDMController::class);
                 Route::resource("/kelembagaan", JenisSDKController::class);
             });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\PermohonanSurat;
 use Illuminate\Http\Request;
 
 class PermohonanSuratController extends Controller
@@ -13,7 +14,8 @@ class PermohonanSuratController extends Controller
      */
     public function index()
     {
-        return view("/admin/page/permohonan_surat/index");
+        $pemohon = PermohonanSurat::all();
+        return view("/admin/page/permohonan_surat/index", compact('pemohon'));
     }
 
     /**

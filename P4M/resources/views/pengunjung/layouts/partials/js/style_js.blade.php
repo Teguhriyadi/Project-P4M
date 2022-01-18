@@ -5,6 +5,8 @@
 <script src="/frontend/js/slick.min.js"></script>
 <script src="/frontend/js/custom.js"></script>
 <script src="/frontend/js/chart/loader.js"></script>
+<script src="/backend/template/dist/js/jquery.validate.min.js"></script>
+<script src="/backend/template/dist/js/sweetalert.min.js"></script>
 
 <script>
     window.setTimeout("renderDate()",1);
