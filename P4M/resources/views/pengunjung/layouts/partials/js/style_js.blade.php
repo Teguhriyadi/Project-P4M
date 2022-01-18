@@ -1,5 +1,11 @@
 <script src="/frontend/js/jquery.min.js"></script>
 <script src="/frontend/js/bootstrap.min.js"></script>
+
+<script src="/frontend/js/wow.min.js"></script>
+<script src="/frontend/js/slick.min.js"></script>
+<script src="/frontend/js/custom.js"></script>
+<script src="/frontend/js/chart/loader.js"></script>
+
 <script>
     window.setTimeout("renderDate()",1);
     days = new Array("Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu");
@@ -33,8 +39,3 @@
         setTimeout("renderDate()",1000)
     }
 </script>
-
-<script src="/frontend/js/wow.min.js"></script>
-<script src="/frontend/js/slick.min.js"></script>
-<script src="/frontend/js/custom.js"></script>
-<script src="/frontend/js/chart/loader.js"></script>
