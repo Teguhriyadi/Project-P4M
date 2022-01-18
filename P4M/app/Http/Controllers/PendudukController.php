@@ -12,9 +12,12 @@ use App\Models\Model\PendudukHubungan;
 use App\Models\Model\PendudukKawin;
 use App\Models\Model\GolonganDarah;
 use App\Models\Model\Jabatan;
+use App\Models\Model\LogPenduduk;
 use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukPekerjaan;
 use App\Models\Model\PendudukWargaNegara;
+use App\Models\Model\StatusDasar;
+use App\Models\Model\RefPindah;
 
 use Illuminate\Http\Request;
 
@@ -169,5 +172,48 @@ class PendudukController extends Controller
         $data = Jabatan::where("nama_jabatan", "Kuwu")->first();
 
         return view('admin/page/penduduk/cetak', compact('penduduk', 'data'));
+    }
+
+    public function edit_status_dasar(Request $request)
+    {
+        $data = [
+            "data_status_dasar" => StatusDasar::get(),
+            "data_ref_pindah" => RefPindah::get(),
+            "edit" => Penduduk::select("id")->where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/penduduk/ubah_status_dasar", $data);
+    }
+
+    public function simpan_status_dasar(Request $request)
+    {
+        $log_penduduk = new LogPenduduk;
+        $log_penduduk->id_penduduk = $request->id_penduduk;
+        $log_penduduk->kode_peristiwa = 5;
+        $log_penduduk->tgl_lapor = $request->tgl_lapor;
+        $log_penduduk->tgl_peristiwa = $request->tgl_peristiwa;
+
+        if ($request->status_dasar == 2) {
+            // Apabila Status nya mati
+            $log_penduduk->meninggal_di = $request->meninggal_di;
+            $log_penduduk->catatan = $request->catatan;
+
+        } else if ($request->status_dasar == 3) {
+            // Apabila Status nya pindah
+            $log_penduduk->ref_pindah = $request->ref_pindah;
+            $log_penduduk->tujuan_pindah = $request->tujuan_pindah;
+            $log_penduduk->alamat_tujuan = $request->alamat_tujuan;
+
+        } else if ($request->status_dasar == 4) {
+            // Apabila Status nya Hilang
+            $log_penduduk->catatan = $request->catatan;
+        }
+
+        $log_penduduk->created_by = auth()->user()->id;
+        $log_penduduk->updated_by = auth()->user()->id;
+
+        $log_penduduk->save();
+
+        return back();
     }
 }

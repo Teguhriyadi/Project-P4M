@@ -249,6 +249,8 @@ Route::prefix("page")->group(function() {
             Route::prefix('/kependudukan')->group(function () {
                 // Penduduk
                 Route::get('/penduduk/{id}/cetak', [PendudukController::class, "cetak"]);
+                Route::get('/penduduk/edit_status_dasar', [PendudukController::class, "edit_status_dasar"]);
+                Route::put('/penduduk/simpan_status_dasar', [PendudukController::class, "simpan_status_dasar"]);
                 Route::resource('/penduduk', PendudukController::class);
             });
 
