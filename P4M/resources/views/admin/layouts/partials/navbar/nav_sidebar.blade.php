@@ -163,6 +163,11 @@
                             <i class="fa fa-circle-o"></i> Penduduk
                         </a>
                     </li>
+                    <li class="{{ Request::segment(5)=='keluarga' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/kependudukan/keluarga') }}">
+                            <i class="fa fa-circle-o"></i> Keluarga
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ Request::segment(3)=='surat' ? 'active' : '' }}">

@@ -26,6 +26,7 @@ class PendudukController extends Controller
     public function index()
     {
         $data = [
+            "data_status_dasar" => StatusDasar::get(),
             "penduduk" => Penduduk::all()
         ];
 
