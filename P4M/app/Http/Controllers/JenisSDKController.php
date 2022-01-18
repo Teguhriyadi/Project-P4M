@@ -15,7 +15,8 @@ class JenisSDKController extends Controller
     */
     public function index()
     {
-        return view('admin.page.sumber_daya.kelembagaan.index');
+        $daya_kelembagaan = JenisSDK::all();
+        return view('admin.page.sumber_daya.kelembagaan.index', compact('daya_kelembagaan'));
     }
 
     /**
@@ -42,10 +43,9 @@ class JenisSDKController extends Controller
             "jenis_organisasi" => $request->jenis_organisasi,
             "jumlah_anggota" => $request->jumlah_anggota,
             "lokasi" => $request->lokasi_sdk,
-            "tahun_id" => $ambil->id
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
     /**
@@ -89,7 +89,7 @@ class JenisSDKController extends Controller
             "lokasi" => $request->lokasi
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
     /**
@@ -102,6 +102,6 @@ class JenisSDKController extends Controller
     {
         JenisSDK::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

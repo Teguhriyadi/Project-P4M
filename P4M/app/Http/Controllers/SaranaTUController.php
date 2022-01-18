@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\SaranaTempatUsaha;
 use Illuminate\Http\Request;
 
 class SaranaTUController extends Controller
@@ -13,7 +14,8 @@ class SaranaTUController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sarana.tu.index');
+        $tempat_usaha = SaranaTempatUsaha::all();
+        return view('admin.page.sarana.tu.index', compact('tempat_usaha'));
     }
 
     /**
@@ -34,7 +36,9 @@ class SaranaTUController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SaranaTempatUsaha::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
     /**
@@ -54,9 +58,11 @@ class SaranaTUController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $edit = SaranaTempatUsaha::where('id', $request->id)->first();
+
+        return view('admin.page.sarana.tu.edit', compact('edit'));
     }
 
     /**
@@ -66,9 +72,15 @@ class SaranaTUController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        SaranaTempatUsaha::where('id', $request->id)->update([
+            'jenis' => $request->jenis,
+            'jumlah' => $request->jumlah,
+            'lokasi' => $request->lokasi,
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
     /**
@@ -79,6 +91,7 @@ class SaranaTUController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SaranaTempatUsaha::where('id', $id)->delete();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

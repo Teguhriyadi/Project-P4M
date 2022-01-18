@@ -305,14 +305,34 @@ Route::prefix("page")->group(function() {
                 Route::patch('/alam', [JenisSDAController::class, 'update']);
                 Route::resource("/alam", JenisSDAController::class);
 
+                // Sumber Daya Manusia
                 Route::resource("/manusia", JenisSDMController::class);
+
+                // Sumber Daya Kelembagaan
+                Route::get('/kelembagaan/edit', [JenisSDKController::class, 'edit']);
+                Route::patch('/kelembagaan', [JenisSDKController::class, 'update']);
                 Route::resource("/kelembagaan", JenisSDKController::class);
             });
 
             Route::prefix('/sarana')->group(function () {
+                // Sarana Pendidikan
+                Route::get('/pendidikan/edit', [SaranaPendidikanController::class, 'edit']);
+                Route::patch('/pendidikan', [SaranaPendidikanController::class, 'update']);
                 Route::resource("/pendidikan", SaranaPendidikanController::class);
+
+                // Sarana Keagamaan
+                Route::get('/keagamaan/edit', [SaranaAgamaController::class, 'edit']);
+                Route::patch('/keagamaan', [SaranaAgamaController::class, 'update']);
                 Route::resource("/keagamaan", SaranaAgamaController::class);
+
+                // Sarana Olahraga
+                Route::get('/olahraga/edit', [SaranaOlahragaController::class, 'edit']);
+                Route::patch('/olahraga', [SaranaOlahragaController::class, 'update']);
                 Route::resource("/olahraga", SaranaOlahragaController::class);
+
+                // Sarana Tempat Usaha
+                Route::get('/tempat-usaha/edit', [SaranaTUController::class, 'edit']);
+                Route::patch('/tempat-usaha', [SaranaTUController::class, 'update']);
                 Route::resource("/tempat-usaha", SaranaTUController::class);
             });
 

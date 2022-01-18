@@ -142,7 +142,7 @@
     function editDataSDA(id)
     {
         $.ajax({
-            url : "http://127.0.0.1:8000/page/admin/sumber/alam/edit",
+            url : "/page/admin/sumber/alam/edit",
             type : "GET",
             data : { id : id },
             success : function(data) {
