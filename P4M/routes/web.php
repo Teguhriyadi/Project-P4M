@@ -46,6 +46,7 @@ use App\Http\Controllers\SyaratSuratController;
 use App\Http\Controllers\SuratFormatController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\SuratOnlineController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -128,6 +129,7 @@ Route::prefix('/data')->group(function () {
 });
 
 Route::get('/peta', [UserController::class, 'peta']);
+Route::get('/surat', [SuratOnlineController::class, 'index']);
 
 // Admin
 Route::prefix("page")->group(function() {
