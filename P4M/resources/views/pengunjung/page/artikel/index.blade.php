@@ -6,6 +6,7 @@
 
 @php
     use Illuminate\Support\Str;
+    use Carbon\Carbon;
 @endphp
 
 <div class="single_category wow fadeInDown">
@@ -28,9 +29,9 @@
                             <a href="/artikel/{!! $artikel->slug !!}" title="Baca Selengkapnya">{!! $artikel->judul !!}</a>
                         </h5>
                         <div class="post_commentbox">
-                            <span class="meta_date">{!! $artikel->updated_at->formatLocalized("%d %B %Y") !!}&nbsp;
+                            <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $artikel->created_at)->isoFormat('D MMMM Y') !!}&nbsp;
                                 <i class="fa fa-user"></i>Administrator&nbsp;
-                                <i class="fa fa-eye"></i>0 Kali&nbsp;
+                                <i class="fa fa-eye"></i>{{ $artikel->counter }} Kali&nbsp;
                                 <i class="fa fa-comments"></i>0&nbsp;
                             </span>
                         </div>

@@ -56,7 +56,7 @@
                                 @csrf
                                 <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
                                 <div class="col-xs-12 col-sm-8">
-                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main')">
+                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main', '')">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_penduduk as $data)
                                             <option value="{{ $data->id }}">

@@ -20,4 +20,9 @@ class Artikel extends Model
         return $this->belongsTo("App\Models\Model\Kategori", "kategori_id", "id");
     }
 
+    public function getCount()
+    {
+        return $this->hasMany(Counter::class, 'id_artikel', 'id');
+    }
+
 }

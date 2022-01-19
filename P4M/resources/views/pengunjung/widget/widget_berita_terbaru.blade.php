@@ -1,6 +1,6 @@
 @php
     use App\Models\Model\Artikel;
-    setlocale(LC_ALL, 'id_ID', 'id', 'ID');
+    use Carbon\Carbon;
     $artikel = Artikel::latest()->paginate(6);
 @endphp
 <div class="single_bottom_rightbar">
@@ -14,7 +14,7 @@
             <table id="ul-menu">
                 <tr>
                     <td colspan="2">
-                        <span class="meta_date">{{ $a->created_at->formatLocalized("%d %B %Y") }} | <i class="fa fa-eye"></i> 0 Kali</span>
+                        <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $a->created_at)->isoFormat('D MMMM Y') !!} | <i class="fa fa-eye"></i> {{ $a->counter }} Kali</span>
                     </td>
                 </tr>
                 <tr>
