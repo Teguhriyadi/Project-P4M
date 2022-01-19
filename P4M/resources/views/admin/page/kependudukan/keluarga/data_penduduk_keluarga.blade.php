@@ -125,7 +125,7 @@
                 <div class="modal-body" id="modal-penduduk-keluarga">
                     <div class="form-group">
                         <label for="nik_kepala"> Nomor Kartu Keluarga (KK) </label>
-                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm" style="width: 100%">
+                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
                             <option value="">- Pilih -</option>
                             @php
                             use App\Models\Model\Penduduk;
