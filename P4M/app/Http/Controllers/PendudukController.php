@@ -30,7 +30,7 @@ class PendudukController extends Controller
             "penduduk" => Penduduk::all()
         ];
 
-        return view("admin/page/penduduk/index", $data);
+        return view("admin/page/penduduk/home", $data);
     }
 
     public function create()

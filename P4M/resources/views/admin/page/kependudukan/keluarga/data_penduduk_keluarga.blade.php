@@ -4,6 +4,12 @@
 
 @section('page_content')
 
+<style>
+    .table-min-height {
+        min-height: 350px;
+    }
+</style>
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -40,24 +46,43 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive table-min-height">
                         <table id="example1" class="table table-bordered table-striped" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
+                                    <th class="text-center">Aksi</th>
                                     <th class="text-center">Foto</th>
                                     <th class="text-center">Nomor KK</th>
                                     <th>Kepala Keluarga</th>
                                     <th class="text-center">NIK</th>
                                     <th class="text-center">Jumlah Anggota</th>
                                     <th class="text-center">Tanggal Terdaftar</th>
-                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data_keluarga as $keluarga)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$keluarga->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
+                                            <i class="fa fa-list-ol"></i>
+                                        </a>
+                                        <div class="btn-group btn-group-vertical">
+                                            <a class="btn btn-success btn-flat btn-sm " data-toggle="dropdown" title="Tambah Anggota Keluarga" ><i class="fa fa-plus"></i> </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/1/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir"><i class="fa fa-plus"></i> Anggota Keluarga Lahir</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/5/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk"><i class="fa fa-plus"></i> Anggota Keluarga Masuk</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button onclick="editData({{ $keluarga->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    </td>
                                     <td class="text-center">
                                         @if ($keluarga->foto == NULL)
                                         <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50">
@@ -68,27 +93,6 @@
                                     <td class="text-center">{{ $keluarga->getDataPenduduk->nik }}</td>
                                     <td class="text-center">0</td>
                                     <td class="text-center">{{ $keluarga->tgl_daftar }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$keluarga->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
-                                            <i class="fa fa-list-ol"></i>
-                                        </a>
-                                        <a class="btn btn-success btn-flat btn-sm" title="Tambah Anggota Keluarga" data-toggle="dropdown">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="{{ url('/page/admin/kependudukan/'.$keluarga->id) }}/anggota_keluarga_lahir" class="btn btn-social btn-block btn-flat btn-sm" title="Anggota Keluarga Lahir">
-                                                    <i class="fa fa-plus"></i> Anggota Keluarga Lahir
-                                                </a>
-                                                <a href="{{ url('/page/admin/kependudukan/'.$keluarga->id) }}/anggota_keluarga_masuk" class="btn btn-social btn-block btn-flat btn-sm" title="Anggota Keluarga Masuk">
-                                                    <i class="fa fa-plus"></i> Anggota Keluarga Masuk
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <button onclick="editData({{ $keluarga->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -117,25 +121,25 @@
                 <div class="modal-body" id="modal-penduduk-keluarga">
                     <div class="form-group">
                         <label for="nik_kepala"> Nomor Kartu Keluarga (KK) </label>
-                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm">
+                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm" style="width: 100%">
                             <option value="">- Pilih -</option>
                             @php
-                                use App\Models\Model\Penduduk;
-                                $data_penduduk = Penduduk::get()
+                            use App\Models\Model\Penduduk;
+                            $data_penduduk = Penduduk::get()
                             @endphp
 
                             @foreach ($data_penduduk as $data)
-                                @php
-                                    $data_keluarga = DB::table("tb_keluarga")
-                                                ->where("nik_kepala" , $data->id)
-                                                ->first();
-                                @endphp
+                            @php
+                            $data_keluarga = DB::table("tb_keluarga")
+                            ->where("nik_kepala" , $data->id)
+                            ->first();
+                            @endphp
 
-                                @if (empty($data_keluarga))
-                                    <option value="{{ $data->id }}">
-                                        {{ $data->nama }}
-                                    </option>
-                                @endif
+                            @if (empty($data_keluarga))
+                            <option value="{{ $data->id }}">
+                                {{ $data->nama }}
+                            </option>
+                            @endif
 
                             @endforeach
 
@@ -197,6 +201,27 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    $('document').ready(function()
+    {
+        $('.table').on('show.bs.dropdown', function (e) {
+            var table = $(this),
+            menu = $(e.target).find('.dropdown-menu'),
+            tableOffsetHeight = table.offset().top + table.height(),
+            menuOffsetHeight = $(e.target).offset().top + $(e.target).outerHeight(true) + menu.outerHeight(true);
+
+            if (menuOffsetHeight > tableOffsetHeight)
+            {
+                table.css("padding-bottom", menuOffsetHeight - tableOffsetHeight);
+                $('.table')[0].scrollIntoView(false);
+            }
+
+        });
+
+        $('.table').on('hide.bs.dropdown', function () {
+            $(this).css("padding-bottom", 0);
+        })
+    });
+
     function editData(id)
     {
         $.ajax({
