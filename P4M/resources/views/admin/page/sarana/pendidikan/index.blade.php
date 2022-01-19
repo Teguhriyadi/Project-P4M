@@ -19,6 +19,7 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
+                    <a href="/sarpras/pendidikan" target="_blank" class="btn btn-info btn-sm" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahSaranaPendidikan">
                             <i class="fa fa-plus"></i> Tambah Data

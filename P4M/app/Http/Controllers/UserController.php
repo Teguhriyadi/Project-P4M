@@ -25,6 +25,7 @@ use App\Models\Model\SaranaAgama;
 use App\Models\Model\SaranaOlahraga;
 use App\Models\Model\SaranaPendidikan;
 use App\Models\Model\SaranaTempatUsaha;
+use App\Models\Model\Sejarah;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -136,7 +137,8 @@ class UserController extends Controller
 
     public function sejarah()
     {
-        return view("pengunjung/page/profil/sejarah");
+        $sejarah = Sejarah::first();
+        return view("pengunjung/page/profil/sejarah", compact('sejarah'));
     }
 
     public function wilayah()

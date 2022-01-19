@@ -95,6 +95,7 @@
                         <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/show') }}">
                             <i class="fa fa-search"></i> Lihat Struktur Pemerintahan
                         </a>
+                        <a href="/pemerintahan/struktur-organisasi" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
                     </div>
                 </div>
                 <div class="box-body">

@@ -5,7 +5,7 @@
 @section('page_content')
 
 <div id="printableArea">
-    
+
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald; margin-bottom: 5rem;">@yield('title')</h2>
         <center><div id="piechart"></div></center>
@@ -52,7 +52,7 @@
 <script>
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    
+
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
@@ -60,9 +60,9 @@
         ['{{ $wn->nama }}', {{ $wn->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
-        
+
         var options = {'width':550, 'height':400};
-        
+
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
     }

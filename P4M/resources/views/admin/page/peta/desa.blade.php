@@ -24,6 +24,7 @@
             <h3 class="box-title">
                 <i class="fa fa-minus"></i> Form Maps
             </h3>
+            <a href="/peta" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
         </div>
         <div class="box-body">
             <div class="row">
@@ -37,7 +38,7 @@
                         <div class="form-group">
                             <label for="url">Masukan Url</label>
                             @if (empty($desa))
-                            <textarea name="url" id="url" rows="8" class="form-control"></textarea>  
+                            <textarea name="url" id="url" rows="8" class="form-control"></textarea>
                             @else
                             <textarea name="url" id="url" rows="8" class="form-control">{!! $desa->wilayah_desa !!}</textarea>
                             @endif
