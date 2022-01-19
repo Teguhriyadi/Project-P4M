@@ -4,6 +4,11 @@
 
 @section('page_content')
 
+@php
+use Carbon\Carbon;
+
+@endphp
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -41,9 +46,9 @@
                                 @foreach ($data_surat_masuk as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
-                                    <td class="text-center">{{ $data->tanggal_penerimaan }}</td>
+                                    <td class="text-center">{{ Carbon::createFromFormat('Y-m-d', $data->tanggal_penerimaan)->isoFormat('D MMMM Y') }}</td>
                                     <td class="text-center">{{ $data->nomor_surat }}</td>
-                                    <td class="text-center">{{ $data->tanggal_surat }}</td>
+                                    <td class="text-center">{{ Carbon::createFromFormat('Y-m-d', $data->tanggal_surat)->isoFormat('D MMMM Y') }}</td>
                                     <td>{{ $data->pengirim }}</td>
                                     <td>{{ $data->isi_singkat }}</td>
                                     <td class="text-center">
@@ -54,7 +59,7 @@
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="oldBerkasScan" value="{{ $data->berkas_scan }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn-delete btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

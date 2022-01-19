@@ -1,6 +1,6 @@
 @php
-    use App\Models\Model\Profil;
-	$profil = Profil::first();
+use App\Models\Model\Profil;
+$profil = Profil::first();
 @endphp
 <!DOCTYPE html>
 <html>
@@ -12,10 +12,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <meta name="title" content="Sistem Informasi Desa Arahan Lor"./>
-	<meta name="description" content="Sistem Informasi Desa Arahan Lor - Sistem Informasi Desa Arahan Lor"./>
-	<meta name="keywords" content="Sistem Informasi Desa Arahan Lor"./>
-	<meta name="copyright" content="Team P4M"./>
-	<meta name="author" content="Team P4M"./>
+    <meta name="description" content="Sistem Informasi Desa Arahan Lor - Sistem Informasi Desa Arahan Lor"./>
+    <meta name="keywords" content="Sistem Informasi Desa Arahan Lor"./>
+    <meta name="copyright" content="Team P4M"./>
+    <meta name="author" content="Team P4M"./>
 
     <link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
     @include('admin/layouts/partials/css/style2')
@@ -69,6 +69,26 @@
     </div>
 
     @yield('page_scripts')
+
+    <script>
+        $('.btn-delete').click(function(e) {
+            let form =  $(this).closest("form");
+            e.preventDefault();
+            swal({
+                title: "Maaf!",
+                text: "Data anda akan dihapus!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                buttons: ['Batal', 'Hapus']
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

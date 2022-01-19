@@ -51,6 +51,54 @@ class UserController extends Controller
         return view("/pengunjung/page/artikel/index", $data);
     }
 
+    public function artikelLoad()
+    {
+        $data = [
+            "data_artikel" => Artikel::latest()->paginate(6),
+            "data_title" => 'Artikel',
+        ];
+
+        return view("/pengunjung/page/artikel/page", $data);
+    }
+
+    public function artikelSearch(Request $request)
+    {
+        $data = [
+            "data_artikel" => Artikel::where("judul", "like", "%".$request->term."%")->latest()->paginate(6),
+            "data_title" => $request->term,
+        ];
+
+        return view("/pengunjung/page/artikel/page", $data);
+    }
+
+    public function artikelCari(Request $request)
+    {
+        $data = [
+            "data_artikel" => Artikel::where("judul", "like", "%".$request->cari."%")->latest()->paginate(6),
+            "data_title" => $request->cari,
+        ];
+
+        return view("/pengunjung/page/artikel/cari", $data);
+    }
+
+    public function artikelJson(Request $request)
+    {
+        $search = $request->search;
+
+        if($search == ''){
+            $artikel = Artikel::orderby('judul','asc')->select('judul')->limit(5)->get();
+        }else{
+            $artikel = Artikel::orderby('judul','asc')->select('judul')->where('judul', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+
+        $response = array();
+        foreach($artikel as $a){
+            $response[] = array("judul"=>$a->judul);
+        }
+
+        return response()->json($response);
+    }
+
     public function detailArtikel($slug)
     {
         $data = [

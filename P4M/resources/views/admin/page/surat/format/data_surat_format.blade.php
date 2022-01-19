@@ -58,7 +58,7 @@
                                             <form action="{{ url('/page/admin/surat/format/'.$data->id) }}" method="POST" style="display: inline;">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                <button type="submit" class="btn-delete btn btn-danger btn-sm">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </form>

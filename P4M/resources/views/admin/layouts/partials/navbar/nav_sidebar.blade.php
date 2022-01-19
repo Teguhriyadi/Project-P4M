@@ -163,7 +163,7 @@
                             <i class="fa fa-circle-o"></i> Penduduk
                         </a>
                     </li>
-                    <li class="{{ Request::segment(5)=='keluarga' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='keluarga' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/kependudukan/keluarga') }}">
                             <i class="fa fa-circle-o"></i> Keluarga
                         </a>
@@ -178,12 +178,12 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('page/admin/surat/klasifikasi') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='klasifikasi' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/klasifikasi') }}">
                             <i class="fa fa-circle-o"></i> Klasifikasi Surat
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/ref_syarat') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='ref_syarat' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/ref_syarat') }}">
                             <i class="fa fa-circle-o"></i> Referensi Syarat Surat
                         </a>
@@ -193,22 +193,22 @@
                             <i class="fa fa-circle-o"></i> Format Surat
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/permohonan') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='permohonan' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/permohonan') }}">
                             <i class="fa fa-circle-o"></i> Permohonan Surat
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/masuk') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='masuk' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/masuk') }}">
                             <i class="fa fa-circle-o"></i> Surat Masuk
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/keluar') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='keluar' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/keluar') }}">
                             <i class="fa fa-circle-o"></i> Surat Keluar
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/surat/arsip') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='arsip' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/surat/arsip') }}">
                             <i class="fa fa-circle-o"></i> Arsip Surat
                         </a>
