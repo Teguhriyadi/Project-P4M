@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\SuratFormat;
 use App\Models\Model\KlasifikasiSurat;
 use App\Models\Model\RefSyaratSurat;
+use App\Models\Model\SuratMasuk;
 use App\Models\Model\SyaratSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
