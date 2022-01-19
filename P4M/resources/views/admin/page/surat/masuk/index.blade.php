@@ -47,12 +47,13 @@
                                     <td>{{ $data->pengirim }}</td>
                                     <td>{{ $data->isi_singkat }}</td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/surat/masuk/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <form action="" method="POST" style="display: inline;">
+                                        <form action="{{ url('/page/admin/surat/masuk/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
+                                            <input type="hidden" name="oldBerkasScan" value="{{ $data->berkas_scan }}">
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>

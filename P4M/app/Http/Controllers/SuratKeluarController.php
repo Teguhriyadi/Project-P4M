@@ -2,39 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\KlasifikasiSurat;
+use App\Models\Model\SuratKeluar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SuratKeluarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.page.surat.keluar.index');
+        $data = [
+            "data_surat_keluar" => SuratKeluar::get()
+        ];
+
+        return view('admin.page.surat.keluar.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $data = [
+            "data_klasifikasi" => KlasifikasiSurat::get()
+        ];
+
+        return view("/admin/page/surat/keluar/form_tambah", $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $simpan = new SuratKeluar;
+        $simpan->nomor_urut = $request->nomor_urut;
+        $simpan->nomor_surat = $request->nomor_surat;
+        $simpan->kode_surat = $request->kode_surat;
+        $simpan->tanggal_surat = $request->tanggal_surat;
+        $simpan->tujuan = $request->tujuan;
+        $simpan->isi_singkat = $request->isi_singkat;
+
+        if($request->file("berkas_scan")) {
+            $simpan->berkas_scan = $request->file('berkas_scan')->store('berkas_scan_keluar');
+        }
+
+        $simpan->save();
+
+        return redirect("/page/admin/surat/keluar");
     }
 
     /**
@@ -71,14 +80,15 @@ class SuratKeluarController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->oldBerkasScan) {
+            Storage::delete($request->oldBerkasScan);
+        }
+
+        SuratKeluar::where("id", $id)->delete();
+
+        return back();
+
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Model\KlasifikasiSurat;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
 {
@@ -71,27 +72,50 @@ class SuratMasukController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $data = [
+            "data_klasifikasi" => KlasifikasiSurat::get(),
+            "data_struktur" => StrukturPemerintahan::get(),
+            "edit" => SuratMasuk::where("id", $id)->first()
+        ];
+
+        return view("/admin/page/surat/masuk/form_edit", $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $simpan = SuratMasuk::where("id", $id)->first();
+        $simpan->nomor_urut = $request->nomor_urut;
+        $simpan->tanggal_penerimaan = $request->tanggal_penerimaan;
+        $simpan->nomor_surat = $request->nomor_surat;
+        $simpan->kode_surat = $request->kode_surat;
+        $simpan->tanggal_surat = $request->tanggal_surat;
+        $simpan->pengirim = $request->pengirim;
+        $simpan->isi_singkat = $request->isi_singkat;
+        $simpan->isi_disposisi = $request->isi_disposisi;
+
+        if($request->file("berkas_scan")) {
+
+            if ($request->oldBerkasScan) {
+                Storage::delete($request->oldBerkasScan);
+            }
+
+            $simpan->berkas_scan = $request->file('berkas_scan')->store('berkas');
+        }
+
+        $simpan->save();
+
+        $id_pegawai = $request->id_pegawai;
+        foreach ($request->id_pegawai as $d => $unit) {
+            $s = DisposisiSuratMasuk::where("id_surat_masuk", $id)->first();
+            $s->id_pegawai = $id_pegawai[$d];
+            $s->disposisi_ke = "1";
+
+            $s->update();
+        }
+
+        return redirect("/page/admin/surat/masuk");
     }
 
     /**
@@ -100,8 +124,14 @@ class SuratMasukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->oldBerkasScan) {
+            Storage::delete($request->oldBerkasScan);
+        }
+
+        SuratMasuk::where("id", $id)->delete();
+
+        return back();
     }
 }

@@ -25,13 +25,15 @@
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>
-                <form action="{{ url('/page/admin/surat/masuk') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ url('/page/admin/surat/masuk/'.$edit->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    @method("PUT")
                     @csrf
+                    <input type="hidden" name="oldBerkasScan" value="{{ $edit->berkas_scan }}">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nomor_urut" class="col-sm-3"> Nomor Urut </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="nomor_urut" id="nomor_urut" placeholder="Masukkan Nomor Urut">
+                                <input type="text" class="form-control" name="nomor_urut" id="nomor_urut" placeholder="Masukkan Nomor Urut" value="{{ $edit->nomor_urut }}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,14 +43,18 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_penerimaan" value="{{ old('tanggal_penerimaan') }}">
+                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_penerimaan" value="{{ $edit->tanggal_penerimaan }} {{ old('tanggal_penerimaan') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="berkas_scan" class="col-sm-3">Berkas Scan Surat Masuk</label>
                             <div class="col-sm-9">
+                                @if ($edit->berkas_scan)
+                                <img src="{{ url('/storage/'.$edit->berkas_scan) }}" class="gambar-preview img-fluid" width="300" style="margin-bottom: 10px;">
+                                @else
                                 <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
+                                @endif
                                 <input onchange="previewImage()" type="file" class="form-control input-sm" name="berkas_scan" id="berkas_scan">
                             </div>
                         </div>
@@ -58,7 +64,7 @@
                                 <select name="kode_surat" id="kode_surat" class="form-control input-sm select2">
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_klasifikasi as $surat)
-                                    <option value="{{ $surat->id }}">
+                                    <option value="{{ $surat->id }}" {{ $edit->kode_surat == $surat->id ? 'selected' : '' }}>
                                         {{ $surat->kode  }} - {{ $surat->nama }}
                                     </option>
                                     @endforeach
@@ -68,7 +74,7 @@
                         <div class="form-group">
                             <label for="nomor_surat" class="col-sm-3"> Nomor Surat </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control input-sm" name="nomor_surat" id="nomor_surat">
+                                <input type="text" class="form-control input-sm" name="nomor_surat" id="nomor_surat" value="{{ $edit->nomor_surat }}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -78,29 +84,39 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_surat" value="{{ old('tanggal_surat') }}">
+                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_surat" value="{{ $edit->tanggal_surat }} {{ old('tanggal_surat') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pengirim" class="col-sm-3"> Pengirim </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="pengirim" id="pengirim" placeholder="Masukkan Data Pengirim">
+                                <input type="text" class="form-control" name="pengirim" id="pengirim" placeholder="Masukkan Data Pengirim" value="{{ $edit->pengirim }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="isi_singkat" class="col-sm-3"> Isi Singkat Perihal </label>
                             <div class="col-sm-9">
-                                <textarea name="isi_singkat" id="isi_singkat" class="form-control input-sm" cols="30" rows="5" placeholder="Masukkan Isian Singkat"></textarea>
+                                <textarea name="isi_singkat" id="isi_singkat" class="form-control input-sm" cols="30" rows="5" placeholder="Masukkan Isian Singkat">{{ $edit->isi_singkat }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-3"> Disposisi Kepada </label>
                             @foreach ($data_struktur as $data)
+                            <?php
+                                $getData = DB::table("tb_disposisi_surat_masuk")
+                                        ->where("id_pegawai", $data->id)
+                                        ->where("id_surat_masuk", $edit->id)
+                                        ->first();
+                            ?>
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <span class="input-group-addon">
+                                        @if ($getData)
+                                        <input type="checkbox" name="id_pegawai[]" value="{{ $data->id }}" checked>
+                                        @else
                                         <input type="checkbox" name="id_pegawai[]" value="{{ $data->id }}">
+                                        @endif
                                     </span>
                                     <input type="text" class="form-control" value="{{ $data->getJabatan->nama_jabatan }}">
                                 </div>
@@ -110,7 +126,7 @@
                         <div class="form-group">
                             <label for="isi_disposisi" class="col-sm-3"> Isi Disposisi </label>
                             <div class="col-sm-9">
-                                <input type="name" class="form-control input-sm" name="isi_disposisi" id="isi_disposisi" placeholder="Masukkan Isian Disposisi">
+                                <input type="name" class="form-control input-sm" name="isi_disposisi" id="isi_disposisi" placeholder="Masukkan Isian Disposisi" value="{{ $edit->isi_disposisi }}">
                             </div>
                         </div>
                     </div>
@@ -119,8 +135,8 @@
                             <i class="fa fa-times"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm">
-                                <i class="fa fa-plus"></i> Tambah
+                            <button type="submit" class="btn btn-social btn-flat btn-success btn-sm">
+                                <i class="fa fa-edit"></i> Simpan
                             </button>
                         </div>
                     </div>
