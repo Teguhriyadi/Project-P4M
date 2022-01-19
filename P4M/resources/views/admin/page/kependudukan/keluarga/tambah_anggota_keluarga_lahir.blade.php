@@ -60,7 +60,7 @@
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label for="nama"> Kepala KK </label>
-                                    <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Masukkan Nama" value="{{ $edit->nama }}" readonly>
+                                    <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Masukkan Nama" value="{{ $edit->getDataPenduduk->nama }}" readonly>
                                 </div>
                             </div>
 

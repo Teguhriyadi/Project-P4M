@@ -3,7 +3,7 @@
 <input type="hidden" name="id_penduduk" value="{{ $edit->id }}">
 <div class="form-group">
     <label for="status">Status Dasar Baru</label>
-    <select name="status_dasar" id="status_dasar" class="form-control input-sm select2">
+    <select name="status_dasar" id="status_dasar" class="form-control input-sm select2" width="100%">
         <option value="">- Pilih -</option>
         @foreach ($data_status_dasar as $status_dasar)
         <option value="{{ $status_dasar->id }}">
@@ -62,6 +62,13 @@
 <script src="{{ url('backend/template/bower_components/moment/min/moment.min.js') }}"></script>
 <script src="{{ url('backend/template/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ url('backend/template/plugins/timepicker/bootstrap-datetimepicker.min.js') }}"></script>
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#status_dasar").select2()
+    });
+</script>
 
 <script>
     $('#tgl_1').datetimepicker(

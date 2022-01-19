@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover" width="100%">
-        <thead>
+        <thead class="bg-purple">
             <th class="text-center">No.</th>
             <th>NIK</th>
             <th>Nama</th>
@@ -9,16 +9,14 @@
         <tbody>
             @php
                 use App\Models\Model\Penduduk;
-                $data_penduduk = Penduduk::where("id_rtm", "!=", NULL)
-                            ->where("id", $edit->id)
-                            ->get();
+                $data_penduduk = Penduduk::where("id_rtm", $edit->no_kk)->get();
             @endphp
             @foreach ($data_penduduk as $penduduk)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}.</td>
                 <td>{{ $penduduk->nik }}</td>
                 <td>{{ $penduduk->nama }}</td>
-                <td class="text-center">{{ $penduduk->getHubungan->nama }}</td>
+                <td class="text-center">{{ $penduduk->getHubunganRtm->nama }}</td>
             </tr>
             @endforeach
         </tbody>

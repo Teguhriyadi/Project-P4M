@@ -12,7 +12,7 @@ class RtmController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::all()
+            "data_rtm" => RTM::all()
         ];
 
         return view("/admin/page/kependudukan/rtm/data_rtm", $data);
@@ -95,7 +95,7 @@ class RtmController extends Controller
     public function rincian_rtm($id)
     {
         $data = [
-            "edit" => Penduduk::where("id", $id)->first()
+            "edit" => RTM::where("id", $id)->first()
         ];
 
         return view("/admin/page/kependudukan/rtm/rincian_rtm", $data);
@@ -104,7 +104,7 @@ class RtmController extends Controller
     public function tambah_data_anggota_rtm(Request $request)
     {
         $data = [
-            "edit" => Penduduk::where("id", $request->id)->first()
+            "edit" => RTM::where("id", $request->id)->first()
         ];
 
         return view("/admin/page/kependudukan/rtm/tambah_data_anggota_rtm", $data);
@@ -112,17 +112,11 @@ class RtmController extends Controller
 
     public function tambah_data_anggota(Request $request)
     {
-        $ambil = Keluarga::where("nik_kepala", $request->nik_kepala)->first();
+        $ambil = Keluarga::where("id", $request->nik_kepala)->first();
 
         Penduduk::where("id", $request->nik_kepala)->update([
             "id_rtm" => $ambil->no_kk,
             "rtm_level" => 2
-        ]);
-
-        RTM::create([
-            "nik_kepala" => $request->nik_kepala,
-            "no_kk" => $ambil->no_kk,
-            "kelas_sosial" => 1
         ]);
 
         return redirect("/page/admin/kependudukan/rtm");

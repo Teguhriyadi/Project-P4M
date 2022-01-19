@@ -61,48 +61,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data_penduduk as $penduduk)
+                                @foreach ($data_keluarga as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
+                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$data->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
                                             <i class="fa fa-list-ol"></i>
                                         </a>
                                         <div class="btn-group btn-group-vertical">
                                             <a class="btn btn-success btn-flat btn-sm " data-toggle="dropdown" title="Tambah Anggota Keluarga" ><i class="fa fa-plus"></i> </a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
-                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/tambah_anggota_keluarga_lahir" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir">
+                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$data->id) }}/tambah_anggota_keluarga_lahir" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir">
                                                         <i class="fa fa-plus"></i> Anggota Keluarga Lahir
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/tambah_anggota_keluarga_masuk" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
+                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$data->id) }}/tambah_anggota_keluarga_masuk" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
                                                         <i class="fa fa-plus"></i> Anggota Keluarga Masuk
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button onclick="editData({{ $penduduk->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
+                                        <button onclick="editData({{ $data->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        @if ($penduduk->foto == NULL)
+                                        @if ($data->foto == NULL)
                                         <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50">
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ $penduduk->no_kk }}</td>
-                                    <td>{{ $penduduk->nama }}</td>
-                                    <td class="text-center">{{ $penduduk->nik }}</td>
+                                    <td class="text-center">{{ $data->no_kk }}</td>
+                                    <td>{{ $data->getDataPenduduk->nama }}</td>
+                                    <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
                                     <td class="text-center">
                                         @php
                                             echo $jumlahData = DB::table("tb_penduduk")
-                                                            ->where("id_kk", $penduduk->id)
+                                                            ->where("id_kk", $data->id)
                                                             ->count();
                                         @endphp
                                     </td>
-                                    <td class="text-center">{{ $penduduk->tgl_daftar }}</td>
+                                    <td class="text-center">{{ $data->tgl_daftar }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -135,22 +135,13 @@
                             <option value="">- Pilih -</option>
                             @php
                             use App\Models\Model\Penduduk;
-                            $data_penduduk = Penduduk::get()
+                            $data_penduduk = Penduduk::where("id_kk", NULL)->get()
                             @endphp
 
                             @foreach ($data_penduduk as $data)
-                            @php
-                            $data_keluarga = DB::table("tb_keluarga")
-                            ->where("nik_kepala" , $data->id)
-                            ->first();
-                            @endphp
-
-                            @if (empty($data_keluarga))
                             <option value="{{ $data->id }}">
-                                {{ $data->nama }}
+                                NIK : {{ $data->nik }} - {{ $data->nama }}
                             </option>
-                            @endif
-
                             @endforeach
 
                         </select>

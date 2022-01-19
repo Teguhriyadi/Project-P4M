@@ -44,28 +44,28 @@
                                     <td width="20%">Nomor Rumah Tangga (RT)</td>
                                     <td width="1%">:</td>
                                     <td>
-                                        {{ $edit->id_rtm }}
+                                        {{ $edit->no_kk }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Kepala Rumah Tangga</td>
                                     <td>:</td>
                                     <td>
-                                        {{ $edit->nama }}
+                                        {{ $edit->getDataPenduduk->nama }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
                                     <td>:</td>
                                     <td>
-
+                                        {{ $edit->getDataPenduduk->alamat }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Program Bantuan</td>
                                     <td>:</td>
                                     <td>
-
+                                        -
                                     </td>
                                 </tr>
                             </tbody>
@@ -93,7 +93,7 @@
                                 @php
                                     use App\Models\Model\Penduduk;
 
-                                    $getData = Penduduk::where("id", $edit->id)
+                                    $getData = Penduduk::where("id_rtm", $edit->no_kk)
                                         ->get();
                                 @endphp
                                 @foreach ($getData as $data)
@@ -105,9 +105,9 @@
                                         </a>
                                     </td>
                                     <td>{{ $data->getKeluarga->no_kk }}</td>
-                                    <td>{{ $edit->nama }}</td>
-                                    <td class="text-center">{{ $edit->getKelamin->nama }}</td>
-                                    <td>{{ $edit->getKeluarga->alamat }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td class="text-center">{{ $data->nama }}</td>
+                                    <td></td>
                                     <td>{{ $data->getHubunganRtm->nama }}</td>
                                 </tr>
                                 @endforeach

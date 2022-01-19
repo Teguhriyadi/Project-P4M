@@ -43,16 +43,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    use App\Models\Model\Penduduk;
-                                    $getPenduduk = Penduduk::where("rtm_level", "!=", 2)
-                                            ->get();
-                                @endphp
-                                @foreach ($getPenduduk as $penduduk)
+                                @foreach ($data_rtm as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/kependudukan/rtm/'.$penduduk->id.'/rincian_rtm') }}" class="btn bg-purple btn-flat btn-sm">
+                                        <a href="{{ url('/page/admin/kependudukan/rtm/'.$data->id.'/rincian_rtm') }}" class="btn bg-purple btn-flat btn-sm">
                                             <i class="fa fa-list-ol"></i>
                                         </a>
                                         <a type="button" data-toggle="modal" data-target="#modal-default-tambah" class="btn btn-success btn-flat btn-sm" title="Tambah Anggota Rumah Tangga">
@@ -68,11 +63,11 @@
                                     <td class="text-center">
                                         <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50" >
                                     </td>
-                                    <td>{{ $penduduk->id_rtm }}</td>
-                                    <td></td>
+                                    <td>{{ $data->getDataPenduduk->id_rtm }}</td>
+                                    <td>{{ $data->getDataPenduduk->nama }}</td>
+                                    <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
                                     <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">{{ $data->created_at }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

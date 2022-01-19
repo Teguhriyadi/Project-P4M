@@ -26,7 +26,7 @@ class KeluargaController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::where("kk_level", 1)->get()
+            "data_keluarga" => Keluarga::all()
         ];
 
         return view("/admin/page/kependudukan/keluarga/data_penduduk_keluarga", $data);
@@ -113,7 +113,7 @@ class KeluargaController extends Controller
     public function rincian_keluarga($id)
     {
         $data = [
-            "edit" => Penduduk::where("id", $id)->first()
+            "edit" => Keluarga::where("id", $id)->first()
         ];
 
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
@@ -149,8 +149,11 @@ class KeluargaController extends Controller
 
     public function tambah_kepala_keluarga(Request $request)
     {
+        $ambil = Penduduk::where("id", $request->nik_kepala)->first();
+
         Penduduk::where("id", $request->nik_kepala)->update([
-            "id_hubungan" => 1
+            "kk_level" => 1,
+            "id_kk" => $ambil->id
         ]);
 
         Keluarga::create([
@@ -184,7 +187,7 @@ class KeluargaController extends Controller
             "data_rw" => Rw::all(),
             "data_cacat" => Cacat::all(),
             "data_sakit_menahun" => SakitMenahun::all(),
-            "edit" => Keluarga::where("nik_kepala", $id)->first()
+            "edit" => Keluarga::where("id", $id)->first()
         ];
 
         return view("/admin/page/kependudukan/keluarga/tambah_anggota_keluarga_lahir", $data);
@@ -218,7 +221,7 @@ class KeluargaController extends Controller
             "data_rw" => Rw::all(),
             "data_cacat" => Cacat::all(),
             "data_sakit_menahun" => SakitMenahun::all(),
-            "edit" => Keluarga::where("nik_kepala", $id)->first()
+            "edit" => Keluarga::where("id", $id)->first()
         ];
 
         return view("/admin/page/kependudukan/keluarga/tambah_anggota_keluarga_masuk", $data);

@@ -83,4 +83,5 @@ class Penduduk extends Model
     {
         return $this->hasOne(RtmHubungan::class, "id", "rtm_level");
     }
+
 }
