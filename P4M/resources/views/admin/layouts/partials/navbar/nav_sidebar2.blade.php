@@ -58,6 +58,11 @@
                             <i class="fa fa-circle-o"></i> Visi Misi
                         </a>
                     </li>
+                    <li class="{{ Request::is('page/admin/info/sejarah-desa') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/info/sejarah-desa') }}">
+                            <i class="fa fa-circle-o"></i> Sejarah Desa
+                        </a>
+                    </li>
                     <li class="{{ Request::is('page/admin/info/geografis') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/info/geografis') }}">
                             <i class="fa fa-circle-o"></i> Letak Geografis

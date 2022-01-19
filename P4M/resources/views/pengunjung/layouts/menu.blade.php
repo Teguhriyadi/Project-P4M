@@ -71,6 +71,23 @@
                         <a class="dropdown-toggle" href="/peta">Peta</a>
                     </li>
                     <li class=""><a href="/artikel">Artikel</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">Sarana/Prasarana<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/sarpras/pendidikan">Sarpras Pendidikan</a>
+                            </li>
+                            <li>
+                                <a href="/sarpras/agama">Sarpras Agama</a>
+                            </li>
+                            <li>
+                                <a href="/sarpras/tempat-usaha">Sarpras Tempat Usaha</a>
+                            </li>
+                            <li>
+                                <a href="/sarpras/olahraga">Sarpras Olahraga</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class=""><a href="/surat">Permohonan Surat</a></li>
                     <li class=""><a href="/galeri">Galeri</a></li>
                 </ul>

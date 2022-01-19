@@ -48,6 +48,7 @@ use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratOnlineController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\SejarahController;
 use App\Models\Model\Pegawai;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
@@ -84,9 +85,16 @@ Route::prefix("artikel")->group(function() {
     Route::get('/{slug}',[UserController::class, "detailArtikel"]);
 });
 
-// Kontak
-Route::get("/kontak", [UserController::class, "kontak"]);
-Route::post("/kirim_pesan", [UserController::class, "kirim_pesan"]);
+// Sarana Prasarana
+Route::prefix('sarpras')->group(function () {
+    Route::get("/pendidikan", [UserController::class, "sarprasPendidikan"]);
+
+    Route::get("/agama", [UserController::class, "sarprasAgama"]);
+
+    Route::get("/olahraga", [UserController::class, "sarprasOlahraga"]);
+
+    Route::get("/tempat-usaha", [UserController::class, "sarprasTempatUsaha"]);
+});
 
 // Profil
 Route::prefix('profil')->group(function () {
@@ -171,6 +179,7 @@ Route::prefix("page")->group(function() {
 
             Route::prefix("info")->group(function() {
                 Route::resource("/profil", ProfilController::class);
+                Route::resource("/sejarah-desa", SejarahController::class);
                 Route::resource("/visi-misi", VisiMisiController::class);
 
                 Route::resource("/geografis", GeografisController::class);

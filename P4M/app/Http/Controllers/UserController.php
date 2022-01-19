@@ -21,7 +21,10 @@ use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukPekerjaan;
 use App\Models\Model\PendudukWargaNegara;
-
+use App\Models\Model\SaranaAgama;
+use App\Models\Model\SaranaOlahraga;
+use App\Models\Model\SaranaPendidikan;
+use App\Models\Model\SaranaTempatUsaha;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -96,26 +99,34 @@ class UserController extends Controller
     public function galeri()
     {
         $data = [
-            "data_galeri" => Galeri::orderBy("created_at", "DESC")->paginate(6),
+            "data_galeri" => Galeri::latest()->paginate(6),
         ];
 
         return view("/pengunjung/page/galeri", $data);
     }
 
-    public function kontak()
+    public function sarprasPendidikan()
     {
-        $data = [
-            'data_alamat' => Alamat::paginate(1)
-        ];
-
-        return view("/pengunjung/page/kontak", $data);
+        $pendidikan = SaranaPendidikan::all();
+        return view('pengunjung.page.sarpras.pendidikan', compact('pendidikan'));
     }
 
-    public function kirim_pesan(Request $request)
+    public function sarprasAgama()
     {
-        Kontak::create($request->all());
+        $agama = SaranaAgama::all();
+        return view('pengunjung.page.sarpras.agama', compact('agama'));
+    }
 
-        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Pesan anda berhasil dikirim', 'success')</script>");
+    public function sarprasOlahraga()
+    {
+        $olahraga = SaranaOlahraga::all();
+        return view('pengunjung.page.sarpras.olahraga', compact('olahraga'));
+    }
+
+    public function sarprasTempatUsaha()
+    {
+        $tempatUsaha = SaranaTempatUsaha::all();
+        return view('pengunjung.page.sarpras.tempat-usaha', compact('tempatUsaha'));
     }
 
     public function profil()

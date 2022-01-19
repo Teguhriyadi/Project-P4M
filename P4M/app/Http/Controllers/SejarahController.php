@@ -14,7 +14,8 @@ class SejarahController extends Controller
      */
     public function index()
     {
-        //
+        $sejarah = Sejarah::first();
+        return view('admin.page.info.sejarah.index', compact('sejarah'));
     }
 
     /**

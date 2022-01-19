@@ -45,7 +45,7 @@ $profil = Profil::first();
         @include('admin/layouts/partials/navbar/nav_header')
 
         <!-- Left side column. contains the sidebar -->
-        @include('admin/layouts/partials/navbar/nav_sidebar')
+        @include('admin/layouts/partials/navbar/nav_sidebar2')
 
         <!-- =============================================== -->
 
