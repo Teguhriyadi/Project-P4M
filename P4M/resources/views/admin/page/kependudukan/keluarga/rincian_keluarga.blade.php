@@ -102,7 +102,7 @@
                             <tbody>
                                 @php
                                     use App\Models\Model\Penduduk;
-                                    $data_penduduk = Penduduk::where("id_kk" ,$edit->id_kk)
+                                    $data_penduduk = Penduduk::where("nik" ,$edit->nik)
                                                 ->get();
                                 @endphp
                                 @foreach ($data_penduduk as $data)

@@ -26,7 +26,7 @@ class KeluargaController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::where("id_hubungan", 1)->get()
+            "data_penduduk" => Penduduk::where("kk_level", 1)->get()
         ];
 
         return view("/admin/page/kependudukan/keluarga/data_penduduk_keluarga", $data);

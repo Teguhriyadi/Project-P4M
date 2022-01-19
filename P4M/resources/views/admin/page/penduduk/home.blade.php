@@ -73,7 +73,7 @@ setLocale(LC_ALL, 'id', 'ID')
                                             </div>
                                         </div>
                                         <div class="box-body">
-                                            <div class="table-responsive table-min-height">
+                                            <div class="table-responsive">
                                                 <table id="example1" class="table table-bordered table-hover">
                                                     <thead>
                                                         <tr>
@@ -86,7 +86,6 @@ setLocale(LC_ALL, 'id', 'ID')
                                                             <th>Dusun</th>
                                                             <th>RW</th>
                                                             <th>RT</th>
-                                                            <th>Status Hidup</th>
                                                             <th>Umur</th>
                                                             <th>Tanggal Terdaftar</th>
                                                             <th>Tanggal Diubah</th>
@@ -129,7 +128,6 @@ setLocale(LC_ALL, 'id', 'ID')
                                                             <td>{{ $p->getDusun->dusun }}</td>
                                                             <td>{{ $p->getRw->rw }}</td>
                                                             <td>{{ $p->getRt->rt }}</td>
-                                                            <td>{{ $p->getStatusHidup($p->status_hidup) }}</td>
                                                             <td>{{ date("y") - date('y', strtotime($p->tgl_lahir)) }}</td>
                                                             <td>{{ $p->created_at->formatLocalized("%d %B %Y") }}</td>
                                                             <td>{{ $p->updated_at->formatLocalized("%d %B %Y") }}</td>

@@ -19,7 +19,7 @@
 </section>
 
 <section class="content">
-    <form action="{{ url('/page/admin/kependudukan/keluarga/tambah_data_penduduk_masuk/') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('/page/admin/kependudukan/penduduk/simpan_data_penduduk_masuk/') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -79,8 +79,8 @@
                                 <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya">
                             </div>
                             <div class="col-sm-4">
-                                <label for="id_hubungan"> Hubungan Dalam Keluarga </label>
-                                <select name="id_hubungan" id="id_hubungan" class="form-control input-sm select2">
+                                <label for="kk_level"> Hubungan Dalam Keluarga </label>
+                                <select name="kk_level" id="kk_level" class="form-control input-sm select2">
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_hubungan as $hubungan)
                                     <option value="{{ $hubungan->id }}">
@@ -163,11 +163,11 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for=""> Tempat Dilahirkan </label>
-                                    <select name="" id="" class="form-control input-sm select2">
+                                    <label for="tempat_lahir"> Tempat Dilahirkan </label>
+                                    <select name="tempat_lahir" id="tempat_lahir" class="form-control input-sm select2">
                                         <option value="">- Pilih -</option>
-                                        <option value="">RS/RB</option>
-                                        <option value="">PUSKESMAS</option>
+                                        <option value="RS">RS/RB</option>
+                                        <option value="PUSKESMAS">PUSKESMAS</option>
                                     </select>
                                 </div>
                             </div>

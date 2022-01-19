@@ -263,4 +263,11 @@ class PendudukController extends Controller
 
         return view("/admin/page/penduduk/tambah_penduduk_masuk", $data);
     }
+
+    public function simpan_data_penduduk_masuk(Request $request)
+    {
+        Penduduk::create($request->all());
+
+        return redirect("/page/admin/kependudukan/penduduk");
+    }
 }

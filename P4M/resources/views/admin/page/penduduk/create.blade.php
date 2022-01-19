@@ -55,7 +55,7 @@
             <div class="form-group subtitle_head text-uppercase">
               <strong>Data Diri :</strong>
             </div>
-            
+
             <div class="row">
               <div class="form-group col-md-5">
                 <label for="nik">NIK</label>
@@ -66,7 +66,7 @@
                 <input type="text" name="nama" class="form-control input-sm" id="nama" value="{{ old('nama') }}">
               </div>
             </div>
-            
+
             <div class="row">
               <div class="form-group col-md-3">
                 <label for="kk_sebelumnya">No. KK Sebelumnya</label>
@@ -97,20 +97,20 @@
                 </select>
               </div>
             </div>
-            
+
             <div class="form-group subtitle_head text-uppercase">
               <strong>Data Kelahiran :</strong>
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="tempat_lahir">Tempat Lahir</label>
                   <input type="text" class="form-control input-sm" id="tempat_lahir" name="tempat_lahir" value="{{ old('tempat_lahir') }}">
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Tanggal Lahir</label>
@@ -122,7 +122,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="bootstrap-timepicker">
                   <div class="form-group">
@@ -136,47 +136,47 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="kelahiran_ke">Anak Ke</label>
                   <input type="number" class="form-control input-sm" id="kelahiran_ke" name="kelahiran_ke"  value="{{ old('kelahiran_ke') }}">
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="jumlah_saudara">Jumlah Saudara</label>
                   <input type="number" class="form-control input-sm" id="jumlah_saudara" name="jumlah_saudara"  value="{{ old('jumlah_saudara') }}">
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="berat_lahir">Berat Lahir <code>(Gram)</code> </label>
                   <input type="text" class="form-control input-sm" id="berat_lahir" name="berat_lahir" value="{{ old('berat_lahir') }}">
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="panjang_lahir">Panjang Lahir <code>(Cm)</code> </label>
                   <input type="text" class="form-control input-sm" id="panjang_lahir" name="panjang_lahir"  value="{{ old('panjang_lahir') }}">
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="form-group subtitle_head text-uppercase">
               <strong>Pendidikan, Pekerjaan dan Kewarganegaraan :</strong>
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="id_pendidikan">Pendidikan</label>
@@ -187,7 +187,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="id_pekerjaan">Pekerjaan</label>
@@ -198,7 +198,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="id_warga_negara">Status Warga</label>
@@ -209,15 +209,15 @@
                   </select>
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="form-group subtitle_head text-uppercase">
               <strong>Data Orang Tua :</strong>
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="nik_ayah">NIK Ayah</label>
@@ -230,11 +230,11 @@
                   <input type="text" value="{{ old('nama_ayah') }}" name="nama_ayah" class="form-control input-sm" id="nama_ayah">
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="nik_ibu">NIK Ibu</label>
@@ -247,15 +247,15 @@
                   <input type="text" name="nama_ibu" value="{{ old('nama_ibu') }}" class="form-control input-sm" id="nama_ibu">
                 </div>
               </div>
-              
+
             </div>
-            
+
             <div class="form-group subtitle_head text-uppercase">
               <strong>Status Perkawinan dan Kesehatan :</strong>
             </div>
-            
+
             <div class="row">
-              
+
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="status_kawin">Status Perkawinan</label>
@@ -266,7 +266,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="id_golongan_darah">Golongan Darah</label>
@@ -277,7 +277,7 @@
                   </select>
                 </div>
               </div>
-              
+
             </div>
 
             <div class="form-group subtitle_head text-uppercase">
@@ -285,7 +285,7 @@
             </div>
 
             <div class="row">
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="telepon">Telepon</label>
@@ -314,7 +314,7 @@
                   </select>
                 </div>
               </div>
-              
+
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="id_rw">RW</label>
@@ -329,13 +329,13 @@
             </div>
 
           </div>
-          
+
           <div class="box-footer">
             <button type="reset" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-refresh"></i> Reset</button>
-            
+
             <button class="btn btn-social btn-flat btn-info btn-sm pull-right"><i class="fa fa-check"></i> Simpan</button>
           </div>
-          
+
         </form>
       </div>
     </div>
@@ -356,7 +356,7 @@
       locale:'id',
       format: 'YYYY-MM-DD'
     });
-    
+
     $('.timepicker').datetimepicker({
       format: 'HH:mm',
       locale:'id'

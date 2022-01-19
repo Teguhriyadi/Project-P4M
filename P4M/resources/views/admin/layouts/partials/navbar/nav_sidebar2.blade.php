@@ -173,6 +173,11 @@
                             <i class="fa fa-circle-o"></i> Keluarga
                         </a>
                     </li>
+                    <li class="{{ Request::segment(4)=='rtm' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/kependudukan/rtm') }}">
+                            <i class="fa fa-circle-o"></i> Rumah Tangga
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ Request::segment(3)=='surat' ? 'active' : '' }}">

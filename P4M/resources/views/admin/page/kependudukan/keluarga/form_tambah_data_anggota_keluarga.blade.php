@@ -45,12 +45,12 @@
         <option value="">- Pilih -</option>
         @php
             $getPenduduk = DB::table("tb_penduduk")
-                        ->where("id_kk", NULL)
+                        ->where("id_hubungan", "!=", 1)
                         ->get();
         @endphp
         @foreach ($getPenduduk as $data)
         <option value="{{ $data->id }}">
-            {{ $data->nama }}
+            NIK : {{ $data->nik }} - {{ $data->nama }}
         </option>
         @endforeach
     </select>

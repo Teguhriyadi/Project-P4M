@@ -74,7 +74,6 @@
                                     <td>Status Dasar</td>
                                     <td >:</td>
                                     <td>
-                                        <span class=""><strong>{{ $penduduk->getStatusHidup($penduduk->status_hidup) }}</strong></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -89,17 +88,36 @@
                                 <tr>
                                     <td>Hubungan Dalam Keluarga</td>
                                     <td>:</td>
-                                    <td>{{ $penduduk->getHubungan->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getHubungan->nama))
+
+                                        @else
+                                        {{ $penduduk->getHubungan->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getKelamin->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getKelamin->nama))
+
+                                        @else
+                                        {{ $penduduk->getKelamin->nama }}
+                                        @endif
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Agama</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getAgama->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getAgama->nama))
+
+                                        @else
+                                        {{ $penduduk->getAgama->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="3" class="subtitle_head">
@@ -143,17 +161,35 @@
                                 <tr>
                                     <td>Pendidikan sedang ditempuh</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getPendidikan->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getPendidikan->nama))
+
+                                        @else
+                                        {{ $penduduk->getPendidikan->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Pekerjaan</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getPekerjaan->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getPekerjaan->nam))
+
+                                        @else
+                                        {{ $penduduk->getPekerjaan->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Warga Negara</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getWargaNegara->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getWargaNegara->nama))
+
+                                        @else
+                                        {{ $penduduk->getWargaNegara->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="3" class="subtitle_head"><strong>ORANG TUA</strong></th>
@@ -189,12 +225,30 @@
                                 <tr>
                                     <td>Dusun</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getDusun->dusun }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getDusun->nama))
+
+                                        @else
+                                        {{ $penduduk->getDusun->dusun }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>RT/ RW</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getRt->rt }} / {{ $penduduk->getRw->rw }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getRt->rt))
+
+                                        @else
+                                        {{ $penduduk->getRt->rt }}
+                                        @endif
+                                        /
+                                        @if (empty($penduduk->getRw->rw))
+
+                                        @else
+                                        {{ $penduduk->getRw->rw }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="3" class="subtitle_head"><strong>STATUS PERKAWINAN DAN KESEHATAN</strong></th>
@@ -202,7 +256,13 @@
                                 <tr>
                                     <td>Status Kawin</td>
                                     <td >:</td>
-                                    <td>{{ $penduduk->getKawin->nama }}</td>
+                                    <td>
+                                        @if (empty($penduduk->getKawin->nama))
+
+                                        @else
+                                        {{ $penduduk->getKawin->nama }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Golongan Darah</td>

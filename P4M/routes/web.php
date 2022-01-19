@@ -48,6 +48,7 @@ use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratOnlineController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\RtmController;
 use App\Http\Controllers\SejarahController;
 use App\Models\Model\Pegawai;
 use App\Models\model\Rt;
@@ -265,6 +266,7 @@ Route::prefix("page")->group(function() {
                 Route::put('/penduduk/simpan_status_dasar', [PendudukController::class, "simpan_status_dasar"]);
                 Route::get('/penduduk/tambah_penduduk_lahir', [PendudukController::class, "tambah_penduduk_lahir"]);
                 Route::get('/penduduk/tambah_penduduk_masuk', [PendudukController::class, "tambah_penduduk_masuk"]);
+                Route::post('/penduduk/simpan_data_penduduk_masuk', [PendudukController::class, "simpan_data_penduduk_masuk"]);
                 Route::resource('/penduduk', PendudukController::class);
 
                 // Keluarga
@@ -284,6 +286,14 @@ Route::prefix("page")->group(function() {
                     Route::get('/form_tambah_data_anggota_keluarga', [KeluargaController::class, "form_tambah_data_anggota_keluarga"]);
                     Route::put('/tambah_penduduk_dari_daftar', [KeluargaController::class, "tambah_penduduk_dari_daftar"]);
                 });
+
+                Route::prefix('/rtm')->group(function() {
+                    Route::resource("/", RtmController::class);
+                    Route::get("/{id}/rincian_rtm", [RtmController::class, "rincian_rtm"]);
+                    Route::get("/tambah_data_anggota_rtm", [RtmController::class, "tambah_data_anggota_rtm"]);
+                    Route::post("/tambah_data_anggota", [RtmController::class, "tambah_data_anggota"]);
+                });
+
             });
 
             Route::prefix("surat")->group(function() {
