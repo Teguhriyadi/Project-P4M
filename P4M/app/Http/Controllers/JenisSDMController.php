@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\model\Penduduk;
+use App\Models\Model\PendudukSex;
 use Illuminate\Http\Request;
 
 class JenisSDMController extends Controller
@@ -13,7 +15,9 @@ class JenisSDMController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sumber_daya.manusia.index');
+        $kelamin = PendudukSex::all();
+        $penduduk = Penduduk::count();
+        return view('admin.page.sumber_daya.manusia.index', compact('kelamin', 'penduduk'));
     }
 
     /**

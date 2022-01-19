@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbJenisSdkTable extends Migration
+class CreateSaranaOlahragasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTbJenisSdkTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_jenis_sdk', function (Blueprint $table) {
+        Schema::create('tb_sarana_olahraga', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_organisasi');
-            $table->string('jumlah_anggota');
+            $table->string('jenis');
+            $table->string('jumlah')->nullable();
             $table->string('lokasi')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateTbJenisSdkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_jenis_sdk');
+        Schema::dropIfExists('sarana_olahragas');
     }
 }

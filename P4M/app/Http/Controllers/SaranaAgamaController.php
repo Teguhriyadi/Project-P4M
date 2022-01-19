@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\SaranaAgama;
 use Illuminate\Http\Request;
 
 class SaranaAgamaController extends Controller
@@ -13,7 +14,8 @@ class SaranaAgamaController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sarana.agama.index');
+        $agama = SaranaAgama::all();
+        return view('admin.page.sarana.agama.index', compact('agama'));
     }
 
     /**
@@ -34,7 +36,9 @@ class SaranaAgamaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SaranaAgama::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
     /**
@@ -54,9 +58,11 @@ class SaranaAgamaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $edit = SaranaAgama::where('id', $request->id)->first();
+
+        return view('admin.page.sarana.agama.edit', compact('edit'));
     }
 
     /**
@@ -66,9 +72,15 @@ class SaranaAgamaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        SaranaAgama::where('id', $request->id)->update([
+            'jenis' => $request->jenis,
+            'jumlah' => $request->jumlah,
+            'lokasi' => $request->lokasi,
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
     /**
@@ -79,6 +91,7 @@ class SaranaAgamaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SaranaAgama::where('id', $id)->delete();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\SaranaOlahraga;
 use Illuminate\Http\Request;
 
 class SaranaOlahragaController extends Controller
@@ -13,7 +14,8 @@ class SaranaOlahragaController extends Controller
      */
     public function index()
     {
-        return view('admin.page.sarana.olahraga.index');
+        $olahraga = SaranaOlahraga::all();
+        return view('admin.page.sarana.olahraga.index', compact('olahraga'));
     }
 
     /**
@@ -34,7 +36,9 @@ class SaranaOlahragaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SaranaOlahraga::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
     /**
@@ -54,9 +58,11 @@ class SaranaOlahragaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $edit = SaranaOlahraga::where('id', $request->id)->first();
+
+        return view('admin.page.sarana.olahraga.edit', compact('edit'));
     }
 
     /**
@@ -66,9 +72,15 @@ class SaranaOlahragaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        SaranaOlahraga::where('id', $request->id)->update([
+            'jenis' => $request->jenis,
+            'jumlah' => $request->jumlah,
+            'lokasi' => $request->lokasi,
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
     /**
@@ -79,6 +91,7 @@ class SaranaOlahragaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SaranaOlahraga::where('id', $id)->delete();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

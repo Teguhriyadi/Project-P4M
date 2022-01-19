@@ -44,8 +44,12 @@
     <div class="row">
         <form action="" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="col-md-4"></div>
-        <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for=""></label>
+                </div>
+            </div>
+            <div class="col-md-8"></div>
         </form>
     </div>
 </section>

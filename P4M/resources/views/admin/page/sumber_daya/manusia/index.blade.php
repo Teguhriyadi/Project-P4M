@@ -16,45 +16,31 @@
 
 <section class="content">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-users"></i> @yield('title')
+                        <i class="fa fa-bars"></i> @yield('title')
                     </h3>
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahSDA">
-                            <i class="fa fa-plus"></i> Tambah Data
-                        </button>
-                    </div>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped" style="width: 100%">
+                        <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Jenis</th>
-                                    <th>Luas</th>
-                                    <th>Lokasi</th>
-                                    <th>Aksi</th>
+                                    <th>Nama</th>
+                                    <th>Jumlah</th>
+                                    <th>Presentasi (%)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($daya_manusia as $dm)
+                                @foreach ($kelamin as $data)
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
-                                    <td>{{ $dm->jenis }}</td>
-                                    <td>{{ $dm->luas }}</td>
-                                    <td>{{ $dm->lokasi }}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning" onclick="editDataSDA({{ $dm->id }})" data-toggle="modal" data-target="#modalEditSDA"><i class="fa fa-edit"></i></button>
-                                        <form action="{{ url('page/admin/sumber/alam/'.$dm->id) }}" method="post" style="display: inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td>{{ $data->getCountPenduduk->count() }}</td>
+                                    <td>{!! ($data->getCountPenduduk->count() / $penduduk) * 100 !!}%</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -63,7 +49,37 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-body">
+                    <div id="piechart"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+@endsection
+
+@section('page_scripts')
+
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Month'],
+        <?php foreach ($kelamin as $data): ?>
+        ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
+        <?php endforeach; ?>
+        ]);
+
+        var options = {'title' : "@yield('title')", 'width':550, 'height':400};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>
 
 @endsection
