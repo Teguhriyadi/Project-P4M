@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/masuk') }}" class="btn btn-social btn-flat btn-success btn-sm">
+                    <a href="{{ url('/page/admin/surat/keluar') }}" class="btn btn-social btn-flat btn-success btn-sm">
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>

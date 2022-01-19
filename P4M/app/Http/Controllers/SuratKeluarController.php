@@ -46,12 +46,6 @@ class SuratKeluarController extends Controller
         return redirect("/page/admin/surat/keluar");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -65,19 +59,37 @@ class SuratKeluarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            "data_klasifikasi" => KlasifikasiSurat::get(),
+            "edit" => SuratKeluar::where("id", $id)->first()
+        ];
+
+        return view("/admin/page/surat/keluar/form_edit", $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $simpan = SuratKeluar::where("id", $id)->first();
+        $simpan->nomor_urut = $request->nomor_urut;
+        $simpan->nomor_surat = $request->nomor_surat;
+        $simpan->kode_surat = $request->kode_surat;
+        $simpan->tanggal_surat = $request->tanggal_surat;
+        $simpan->tujuan = $request->tujuan;
+        $simpan->isi_singkat = $request->isi_singkat;
+
+        if($request->file("berkas_scan")) {
+
+            if ($request->oldBerkasScan) {
+                Storage::delete($request->oldBerkasScan);
+            }
+
+            $simpan->berkas_scan = $request->file('berkas_scan')->store('berkas_scan_keluar');
+
+        }
+
+        $simpan->update();
+
+        return redirect("/page/admin/surat/keluar");
     }
 
     public function destroy(Request $request, $id)
