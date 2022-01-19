@@ -72,12 +72,12 @@
                                             <a class="btn btn-success btn-flat btn-sm " data-toggle="dropdown" title="Tambah Anggota Keluarga" ><i class="fa fa-plus"></i> </a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
-                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/1/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir">
+                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/tambah_anggota_keluarga_lahir" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir">
                                                         <i class="fa fa-plus"></i> Anggota Keluarga Lahir
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/5/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
+                                                    <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/tambah_anggota_keluarga_masuk" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
                                                         <i class="fa fa-plus"></i> Anggota Keluarga Masuk
                                                     </a>
                                                 </li>

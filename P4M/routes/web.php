@@ -50,6 +50,7 @@ use App\Http\Controllers\SuratOnlineController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\SejarahController;
 use App\Models\Model\Pegawai;
+use App\Models\model\Rt;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\WilayahGeografis;
 use Illuminate\Support\Facades\Route;
@@ -271,7 +272,12 @@ Route::prefix("page")->group(function() {
                 Route::get('/keluarga/{id}/rincian_keluarga', [KeluargaController::class, "rincian_keluarga"]);
                 Route::get('/keluarga/{id}/rincian_keluarga/anggota_keluarga_lahir', [KeluargaController::class, "anggota_keluarga_lahir"]);
                 Route::get('/keluarga/{id}/rincian_keluarga/anggota_keluarga_masuk', [KeluargaController::class, "anggota_keluarga_masuk"]);
+                Route::get('/keluarga/{id}/tambah_anggota_keluarga_lahir', [KeluargaController::class, "tambah_anggota_keluarga_lahir"]);
+                Route::post('/keluarga/tambah_data_anggota_keluarga_lahir', [KeluargaController::class, "tambah_data_anggota_keluarga_lahir"]);
                 Route::get('/keluarga/form_edit_data_penduduk_masuk', [KeluargaController::class, "form_edit_data_penduduk_masuk"]);
+                Route::get('/keluarga/{id}/tambah_anggota_keluarga_masuk', [KeluargaController::class, "tambah_anggota_keluarga_masuk"]);
+                Route::post('/keluarga/tambah_data_anggota_keluarga_masuk', [KeluargaController::class, "tambah_data_anggota_keluarga_masuk"]);
+                Route::get('/keluarga/form_tambah_data_anggota_keluarga', [KeluargaController::class, "form_tambah_data_anggota_keluarga"]);
                 Route::resource('/keluarga', KeluargaController::class);
             });
 
