@@ -1,41 +1,55 @@
 @extends('pengunjung/layouts/main')
 
+@section('title', $data_title)
+
 @section('page_content')
 
 @php
     use Illuminate\Support\Str;
 @endphp
 
-<div id="artikel"></div>
-
-@endsection
-
-@section('page_scripts')
-
-<script>
-    loadArtikel();
-
-    function search() {
-        let value = $("#cari").val().trim();
-
-        $.ajax({
-            url:'/artikel/load',
-            type:'POST',
-            data: {term: value, _token: '{{ csrf_token() }}'},
-            success: function(response){
-
-                $("#artikel").empty();
-                $("#artikel").html(response);
-
-            }
-        });
-    }
-
-    function loadArtikel() {
-        $.get('/artikel/load', function (data) {
-            $("#artikel").html(data);
-        })
-    }
-</script>
+<div class="single_category wow fadeInDown">
+    <h2>
+        <span class="bold_line">
+            <span></span>
+        </span>
+        <span class="solid_line"></span>
+        <span class="title_text">@yield('title')</span>
+    </h2>
+</div>
+<div class="single_category wow fadeInDown">
+    <div class="archive_style_1">
+        @foreach ($data_artikel as $artikel)
+        <div class="business_category_left wow fadeInDown">
+            <ul class="fashion_catgnav">
+                <li>
+                    <div class="">
+                        <h5 class="catg_titile">
+                            <a href="/artikel/{!! $artikel->slug !!}" title="Baca Selengkapnya">{!! $artikel->judul !!}</a>
+                        </h5>
+                        <div class="post_commentbox">
+                            <span class="meta_date">{!! $artikel->updated_at->formatLocalized("%d %B %Y") !!}&nbsp;
+                                <i class="fa fa-user"></i>Administrator&nbsp;
+                                <i class="fa fa-eye"></i>0 Kali&nbsp;
+                                <i class="fa fa-comments"></i>0&nbsp;
+                            </span>
+                        </div>
+                        <a href="/artikel/{!! $artikel->slug !!}" title="Baca Selengkapnya" style="font-weight:bold">
+                            <img src="/storage/{!! $artikel->image !!}" class="img-fluid img-thumbnail hidden-sm hidden-xs" style="float:left; margin:0 8px 4px 0; height: 200px; width: 300px" alt="{!! $artikel->judul !!}" />
+                            <img src="/storage/{!! $artikel->image !!}" class="img-fluid img-thumbnail hidden-lg hidden-md" style="float:left; margin:0 8px 4px 0; height: 200px; width: 100%" alt="{!! $artikel->judul !!}" />
+                        </a>
+                        <div style="text-align: justify;" class="hidden-sm hidden-xs">
+                            {!! Str::limit($artikel->body, 525) !!}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        @endforeach
+        <div class="d-flex justify-content-end">
+            {{ $data_artikel->links() }}
+        </div>
+    </div>
+</div>
 
 @endsection

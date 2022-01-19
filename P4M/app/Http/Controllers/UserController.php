@@ -35,40 +35,21 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            "data_profil" => Profil::latest()->paginate(1),
+            "data_profil" => Profil::first(),
             "data_galeri" => Galeri::latest()->paginate(6),
         ];
 
-        return view("/pengunjung/page/home", $data);
+        return view("pengunjung.page.home", $data);
     }
 
     public function artikel()
-    {
-        $data = [
-            "data_artikel" => Artikel::latest()->paginate(6)
-        ];
-
-        return view("/pengunjung/page/artikel/index", $data);
-    }
-
-    public function artikelLoad()
     {
         $data = [
             "data_artikel" => Artikel::latest()->paginate(6),
             "data_title" => 'Artikel',
         ];
 
-        return view("/pengunjung/page/artikel/page", $data);
-    }
-
-    public function artikelSearch(Request $request)
-    {
-        $data = [
-            "data_artikel" => Artikel::where("judul", "like", "%".$request->term."%")->latest()->paginate(6),
-            "data_title" => $request->term,
-        ];
-
-        return view("/pengunjung/page/artikel/page", $data);
+        return view("/pengunjung/page/artikel/index", $data);
     }
 
     public function artikelCari(Request $request)
@@ -78,7 +59,7 @@ class UserController extends Controller
             "data_title" => $request->cari,
         ];
 
-        return view("/pengunjung/page/artikel/cari", $data);
+        return view("/pengunjung/page/artikel/index", $data);
     }
 
     public function artikelJson(Request $request)
@@ -105,7 +86,11 @@ class UserController extends Controller
             "artikel" => Artikel::where("slug", $slug)->first()
         ];
 
-        return view("/pengunjung/page/artikel/detail", $data);
+        if ($data['artikel']) {
+            return view("/pengunjung/page/artikel/detail", $data);
+        } else {
+            abort(404);
+        }
     }
 
     public function galeri()

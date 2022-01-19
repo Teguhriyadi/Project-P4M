@@ -13,7 +13,7 @@ class TerakhirLoginController extends Controller
             "data_terakhir_login" => TerakhirLogin::all()
         ];
 
-        return view("/admin/page/pengaturan/terakhir_login/index", $data);
+        return view("admin.page.pengaturan.terakhir_login.index", $data);
     }
 
     public function create()

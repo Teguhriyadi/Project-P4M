@@ -80,12 +80,6 @@ Route::prefix("artikel")->group(function() {
     // Artikel JSON
     Route::post("/", [UserController::class, "artikelJson"]);
 
-    // Artikel Load
-    Route::get("/load", [UserController::class, "artikelLoad"]);
-
-    // Artikel Search
-    Route::post("/load", [UserController::class, "artikelSearch"]);
-
     // Artikel Selengkapnya
     Route::get('/{slug}',[UserController::class, "detailArtikel"]);
 });

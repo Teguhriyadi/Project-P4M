@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -41,7 +45,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td>{{ $terakhir_login->nama }}</td>
-                                    <td class="text-center">{{ $terakhir_login->terakhir_login }}</td>
+                                    <td class="text-center">{{ Carbon::createFromFormat('Y-m-d H:i:s', $terakhir_login->terakhir_login)->isoFormat('LLLL') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

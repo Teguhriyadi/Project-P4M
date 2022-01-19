@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Dusun;
+use App\Models\model\Penduduk;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\TerakhirLogin;
 use Illuminate\Http\Request;
@@ -12,10 +14,12 @@ class AppController extends Controller
     {
         $data = [
             "data_terakhir_login" => TerakhirLogin::orderBy("terakhir_login", "DESC")->paginate(10),
-            "data_struktur" => StrukturPemerintahan::orderBy("id", "asc")->get()
+            "data_struktur" => StrukturPemerintahan::orderBy("id", "asc")->get(),
+            "data_dusun" => Dusun::count(),
+            "data_penduduk" => Penduduk::count(),
         ];
 
-        return view("/admin/page/home", $data);
+        return view("admin.page.home", $data);
     }
 
     public function ubah(Request $request)
@@ -46,7 +50,7 @@ class AppController extends Controller
             );
         }
 
-        // for ($i=0; $i < count($data_struktur); $i++) { 
+        // for ($i=0; $i < count($data_struktur); $i++) {
         //     $cek = $data_struktur[$i];
 
         //     if ($i==0) {
@@ -74,7 +78,7 @@ class AppController extends Controller
         //         }
         //     }
         // }
-        
+
         return response()->json($data);
     }
 }
