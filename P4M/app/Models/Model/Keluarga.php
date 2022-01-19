@@ -16,7 +16,7 @@ class Keluarga extends Model
     public $timestamps = false;
 
     public function getDataPenduduk() {
-        return $this->hasOne("App\Models\Model\Penduduk", "nik", "nik_kepala");
+        return $this->hasOne("App\Models\Model\Penduduk", "id", "nik_kepala");
     }
 
 }

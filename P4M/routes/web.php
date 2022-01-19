@@ -267,6 +267,7 @@ Route::prefix("page")->group(function() {
                 // Keluarga
                 Route::get('/keluarga/form_tambah_penduduk_masuk', [KeluargaController::class, "form_tambah_penduduk_masuk"]);
                 Route::post('/keluarga/tambah_data_penduduk_masuk', [KeluargaController::class, "tambah_data_penduduk_masuk"]);
+                Route::post('/keluarga/tambah_kepala_keluarga', [KeluargaController::class, "tambah_kepala_keluarga"]);
                 Route::get('/keluarga/{id}/rincian_keluarga', [KeluargaController::class, "rincian_keluarga"]);
                 Route::get('/keluarga/{id}/rincian_keluarga/anggota_keluarga_lahir', [KeluargaController::class, "anggota_keluarga_lahir"]);
                 Route::get('/keluarga/{id}/rincian_keluarga/anggota_keluarga_masuk', [KeluargaController::class, "anggota_keluarga_masuk"]);
