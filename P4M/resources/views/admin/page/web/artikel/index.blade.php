@@ -60,7 +60,7 @@
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
-                                        <a href="{{ url('/berita/'.$artikel->slug) }}" class="btn btn-info btn-sm" target="_blank">
+                                        <a href="{{ url('/artikel/'.$artikel->slug) }}" class="btn btn-info btn-sm" target="_blank">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>

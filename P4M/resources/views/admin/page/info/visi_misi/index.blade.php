@@ -39,6 +39,7 @@
                                 <i class="fa fa-plus"></i> Tambah @yield('title')
                                 @endif
                             </h3>
+                            <a href="/pemerintahan/visi-misi" target="_blank" class="btn btn-info btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
                         </div>
                         <div class="box-body">
                             @if ($data_visi_misi->count())
@@ -94,24 +95,23 @@
             </div>
         </div>
     </section>
-    
+
     @endsection
-    
+
     @section('page_scripts')
-    
+
     <script src="{{ url('/backend/template') }}/bower_components/ckeditor/ckeditor.js"></script>
-    
+
     <script type="text/javascript">
-        
+
         (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formVisiMisi").validate({ignore:"",rules:{visi:{required:!0},misi:{required:!0},},messages:{visi:{required:"Visi harap di isi!"},misi:{required:"Visi harap di isi!"},},submitHandler:function(form){form.submit()}})}}
         $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
-        
+
         $(function() {
             CKEDITOR.replace('visi'),
             CKEDITOR.replace('misi')
         })
-        
+
     </script>
-    
+
     @endsection
-    

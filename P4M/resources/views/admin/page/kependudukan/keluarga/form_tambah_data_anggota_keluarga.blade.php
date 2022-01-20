@@ -40,8 +40,8 @@
 </div>
 
 <div class="form-group">
-    <label for="id_penduduk"> NIK / Nama Penduduk <span>(dari penduduk yang tidak memiliki KK)</span> </label>
-    <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%">
+    <label for="selectPenduduk"> NIK / Nama Penduduk <span>(dari penduduk yang tidak memiliki KK)</span> </label>
+    <select name="id_penduduk" id="selectPenduduk" class="form-control input-sm select2" width="100%">
         <option value="">- Pilih -</option>
         @php
             $getPenduduk = DB::table("tb_penduduk")
@@ -55,3 +55,9 @@
         @endforeach
     </select>
 </div>
+
+<script>
+    $(function() {
+        $("#selectPenduduk").select2()
+    });
+</script>

@@ -23,6 +23,7 @@
                         <i class="fa fa-users"></i> @yield('title')
                     </h3>
                     <div class="pull-right">
+                        <a href="/profil/wilayah-desa" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahSDA">
                             <i class="fa fa-plus"></i> Tambah Data
                         </button>

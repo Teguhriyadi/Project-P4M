@@ -30,6 +30,7 @@
                         <i class="fa fa-edit"></i> Edit @yield('title')
                         @endif
                     </h3>
+                    <a href="/profil/wilayah-desa" target="_blank" class="btn btn-info btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
                 </div>
                 @if (empty($data_geografis))
                 <form action="{{ url('/page/admin/info/geografis') }}" method="POST">
@@ -71,24 +72,24 @@
             </div>
         </div>
     </section>
-    
+
     @endsection
-    
+
     @section('page_scripts')
-    
+
     <script src="{{ url('/backend/template') }}/bower_components/ckeditor/ckeditor.js"></script>
-    
+
     <script type="text/javascript">
-        
+
         (function($,W,D){var JQUERY4U={};JQUERY4U.UTIL={setupFormValidation:function(){$("#formVisiMisi").validate({ignore:"",rules:{deskripsi:{required:!0},},messages:{deskripsi:{required:"Deskripsi harap di isi!"},},submitHandler:function(form){form.submit()}})}}
         $(D).ready(function($){JQUERY4U.UTIL.setupFormValidation()})})(jQuery,window,document)
-        
+
         $(function() {
             CKEDITOR.replace('deskripsi')
         })
-        
+
     </script>
-    
+
     <script type="text/javascript">
         function editWilayah(id)
         {
@@ -103,6 +104,5 @@
             })
         }
     </script>
-    
+
     @endsection
-    

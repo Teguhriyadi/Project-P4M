@@ -33,6 +33,7 @@
                     <h3 class="box-title">
                         <i class="fa fa-bars"></i> @yield('title')
                     </h3>
+                    <a href="/data/warga-negara" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
                     <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
                         <i class="fa fa-plus"></i> Tambah Data
                     </button>

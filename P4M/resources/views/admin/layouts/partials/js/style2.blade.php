@@ -15,7 +15,7 @@
 
 <script src="{{ url('/backend/template') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{ url('/backend/template') }}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="{{ url('/backend/template') }}/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="{{ url('/backend/template') }}/bower_components/select2/dist/js/select2.full.js"></script>
 <script src="{{ url('/backend/template') }}/dist/js/sweetalert.min.js"></script>
 {{-- <script src="{{ url('/backend/template') }}/dist/js/my-validate.js"></script> --}}
 <script src="/frontend/js/chart/loader.js"></script>
