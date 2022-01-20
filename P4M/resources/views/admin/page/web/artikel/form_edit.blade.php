@@ -31,6 +31,11 @@
     <div class="row">
       <div class="col-md-8">
         <div class="box">
+            <div class="box-header">
+                <a href="{{ url('page/admin/web/artikel') }}" class="btn btn-warning btn-sm">
+                    <i class="fa fa-arrow-left"></i> Kembali
+                </a>
+            </div>
           <div class="box-body">
             <div class="form-group">
               <label for="judul"> Judul </label>

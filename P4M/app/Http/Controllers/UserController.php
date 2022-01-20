@@ -8,6 +8,7 @@ use App\Models\Model\Dusun;
 use App\Models\Model\Peta;
 use App\Models\Model\Alamat;
 use App\Models\Model\Artikel;
+use App\Models\Model\Counter;
 use App\Models\Model\Galeri;
 use App\Models\Model\Kontak;
 use App\Models\Model\Profil;
@@ -87,10 +88,11 @@ class UserController extends Controller
     public function detailArtikel($slug)
     {
         $data = [
-            "artikel" => Artikel::where("slug", $slug)->first()
+            "artikel" => Artikel::where("slug", $slug)->first(),
         ];
 
         if ($data['artikel']) {
+            Artikel::where('slug', $slug)->update(['counter' => $data['artikel']->counter + 1]);
             return view("/pengunjung/page/artikel/detail", $data);
         } else {
             abort(404);

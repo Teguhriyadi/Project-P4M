@@ -52,11 +52,11 @@
                         </div>
                         <div class="form-group">
                             <form id="main" name="main" method="POST" class="form-horizontal">
-                                @method("PUT")
+                                {{-- @method("PUT") --}}
                                 @csrf
                                 <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
                                 <div class="col-xs-12 col-sm-8">
-                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main')">
+                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main', '{{ url('page/admin/pemerintahan/pegawai') }}')">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_penduduk as $data)
                                             <option value="{{ $data->id }}">
@@ -315,6 +315,7 @@
             $('#'+idForm).attr('target', target);
         }
         $('#'+idForm).attr('action', action);
+        console.log();
         $('#'+idForm).submit();
     }
 

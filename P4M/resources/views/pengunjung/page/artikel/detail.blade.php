@@ -9,8 +9,8 @@
     <div class="post_commentbox">
         <span class="meta_date">{!! $artikel->updated_at->formatLocalized("%d %B %Y %H:%M:%S") !!}&nbsp;
             <i class="fa fa-user"></i>Administrator&nbsp;
-            <i class="fa fa-eye"></i>0 Kali&nbsp;
-            <i class="fa fa-comments"></i>0&nbsp;
+            <i class="fa fa-eye"></i>{{ $artikel->counter }} Kali&nbsp;
+            <i class="fa fa-comments"></i>{{ $artikel->getCounter }} &nbsp;
         </span>
     </div>
     <div class="single_category wow fadeInDown" style="margin-bottom:10px;">
