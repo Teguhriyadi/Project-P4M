@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Model\Artikel;
 use App\Models\Model\Kategori;
+use App\Models\Model\Komentar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -19,6 +20,11 @@ class ArtikelController extends Controller
         ];
 
         return view("/admin/page/web/artikel/index", $data);
+    }
+
+    public function show($slug)
+    {
+        return $this->index();
     }
 
     public function create()
@@ -105,5 +111,25 @@ class ArtikelController extends Controller
         $slug = SlugService::createSlug(artikel::class, 'slug', $request->title);
 
         return response()->json(['slug' => $slug]);
+    }
+
+    public function komentar($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->first();
+
+        if ($artikel) {
+            $komentar = Komentar::where('id_artikel', $artikel->id)->get();
+
+            return view('admin.page.web.artikel.komentar', compact('komentar', 'artikel'));
+        } else {
+            abort(404);
+        }
+    }
+
+    public function komentarHapus($slug, $id)
+    {
+        Komentar::where('id', $id)->delete();
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }

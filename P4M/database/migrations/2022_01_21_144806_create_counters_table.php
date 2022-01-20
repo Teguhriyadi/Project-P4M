@@ -16,8 +16,7 @@ class CreateCountersTable extends Migration
         Schema::create('tb_counter', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_artikel');
-            $table->string('address');
-            $table->string('browser');
+            $table->string('address', 50);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCountersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_counter');
+        Schema::dropIfExists('counters');
     }
 }

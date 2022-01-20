@@ -22,7 +22,6 @@ class CreateTbArtikelTable extends Migration
             $table->string('image')->nullable();
             $table->text('kutipan');
             $table->text('body');
-            $table->bigInteger('counter')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

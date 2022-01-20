@@ -31,8 +31,8 @@
                         <div class="post_commentbox">
                             <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $artikel->created_at)->isoFormat('D MMMM Y') !!}&nbsp;
                                 <i class="fa fa-user"></i>Administrator&nbsp;
-                                <i class="fa fa-eye"></i>{{ $artikel->counter }} Kali&nbsp;
-                                <i class="fa fa-comments"></i>0&nbsp;
+                                <i class="fa fa-eye"></i>{{ $artikel->getCount->count() }} Kali&nbsp;
+                                <i class="fa fa-comments"></i>{{ $artikel->getKomentar->count() }}&nbsp;
                             </span>
                         </div>
                         <a href="/artikel/{!! $artikel->slug !!}" title="Baca Selengkapnya" style="font-weight:bold">
