@@ -95,7 +95,13 @@
                                     <td class="text-center">{{ $penduduk->no_kk }}</td>
                                     <td>{{ $penduduk->nama }}</td>
                                     <td class="text-center">{{ $penduduk->nik }}</td>
-                                    <td class="text-center">0</td>
+                                    <td class="text-center">
+                                        @php
+                                            echo $jumlahData = DB::table("tb_penduduk")
+                                                            ->where("id_kk", $penduduk->id)
+                                                            ->count();
+                                        @endphp
+                                    </td>
                                     <td class="text-center">{{ $penduduk->tgl_daftar }}</td>
                                 </tr>
                                 @endforeach
@@ -125,7 +131,7 @@
                 <div class="modal-body" id="modal-penduduk-keluarga">
                     <div class="form-group">
                         <label for="nik_kepala"> Nomor Kartu Keluarga (KK) </label>
-                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
+                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm" style="width: 100%">
                             <option value="">- Pilih -</option>
                             @php
                             use App\Models\Model\Penduduk;

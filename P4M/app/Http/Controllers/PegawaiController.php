@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Pegawai;
+use App\Models\model\Penduduk;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikanKK;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class PegawaiController extends Controller
     {
         $data = [
             "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
-            "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get()
+            "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get(),
+            "data_penduduk" => Penduduk::all()
         ];
 
         return view("/admin/page/pemerintahan/pegawai/form_tambah_data_pegawai", $data);

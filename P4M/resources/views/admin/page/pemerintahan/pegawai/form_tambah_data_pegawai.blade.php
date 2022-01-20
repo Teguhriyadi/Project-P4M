@@ -28,15 +28,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+
             <div class="box box-info">
                 <div class="box-header with-border">
                     <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-danger btn-sm">
@@ -44,23 +36,38 @@
                     </a>
                 </div>
                 <div class="box-body">
-                    <!--
-                        <div class="row">
-                            <div class="col-sm-12 form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="pengurus">Data Staf</label>
-                                    <div class="btn-group col-xs-12 col-sm-8" data-toggle="buttons">
-                                        <label for="pengurus_1" class="btn btn-info btn-flat btn-sm col-xs-6 col-sm-5 col-lg-3 form-check-label active">
-                                            <input id="pengurus_1" type="radio" name="pengurus" class="form-check-input" type="radio" value="1" checked autocomplete="off" onchange="pengurus_asal(this.value);"> Dari Database Penduduk
-                                        </label>
-                                        <label for="pengurus_2" class="btn btn-info btn-flat btn-sm col-xs-6 col-sm-5 col-lg-3 form-check-label ">
-                                            <input id="pengurus_2" type="radio" name="pengurus" class="form-check-input" type="radio" value="2"  autocomplete="off" onchange="pengurus_asal(this.value);"> Tidak Terdata
-                                        </label>
-                                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 form-horizontal">
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-4 col-lg-2" for="pengurus">Data Staf</label>
+                                <div class="btn-group col-xs-12 col-sm-8" data-toggle="buttons">
+                                    <label for="pengurus_1" class="btn btn-info btn-flat btn-sm col-xs-6 col-sm-5 col-lg-3 form-check-label active">
+                                        <input id="pengurus_1" type="radio" name="pengurus" class="form-check-input" type="radio" value="1" checked autocomplete="off" onchange="pengurus_asal(this.value);"> Dari Database Penduduk
+                                    </label>
+                                    <label for="pengurus_2" class="btn btn-info btn-flat btn-sm col-xs-6 col-sm-5 col-lg-3 form-check-label ">
+                                        <input id="pengurus_2" type="radio" name="pengurus" class="form-check-input" type="radio" value="2"  autocomplete="off" onchange="pengurus_asal(this.value);"> Tidak Terdata
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    -->
+                        <div class="form-group">
+                            <form id="main" name="main" method="POST" class="form-horizontal">
+                                @method("PUT")
+                                @csrf
+                                <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main')">
+                                        <option value="">- Pilih -</option>
+                                        @foreach ($data_penduduk as $data)
+                                            <option value="{{ $data->id }}">
+                                                NIK : {{ $data->nik }} - {{ $data->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,6 +76,7 @@
     <div class="row">
         <form action="{{ url('/page/admin/pemerintahan/pegawai/') }}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="tambahPegawai">
             @csrf
+            <input type="hidden" name="id_pend" value="">
             <div class="col-md-4">
                 <div class="box box-info">
                     <div class="box-header">
@@ -94,7 +102,8 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm" name="nama" id="nama" placeholder="Nama">
+                                <input type="text" class="form-control input-sm pengurus-desa" placeholder="Masukkan Nama" value="" disabled="disabled">
+                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
                             </div>
                         </div>
                         <div class="form-group">
@@ -252,6 +261,15 @@
 <script src="{{ url('backend/template/plugins/timepicker/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script type="text/javascript">
+    $('document').ready(function() {
+        $("input[name='pengurus']:checked").change();
+        if ($("#validasi input[name='id_pend']").val() != '') {
+            $('#nama').removeClass('required');
+        }
+    });
+</script>
+
+<script type="text/javascript">
     $(function() {
         $('#datepicker').datetimepicker({
             locale:'id',
@@ -276,6 +294,30 @@
 </script>
 
 <script type="text/javascript">
+    function pengurus_asal(asal) {
+        if (asal == 1) {
+            $('#main').show();
+            $('.pengurus-luar-desa').hide();
+            $('.pengurus-desa').show();
+            $('#nama').val('');
+        } else {
+            $('#main').hide();
+            $("input[name='id_pend']").val('');
+            $('.pengurus-luar-desa').show();
+            $('.pengurus-desa').hide();
+            $('#nama').addClass('required');
+        }
+    }
+
+    function formAction(idForm, action, target = '')
+    {
+        if (target != '')
+        {
+            $('#'+idForm).attr('target', target);
+        }
+        $('#'+idForm).attr('action', action);
+        $('#'+idForm).submit();
+    }
 
     function previewImage()
     {
