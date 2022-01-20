@@ -52,16 +52,28 @@
                         </div>
                         <div class="form-group">
                             <form id="main" name="main" method="POST" class="form-horizontal">
-                                {{-- @method("PUT") --}}
+                                @method("PUT")
                                 @csrf
                                 <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
                                 <div class="col-xs-12 col-sm-8">
                                     <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main', '{{ url('page/admin/pemerintahan/pegawai') }}')">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_penduduk as $data)
-                                            <option value="{{ $data->id }}">
-                                                NIK : {{ $data->nik }} - {{ $data->nama }}
-                                            </option>
+                                        @if (empty($detail))
+                                        <option value="{{ $data->id }}">
+                                            NIK : {{ $data->nik }} - {{ $data->nama }}
+                                        </option>
+                                        @else
+                                        @if ($detail->nik == $data->nik)
+                                        <option value="{{ $data->id }}" selected>
+                                            NIK : {{ $data->nik }} - {{ $data->nama }}
+                                        </option>
+                                        @else
+                                        <option value="{{ $data->id }}">
+                                            NIK : {{ $data->nik }} - {{ $data->nama }}
+                                        </option>
+                                        @endif
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -102,14 +114,15 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" placeholder="Masukkan Nama" disabled="disabled">
+                                <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" disabled="disabled" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm" name="nik" id="nik" placeholder="Nomor Induk Kependudukan">
+                                <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" disabled="disabled" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
+                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;">
                             </div>
                         </div>
                         <!--
@@ -269,6 +282,12 @@
 </script>
 
 <script type="text/javascript">
+
+    function pilih()
+    {
+        alert('hay');
+    }
+
     $(function() {
         $('#datepicker').datetimepicker({
             locale:'id',
@@ -298,7 +317,6 @@
             $('#main').show();
             $('.pengurus-luar-desa').hide();
             $('.pengurus-desa').show();
-            $('#nama').val('');
         } else {
             $('#main').hide();
             $("input[name='id_pend']").val('');

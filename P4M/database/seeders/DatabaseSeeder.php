@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RtSeeder::class);
         $this->call(RwSeeder::class);
         $this->call(SakitMenahunSeeder::class);
-        //$this->call(RtmHubunganSeeder::class);
+        $this->call(RtmHubunganSeeder::class);
         $this->call(PendudukSeeder::class);
     }
 }

@@ -91,4 +91,16 @@ class PegawaiController extends Controller
 
         return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
+
+    public function data(Request $request)
+    {
+        $data = [
+            "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
+            "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get(),
+            "data_penduduk" => Penduduk::all(),
+            "detail" => Penduduk::where("id", $request->id_pend)->first()
+        ];
+
+        return view("/admin/page/pemerintahan/pegawai/form_tambah_data_pegawai", $data);
+    }
 }

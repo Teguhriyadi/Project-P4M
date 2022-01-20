@@ -48,6 +48,7 @@ use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratOnlineController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\RtmController;
 use App\Http\Controllers\SejarahController;
 use App\Models\Model\Pegawai;
@@ -246,6 +247,7 @@ Route::prefix("page")->group(function() {
                 // Pegawai
                 Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
                 Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
+                Route::put("/pegawai", [PegawaiController::class, "data"]);
                 Route::resource("/pegawai", PegawaiController::class);
 
                 // Struktur Pemerintahan
@@ -416,6 +418,12 @@ Route::prefix("page")->group(function() {
                 // Slider
                 // Teks Berjalan
                 // Pengunjung
+            });
+
+            Route::prefix("/program_bantuan")->group(function() {
+                Route::resource("/", ProgramBantuanController::class);
+                Route::get("/{id}/rincian", [ProgramBantuanController::class, "rincian_bantuan"]);
+                Route::get("/{id}/tambah_peserta", [ProgramBantuanController::class, "tambah_peserta"]);
             });
 
         });
