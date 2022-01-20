@@ -26,7 +26,7 @@
                     <a onclick="tambahAnggotaRTM({{ $edit->id }})" type="button" data-toggle="modal" data-target="#modalBox" class="btn btn-social btn-success btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah Anggota
                     </a>
-                    <a href="" class="btn bg-purple btn-flat btn-sm">
+                    <a href="{{ url('/page/admin/kependudukan/rtm/kartu_rtm/'.$edit->id) }}" class="btn bg-purple btn-flat btn-sm">
                         <i class="fa fa-book"></i> Kartu Rumah Tangga
                     </a>
                     <a href="{{ url('/page/admin/kependudukan/rtm') }}" class="btn btn-info btn-flat btn-sm">
@@ -82,7 +82,7 @@
                                 <tr>
                                     <th class="text-center">No.</th>
                                     <th class="text-center">Aksi</th>
-                                    <th>Nomor KK</th>
+                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th class="text-center">Jenis Kelamin</th>
                                     <th>Alamat</th>
@@ -93,8 +93,7 @@
                                 @php
                                     use App\Models\Model\Penduduk;
 
-                                    $getData = Penduduk::where("id_rtm", $edit->no_kk)
-                                        ->get();
+                                    $getData = Penduduk::where("id_rtm", $edit->no_kk)->get();
                                 @endphp
                                 @foreach ($getData as $data)
                                 <tr>
@@ -104,7 +103,7 @@
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>
-                                    <td>{{ $data->getKeluarga->no_kk }}</td>
+                                    <td>{{ $data->nik }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->nama }}</td>
                                     <td></td>

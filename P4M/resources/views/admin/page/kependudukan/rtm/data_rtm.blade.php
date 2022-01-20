@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+    use App\Models\Model\Penduduk;
+@endphp
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -50,7 +54,7 @@
                                         <a href="{{ url('/page/admin/kependudukan/rtm/'.$data->id.'/rincian_rtm') }}" class="btn bg-purple btn-flat btn-sm">
                                             <i class="fa fa-list-ol"></i>
                                         </a>
-                                        <a type="button" data-toggle="modal" data-target="#modal-default-tambah" class="btn btn-success btn-flat btn-sm" title="Tambah Anggota Rumah Tangga">
+                                        <a onclick="tambahAnggotaRumahTangga({{ $data->id }})" type="button" data-toggle="modal" data-target="#modal-default-tambah" class="btn btn-success btn-flat btn-sm" title="Tambah Anggota Rumah Tangga">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                         <a type="button" data-toggle="modal" data-target="#modal-default-ubah" class="btn btn-warning btn-flat btn-sm" title="Ubah Data">
@@ -66,7 +70,12 @@
                                     <td>{{ $data->getDataPenduduk->id_rtm }}</td>
                                     <td>{{ $data->getDataPenduduk->nama }}</td>
                                     <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        @php
+                                            $jumlah = Penduduk::where("id_rtm", $data->no_kk)->count();
+                                        @endphp
+                                        {{ $jumlah }}
+                                    </td>
                                     <td class="text-center">{{ $data->created_at }}</td>
                                 </tr>
                                 @endforeach
@@ -137,12 +146,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Default Modal</h4>
+                <h4 class="modal-title">
+                    <i class="fa fa-plus"></i> Tambah Anggota Rumah Tangga
+                </h4>
             </div>
-            <form action="" method="POST">
+            <form action="{{ url('/page/admin/kependudukan/rtm/simpan_data_anggota_rumah_tangga') }}" method="POST">
                 @csrf
-                <div class="modal-body">
-                    <p>One fine body&hellip;</p>
+                <div class="modal-body" id="isian-data">
+
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-danger btn-flat btn-sm pull-left">
@@ -167,14 +178,15 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-    function tambahRumahTangga(id)
+
+    function tambahAnggotaRumahTangga(id)
     {
         $.ajax({
-            url : "{{ url('/page/admin/kependudukan/keluarga/form_tambah_data_anggota_keluarga') }}",
+            url : "{{ url('/page/admin/kependudukan/rtm/tambah_anggota_rumah_tangga') }}",
             type : "GET",
             data : { id : id },
             success : function(data) {
-                $("#modal-content-edit").html(data);
+                $("#isian-data").html(data);
                 return true;
             }
         });

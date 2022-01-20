@@ -5,6 +5,7 @@ namespace App\Models\model;
 use App\Models\Model\Dusun;
 use App\Models\Model\GolonganDarah;
 use App\Models\Model\Keluarga;
+use App\Models\Model\RTM;
 use App\Models\Model\RtmHubungan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -82,6 +83,11 @@ class Penduduk extends Model
     public function getHubunganRtm()
     {
         return $this->hasOne(RtmHubungan::class, "id", "rtm_level");
+    }
+
+    public function getRtm()
+    {
+        return $this->hasOne(RTM::class, "no_kk", "id_rtm");
     }
 
 }

@@ -6,6 +6,7 @@ use App\Models\Model\Keluarga;
 use App\Models\model\Penduduk;
 use App\Models\Model\RTM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class RtmController extends Controller
 {
@@ -122,4 +123,41 @@ class RtmController extends Controller
         return redirect("/page/admin/kependudukan/rtm");
 
     }
+
+    public function tambah_anggota_rumah_tangga(Request $request)
+    {
+        $data = [
+            "detail" => RTM::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/kependudukan/rtm/tambah_anggota_rumah_tangga", $data);
+    }
+
+    public function simpan_data_anggota_rumah_tangga(Request $request)
+    {
+        Penduduk::where("id", $request->nik)->update([
+            "id_rtm" => $request->no_kk,
+            "rtm_level" => 2
+        ]);
+
+        return back();
+    }
+
+    public function kartu_rtm($id)
+    {
+        $data = [
+            "detail" => RTM::where("id", $id)->first()
+        ];
+
+        return view("/admin/page/kependudukan/rtm/kartu_rtm", $data);
+    }
+
+    public function cetak_rtm($id)
+    {
+        $data = [
+            "detail" => RTM::where("id", $id)->first()
+        ];
+        return view("/admin/page/kependudukan/rtm/cetak_rtm", $data);
+    }
+
 }

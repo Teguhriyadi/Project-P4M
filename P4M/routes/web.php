@@ -292,6 +292,10 @@ Route::prefix("page")->group(function() {
                     Route::get("/{id}/rincian_rtm", [RtmController::class, "rincian_rtm"]);
                     Route::get("/tambah_data_anggota_rtm", [RtmController::class, "tambah_data_anggota_rtm"]);
                     Route::post("/tambah_data_anggota", [RtmController::class, "tambah_data_anggota"]);
+                    Route::get("/tambah_anggota_rumah_tangga", [RtmController::class, "tambah_anggota_rumah_tangga"]);
+                    Route::post("/simpan_data_anggota_rumah_tangga", [RtmController::class, "simpan_data_anggota_rumah_tangga"]);
+                    Route::get("/kartu_rtm/{id}", [RtmController::class, "kartu_rtm"]);
+                    Route::get("/cetak_rtm/{id}", [RtmController::class, "cetak_rtm"]);
                 });
 
             });
