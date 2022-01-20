@@ -152,7 +152,7 @@
                     <i class="fa fa-book"></i> Tambah Anggota Keluarga
                 </h4>
             </div>
-            <form action="" method="POST">
+            <form action="{{ url('/page/admin/kependudukan/keluarga/tambah_penduduk_dari_daftar') }}" method="POST">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">

@@ -1,3 +1,4 @@
+<input type="hidden" name="id_kk" value="{{ $detail->id }}">
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover" width="100%">
         <thead class="bg-purple">
@@ -13,7 +14,6 @@
                 use App\Models\Model\Penduduk;
 
                 $data_penduduk = Penduduk::where("id_kk", $detail->id_kk)
-                ->where("id_hubungan", "!=", NULL)
                 ->get();
             @endphp
 
@@ -22,7 +22,17 @@
                 <td class="text-center">{{ $loop->iteration }}.</td>
                 <td class="text-center">{{ $data->nik }}</td>
                 <td>{{ $data->nama }}</td>
-                <td class="text-center">{{ $data->getHubungan->nama }}</td>
+                <td class="text-center">
+                    @if (empty($data->getHubungan->nama))
+                    <i>
+                        <b>
+                            BELUM TERISI
+                        </b>
+                    </i>
+                    @else
+                    {{ $data->getHubungan->nama }}
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -30,17 +40,16 @@
 </div>
 
 <div class="form-group">
-    <label for=""> NIK / Nama Penduduk <span>(dari penduduk yang tidak memiliki KK)</span> </label>
-    <select name="" id="" class="form-control input-sm select2" width="100%">
+    <label for="id_penduduk"> NIK / Nama Penduduk <span>(dari penduduk yang tidak memiliki KK)</span> </label>
+    <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%">
         <option value="">- Pilih -</option>
         @php
             $getPenduduk = DB::table("tb_penduduk")
-                        ->where("id_kk", $detail->id_kk)
-                        ->where("id_hubungan", NULL)
+                        ->where("id_kk", NULL)
                         ->get();
         @endphp
         @foreach ($getPenduduk as $data)
-        <option value="">
+        <option value="{{ $data->id }}">
             {{ $data->nama }}
         </option>
         @endforeach

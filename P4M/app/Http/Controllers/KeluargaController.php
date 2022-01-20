@@ -244,4 +244,13 @@ class KeluargaController extends Controller
         return view("/admin/page/kependudukan/keluarga/form_tambah_data_anggota_keluarga", $data);
     }
 
+    public function tambah_penduduk_dari_daftar(Request $request)
+    {
+        Penduduk::where("id", $request->id_penduduk)->update([
+            "id_kk" => $request->id_kk
+        ]);
+
+        return redirect("/page/admin/kependudukan/keluarga/".$request->id_penduduk."/rincian_keluarga");
+    }
+
 }
