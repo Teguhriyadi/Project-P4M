@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" placeholder="Masukkan Nama" value="" disabled="disabled">
+                                <input type="text" class="form-control input-sm pengurus-desa" placeholder="Masukkan Nama" disabled="disabled">
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
                             </div>
                         </div>
@@ -251,7 +251,6 @@
     </div>
 
 </section>
-
 @endsection
 
 @section('page_scripts')

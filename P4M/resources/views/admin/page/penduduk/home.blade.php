@@ -56,7 +56,21 @@ setLocale(LC_ALL, 'id', 'ID')
                                 <div class="col-md-12">
                                     <div class="box box-info">
                                         <div class="box-header">
-                                            <a href="{{ url('page/admin/kependudukan/penduduk/create') }}" class="btn btn-social btn-flat btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Penduduk</a>
+                                            <div class="btn-group btn-group-vertical">
+                                                <a class="btn btn-social btn-flat btn-success btn-sm" data-toggle="dropdown">
+                                                    <i class="fa fa-plus"></i> Tambah Penduduk
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="{{ url('/page/admin/kependudukan/penduduk/tambah_penduduk_lahir') }}" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data Penduduk Lahir">
+                                                            <i class="fa fa-plus"></i> Penduduk Lahir
+                                                        </a>
+                                                        <a href="{{ url('/page/admin/kependudukan/penduduk/tambah_penduduk_masuk') }}" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data Penduduk Masuk">
+                                                            <i class="fa fa-plus"></i> Penduduk Masuk
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="box-body">
                                             <div class="table-responsive table-min-height">

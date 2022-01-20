@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Cacat;
 use App\Models\Model\Rt;
 use App\Models\Model\Rw;
 use App\Models\Model\Dusun;
@@ -15,10 +16,11 @@ use App\Models\Model\Jabatan;
 use App\Models\Model\LogPenduduk;
 use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukPekerjaan;
+use App\Models\Model\PendudukPendidikanKK;
 use App\Models\Model\PendudukWargaNegara;
 use App\Models\Model\StatusDasar;
 use App\Models\Model\RefPindah;
-
+use App\Models\Model\SakitMenahun;
 use Illuminate\Http\Request;
 
 class PendudukController extends Controller
@@ -216,5 +218,49 @@ class PendudukController extends Controller
         $log_penduduk->save();
 
         return back();
+    }
+
+    public function tambah_penduduk_lahir()
+    {
+        $data = [
+            "data_hubungan" => PendudukHubungan::all(),
+            "data_kelamin" => PendudukSex::all(),
+            "data_agama" => PendudukAgama::all(),
+            "data_pendidikan" => PendudukPendidikan::all(),
+            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
+            "data_pekerjaan" => PendudukPekerjaan::all(),
+            "data_warganegara" => PendudukWargaNegara::all(),
+            "data_kawin" => PendudukKawin::all(),
+            "data_darah" => GolonganDarah::all(),
+            "data_dusun" => Dusun::all(),
+            "data_rt" => Rt::all(),
+            "data_rw" => Rw::all(),
+            "data_cacat" => Cacat::all(),
+            "data_sakit_menahun" => SakitMenahun::all()
+        ];
+
+        return view("/admin/page/penduduk/tambah_penduduk_lahir", $data);
+    }
+
+    public function tambah_penduduk_masuk()
+    {
+        $data = [
+            "data_hubungan" => PendudukHubungan::all(),
+            "data_kelamin" => PendudukSex::all(),
+            "data_agama" => PendudukAgama::all(),
+            "data_pendidikan" => PendudukPendidikan::all(),
+            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
+            "data_pekerjaan" => PendudukPekerjaan::all(),
+            "data_warganegara" => PendudukWargaNegara::all(),
+            "data_kawin" => PendudukKawin::all(),
+            "data_darah" => GolonganDarah::all(),
+            "data_dusun" => Dusun::all(),
+            "data_rt" => Rt::all(),
+            "data_rw" => Rw::all(),
+            "data_cacat" => Cacat::all(),
+            "data_sakit_menahun" => SakitMenahun::all()
+        ];
+
+        return view("/admin/page/penduduk/tambah_penduduk_masuk", $data);
     }
 }

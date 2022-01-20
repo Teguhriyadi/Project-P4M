@@ -263,6 +263,8 @@ Route::prefix("page")->group(function() {
                 Route::get('/penduduk/{id}/cetak', [PendudukController::class, "cetak"]);
                 Route::get('/penduduk/edit_status_dasar', [PendudukController::class, "edit_status_dasar"]);
                 Route::put('/penduduk/simpan_status_dasar', [PendudukController::class, "simpan_status_dasar"]);
+                Route::get('/penduduk/tambah_penduduk_lahir', [PendudukController::class, "tambah_penduduk_lahir"]);
+                Route::get('/penduduk/tambah_penduduk_masuk', [PendudukController::class, "tambah_penduduk_masuk"]);
                 Route::resource('/penduduk', PendudukController::class);
 
                 // Keluarga
