@@ -119,9 +119,27 @@ class KeluargaController extends Controller
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
     }
 
-    public function anggota_keluarga_lahir()
+    public function anggota_keluarga_lahir($id)
     {
-        return view("/admin/page/kependudukan/keluarga/anggota_keluarga_lahir");
+        $data = [
+            "data_hubungan" => PendudukHubungan::all(),
+            "data_kelamin" => PendudukSex::all(),
+            "data_agama" => PendudukAgama::all(),
+            "data_pendidikan" => PendudukPendidikan::all(),
+            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
+            "data_pekerjaan" => PendudukPekerjaan::all(),
+            "data_warganegara" => PendudukWargaNegara::all(),
+            "data_kawin" => PendudukKawin::all(),
+            "data_darah" => GolonganDarah::all(),
+            "data_dusun" => Dusun::all(),
+            "data_rt" => Rt::all(),
+            "data_rw" => Rw::all(),
+            "data_cacat" => Cacat::all(),
+            "data_sakit_menahun" => SakitMenahun::all(),
+            "edit" => Keluarga::where("id", $id)->first()
+        ];
+
+        return view("/admin/page/kependudukan/keluarga/anggota_keluarga_lahir", $data);
     }
 
     public function anggota_keluarga_masuk()
