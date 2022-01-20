@@ -39,9 +39,6 @@
                             </a>
                         </li>
                     </ul>
-                    <a href="" class="btn btn-social bg-purple btn-flat btn-sm">
-                        <i class="fa fa-book"></i> Kartu Keluarga
-                    </a>
                     <a href="{{ url('/page/admin/kependudukan/keluarga') }}" class="btn btn-social btn-info btn-flat btn-sm">
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Keluarga
                     </a>
@@ -64,7 +61,7 @@
                                     <td>Kepala Keluarga</td>
 								    <td>:</td>
                                     <td>
-                                        {{ $edit->getDataPenduduk->nama }}
+                                        {{ $edit->nama }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,6 +99,31 @@
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @php
+                                    use App\Models\Model\Penduduk;
+                                    $data_penduduk = Penduduk::where("id_kk" ,$edit->id_kk)
+                                                ->get();
+                                @endphp
+                                @foreach ($data_penduduk as $data)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">{{ $data->nik }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td class="text-center">{{ $data->tgl_lahir }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-warning btn-flat btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="" class="btn bg-purple btn-flat btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

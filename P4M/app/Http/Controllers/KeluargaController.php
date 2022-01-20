@@ -26,7 +26,7 @@ class KeluargaController extends Controller
     public function index()
     {
         $data = [
-            "data_keluarga" => Keluarga::get()
+            "data_penduduk" => Penduduk::where("id_hubungan", 1)->get()
         ];
 
         return view("/admin/page/kependudukan/keluarga/data_penduduk_keluarga", $data);
@@ -113,7 +113,7 @@ class KeluargaController extends Controller
     public function rincian_keluarga($id)
     {
         $data = [
-            "edit" => Keluarga::where("id", $id)->first()
+            "edit" => Penduduk::where("id", $id)->first()
         ];
 
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
@@ -149,6 +149,10 @@ class KeluargaController extends Controller
 
     public function tambah_kepala_keluarga(Request $request)
     {
+        Penduduk::where("id", $request->nik_kepala)->update([
+            "id_hubungan" => 1
+        ]);
+
         Keluarga::create([
             "no_kk" => $request->no_kk,
             "nik_kepala" => $request->nik_kepala,

@@ -61,38 +61,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data_keluarga as $keluarga)
+                                @foreach ($data_penduduk as $penduduk)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$keluarga->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
+                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$penduduk->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
                                             <i class="fa fa-list-ol"></i>
                                         </a>
                                         <div class="btn-group btn-group-vertical">
                                             <a class="btn btn-success btn-flat btn-sm " data-toggle="dropdown" title="Tambah Anggota Keluarga" ><i class="fa fa-plus"></i> </a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
-                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/1/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir"><i class="fa fa-plus"></i> Anggota Keluarga Lahir</a>
+                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/1/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Lahir">
+                                                        <i class="fa fa-plus"></i> Anggota Keluarga Lahir
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/5/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk"><i class="fa fa-plus"></i> Anggota Keluarga Masuk</a>
+                                                    <a href="https://demo.opensid.or.id/keluarga/form_peristiwa_a/5/1/0/38" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
+                                                        <i class="fa fa-plus"></i> Anggota Keluarga Masuk
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button onclick="editData({{ $keluarga->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
+                                        <button onclick="editData({{ $penduduk->id }})" type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        @if ($keluarga->foto == NULL)
+                                        @if ($penduduk->foto == NULL)
                                         <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50">
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ $keluarga->no_kk }}</td>
-                                    <td>{{ $keluarga->getDataPenduduk->nama }}</td>
-                                    <td class="text-center">{{ $keluarga->getDataPenduduk->nik }}</td>
+                                    <td class="text-center">{{ $penduduk->no_kk }}</td>
+                                    <td>{{ $penduduk->nama }}</td>
+                                    <td class="text-center">{{ $penduduk->nik }}</td>
                                     <td class="text-center">0</td>
-                                    <td class="text-center">{{ $keluarga->tgl_daftar }}</td>
+                                    <td class="text-center">{{ $penduduk->tgl_daftar }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
