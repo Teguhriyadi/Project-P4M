@@ -32,7 +32,9 @@
                                 <a href="{{ url('/page/admin/kependudukan/keluarga/form_tambah_penduduk_masuk') }}" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data Penduduk Masuk"><i class="fa fa-plus"></i> Tambah Penduduk Masuk</a>
                             </li>
                             <li>
-                                <a href="https://demo.opensid.or.id/keluarga/form_old" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data KK dari keluarga yang sudah ter-input" data-remote="false" data-toggle="modal" data-target="#modalBox" data-title="Tambah Data Kepala Keluarga"><i class="fa fa-plus"></i> Dari Penduduk Sudah Ada</a>
+                                <a class="btn btn-social btn-flat btn-block btn-sm" data-toggle="modal" data-target="#modal-default-penduduk">
+                                    <i class="fa fa-plus"></i> Dari Penduduk Sudah Ada
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -58,7 +60,7 @@
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
                                         @if ($keluarga->foto == NULL)
-                                            <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50">
+                                        <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50">
                                         @endif
                                     </td>
                                     <td class="text-center">{{ $keluarga->no_kk }}</td>
@@ -98,6 +100,66 @@
     </div>
 </section>
 
+<!-- Dari Penduduk Sudah Ada -->
+<div class="modal fade" id="modal-default-penduduk">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-plus"></i> Tambah Data Kepala Keluarga
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/kependudukan/keluarga/tambah_kepala_keluarga') }}" method="POST">
+                @csrf
+                <div class="modal-body" id="modal-penduduk-keluarga">
+                    <div class="form-group">
+                        <label for="nik_kepala"> Nomor Kartu Keluarga (KK) </label>
+                        <select name="nik_kepala" id="nik_kepala" class="form-control input-sm">
+                            <option value="">- Pilih -</option>
+                            @php
+                                use App\Models\Model\Penduduk;
+                                $data_penduduk = Penduduk::get()
+                            @endphp
+
+                            @foreach ($data_penduduk as $data)
+                                @php
+                                    $data_keluarga = DB::table("tb_keluarga")
+                                                ->where("nik_kepala" , $data->id)
+                                                ->first();
+                                @endphp
+
+                                @if (empty($data_keluarga))
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->nama }}
+                                    </option>
+                                @endif
+
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="no_kk"> Nomor Kartu Keluarga (KK) </label>
+                        <input type="text" name="no_kk" id="no_kk" class="form-control input-sm" placeholder="Nomor KK">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-flat btn-sm">
+                        <i class="fa fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
 <!-- Edit Data -->
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
@@ -135,7 +197,7 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-function editData(id)
+    function editData(id)
     {
         $.ajax({
             url : "{{ url('/page/admin/kependudukan/keluarga/form_edit_data_penduduk_masuk') }}",

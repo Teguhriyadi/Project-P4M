@@ -147,4 +147,20 @@ class KeluargaController extends Controller
         return view("/admin/page/kependudukan/keluarga/anggota_keluarga_masuk");
     }
 
+    public function tambah_kepala_keluarga(Request $request)
+    {
+        Keluarga::create([
+            "no_kk" => $request->no_kk,
+            "nik_kepala" => $request->nik_kepala,
+            "tgl_daftar" => date("Y-m-d"),
+            "tgl_cetak_kk" => date("Y-m-d"),
+            "alamat" => "NULL",
+            "id_cluster" => 1,
+            "updated_at" => date("Y-m-d"),
+            "updated_by" => auth()->user()->id
+        ]);
+
+        return redirect("/page/admin/kependudukan/keluarga");
+    }
+
 }
