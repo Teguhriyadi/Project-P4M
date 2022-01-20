@@ -34,7 +34,7 @@
                             <a href="{{ url('/page/admin/kependudukan/keluarga/'.$edit->id) }}/rincian_keluarga/anggota_keluarga_masuk" class="btn btn-social btn-flat btn-block btn-sm" title="Anggota Keluarga Masuk">
                                 <i class="fa fa-plus"></i> Anggota Keluarga Masuk
                             </a>
-                            <a href="" class="btn btn-social btn-flat btn-block btn-sm" title="">
+                            <a onclick="tambahAnggotaKeluarga({{ $edit->id }})" type="button" class="btn btn-social btn-block btn-flat btn-sm" data-toggle="modal" data-target="#modal-default">
                                 <i class="fa fa-plus"></i> Dari Penduduk Sudah Ada
                             </a>
                         </li>
@@ -112,7 +112,15 @@
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->tgl_lahir }}</td>
                                     <td></td>
-                                    <td></td>
+                                    <td class="text-center">
+                                        @if (empty($data->getHubungan->nama))
+                                        <i>
+                                            <b>BELUM TERISI</b>
+                                        </i>
+                                        @else
+                                        {{ $data->getHubungan->nama }}
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         <a href="" class="btn btn-warning btn-flat btn-sm">
                                             <i class="fa fa-edit"></i>
@@ -131,5 +139,58 @@
         </div>
     </div>
 </section>
+
+<!-- Dari Penduduk Sudah Ada -->
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-book"></i> Tambah Anggota Keluarga
+                </h4>
+            </div>
+            <form action="" method="POST">
+                @method("PUT")
+                @csrf
+                <div class="modal-body" id="modal-content-edit">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left btn-flat btn-sm" data-dismiss="modal">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-success btn-flat btn-sm">
+                        <i class="fa fa-edit"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+@endsection
+
+@section('page_scripts')
+
+<script type="text/javascript">
+
+function tambahAnggotaKeluarga(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/kependudukan/keluarga/form_tambah_data_anggota_keluarga') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
+    }
+
+</script>
 
 @endsection
