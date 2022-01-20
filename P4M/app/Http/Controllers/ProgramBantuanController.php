@@ -104,4 +104,14 @@ class ProgramBantuanController extends Controller
 
         return back();
     }
+
+    public function profil_peserta($id, $nik)
+    {
+        $data = [
+            "profil" => ProgramPeserta::where("kartu_nik", $nik)->first(),
+            "data_profil" => ProgramPeserta::where("kartu_nik", $nik)->get()
+        ];
+
+        return view("/admin/page/program_bantuan/profil_peserta_bantuan", $data);
+    }
 }

@@ -14,4 +14,10 @@ class ProgramPeserta extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getDataProgramBantuan()
+    {
+        return $this->hasOne(ProgramBantuan::class, "id", "program_id");
+    }
+
 }

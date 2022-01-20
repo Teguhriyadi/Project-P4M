@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sarana Agama')
+@section('title', 'Program Bantuan '.$detail->nama)
 
 @section('page_content')
 
@@ -9,7 +9,8 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li><a href="{{ url('/page/admin') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="{{ url('/page/admin/program_bantuan') }}">Daftar Program Bantuan</a></li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -119,7 +120,11 @@
                                                             </button>
                                                         </form>
                                                     </td>
-                                                    <td>{{ $data->kartu_nik }}</td>
+                                                    <td>
+                                                        <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/profil/'.$data->kartu_nik) }}">
+                                                            {{ $data->kartu_nik }}
+                                                        </a>
+                                                    </td>
                                                     <td></td>
                                                     <td>{{ $data->kartu_nama }}</td>
                                                     <td class="text-center">{{ $data->no_id_kartu }}</td>

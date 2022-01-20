@@ -455,6 +455,7 @@ Route::prefix("page")->group(function() {
                 Route::get("/edit_data_peserta", [ProgramBantuanController::class, "edit_data_peserta"]);
                 Route::put("/simpan_data_peserta", [ProgramBantuanController::class, "simpan_data_peserta"]);
                 Route::delete("/{id}/rincian/hapus_data_peserta", [ProgramBantuanController::class, "hapus_data_peserta"]);
+                Route::get("/{id}/profil/{nik}", [ProgramBantuanController::class, "profil_peserta"]);
             });
 
         });
