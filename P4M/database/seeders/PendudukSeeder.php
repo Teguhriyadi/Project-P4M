@@ -17,7 +17,6 @@ class PendudukSeeder extends Seeder
         Penduduk::create([
             "nama" => "Mohammad Ilham Teguhriyadi",
             "nik" => "12345678910",
-            "status_hidup" => 1,
             "id_dusun" => 1,
             "id_rt" => 1,
             "id_rw" => 1
@@ -26,7 +25,6 @@ class PendudukSeeder extends Seeder
         Penduduk::create([
             "nama" => "Mohammad",
             "nik" => "12345678911",
-            "status_hidup" => 1,
             "id_dusun" => 1,
             "id_rt" => 1,
             "id_rw" => 1
@@ -35,7 +33,6 @@ class PendudukSeeder extends Seeder
         Penduduk::create([
             "nama" => "Ilham",
             "nik" => "12345678912",
-            "status_hidup" => 1,
             "id_dusun" => 1,
             "id_rt" => 1,
             "id_rw" => 1
@@ -44,7 +41,6 @@ class PendudukSeeder extends Seeder
         Penduduk::create([
             "nama" => "Teguhriyadi",
             "nik" => "12345678913",
-            "status_hidup" => 1,
             "id_dusun" => 1,
             "id_rt" => 1,
             "id_rw" => 1
@@ -53,7 +49,6 @@ class PendudukSeeder extends Seeder
         Penduduk::create([
             "nama" => "Ahmad",
             "nik" => "12345678914",
-            "status_hidup" => 1,
             "id_dusun" => 1,
             "id_rt" => 1,
             "id_rw" => 1

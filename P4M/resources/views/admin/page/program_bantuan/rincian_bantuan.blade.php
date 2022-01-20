@@ -84,14 +84,54 @@
                                 <div class="col-sm-12">
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-striped table-hover" width="100%">
-                                            <thead>
-                                                <th class="text-center">No.</th>
-                                                <th class="text-center">Aksi</th>
-                                                <th>No. KK</th>
-                                                <th class="text-center">NIK</th>
-                                                <th>Kepala Keluarga</th>
+                                            <thead class="bg-gray">
+                                                <tr>
+                                                    <th rowspan="2" width="1%">No.</th>
+                                                    <th rowspan="2">Aksi</th>
+                                                    <th rowspan="2">NIK</th>
+                                                    <th rowspan="2">No. KK</th>
+                                                    <th rowspan="2">Nama Penduduk</th>
+                                                    <th colspan="7" class="text-center">Identitas Di Kartu Peserta</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>No.Kartu Peserta</th>
+                                                    <th>NIK</th>
+                                                    <th>Nama</th>
+                                                    <th>Tempat Lahir</th>
+                                                    <th>Tanggal Lahir</th>
+                                                    <th>Jenis Kelamin</th>
+                                                    <th>Alamat</th>
+                                                </tr>
                                             </thead>
-                                            <tbody></tbody>
+                                            <tbody>
+                                                @foreach ($daftar_peserta as $data)
+                                                <tr>
+                                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                                    <td class="text-center">
+                                                        <button onclick="editDataPeserta({{$data->id}})" type="button" data-toggle="modal" data-target="#ubahData" class="btn btn-warning btn-flat btn-sm" title="Ubah Data">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <form action="{{ url('/page/admin/program_bantuan/'.$data->id.'/rincian/hapus_data_peserta') }}" method="POST" style="display: inline">
+                                                            @method("DELETE")
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger btn-flat btn-sm" title="Hapus Data">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                    <td>{{ $data->kartu_nik }}</td>
+                                                    <td></td>
+                                                    <td>{{ $data->kartu_nama }}</td>
+                                                    <td class="text-center">{{ $data->no_id_kartu }}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -103,5 +143,58 @@
         </div>
     </div>
 </section>
+
+<!-- Edit Data -->
+<div class="modal fade" id="ubahData">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-edit"></i> Edit Data Peserta
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/program_bantuan/simpan_data_peserta') }}" method="POST" class="form-horizontal">
+                @method("PUT")
+                @csrf
+                <div class="modal-body" id="modal-content-edit">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+@endsection
+
+@section('page_scripts')
+
+<script type="text/javascript">
+
+    function editDataPeserta(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/program_bantuan/edit_data_peserta') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
+    }
+
+</script>
 
 @endsection

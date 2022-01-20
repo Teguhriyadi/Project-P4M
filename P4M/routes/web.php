@@ -450,6 +450,11 @@ Route::prefix("page")->group(function() {
                 Route::resource("/", ProgramBantuanController::class);
                 Route::get("/{id}/rincian", [ProgramBantuanController::class, "rincian_bantuan"]);
                 Route::get("/{id}/tambah_peserta", [ProgramBantuanController::class, "tambah_peserta"]);
+                Route::put("/{id}/tambah_peserta", [ProgramBantuanController::class, "data_program_bantuan"]);
+                Route::post("/tambah_data_peserta_bantuan", [ProgramBantuanController::class, "tambah_data_peserta_bantuan"]);
+                Route::get("/edit_data_peserta", [ProgramBantuanController::class, "edit_data_peserta"]);
+                Route::put("/simpan_data_peserta", [ProgramBantuanController::class, "simpan_data_peserta"]);
+                Route::delete("/{id}/rincian/hapus_data_peserta", [ProgramBantuanController::class, "hapus_data_peserta"]);
             });
 
         });
