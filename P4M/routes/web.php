@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ArsipSuratController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\GeografisController;
@@ -48,12 +49,13 @@ use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratOnlineController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\SejarahController;
-use App\Models\Model\Pegawai;
-use App\Models\model\Rt;
-use App\Models\Model\StrukturPemerintahan;
-use App\Models\Model\WilayahGeografis;
+use App\Models\Model\Artikel;
+use App\Models\Model\Komentar;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +148,28 @@ Route::prefix('/data')->group(function () {
 
 Route::get('/peta', [UserController::class, 'peta']);
 Route::resource('/surat', SuratOnlineController::class);
+
+Route::post('/komentar/{slug}', function (Request $request, $slug) {
+    if ($request->asli == $request->captcha) {
+        $artikel = Artikel::where('slug', $slug)->first();
+        $validasi = $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'telepon' =>'required',
+            'pesan' =>'required'
+        ]);
+        if ($artikel) {
+            $validasi['id_artikel'] = $artikel->id;
+            Komentar::create($validasi);
+
+            return back();
+        } else {
+            return back();
+        }
+    } else {
+        return back();
+    }
+});
 
 // Admin
 Route::prefix("page")->group(function() {
@@ -395,13 +419,15 @@ Route::prefix("page")->group(function() {
                 Route::resource("/kategori", KategoriController::class);
 
                 // Artikel
+                Route::get("/artikel/{slug}/komentar", [ArtikelController::class, "komentar"]);
+                Route::delete("/artikel/{slug}/komentar/{id}/hapus", [ArtikelController::class, "komentarHapus"]);
                 Route::get("/artikel/checkSlug", [ArtikelController::class, "checkSlug"]);
                 Route::resource("/artikel", ArtikelController::class);
                 // Komentar
                 // Galeri
                 // Slider
                 // Teks Berjalan
-                // Pengunjung
+                Route::get("/pengunjung", [PengunjungController::class, "index"]);
             });
 
         });

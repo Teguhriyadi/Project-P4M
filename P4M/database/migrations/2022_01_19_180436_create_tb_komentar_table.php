@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCountersTable extends Migration
+class CreateTbKomentarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCountersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_counter', function (Blueprint $table) {
+        Schema::create('tb_komentar', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_artikel');
-            $table->string('address');
-            $table->string('browser');
+            $table->string('nama');
+            $table->string('email');
+            $table->string('telepon');
+            $table->text('pesan');
             $table->timestamps();
         });
     }

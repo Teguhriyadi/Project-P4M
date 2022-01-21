@@ -308,14 +308,9 @@
                             <i class="fa fa-circle-o"></i> Kategori
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/web/artikel') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4) == 'artikel' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/artikel') }}">
                             <i class="fa fa-circle-o"></i> Artikel
-                        </a>
-                    </li>
-                    <li class="{{ Request::is('page/admin/web/komentar') ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/web/komentar') }}">
-                            <i class="fa fa-circle-o"></i> Komentar
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/web/galeri') ? 'active' : '' }}">

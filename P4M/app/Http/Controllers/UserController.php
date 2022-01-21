@@ -14,6 +14,7 @@ use App\Models\Model\Kontak;
 use App\Models\Model\Profil;
 use App\Models\Model\VisiMisi;
 use App\Models\Model\Geografis;
+use App\Models\Model\Komentar;
 use App\Models\Model\WilayahGeografis;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\Penduduk;
@@ -92,6 +93,7 @@ class UserController extends Controller
         ];
 
         if ($data['artikel']) {
+            $data['komentar'] = Komentar::where('id_artikel', $data['artikel']->id)->latest()->paginate(6);
             Artikel::where('slug', $slug)->update(['counter' => $data['artikel']->counter + 1]);
             return view("/pengunjung/page/artikel/detail", $data);
         } else {

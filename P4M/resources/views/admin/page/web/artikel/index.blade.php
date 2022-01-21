@@ -37,7 +37,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th class="text-center">Judul Berita</th>
+                                <th class="text-center">Judul Artikel</th>
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -51,6 +51,9 @@
                                     <td class="text-center">
                                         <a href="{{ url('/page/admin/web/artikel/'.$artikel->slug) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url('/page/admin/web/artikel/'.$artikel->slug) }}/komentar" class="btn bg-info btn-sm">
+                                            <i class="fa fa-comment-o"></i>
                                         </a>
                                         <form action="{{ url('/page/admin/web/artikel/') }}/{{ $artikel->id }}" method="POST" style="display: inline;">
                                             @method("DELETE")
