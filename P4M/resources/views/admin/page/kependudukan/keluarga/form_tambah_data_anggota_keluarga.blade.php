@@ -14,6 +14,7 @@
                 use App\Models\Model\Penduduk;
 
                 $data_penduduk = Penduduk::where("id_kk", $detail->id_kk)
+                ->where("id_kk", "!=", NULL)
                 ->get();
             @endphp
 
@@ -48,11 +49,15 @@
                         ->where("id_kk", NULL)
                         ->get();
         @endphp
-        @foreach ($getPenduduk as $data)
+        @forelse($getPenduduk as $data)
         <option value="{{ $data->id }}">
-            {{ $data->nama }}
+            NIK : {{ $data->nik }} - {{ $data->nama }}
         </option>
-        @endforeach
+        @empty
+        <option disabled>
+            Tidak Ada Data
+        </option>
+        @endforelse
     </select>
 </div>
 

@@ -4,6 +4,9 @@ namespace App\Models\model;
 
 use App\Models\Model\Dusun;
 use App\Models\Model\GolonganDarah;
+use App\Models\Model\Keluarga;
+use App\Models\Model\RTM;
+use App\Models\Model\RtmHubungan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,7 +37,7 @@ class Penduduk extends Model
 
     public function getHubungan()
     {
-        return $this->hasOne(PendudukHubungan::class, "id", "id_hubungan");
+        return $this->hasOne(PendudukHubungan::class, "id", "kk_level");
     }
 
     public function getKelamin()
@@ -72,15 +75,19 @@ class Penduduk extends Model
         return $this->hasOne(Rw::class, "id", "id_rw");
     }
 
-    public function getStatusHidup($id)
+    public function getKeluarga()
     {
-        $data = array(
-            1 => 'HIDUP',
-            2 => 'MENINGGAL'
-        );
-
-        $hasil = $data[$id];
-
-        return $hasil;
+        return $this->hasOne(Keluarga::class, "nik_kepala", "id");
     }
+
+    public function getHubunganRtm()
+    {
+        return $this->hasOne(RtmHubungan::class, "id", "rtm_level");
+    }
+
+    public function getRtm()
+    {
+        return $this->hasOne(RTM::class, "no_kk", "id_rtm");
+    }
+
 }

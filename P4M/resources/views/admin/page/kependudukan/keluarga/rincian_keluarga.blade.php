@@ -51,8 +51,8 @@
                         <table class="table table-bordered table-striped table-hover">
                             <tbody>
                                 <tr>
-                                    <td>Nomor Kartu Keluarga (KK)</td>
-								    <td>:</td>
+                                    <td width="20%">Nomor Kartu Keluarga (KK)</td>
+								    <td width="1%">:</td>
                                     <td>
                                         {{ $edit->no_kk }}
                                     </td>
@@ -61,7 +61,7 @@
                                     <td>Kepala Keluarga</td>
 								    <td>:</td>
                                     <td>
-                                        {{ $edit->nama }}
+                                        {{ $edit->getDataPenduduk->nama }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,7 +102,7 @@
                             <tbody>
                                 @php
                                     use App\Models\Model\Penduduk;
-                                    $data_penduduk = Penduduk::where("id_kk" ,$edit->id_kk)
+                                    $data_penduduk = Penduduk::where("id_kk", $edit->nik_kepala)
                                                 ->get();
                                 @endphp
                                 @foreach ($data_penduduk as $data)
