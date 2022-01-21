@@ -25,4 +25,9 @@ class Artikel extends Model
         return $this->hasMany(Counter::class, 'id_artikel', 'id');
     }
 
+    public function getKomentar()
+    {
+        return $this->hasMany(Komentar::class, 'id_artikel', 'id');
+    }
+
 }

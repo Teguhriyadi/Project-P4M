@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counter as ModelsCounter;
 use App\Models\Model\Rt;
 use App\Models\Model\Rw;
 use App\Models\Model\Dusun;
@@ -29,6 +30,7 @@ use App\Models\Model\SaranaPendidikan;
 use App\Models\Model\SaranaTempatUsaha;
 use App\Models\Model\Sejarah;
 use Illuminate\Http\Request;
+use SebastianBergmann\LinesOfCode\Counter as LinesOfCodeCounter;
 
 class UserController extends Controller
 {
@@ -94,7 +96,10 @@ class UserController extends Controller
 
         if ($data['artikel']) {
             $data['komentar'] = Komentar::where('id_artikel', $data['artikel']->id)->latest()->paginate(6);
-            Artikel::where('slug', $slug)->update(['counter' => $data['artikel']->counter + 1]);
+            $data['counter'] = Counter::where('id_artikel', $data['artikel']->id)->get();
+
+            Counter::create(['id_artikel' => $data['artikel']->id, 'address' => $_SERVER['REMOTE_ADDR']]);
+
             return view("/pengunjung/page/artikel/detail", $data);
         } else {
             abort(404);

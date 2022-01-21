@@ -35,7 +35,7 @@ use Carbon\Carbon;
     <div class="post_commentbox">
         <span class="meta_date">{!! $artikel->updated_at->formatLocalized("%d %B %Y %H:%M:%S") !!}&nbsp;
             <i class="fa fa-user"></i>Administrator&nbsp;
-            <i class="fa fa-eye"></i>{{ $artikel->counter }} Kali&nbsp;
+            <i class="fa fa-eye"></i>{{ $counter->count() }} Kali&nbsp;
             <i class="fa fa-comments"></i>{{ $komentar->count() }} &nbsp;
         </span>
     </div>
