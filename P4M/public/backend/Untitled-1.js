@@ -305,43 +305,9 @@ setupFormValidation: function()
 			});
 
 			// Bagian Jabatan
-			$("#tambahJabatan").validate({
-				ignore: "",
-				rules: {
-					nama_jabatan: {
-						required: true
-					}
-				},
 
-				messages: {
-					nama_jabatan: {
-						required: "Nama jabatan harap di isi!"
-					}
-				},
 
-				submitHandler: function(form) {
-					form.submit();
-				}
-			});
 
-			$("#editJabatan").validate({
-				ignore: "",
-				rules: {
-					nama_jabatan: {
-						required: true
-					}
-				},
-
-				messages: {
-					nama_jabatan: {
-						required: "Nama jabatan harap di isi!"
-					}
-				},
-
-				submitHandler: function(form) {
-					form.submit();
-				}
-			});
 
 			// Bagian Pegawai
 			$("#tambahPegawai").validate({

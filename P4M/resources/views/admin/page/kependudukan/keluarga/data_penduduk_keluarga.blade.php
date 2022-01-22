@@ -97,9 +97,9 @@
                                     <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
                                     <td class="text-center">
                                         @php
-                                            echo $jumlahData = DB::table("tb_penduduk")
-                                                            ->where("id_kk", $data->id)
-                                                            ->count();
+                                        echo $jumlahData = DB::table("tb_penduduk")
+                                        ->where("id_kk", $data->id)
+                                        ->count();
                                         @endphp
                                     </td>
                                     <td class="text-center">{{ $data->tgl_daftar }}</td>
@@ -126,11 +126,11 @@
                     <i class="fa fa-plus"></i> Tambah Data Kepala Keluarga
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/kependudukan/keluarga/tambah_kepala_keluarga') }}" method="POST">
+            <form action="{{ url('/page/admin/kependudukan/keluarga/tambah_kepala_keluarga') }}" method="POST" id="formTambahKPendudukAda">
                 @csrf
                 <div class="modal-body" id="modal-penduduk-keluarga">
                     <div class="form-group">
-                        <label for="nik_kepala"> Nomor Kartu Keluarga (KK) </label>
+                        <label for="nik_kepala"> Kepala Keluarga </label>
                         <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
                             <option value="">- Pilih -</option>
                             @php
@@ -235,6 +235,45 @@
             }
         });
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahKPendudukAda").validate({
+                    ignore: "",
+                    rules: {
+                        nik_kepala: {
+                            required: true
+                        },
+                        no_kk: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        nik_kepala: {
+                            required: "Kepala keluarga harap di isi!"
+                        },
+                        no_kk: {
+                            required: "No kartu keluarga harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 
 @endsection

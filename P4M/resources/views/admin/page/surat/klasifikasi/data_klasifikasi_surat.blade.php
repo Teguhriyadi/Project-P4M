@@ -46,24 +46,24 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_klasifikasi_surat as $data)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}.</td>
-                                        <td class="text-center">{{ $data->kode }}</td>
-                                        <td>{{ $data->nama }}</td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center">
-                                            <button onclick="editDataKlasifikasi({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
-                                                <i class="fa fa-edit"></i>
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">{{ $data->kode }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        <button onclick="editDataKlasifikasi({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <form action="{{ url('/page/admin/surat/klasifikasi/'.$data->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
+                                                <i class="fa fa-trash-o"></i>
                                             </button>
-                                            <form action="{{ url('/page/admin/surat/klasifikasi/'.$data->id) }}" method="POST" style="display: inline;">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm btn-delete">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -86,7 +86,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/surat/klasifikasi') }}" method="POST">
+            <form action="{{ url('/page/admin/surat/klasifikasi') }}" method="POST" id="formTambahKlasifikasi">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -124,7 +124,7 @@
                     <i class="fa fa-plus"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/surat/klasifikasi/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/surat/klasifikasi/simpan') }}" method="POST" id="formEditKlasifikasi">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -150,7 +150,7 @@
 
 <script type="text/javascript">
 
-function editDataKlasifikasi(id)
+    function editDataKlasifikasi(id)
     {
         $.ajax({
             url : "{{ url('/page/admin/surat/klasifikasi/edit') }}",
@@ -162,6 +162,69 @@ function editDataKlasifikasi(id)
             }
         });
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahKlasifikasi").validate({
+                    ignore: "",
+                    rules: {
+                        kode: {
+                            required: true
+                        },
+                        nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        kode: {
+                            required: "Kode harap di isi!"
+                        },
+                        nama: {
+                            required: "Nama harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditKlasifikasi").validate({
+                    ignore: "",
+                    rules: {
+                        kode: {
+                            required: true
+                        },
+                        nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        kode: {
+                            required: "Kode harap di isi!"
+                        },
+                        nama: {
+                            required: "Nama harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 
 </script>
 

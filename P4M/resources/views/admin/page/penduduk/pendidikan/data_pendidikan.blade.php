@@ -88,7 +88,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pendidikan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/pendidikan') }}" method="POST" id="formTambahPendidikan">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -123,7 +123,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pendidikan/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/pendidikan/simpan') }}" method="POST" id="formEditPendidikan">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -149,6 +149,57 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahPendidikan").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditPendidikan").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+
     function editDataPendidikan(id)
     {
         $.ajax({

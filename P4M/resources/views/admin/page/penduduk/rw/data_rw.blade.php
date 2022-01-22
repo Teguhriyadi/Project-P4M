@@ -85,7 +85,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/rw') }}" method="POST">
+            <form action="{{ url('/page/admin/data/rw') }}" method="POST" id="formTambahRW">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -120,7 +120,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/rw/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/rw/simpan') }}" method="POST" id="formEditRW">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -146,6 +146,57 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahRW").validate({
+                    ignore: "",
+                    rules: {
+                        rw: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        rw: {
+                            required: "RW harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditRW").validate({
+                    ignore: "",
+                    rules: {
+                        rw: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        rw: {
+                            required: "RW harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+
     function editRw(id)
     {
         $.ajax({

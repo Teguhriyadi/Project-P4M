@@ -33,7 +33,7 @@ use Carbon\Carbon;
 <div id="printableArea">
     <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">@yield('title')</font></h4>
     <div class="post_commentbox">
-        <span class="meta_date">{!! $artikel->updated_at->formatLocalized("%d %B %Y %H:%M:%S") !!}&nbsp;
+        <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $artikel->updated_at)->isoFormat('D MMMM Y') !!}&nbsp;
             <i class="fa fa-user"></i>Administrator&nbsp;
             <i class="fa fa-eye"></i>{{ $counter->count() }} Kali&nbsp;
             <i class="fa fa-comments"></i>{{ $komentar->count() }} &nbsp;
