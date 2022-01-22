@@ -335,7 +335,7 @@
                     <i class="fa fa-inbox"></i> <span>Kotak Pesan</span>
                 </a>
             </li>
-            <li class="{{ Request::is('page/admin/kotak-pesan') ? 'active' : '' }}">
+            <li class="{{ Request::is('page/admin/program_bantuan') ? 'active' : '' }}">
                 <a href="{{ url('/page/admin/kotak-pesan') }}">
                     <i class="fa fa-heart"></i> <span>Bantuan</span>
                 </a>
