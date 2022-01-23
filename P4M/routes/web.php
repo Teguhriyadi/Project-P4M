@@ -294,6 +294,7 @@ Route::prefix("page")->group(function() {
             });
 
             // Kependudukan
+            Route::get('/kependudukans/penduduk/{page}', [PendudukController::class, "paging"]);
             Route::prefix('/kependudukan')->group(function () {
                 // Penduduk
                 Route::get('/penduduk/{id}/cetak', [PendudukController::class, "cetak"]);
