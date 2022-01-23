@@ -42,7 +42,8 @@ class AppController extends Controller
         $data = [
             'rw' => Rw::where('id_dusun', $request->id_dusun)->get()
         ];
-        return view('coba.rw', $data);
+
+        return view("/admin/page/penduduk/ajax/rw", $data);
     }
 
     public function ambilRt(Request $request)
@@ -50,7 +51,8 @@ class AppController extends Controller
         $data = [
             'rt' => Rt::where('id_rw', $request->id_rw)->get()
         ];
-        return view('coba.rt', $data);
+
+        return view("/admin/page/penduduk/ajax/rt", $data);
     }
 
 }

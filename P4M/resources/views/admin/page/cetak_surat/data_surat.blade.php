@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Keluarga')
+@section('title', 'Cetak Layanan Surat')
 
 @section('page_content')
 

@@ -123,15 +123,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Tertanda Atas Nama </label>
-                            <div class="col-sm-8">
-                                <select name="" id="" class="form-control input-sm select2" width="100%"></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Staf Pemerintah Desa </label>
                             <div class="col-sm-8">
-                                <select name="" id="" class="form-control input-sm select2" width="100%"></select>
+                                <select name="" id="" class="form-control input-sm select2" width="100%">
+                                    <option value="">- Pilih -</option>
+                                    @foreach ($data_pegawai as $pegawai)
+                                    <option value="">
+                                        {{ $ }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -146,7 +147,7 @@
                             <i class="fa fa-times"></i> Batal
                         </button>
                         <button type="button" onclick="tambah_elemen_cetak('cetak_rtf'); $('#validasi').submit()" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
-                            <i class="fa fa-file-word-o"></i> Unduh RTF
+                            <i class="fa fa-file-word-o"></i> Cetak
                         </button>
                         <script type="text/javascript">
                             function tambah_elemen_cetak($nilai) {

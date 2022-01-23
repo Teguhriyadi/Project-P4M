@@ -314,46 +314,30 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="id_dusun"> Dusun KK </label>
-                                    <select name="id_dusun" id="id_dusun" class="form-control input-sm select2">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($data_dusun as $dusun)
-                                        <option value="{{ $dusun->id }}">
-                                            {{ $dusun->dusun }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="id_rw"> RW KK </label>
-                                    <select name="id_rw" id="id_rw" class="form-control input-sm select2">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($data_rw as $rw)
-                                        <option value="{{ $rw->id }}">
-                                            {{ $rw->rw }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="id_rt"> RT KK </label>
-                                    <select name="id_rt" id="id_rt" class="form-control input-sm select2">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($data_rt as $rt)
-                                        <option value="{{ $rt->id }}">
-                                            {{ $rt->rt }}
+                                    <label for="id_dusun">Dusun</label>
+                                    <select name="id_dusun" id="id_dusun" class="form-control input-sm select2" width="100%">
+                                        <option value="">Pilih Dusun</option>
+                                        @foreach ($data_dusun as $d)
+                                        <option value="{{ $d->id }}">
+                                            {{ $d->dusun }}
                                         </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group" id="rw"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group" id="rt"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="telepon"> Nomor Telepon </label>
@@ -512,6 +496,21 @@
             format: 'HH:mm',
             locale:'id'
         });
+    })
+
+    $(document).ready(function () {
+        $("#id_dusun").change(function () {
+            let id_dusun = $(this).val();
+
+            $.ajax({
+                type: "POST",
+                url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rw') }}",
+                data: { id_dusun: id_dusun },
+                success: function(data){
+                    $("#rw").html(data);
+                }
+            });
+        })
     })
 </script>
 

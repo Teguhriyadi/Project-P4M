@@ -1,8 +1,10 @@
 <label for="id_rw">RW</label>
-<select name="id_rw" id="id_rw" class="form-control">
+<select name="id_rw" id="id_rw" class="form-control input-sm select2" width="100%">
     <option value="">Pilih RW</option>
     @foreach ($rw as $r)
-    <option value="{{ $r->id }}">{{ $r->rw }}</option>
+    <option value="{{ $r->id }}">
+        {{ $r->rw }}
+    </option>
     @endforeach
 </select>
 
@@ -19,4 +21,8 @@
             }
         });
     })
+
+    $(function() {
+        $("#id_rw").select2()
+    });
 </script>

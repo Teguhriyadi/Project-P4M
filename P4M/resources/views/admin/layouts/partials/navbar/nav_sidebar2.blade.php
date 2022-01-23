@@ -218,14 +218,14 @@
                             <i class="fa fa-circle-o"></i> Surat Keluar
                         </a>
                     </li>
-                    <li class="{{ Request::segment(4)=='arsip' ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/surat/arsip') }}">
-                            <i class="fa fa-circle-o"></i> Arsip Surat
-                        </a>
-                    </li>
                     <li class="{{ Request::segment(4)=='cetak' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/cetak_surat') }}">
                             <i class="fa fa-file-word-o"></i> Cetak Surat
+                        </a>
+                    </li>
+                    <li class="{{ Request::segment(4)=='arsip' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/surat/arsip') }}">
+                            <i class="fa fa-circle-o"></i> Arsip Surat
                         </a>
                     </li>
                 </ul>
