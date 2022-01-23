@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\model;
+namespace App\Models\Model;
 
 use App\Models\Model\Dusun;
 use App\Models\Model\GolonganDarah;

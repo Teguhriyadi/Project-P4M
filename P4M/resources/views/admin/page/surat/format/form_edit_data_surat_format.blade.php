@@ -27,7 +27,7 @@
                         <i class="fa fa-arrow-circle-left"></i> Kembali
                     </a>
                 </div>
-                <form action="{{ url('/page/admin/surat/format/'.$edit->id) }}" method="POST" class="form-horizontal">
+                <form action="{{ url('/page/admin/surat/format/'.$edit->id) }}" method="POST" class="form-horizontal" id="formEditFormat">
                     @method("PUT")
                     @csrf
                     <div class="box-body">
@@ -37,15 +37,15 @@
                                 <select name="kode_surat" id="kode_surat" class="form-control input-sm select2" style="width: 100%">
                                     <option value="" selected>- Pilih -</option>
                                     @foreach ($data_klasifikasi as $data)
-                                        @if ($edit->kode_surat == $data->kode)
-                                        <option value="{{ $data->kode }}" selected>
-                                            {{ $data->kode }} - {{ $data->nama }}
-                                        </option>
-                                        @else
-                                        <option value="{{ $data->kode }}">
-                                            {{ $data->kode }} - {{ $data->nama }}
-                                        </option>
-                                        @endif
+                                    @if ($edit->kode_surat == $data->kode)
+                                    <option value="{{ $data->kode }}" selected>
+                                        {{ $data->kode }} - {{ $data->nama }}
+                                    </option>
+                                    @else
+                                    <option value="{{ $data->kode }}">
+                                        {{ $data->kode }} - {{ $data->nama }}
+                                    </option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -101,23 +101,23 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($data_syarat as $data)
-                                                <?php
-                                                    $getData = DB::table("tb_syarat_surat")
-                                                        ->where("surat_format_id", $edit->id)
-                                                        ->where("ref_syarat_id", $data->id)
-                                                        ->first();
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        @if ($getData)
-                                                        <input type="checkbox" checked name="syarat[]" value="{{ $data->id}}">
-                                                        @else
-                                                        <input type="checkbox"  name="syarat[]" value="{{ $data->id}}">
-                                                        @endif
-                                                    </td>
-                                                    <td class="text-center">{{ $loop->iteration }}.</td>
-                                                    <td>{{ $data->ref_syarat_nama }}</td>
-                                                </tr>
+                                            <?php
+                                            $getData = DB::table("tb_syarat_surat")
+                                            ->where("surat_format_id", $edit->id)
+                                            ->where("ref_syarat_id", $data->id)
+                                            ->first();
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    @if ($getData)
+                                                    <input type="checkbox" checked name="syarat[]" value="{{ $data->id}}">
+                                                    @else
+                                                    <input type="checkbox"  name="syarat[]" value="{{ $data->id}}">
+                                                    @endif
+                                                </td>
+                                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                                <td>{{ $data->ref_syarat_nama }}</td>
+                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -139,4 +139,47 @@
     </div>
 </section>
 
+@endsection
+
+@section('page_scripts')
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formEditFormat").validate({
+                    ignore: "",
+                    rules: {
+                        kode_surat: {
+                            required: true
+                        },
+                        nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        kode_surat: {
+                            required: "Kode surat harap di isi!"
+                        },
+                        nama: {
+                            required: "Nama surat harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
 @endsection

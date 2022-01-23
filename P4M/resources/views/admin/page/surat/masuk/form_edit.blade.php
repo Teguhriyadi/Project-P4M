@@ -25,7 +25,7 @@
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>
-                <form action="{{ url('/page/admin/surat/masuk/'.$edit->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ url('/page/admin/surat/masuk/'.$edit->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data" id="formEditSurat">
                     @method("PUT")
                     @csrf
                     <input type="hidden" name="oldBerkasScan" value="{{ $edit->berkas_scan }}">
@@ -104,10 +104,10 @@
                             <label for="" class="col-sm-3"> Disposisi Kepada </label>
                             @foreach ($data_struktur as $data)
                             <?php
-                                $getData = DB::table("tb_disposisi_surat_masuk")
-                                        ->where("id_pegawai", $data->id)
-                                        ->where("id_surat_masuk", $edit->id)
-                                        ->first();
+                            $getData = DB::table("tb_disposisi_surat_masuk")
+                            ->where("id_pegawai", $data->id)
+                            ->where("id_surat_masuk", $edit->id)
+                            ->first();
                             ?>
                             <div class="col-sm-3">
                                 <div class="input-group">
@@ -184,6 +184,81 @@
             gambarPreview.src = oFREvent.target.result;
         }
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formEditSurat").validate({
+                    ignore: "",
+                    rules: {
+                        nomor_urut: {
+                            required: true
+                        },
+                        tanggal_peneriamaan: {
+                            required: true
+                        },
+                        kode_surat: {
+                            required: true
+                        },
+                        nomor_surat: {
+                            required: true
+                        },
+                        tanggal_surat: {
+                            required: true
+                        },
+                        pengirim: {
+                            required: true
+                        },
+                        isi_singkat: {
+                            required: true
+                        },
+                        id_pegawai: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        nomor_urut: {
+                            required: "Nomor urut harap di isi!"
+                        },
+                        tanggal_peneriamaan: {
+                            required: "Tanggal penerimaan harap di isi!"
+                        },
+                        kode_surat: {
+                            required: "Kode urut harap di isi!"
+                        },
+                        nomor_surat: {
+                            required: "Nomor surat harap di isi!"
+                        },
+                        tanggal_surat: {
+                            required: "Tanggal surat harap di isi!"
+                        },
+                        pengirim: {
+                            required: "Pengirim harap di isi!"
+                        },
+                        isi_singkat: {
+                            required: "Isian harap di isi!"
+                        },
+                        id_pegawai: {
+                            required: "Pegawai harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 
 </script>
 

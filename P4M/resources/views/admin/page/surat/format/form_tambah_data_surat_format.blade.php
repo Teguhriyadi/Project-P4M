@@ -6,7 +6,7 @@
 
 <section class="content-header">
     <h1>
-         @yield('title')
+        @yield('title')
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -27,7 +27,7 @@
                         <i class="fa fa-arrow-circle-left"></i> Kembali
                     </a>
                 </div>
-                <form action="{{ url('/page/admin/surat/format') }}" method="POST" class="form-horizontal">
+                <form action="{{ url('/page/admin/surat/format') }}" method="POST" class="form-horizontal" id="formTambahFormat">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
@@ -36,9 +36,9 @@
                                 <select name="kode_surat" id="kode_surat" class="form-control input-sm select2" style="width: 100%">
                                     <option value="" selected>- Pilih -</option>
                                     @foreach ($data_klasifikasi as $data)
-                                        <option value="{{ $data->kode }}">
-                                            {{ $data->kode }} - {{ $data->nama }}
-                                        </option>
+                                    <option value="{{ $data->kode }}">
+                                        {{ $data->kode }} - {{ $data->nama }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon input-sm">Surat</span>
-                                <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Nama Layanan">
+                                    <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Nama Layanan">
                                 </div>
                             </div>
                         </div>
@@ -94,13 +94,13 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($data_syarat as $data)
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="syarat[]" value="{{ $data->id}}">
-                                                    </td>
-                                                    <td class="text-center">{{ $loop->iteration }}.</td>
-                                                    <td>{{ $data->ref_syarat_nama }}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" name="syarat[]" value="{{ $data->id}}">
+                                                </td>
+                                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                                <td>{{ $data->ref_syarat_nama }}</td>
+                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -127,16 +127,55 @@
 @section('page_scripts')
 
 <script type="text/javascript">
-$('document').ready(function() {
-		syarat($('input[name=mandiri]:checked').val());
-		$('input[name="mandiri"]').change(function() {
-			syarat($(this).val());
-		});
-	});
+    $('document').ready(function() {
+        syarat($('input[name=mandiri]:checked').val());
+        $('input[name="mandiri"]').change(function() {
+            syarat($(this).val());
+        });
+    });
 
-	function syarat(tipe) {
-		(tipe == '1' || tipe == null) ? $('#syarat').show() : $('#syarat').hide();
-	}
+    function syarat(tipe) {
+        (tipe == '1' || tipe == null) ? $('#syarat').show() : $('#syarat').hide();
+    }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahFormat").validate({
+                    ignore: "",
+                    rules: {
+                        kode_surat: {
+                            required: true
+                        },
+                        nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        kode_surat: {
+                            required: "Kode surat harap di isi!"
+                        },
+                        nama: {
+                            required: "Nama surat harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 
 @endsection
