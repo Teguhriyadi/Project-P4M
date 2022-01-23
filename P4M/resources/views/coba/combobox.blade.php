@@ -14,14 +14,8 @@
             @endforeach
         </select>
     </div>
-    <div class="form-group">
-        <label for="id_rw">RW</label>
-        <select name="id_rw" id="id_rw" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label for="id_rt">RT</label>
-        <select name="id_rt" id="id_rt" class="form-control"></select>
-    </div>
+    <div class="form-group" id="rw"></div>
+    <div class="form-group" id="rt"></div>
 </section>
 
 @endsection
@@ -38,19 +32,7 @@
                 url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rw') }}",
                 data: { id_dusun: id_dusun },
                 success: function(data){
-                    $("#id_rw").html(data);
-                }
-            });
-        })
-        $("#id_rw").change(function () {
-            let id_rw = $(this).val();
-
-            $.ajax({
-                type: "POST",
-                url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rt') }}",
-                data: { id_rw: id_rw },
-                success: function(data){
-                    $("#id_rt").html(data);
+                    $("#rw").html(data);
                 }
             });
         })
