@@ -20,7 +20,6 @@ class CreateTbArtikelTable extends Migration
             $table->string('judul');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            $table->text('kutipan');
             $table->text('body');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

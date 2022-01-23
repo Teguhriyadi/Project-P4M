@@ -20,7 +20,7 @@
                 <tr>
                     <td valign="top" align="justify">
                         <a href="/artikel/{{ $a->slug }}">
-                            <img width="25%" style="float:left; margin:0 8px 4px 0;" class="img-fluid img-thumbnail" src="{{ url('storage/'.$a->image) }}"/>
+                            <img width="25%" style="float:left; margin:0 8px 4px 0;" class="img-fluid img-thumbnail" src="{{ url('storage/'.$a->image) }}" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'"/>
                             <small><font color="green">{{ $a->judul }}</font></small>
                         </a>
                     </td>

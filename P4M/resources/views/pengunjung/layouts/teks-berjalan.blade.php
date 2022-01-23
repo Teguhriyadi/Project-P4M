@@ -1,6 +1,6 @@
 @php
     use App\Models\Model\Artikel;
-    $teks = Artikel::all();
+    $teks = Artikel::paginate(6);
 @endphp
 
 <div style="margin-top:10px;">
