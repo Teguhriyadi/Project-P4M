@@ -12,4 +12,9 @@ class Komentar extends Model
     protected $table = 'tb_komentar';
 
     protected $guarded = [''];
+
+    public function getArtikel()
+    {
+        return $this->hasOne(Artikel::class, 'id', 'id_artikel');
+    }
 }

@@ -21,20 +21,6 @@ use App\Models\Model\Counter;
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-info">
-                    <div class="box-header with-border">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <a href="" class="btn btn-social btn-flat bg-purple btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Cetak Laporan" target="_blank"><i class="fa fa-print "></i>Cetak</a>
-                                            <a href="" class="btn btn-social btn-flat bg-navy btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Unduh Laporan" target="_blank"><i class="fa fa-print "></i>Unduh</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="box-body">
                         <div class="row">
                             <div class="col-lg-2 col-xs-6">
@@ -113,18 +99,18 @@ use App\Models\Model\Counter;
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <div class="box box-info">
                                                 <!-- Ini Grafik -->
                                                 <br>
                                                 <div id="chart"> </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="box box-info">
                                                 <!-- Tabel Data -->
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-hover nowrap">
+                                                    <table class="table table-bordered table-striped table-hover nowrap" id="example3">
                                                         <thead class="bg-gray">
                                                             <tr>
                                                                 <th class="text-center" width='5%'>No</th>

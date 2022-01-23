@@ -24,7 +24,7 @@
 </section>
 
 <div class="content">
-  <form id="editBerita" action="{{ url('/page/admin/web/artikel/'.$edit->slug) }}" method="POST" enctype="multipart/form-data">
+  <form id="editArtikel" action="{{ url('/page/admin/web/artikel/'.$edit->slug) }}" method="POST" enctype="multipart/form-data">
     @method("PUT")
     @csrf
     <input type="hidden" name="oldImage" value="{{ $edit->image }}">
@@ -125,6 +125,57 @@
                 gambarPreview.src = oFREvent.target.result;
             }
         }
+
+        (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#editArtikel").validate({
+                    ignore: "",
+                    rules: {
+                        judul: {
+                            required: true
+                        },
+                        kategori_id: {
+                            required: true
+                        },
+                        image: {
+                            accept: "image/*"
+                        },
+                        body: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        judul: {
+                            required: "Judul harap di isi!"
+                        },
+                        kategori_id: {
+                            required: "Kategori harap di isi!"
+                        },
+                        image: {
+                            accept: "Tipe file harus gambar (jpg, png, jpeg)"
+                        },
+                        body: {
+                            required: "Konten harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 
     </script>
 

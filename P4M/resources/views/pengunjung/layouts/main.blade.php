@@ -57,13 +57,19 @@ $profil = Profil::first();
                                 .highcharts-xaxis-labels tspan {font-size: 8px;}
                             </style>
 
-                            @include('pengunjung/widget/widget_statistik_penduduk')
+                            {{-- @include('pengunjung.widget.widget_program_bantuan') --}}
 
-                            @include('pengunjung/widget/widget_berita_terbaru')
+                            @include('pengunjung.widget.widget_statistik_penduduk')
 
-                            @include('pengunjung/widget/widget_wilayah_desa')
+                            @include('pengunjung.widget.widget_berita_terbaru')
 
-                            @include('pengunjung/widget/widget_lokasi_kantor')
+                            @include('pengunjung.widget.widget_komentar_terbaru')
+
+                            {{-- @include('pengunjung.widget.widget_galeri_terbaru') --}}
+
+                            @include('pengunjung.widget.widget_wilayah_desa')
+
+                            @include('pengunjung.widget.widget_lokasi_kantor')
 
                         </div>
 

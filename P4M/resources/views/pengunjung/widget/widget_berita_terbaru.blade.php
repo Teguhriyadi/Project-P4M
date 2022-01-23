@@ -14,7 +14,7 @@
             <table id="ul-menu">
                 <tr>
                     <td colspan="2">
-                        <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $a->created_at)->isoFormat('D MMMM Y') !!} | <i class="fa fa-eye"></i> {{ $a->counter }} Kali</span>
+                        <span class="meta_date">{!! Carbon::createFromFormat('Y-m-d H:i:s', $a->created_at)->isoFormat('D MMMM Y') !!} | <i class="fa fa-eye"></i> {{ $a->getCount->count() }} Kali</span>
                     </td>
                 </tr>
                 <tr>

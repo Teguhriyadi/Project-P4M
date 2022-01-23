@@ -36,19 +36,21 @@
                     <table id="beritaTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Judul Artikel</th>
-                                <th class="text-center">Kategori</th>
-                                <th class="text-center">Aksi</th>
+                                <th class="">No.</th>
+                                <th class="">Judul Artikel</th>
+                                <th class="">Pengunjung</th>
+                                <th class="">Kategori</th>
+                                <th class="">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data_artikel as $artikel)
                                 <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ $artikel->judul }}</td>
-                                    <td class="text-center">{{ $artikel->getCategory->nama }}</td>
-                                    <td class="text-center">
+                                    <td class="">{{ $loop->iteration }}</td>
+                                    <td class="">{{ $artikel->judul }}</td>
+                                    <td class=""><div class="badge btn-info">{{ $artikel->getCount->count() }} Orang</div></td>
+                                    <td class="">{{ $artikel->getCategory->nama }}</td>
+                                    <td class="">
                                         <a href="{{ url('/page/admin/web/artikel/'.$artikel->slug) }}/edit" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>

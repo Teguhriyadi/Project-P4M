@@ -44,26 +44,26 @@
                         </thead>
                         <tbody>
                             @foreach ($data_galeri as $galeri)
-                                <tr>
-                                    <td class="text-center">{{ $loop->iteration }}.</td>
-                                    <td class="text-center">{{ $galeri->judul }}</td>
-                                    <td class="text-center">
-                                        <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100" height="70">
-                                    </td>
-                                    <td class="text-center">
-                                        <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
-                                            <i class="fa fa-edit"></i>
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{ $galeri->judul }}</td>
+                                <td class="text-center">
+                                    <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100" height="70">
+                                </td>
+                                <td class="text-center">
+                                    <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <form action="{{ url('/page/admin/web/galeri/'.$galeri->id) }}" method="POST" style="display: inline;">
+                                        @method("DELETE")
+                                        @csrf
+                                        <input type="hidden" name="gambar" value="{{ $galeri->gambar }}">
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash-o"></i>
                                         </button>
-                                        <form action="{{ url('/page/admin/web/galeri/'.$galeri->id) }}" method="POST" style="display: inline;">
-                                            @method("DELETE")
-                                            @csrf
-                                            <input type="hidden" name="gambar" value="{{ $galeri->gambar }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    </form>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -182,11 +182,79 @@
     $(function (){
         $('#galeriTable').DataTable({
             columnDefs: [
-                { orderable: false, targets: [0,2,3] }
+            { orderable: false, targets: [0,2,3] }
             ],
         })
     })
 
+</script>
+
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahGaleri").validate({
+                    ignore: "",
+                    rules: {
+                        judul: {
+                            required: true
+                        },
+                        gambar: {
+                            required: true,
+                            accept: "image/*"
+                        }
+                    },
+
+                    messages: {
+                        judul: {
+                            required: "Judul harap di isi!"
+                        },
+                        gambar: {
+                            required: "Gambar harap di isi!",
+                            accept: "Tipe file harus gambar (jpg, png, jpeg)"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+
+                $("#formEditGaleri").validate({
+                    ignore: "",
+                    rules: {
+                        judul: {
+                            required: true
+                        },
+                        gambar: {
+                            accept: "image/*"
+                        }
+                    },
+
+                    messages: {
+                        judul: {
+                            required: "Judul harap di isi!"
+                        },
+                        gambar: {
+                            accept: "Tipe file harus gambar (jpg, png, jpeg)"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 
 @endsection
