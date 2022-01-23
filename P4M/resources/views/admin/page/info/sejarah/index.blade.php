@@ -20,13 +20,14 @@
 
 <section class="content">
     @if ($sejarah)
-    <form action="{{ url('page/admin/info/sejarah-desa/'.$sejarah->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('page/admin/info/sejarah-desa/'.$sejarah->id) }}" method="post" enctype="multipart/form-data" id="formEditSejarah">
         @method('patch')
         @else
-        <form action="{{ url('page/admin/info/sejarah-desa') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('page/admin/info/sejarah-desa') }}" method="post" enctype="multipart/form-data" id="formTambahSejarah">
             @endif
             @csrf
             <div class="row">
+
                 <div class="col-md-8">
                     <div class="box">
                         <div class="box-header">
@@ -91,6 +92,70 @@
     </script>
 
     <script type="text/javascript">
+        (function($,W,D) {
+            var JQUERY4U = {};
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function()
+                {
+                    $("#formTambahSejarah").validate({
+                        ignore: "",
+                        rules: {
+                            sejarah: {
+                                required: true
+                            },
+                            gambar: {
+                                required: true,
+                                accept: 'image/*'
+                            }
+                        },
+
+                        messages: {
+                            sejarah: {
+                                required: "Sejarah harap di isi!"
+                            },
+                            gambar: {
+                                required: "Gambar harap di isi!",
+                                accept: 'Format harus gambar'
+                            }
+                        },
+
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+                    $("#formEditSejarah").validate({
+                        ignore: "",
+                        rules: {
+                            sejarah: {
+                                required: true
+                            },
+                            gambar: {
+                                accept: 'image/*'
+                            }
+                        },
+
+                        messages: {
+                            sejarah: {
+                                required: "Sejarah harap di isi!"
+                            },
+                            gambar: {
+                                accept: 'Format harus gambar'
+                            }
+                        },
+
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            $(D).ready(function($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
 
         function previewImage()
         {

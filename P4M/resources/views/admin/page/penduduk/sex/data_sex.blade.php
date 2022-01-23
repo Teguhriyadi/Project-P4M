@@ -33,9 +33,9 @@
                     <h3 class="box-title">
                         <i class="fa fa-bars"></i> @yield('title')
                     </h3>
-                    <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
+                    {{-- <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
                         <i class="fa fa-plus"></i> Tambah Data
-                    </button>
+                    </button> --}}
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -87,7 +87,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/jenis-kelamin') }}" method="POST">
+            <form action="{{ url('/page/admin/data/jenis-kelamin') }}" method="POST" id="formTambahSex">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -122,7 +122,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/jenis-kelamin/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/jenis-kelamin/simpan') }}" method="POST" id="formEditSex">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -148,6 +148,56 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+(function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSex").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditSex").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
     function editDataSex(id)
     {
         $.ajax({

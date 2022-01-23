@@ -16,7 +16,7 @@ class RtmController extends Controller
             "data_rtm" => RTM::all()
         ];
 
-        return view("/admin/page/kependudukan/rtm/data_rtm", $data);
+        return view("admin.page.kependudukan.rtm.data_rtm", $data);
     }
 
     public function create()

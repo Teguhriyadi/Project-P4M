@@ -5,7 +5,7 @@
 @section('page_content')
 
 @php
-    use App\Models\Model\Penduduk;
+use App\Models\Model\Penduduk;
 @endphp
 
 <section class="content-header">
@@ -72,7 +72,7 @@
                                     <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
                                     <td class="text-center">
                                         @php
-                                            $jumlah = Penduduk::where("id_rtm", $data->no_kk)->count();
+                                        $jumlah = Penduduk::where("id_rtm", $data->no_kk)->count();
                                         @endphp
                                         {{ $jumlah }}
                                     </td>
@@ -100,7 +100,7 @@
                     <i class="fa fa-plus"></i> Tambah Data Rumah Tangga Per Penduduk
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/kependudukan/rtm/') }}" method="POST">
+            <form action="{{ url('/page/admin/kependudukan/rtm/') }}" method="POST" id="formTambahRTM">
                 @csrf
                 <div class="modal-body" id="isian-modal">
                     <div class="form-group">
@@ -108,9 +108,9 @@
                         <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
                             <option value="">- Pilih -</option>
                             @php
-                                $getDataPenduduk = DB::table("tb_penduduk")
-                                                ->where("id_rtm", NULL)
-                                                ->get();
+                            $getDataPenduduk = DB::table("tb_penduduk")
+                            ->where("id_rtm", NULL)
+                            ->get();
                             @endphp
                             @foreach ($getDataPenduduk as $penduduk)
                             <option value="{{ $penduduk->id }}">
@@ -191,6 +191,39 @@
             }
         });
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahRTM").validate({
+                    ignore: "",
+                    rules: {
+                        nik_kepala: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        nik_kepala: {
+                            required: "Kepala keluarga harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 
 @endsection

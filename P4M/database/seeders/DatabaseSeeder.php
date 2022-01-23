@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Model\GolonganDarah;
 use App\Models\Model\HakAkses;
 use App\Models\Model\Kategori;
+use App\Models\Model\Penduduk;
+use App\Models\Model\StatusDasar;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Penduduk::factory(500)->create();
 
         $this->call(UserSeeder::class);
         $this->call(KategoriSeeder::class);
@@ -48,6 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RwSeeder::class);
         $this->call(SakitMenahunSeeder::class);
         $this->call(RtmHubunganSeeder::class);
-        $this->call(PendudukSeeder::class);
+        // $this->call(PendudukSeeder::class);
+        $this->call(StatusDasarSeeder::class);
     }
 }

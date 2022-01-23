@@ -63,7 +63,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="staf_id"> Sejajar </label>
+                            <label for="staf_id"> Turunan </label>
                             <select name="staf_id" id="staf_id" class="form-control select2" style="width: 100%">
                                 <option value="" selected>- Pilih -</option>
                                 @foreach ($data_jabatan as $data)
@@ -138,4 +138,47 @@
     </div>
 </section>
 
+@endsection
+
+@section('page_scripts')
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#tambahStruktur").validate({
+                    ignore: "",
+                    rules: {
+                        jabatan_id: {
+                            required: true
+                        },
+                        pegawai_id: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jabatan_id: {
+                            required: "Jabatan harap di isi!"
+                        },
+                        pegawai_id: {
+                            required: "Pegawai harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
 @endsection

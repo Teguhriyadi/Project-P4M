@@ -81,7 +81,7 @@ class KeluargaController extends Controller
             "data_sakit_menahun" => SakitMenahun::all()
         ];
 
-        return view("/admin/page/kependudukan/keluarga/form_tambah_data_penduduk_masuk", $data);
+        return view("admin.page.kependudukan.keluarga.form_tambah_data_penduduk_masuk", $data);
     }
 
     public function tambah_data_penduduk_masuk(Request $request)

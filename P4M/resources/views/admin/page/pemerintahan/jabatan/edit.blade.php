@@ -76,22 +76,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_jabatan as $jabatan)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $jabatan->nama_jabatan }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}/edit" class="btn btn-warning btn-sm">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <form action="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}" method="POST" style="display: inline;">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $jabatan->nama_jabatan }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}/edit" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <form action="{{ url('/page/admin/pemerintahan/jabatan/'.$jabatan->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -102,4 +102,41 @@
     </div>
 </section>
 
+@endsection
+
+@section('page_scripts')
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#editJabatan").validate({
+                    ignore: "",
+                    rules: {
+                        nama_jabatan: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama_jabatan: {
+                            required: "Nama jabatan harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
 @endsection

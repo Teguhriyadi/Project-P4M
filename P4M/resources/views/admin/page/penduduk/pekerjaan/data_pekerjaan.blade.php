@@ -88,12 +88,12 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pekerjaan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/pekerjaan') }}" method="POST" id="formTambahPekerjaan">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pendidikan">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pekerjaan">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -123,7 +123,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/pekerjaan/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/pekerjaan/simpan') }}" method="POST" id="formEditPekerjaan">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -149,6 +149,56 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahPekerjaan").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditPekerjaan").validate({
+                    ignore: "",
+                    rules: {
+                        nama: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        nama: {
+                            required: "Nama harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
     function editDataPekerjaan(id)
     {
         $.ajax({

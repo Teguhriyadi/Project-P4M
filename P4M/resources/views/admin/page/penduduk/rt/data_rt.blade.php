@@ -85,7 +85,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/rt') }}" method="POST">
+            <form action="{{ url('/page/admin/data/rt') }}" method="POST" id="formTambahRT">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -120,7 +120,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/data/rt/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/data/rt/simpan') }}" method="POST" id="formEditRT">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -146,6 +146,57 @@
 @section('page_scripts')
 
 <script type="text/javascript">
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahRT").validate({
+                    ignore: "",
+                    rules: {
+                        rt: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        rt: {
+                            required: "RT harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditRT").validate({
+                    ignore: "",
+                    rules: {
+                        rt: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        rt: {
+                            required: "RT harap di isi!"
+                        }
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+
     function editRt(id)
     {
         $.ajax({
@@ -168,7 +219,7 @@
         var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Month'],
         <?php foreach ($data_rt as $data): ?>
-         ["{{ $data->rt }}", {{ $data->getCountPenduduk->count() }}],
+        ["{{ $data->rt }}", {{ $data->getCountPenduduk->count() }}],
         <?php endforeach; ?>
         ]);
 

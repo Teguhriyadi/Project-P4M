@@ -44,22 +44,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_ref_syarat as $data)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}.</td>
-                                        <td>{{ $data->ref_syarat_nama }}</td>
-                                        <td class="text-center">
-                                            <button onclick="editDataRefSyaratSurat({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
-                                                <i class="fa fa-edit"></i>
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td>{{ $data->ref_syarat_nama }}</td>
+                                    <td class="text-center">
+                                        <button onclick="editDataRefSyaratSurat({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <form action="{{ url('/page/admin/surat/ref_syarat/'.$data->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
+                                                <i class="fa fa-trash-o"></i>
                                             </button>
-                                            <form action="{{ url('/page/admin/surat/ref_syarat/'.$data->id) }}" method="POST" style="display: inline;">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm btn-delete">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        </form>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -82,7 +82,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/surat/ref_syarat') }}" method="POST">
+            <form action="{{ url('/page/admin/surat/ref_syarat') }}" method="POST" id="formTambahSyarat">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -116,7 +116,7 @@
                     <i class="fa fa-pencil"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('/page/admin/surat/ref_syarat/simpan') }}" method="POST">
+            <form action="{{ url('/page/admin/surat/ref_syarat/simpan') }}" method="POST" id="formEditSyarat">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -142,7 +142,7 @@
 
 <script type="text/javascript">
 
-function editDataRefSyaratSurat(id)
+    function editDataRefSyaratSurat(id)
     {
         $.ajax({
             url : "{{ url('/page/admin/surat/ref_syarat/edit') }}",
@@ -154,6 +154,57 @@ function editDataRefSyaratSurat(id)
             }
         });
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSyarat").validate({
+                    ignore: "",
+                    rules: {
+                        ref_syarat_nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        ref_syarat_nama: {
+                            required: "Referensi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditSyarat").validate({
+                    ignore: "",
+                    rules: {
+                        ref_syarat_nama: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        ref_syarat_nama: {
+                            required: "Referensi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 
 </script>
 
