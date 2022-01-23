@@ -188,6 +188,9 @@ Route::prefix("page")->group(function() {
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
 
+            // Cetak Surat
+            Route::get('/cetak/{type}', [AppController::class, "cetakSurat"]);
+
             // Kategori
             Route::get("/kategori/checkSlug", [KategoriController::class, "checkSlug"]);
             Route::resource("/kategori", KategoriController::class);
