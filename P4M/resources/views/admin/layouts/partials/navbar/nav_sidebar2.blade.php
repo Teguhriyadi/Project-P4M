@@ -336,7 +336,7 @@
                 </a>
             </li>
             <li class="{{ Request::is('page/admin/program_bantuan') ? 'active' : '' }}">
-                <a href="{{ url('/page/admin/kotak-pesan') }}">
+                <a href="{{ url('/page/admin/program_bantuan') }}">
                     <i class="fa fa-heart"></i> <span>Bantuan</span>
                 </a>
             </li>
