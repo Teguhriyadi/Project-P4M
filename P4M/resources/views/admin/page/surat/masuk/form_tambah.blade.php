@@ -4,6 +4,18 @@
 
 @section('page_content')
 
+@php
+    use App\Models\Model\SuratMasuk;
+    $noUrutAkhir = SuratMasuk::max('nomor_urut');
+    $no = 1;
+    if ($noUrutAkhir) {
+        $data = sprintf("%03s", abs($noUrutAkhir + 1));
+    } else {
+        $data = sprintf("%03s", $no);
+    }
+
+@endphp
+
 <link rel="stylesheet" href="{{ url('backend/template/plugins/timepicker/bootstrap-timepicker.min.css') }}">
 
 <section class="content-header">
@@ -17,13 +29,115 @@
 </section>
 
 <section class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-info">
-        <div class="box-header">
-          <a href="{{ url('/page/admin/surat/keluar') }}" class="btn btn-social btn-flat btn-success btn-sm">
-            <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
-          </a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <a href="{{ url('/page/admin/surat/keluar') }}" class="btn btn-social btn-flat btn-success btn-sm">
+                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
+                    </a>
+                </div>
+                <form action="{{ url('/page/admin/surat/masuk') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    @csrf
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="nomor_urut" class="col-sm-3"> Nomor Urut </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="nomor_urut" id="nomor_urut" placeholder="Masukkan Nomor Urut" value="{{ $data }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal_penerimaan" class="col-sm-3">Tanggal Penerimaan</label>
+                            <div class="col-sm-9">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_penerimaan" value="{{ old('tanggal_penerimaan') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="berkas_scan" class="col-sm-3">Berkas Scan Surat Masuk</label>
+                            <div class="col-sm-9">
+                                <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
+                                <input onchange="previewImage()" type="file" class="form-control input-sm" name="berkas_scan" id="berkas_scan">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kode_surat" class="col-sm-3 "> Kode / Klasifikasi Surat </label>
+                            <div class="col-sm-9">
+                                <select name="kode_surat" id="kode_surat" class="form-control input-sm select2">
+                                    <option value="">- Pilih -</option>
+                                    @foreach ($data_klasifikasi as $surat)
+                                    <option value="{{ $surat->id }}">
+                                        {{ $surat->kode  }} - {{ $surat->nama }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomor_surat" class="col-sm-3"> Nomor Surat </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control input-sm" name="nomor_surat" id="nomor_surat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal_surat" class="col-sm-3"> Tanggal Surat </label>
+                            <div class="col-sm-9">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right datepicker" name="tanggal_surat" value="{{ old('tanggal_surat') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pengirim" class="col-sm-3"> Pengirim </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="pengirim" id="pengirim" placeholder="Masukkan Data Pengirim">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_singkat" class="col-sm-3"> Isi Singkat Perihal </label>
+                            <div class="col-sm-9">
+                                <textarea name="isi_singkat" id="isi_singkat" class="form-control input-sm" cols="30" rows="5" placeholder="Masukkan Isian Singkat"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3"> Disposisi Kepada </label>
+                            @foreach ($data_struktur as $data)
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="id_pegawai[]" value="{{ $data->id }}">
+                                    </span>
+                                    <input type="text" class="form-control" value="{{ $data->getJabatan->nama_jabatan }}">
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_disposisi" class="col-sm-3"> Isi Disposisi </label>
+                            <div class="col-sm-9">
+                                <input type="name" class="form-control input-sm" name="isi_disposisi" id="isi_disposisi" placeholder="Masukkan Isian Disposisi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm">
+                            <i class="fa fa-times"></i> Batal
+                        </button>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm">
+                                <i class="fa fa-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <form action="{{ url('/page/admin/surat/masuk') }}" method="POST" class="form-horizontal" enctype="multipart/form-data" id="formTambahSurat">
           @csrf
