@@ -4,6 +4,18 @@
 
 @section('page_content')
 
+@php
+    use App\Models\Model\SuratMasuk;
+    $noUrutAkhir = SuratMasuk::max('nomor_urut');
+    $no = 1;
+    if ($noUrutAkhir) {
+        $data = sprintf("%03s", abs($noUrutAkhir + 1));
+    } else {
+        $data = sprintf("%03s", $no);
+    }
+
+@endphp
+
 <link rel="stylesheet" href="{{ url('backend/template/plugins/timepicker/bootstrap-timepicker.min.css') }}">
 
 <section class="content-header">
@@ -31,7 +43,7 @@
                         <div class="form-group">
                             <label for="nomor_urut" class="col-sm-3"> Nomor Urut </label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="nomor_urut" id="nomor_urut" placeholder="Masukkan Nomor Urut">
+                                <input type="text" class="form-control" name="nomor_urut" id="nomor_urut" placeholder="Masukkan Nomor Urut" value="{{ $data }}" readonly>
                             </div>
                         </div>
                         <div class="form-group">
