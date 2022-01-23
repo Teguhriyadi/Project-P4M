@@ -17,4 +17,9 @@ class Rt extends Model
     {
         return $this->hasMany(Penduduk::class, 'id_rt', 'id');
     }
+
+    public function getRw()
+    {
+        return $this->hasOne(Rw::class, 'id', 'id_rw');
+    }
 }

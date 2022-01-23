@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Dusun;
 use Illuminate\Http\Request;
 
 use App\Models\Model\Rw;
@@ -11,7 +12,8 @@ class RwController extends Controller
     public function index()
     {
         $data = [
-            "data_rw" => Rw::orderBy("created_at", "DESC")->get()
+            "data_rw" => Rw::orderBy("created_at", "DESC")->get(),
+            "data_dusun" => Dusun::all(),
         ];
 
         return view("/admin/page/penduduk/rw/data_rw", $data);
@@ -27,7 +29,8 @@ class RwController extends Controller
     public function edit(Request $request)
     {
         $data = [
-            "edit" => Rw::where("id", $request->id)->first()
+            "edit" => Rw::where("id", $request->id)->first(),
+            "data_dusun" => Dusun::all(),
         ];
 
         return view("/admin/page/penduduk/rw/edit_data_rw", $data);
@@ -36,7 +39,8 @@ class RwController extends Controller
     public function update(Request $request)
     {
         Rw::where("id", $request->id)->update([
-            "rw" => $request->rw
+            "rw" => $request->rw,
+            "id_dusun" => $request->id_dusun
         ]);
 
         return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
