@@ -75,7 +75,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sarana/pendidikan') }}" method="POST">
+            <form action="{{ url('page/admin/sarana/pendidikan') }}" method="POST" id="formTambahSarana">
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
@@ -115,7 +115,7 @@
                     <i class="fa fa-plus"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sarana/pendidikan') }}" method="POST">
+            <form action="{{ url('page/admin/sarana/pendidikan') }}" method="POST" id="formEditSarana">
                 @csrf
                 @method('patch')
                 <div class="modal-body" id="modal-content-edit">
@@ -149,5 +149,80 @@
             }
         })
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSarana").validate({
+                    ignore: "",
+                    rules: {
+                        jenis: {
+                            required: true
+                        },
+                        jumlah: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis: {
+                            required: "Jenis harap di isi!"
+                        },
+                        jumlah: {
+                            required: "Jumlah harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditSarana").validate({
+                    ignore: "",
+                    rules: {
+                        jenis: {
+                            required: true
+                        },
+                        jumlah: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis: {
+                            required: "Jenis harap di isi!"
+                        },
+                        jumlah: {
+                            required: "Jumlah harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 @endsection

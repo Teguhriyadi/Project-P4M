@@ -38,12 +38,13 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nama"> Nama Kategori </label>
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori" value="{{ $edit->nama }}">
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Kategori" value="{{ $edit->nama }}" required>
+                            <label class="error hidden" for="judul">Judul harap di isi!</label>
                             <input type="hidden" class="form-control" readonly name="slug" id="slug" placeholder="Masukkan Slug" value="{{ $edit->slug }}">
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
+                        <button type="submit" class="btn btn-success btn-sm" id="simpan">
                             <i class="fa fa-save"></i> Simpan
                         </button>
                         <button type="reset" class="btn btn-danger btn-sm">
@@ -108,8 +109,8 @@
 
     nama.addEventListener('change', function() {
         fetch('/page/admin/kategori/checkSlug?nama=' + nama.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
+        .then(response => response.json())
+        .then(data => slug.value = data.slug)
     })
 
 </script>

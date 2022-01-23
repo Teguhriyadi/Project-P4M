@@ -25,7 +25,7 @@
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>
-                <form action="{{ url('/page/admin/surat/keluar') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ url('/page/admin/surat/keluar') }}" method="POST" class="form-horizontal" enctype="multipart/form-data" id="formTambahSurat">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
@@ -138,6 +138,69 @@
             gambarPreview.src = oFREvent.target.result;
         }
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSurat").validate({
+                    ignore: "",
+                    rules: {
+                        nomor_urut: {
+                            required: true
+                        },
+                        kode_surat: {
+                            required: true
+                        },
+                        nomor_surat: {
+                            required: true
+                        },
+                        tanggal_surat: {
+                            required: true
+                        },
+                        tujuan: {
+                            required: true
+                        },
+                        isi_singkat: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        nomor_urut: {
+                            required: "Nomor urut harap di isi!"
+                        },
+                        kode_surat: {
+                            required: "Kode urut harap di isi!"
+                        },
+                        nomor_surat: {
+                            required: "Nomor surat harap di isi!"
+                        },
+                        tanggal_surat: {
+                            required: "Tanggal surat harap di isi!"
+                        },
+                        tujuan: {
+                            required: "Pengirim harap di isi!"
+                        },
+                        isi_singkat: {
+                            required: "Isian harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 
 </script>
 

@@ -313,7 +313,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('page/admin/web/kategori') ? 'active' : '' }}">
+                    <li class="{{ Request::segment(4)=='kategori' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/web/kategori') }}">
                             <i class="fa fa-circle-o"></i> Kategori
                         </a>

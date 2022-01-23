@@ -71,7 +71,7 @@ class JenisSDKController extends Controller
             "edit" => JenisSDK::where("id", $request->id)->first()
         ];
 
-        return view("admin/page/potensi/sdk/edit", $data);
+        return view("admin.page.sumber_daya.kelembagaan.edit", $data);
     }
 
     /**

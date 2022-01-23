@@ -77,7 +77,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sumber/kelembagaan') }}" method="POST">
+            <form action="{{ url('page/admin/sumber/kelembagaan') }}" method="POST" id="formTambahSDK">
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
@@ -89,8 +89,8 @@
                         <input type="text" class="form-control" name="jumlah_anggota" id="jumlah_anggota">
                     </div>
                     <div class="form-group">
-                        <label for="lokasi"> Lokasi </label>
-                        <input type="text" class="form-control" name="lokasi" id="lokasi">
+                        <label for="lokasi_sdk"> Lokasi </label>
+                        <input type="text" class="form-control" name="lokasi_sdk" id="lokasi_sdk">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -117,7 +117,7 @@
                     <i class="fa fa-plus"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sumber/kelembagaan') }}" method="POST">
+            <form action="{{ url('page/admin/sumber/kelembagaan') }}" method="POST" id="formEditSDK">
                 @csrf
                 @method('patch')
                 <div class="modal-body" id="modal-content-edit">
@@ -151,5 +151,80 @@
             }
         })
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSDK").validate({
+                    ignore: "",
+                    rules: {
+                        jenis_organisasi: {
+                            required: true
+                        },
+                        jumlah_anggota: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis_organisasi: {
+                            required: "Jenis harap di isi!"
+                        },
+                        jumlah_anggota: {
+                            required: "Luas harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditSDK").validate({
+                    ignore: "",
+                    rules: {
+                        jenis_organisasi: {
+                            required: true
+                        },
+                        jumlah_anggota: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis_organisasi: {
+                            required: "Jenis harap di isi!"
+                        },
+                        jumlah_anggota: {
+                            required: "Luas harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 @endsection

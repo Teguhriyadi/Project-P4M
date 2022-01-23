@@ -29,7 +29,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="/page/admin/peta/desa" method="post">
+                    <form action="/page/admin/peta/desa" method="post" id="formPeta">
                         @if ($desa)
                         @method("put")
                         <input type="hidden" name="id" id="id" value="{{ $desa->id }}">
@@ -71,4 +71,41 @@
     </div>
 </section>
 
+@endsection
+
+@section('page_scripts')
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formPeta").validate({
+                    ignore: "",
+                    rules: {
+                        url: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        url: {
+                            required: "URL harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
 @endsection

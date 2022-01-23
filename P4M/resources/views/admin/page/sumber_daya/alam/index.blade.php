@@ -78,7 +78,7 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sumber/alam') }}" method="POST">
+            <form action="{{ url('page/admin/sumber/alam') }}" method="POST" id="formTambahSDA">
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
@@ -118,7 +118,7 @@
                     <i class="fa fa-plus"></i> Edit Data
                 </h4>
             </div>
-            <form action="{{ url('page/admin/sumber/alam') }}" method="POST">
+            <form action="{{ url('page/admin/sumber/alam') }}" method="POST" id="formEditSDA">
                 @csrf
                 @method('patch')
                 <div class="modal-body" id="modal-content-edit">
@@ -152,5 +152,80 @@
             }
         })
     }
+
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#formTambahSDA").validate({
+                    ignore: "",
+                    rules: {
+                        jenis: {
+                            required: true
+                        },
+                        luas: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis: {
+                            required: "Jenis harap di isi!"
+                        },
+                        luas: {
+                            required: "Luas harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formEditSDA").validate({
+                    ignore: "",
+                    rules: {
+                        jenis: {
+                            required: true
+                        },
+                        luas: {
+                            required: true
+                        },
+                        lokasi: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        jenis: {
+                            required: "Jenis harap di isi!"
+                        },
+                        luas: {
+                            required: "Luas harap di isi!"
+                        },
+                        lokasi: {
+                            required: "Lokasi harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
 </script>
 @endsection

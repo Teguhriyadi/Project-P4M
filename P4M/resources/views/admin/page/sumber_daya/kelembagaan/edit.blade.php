@@ -9,5 +9,5 @@
 </div>
 <div class="form-group">
     <label for="lokasi"> Lokasi </label>
-    <input type="text" class="form-control" name="lokasi" id="lokasi"  value="{{ $edit->lokasi == NULL ? '-' : $edit->lokasi }}">
+    <input type="text" class="form-control" name="lokasi_sdk" id="lokasi"  value="{{ $edit->lokasi == NULL ? '-' : $edit->lokasi }}">
 </div>
