@@ -6,6 +6,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\ArsipSuratController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\CetakSuratController;
 use App\Http\Controllers\DusunController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\GeografisController;
@@ -456,6 +457,12 @@ Route::prefix("page")->group(function() {
                 Route::put("/simpan_data_peserta", [ProgramBantuanController::class, "simpan_data_peserta"]);
                 Route::delete("/{id}/rincian/hapus_data_peserta", [ProgramBantuanController::class, "hapus_data_peserta"]);
                 Route::get("/{id}/profil/{nik}", [ProgramBantuanController::class, "profil_peserta"]);
+            });
+
+            Route::prefix("/cetak_surat")->group(function() {
+                Route::get("/", [CetakSuratController::class, "data_surat"]);
+                Route::get("/form/{url_surat}", [CetakSuratController::class, "form_cetak_surat"]);
+                Route::put("/form/{url_surat}", [CetakSuratController::class, "ambil_data_penduduk"]);
             });
 
         });

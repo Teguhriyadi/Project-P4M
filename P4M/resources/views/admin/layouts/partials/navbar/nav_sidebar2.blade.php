@@ -223,6 +223,11 @@
                             <i class="fa fa-circle-o"></i> Arsip Surat
                         </a>
                     </li>
+                    <li class="{{ Request::segment(4)=='cetak' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/cetak_surat') }}">
+                            <i class="fa fa-file-word-o"></i> Cetak Surat
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ Request::segment(3)=='sumber' ? 'active' : '' }}">
