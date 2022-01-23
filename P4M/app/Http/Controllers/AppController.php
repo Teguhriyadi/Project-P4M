@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Dusun;
-use App\Models\model\Penduduk;
-use App\Models\model\Rt;
-use App\Models\model\Rw;
+use App\Models\Model\Penduduk;
+use App\Models\Model\Rt;
+use App\Models\Model\Rw;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\TerakhirLogin;
 use Illuminate\Http\Request;
