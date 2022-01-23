@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Model\Keluarga;
 use App\Models\Model\ProgramBantuan;
 use App\Models\Model\ProgramPeserta;
-use App\Models\model\Rt;
 use Illuminate\Http\Request;
 
 class ProgramBantuanController extends Controller
@@ -45,7 +44,7 @@ class ProgramBantuanController extends Controller
         $data["detail"] = ProgramBantuan::where("id", $id)->first();
         $data["daftar_peserta"] = ProgramPeserta::where("program_id", $data["detail"]->id)->get();
 
-        return view("/admin/page/program_bantuan/rincian_bantuan", $data);
+        return view("/admin/page/program_bantuan/rincian_data_bantuan_peserta", $data);
     }
 
     public function tambah_peserta($id)

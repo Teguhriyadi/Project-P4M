@@ -9,7 +9,7 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('/page/admin') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="{{ url('/page/admin') }}"><i class="fa fa-home"></i> Dashboard </a></li>
         <li><a href="{{ url('/page/admin/program_bantuan') }}">Daftar Program Bantuan</a></li>
         <li class="active">@yield('title')</li>
     </ol>
@@ -20,9 +20,13 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
+                    @if ($detail->tanggal_berakhir > now())
                     <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/tambah_peserta') }}" class="btn btn-social btn-success btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah Peserta Baru
                     </a>
+                    @else
+
+                    @endif
                     <a href="" class="btn btn-social bg-purple btn-flat btn-sm">
                         <i class="fa fa-upload"></i> Cetak
                     </a>

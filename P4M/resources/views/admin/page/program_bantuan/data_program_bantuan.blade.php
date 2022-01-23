@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+    use App\Models\Model\ProgramPeserta;
+@endphp
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -58,7 +62,12 @@
                                     </td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->asal_dana }}</td>
-                                    <td class="text-center">0</td>
+                                    <td class="text-center">
+                                        @php
+                                           echo $count = ProgramPeserta::where("program_id", $data->id)
+                                                                        ->count();
+                                        @endphp
+                                    </td>
                                     <td class="text-center">
                                         {{ $data->tanggal_mulai }} - {{ $data->tanggal_berakhir }}
                                     </td>
