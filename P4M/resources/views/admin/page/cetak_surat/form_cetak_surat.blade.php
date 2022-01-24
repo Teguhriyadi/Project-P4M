@@ -127,8 +127,10 @@
                             <div class="col-sm-8">
                                 <select name="" id="" class="form-control input-sm select2" width="100%">
                                     <option value="">- Pilih -</option>
-                                    @foreach ($data_pegawai as $item)
-
+                                    @foreach ($data_pegawai as $pegawai)
+                                    <option value="">
+                                        {{ $ }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
