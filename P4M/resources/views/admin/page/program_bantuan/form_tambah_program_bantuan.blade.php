@@ -9,7 +9,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -20,7 +24,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <a href="{{ url('/page/admin/program_bantuan/') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali ke Daftar Program Bantuan">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Program Bantuan
+                        <i class="fa fa-arrow-circle-left "></i> Kembali ke Daftar Program Bantuan
                     </a>
                 </div>
                 <form action="{{ url('/page/admin/program_bantuan') }}" method="POST" class="form-horizontal">
@@ -92,10 +96,10 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
                             <i class="fa fa-times"></i> Batal
                         </button>
-                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right">
+                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
                     </div>

@@ -15,7 +15,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -25,7 +25,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-book"></i> Catatan Pengguna Sistem
