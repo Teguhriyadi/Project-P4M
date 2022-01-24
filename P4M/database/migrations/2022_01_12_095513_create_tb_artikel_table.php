@@ -15,8 +15,8 @@ class CreateTbArtikelTable extends Migration
     {
         Schema::create('tb_artikel', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kategori_id');
-            $table->foreignId('user_id');
+            $table->foreignId('kategori_id')->nullable()->constrained("tb_kategori")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->string('judul');
             $table->string('slug')->unique();
             $table->string('image')->nullable();

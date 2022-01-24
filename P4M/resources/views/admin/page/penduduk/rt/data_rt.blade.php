@@ -43,18 +43,36 @@
                         <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
-                                    <th>RT</th>
-                                    <th>RW</th>
+                                    <th class="text-center">No.</th>
                                     <th>Dusun</th>
+                                    <th>RW</th>
+                                    <th>RT</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data_rt as $data)
                                 <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td>
+                                        @if (empty($data->getRw->getDusun->dusun))
+                                        <i>
+                                            <b>NULL</b>
+                                        </i>
+                                        @else
+                                        {{ $data->getRw->getDusun->dusun }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (empty($data->getRw->rw))
+                                        <i>
+                                            <b>NULL</b>
+                                        </i>
+                                        @else
+                                        {{ $data->getRw->rw }}
+                                        @endif
+                                    </td>
                                     <td>{{ $data->rt }}</td>
-                                    <td>{{ $data->getRw->rw }}</td>
-                                    <td>{{ $data->getRw->getDusun->dusun }}</td>
                                     <td class="text-center">
                                         <button onclick="editRt({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>

@@ -16,7 +16,7 @@ class CreateTbDusunTable extends Migration
         Schema::create('tb_dusun', function (Blueprint $table) {
             $table->id();
             $table->string("dusun");
-            $table->integer("id_pejabat")->nullable();
+            $table->integer("id_pejabat")->nullable()->constrained("tb_pejabat")->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -44,16 +44,26 @@
                         <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
-                                    <th>RW</th>
+                                    <th class="text-center">No.</th>
                                     <th>Dusun</th>
+                                    <th>RW</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data_rw as $data)
                                 <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td>
+                                        @if (empty($data->getDusun->dusun))
+                                        <i>
+                                            <b>NULL</b>
+                                        </i>
+                                        @else
+                                        {{ $data->getDusun->dusun }}
+                                        @endif
+                                    </td>
                                     <td>{{ $data->rw }}</td>
-                                    <td>{{ $data->getDusun->dusun }}</td>
                                     <td class="text-center">
                                         <button onclick="editRw({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
@@ -117,7 +127,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="id_dusun">Dusun</label>
-                        <select name="id_dusun" id="id_dusun" class="form-control">
+                        <select name="id_dusun" id="id_dusun" class="form-control input-sm select2" style="width: 100%">
                             @foreach ($data_dusun as $dusun)
                             <option value="{{ $dusun->id }}">{{ $dusun->dusun }}</option>
                             @endforeach

@@ -15,7 +15,7 @@ class CreateTbKomentarTable extends Migration
     {
         Schema::create('tb_komentar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_artikel');
+            $table->foreignId('id_artikel')->nullable()->constrained("tb_artikel")->cascadeOnUpdate()->nullOnDelete();
             $table->string('nama');
             $table->string('email');
             $table->string('telepon');

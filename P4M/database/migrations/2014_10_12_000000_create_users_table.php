@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('hak_akses_id');
+            $table->foreignId('hak_akses_id')->nullable()->constrained("tb_hak_akses")->cascadeOnUpdate()->nullOnDelete();
             $table->string('gambar')->nullable();
             $table->rememberToken();
             $table->timestamps();

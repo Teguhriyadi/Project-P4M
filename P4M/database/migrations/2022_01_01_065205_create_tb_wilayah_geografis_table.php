@@ -15,7 +15,7 @@ class CreateTbWilayahGeografisTable extends Migration
     {
         Schema::create('tb_wilayah_geografis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('geografis_id');
+            $table->foreignId('geografis_id')->nullable()->constrained("tb_geografis")->cascadeOnUpdate()->nullOnDelete();
             $table->string('batas', 100);
             $table->string('desa', 100);
             $table->string('kecamatan', 100);

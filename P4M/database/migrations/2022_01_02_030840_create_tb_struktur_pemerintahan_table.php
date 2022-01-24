@@ -16,8 +16,8 @@ class CreateTbStrukturPemerintahanTable extends Migration
         Schema::create('tb_struktur_pemerintahan', function (Blueprint $table) {
             $table->id();
             $table->string('id_balkan')->nullable();
-            $table->foreignId("jabatan_id")->nullable();
-            $table->foreignId("pegawai_id")->nullable();
+            $table->foreignId("jabatan_id")->nullable()->constrained("tb_jabatan")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId("pegawai_id")->nullable()->constrained("tb_pegawai")->cascadeOnUpdate()->nullOnDelete();
             $table->integer("staf_id")->nullable();
             $table->timestamps();
         });

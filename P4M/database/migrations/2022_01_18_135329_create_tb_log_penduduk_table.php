@@ -15,7 +15,7 @@ class CreateTbLogPendudukTable extends Migration
     {
         Schema::create('tb_log_penduduk', function (Blueprint $table) {
             $table->id();
-            $table->integer("id_penduduk")->nullable();
+            $table->foreignId("id_penduduk")->nullable()->constrained("tb_penduduk")->cascadeOnUpdate()->nullOnDelete();
             $table->integer("kode_peristiwa")->nullable();
             $table->string("meninggal_di", 50)->nullable();
             $table->tinyText("alamat_tujuan")->nullable();
@@ -24,7 +24,7 @@ class CreateTbLogPendudukTable extends Migration
             $table->text("catatan");
             $table->string("no_kk")->nullable();
             $table->string("nama_kk")->nullable();
-            $table->tinyInteger("ref_pindah")->default(1);
+            $table->foreignId("ref_pindah")->default(1)->nullable()->constrained("tb_ref_pindah")->cascadeOnUpdate()->nullOnDelete();
             $table->integer("created_by")->nullable();
             $table->integer("updated_by")->nullable();
             $table->string("tujuan_pindah")->nullable();

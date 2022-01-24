@@ -22,6 +22,6 @@ class Rw extends Model
 
     public function getDusun()
     {
-        return $this->hasOne(Dusun::class, 'id', 'id_dusun');
+        return $this->belongsTo("App\Models\Model\Dusun", 'id_dusun', 'id');
     }
 }

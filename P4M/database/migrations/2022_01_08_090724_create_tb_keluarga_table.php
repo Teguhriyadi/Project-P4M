@@ -16,7 +16,7 @@ class CreateTbKeluargaTable extends Migration
         Schema::create('tb_keluarga', function (Blueprint $table) {
             $table->id();
             $table->string("no_kk");
-            $table->string("nik_kepala");
+            $table->foreignId("nik_kepala")->nullable()->constrained("tb_penduduk")->cascadeOnUpdate()->nullOnDelete();
             $table->datetime("tgl_daftar");
             $table->integer("kelas_sosial")->nullable();
             $table->datetime("tgl_cetak_kk");
