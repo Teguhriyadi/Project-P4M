@@ -31,7 +31,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> @yield('title')
+                        <i class="fa fa-bars"></i> Pekerjaan
                     </h3>
                     <a href="{{ url('/data/pekerjaan') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
                         <i class="fa fa-eye"></i> Preview

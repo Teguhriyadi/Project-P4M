@@ -51,9 +51,12 @@
                                             <i class="fa fa-edit"></i>
                                         </button>
                                         @if ($data->getPenduduk->telepon != NULL)
-                                        <a href="" class="btn btn-success btn-sm">
+                                        <a href="https://api.whatsapp.com/send?phone={{ $data->getPenduduk->telepon }}&text=Test%20With%20API%20WhatsApp" target="_blank" class="btn btn-success btn-sm">
                                             <i class="fa fa-whatsapp"></i>
                                         </a>
+                                        @endif
+                                        @if (session('message'))
+                                        <a href="{{ url('page/admin/cetak_surat/cetak/'.$data->id) }}" target="_blank" class="btn btn-sm bg-purple"><i class="fa fa-file-word-o"></i></a>
                                         @endif
                                         <form action="{{ url('/page/admin/surat/arsip/'.$data->id) }}" method="POST" style="display: inline">
                                             @method("DELETE")

@@ -36,4 +36,9 @@ class LogSurat extends Model
     {
         return $this->hasOne(Pegawai::class, "id", "id_pegawai");
     }
+
+    public function getFormatSurat()
+    {
+        return $this->hasOne(SuratFormat::class, "id", "id_format_surat");
+    }
 }
