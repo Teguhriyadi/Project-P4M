@@ -32,11 +32,7 @@
                         @endif
                         @csrf
                         <div class="col-md-8">
-<<<<<<< HEAD
-                            <div class="box">
-=======
                             <div class="box box-info">
->>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                                 <div class="box-header">
                                     <h3 class="box-title">
                                         @if($data_profil->count())
