@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -31,7 +31,9 @@
                 <div class="col-md-8">
                     <div class="box box-info">
                         <div class="box-header">
-                            <a href="/profil/sejarah-desa" target="_blank" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Preview</a>
+                            <a href="{{ url('/profil/sejarah-desa') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm">
+                                <i class="fa fa-eye"></i> Preview
+                            </a>
                         </div>
                         <div class="box-body">
                             <div class="form-group">

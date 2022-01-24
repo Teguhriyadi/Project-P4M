@@ -4,6 +4,7 @@
 
 @section('page_content')
 
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -18,6 +19,7 @@
     </ol>
 </section>
 
+@if ($data_dusun->count())
 <section class="content">
     <div class="row">
         <div class="col-md-6">
@@ -74,6 +76,29 @@
         </div>
     </div>
 </section>
+@else
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Perhatian</h3>
+                </div>
+                <div class="box-body">
+                    <div class="callout callout-danger">
+                        <h4>Tidak Bisa Menginputkan Data</h4>
+
+                        <p>
+                            Karena <b> Data Dusun </b> Masih Kosong. <a href="{{ url('/page/admin/data/dusun') }}">Silahkan Inputkan Data Dusun Terlebih Dahulu</a>
+                        </p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Tambah Data -->
 <div class="modal fade" id="modal-default">
