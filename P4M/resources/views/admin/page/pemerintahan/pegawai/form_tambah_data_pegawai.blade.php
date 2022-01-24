@@ -56,7 +56,7 @@
                                 @csrf
                                 <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
                                 <div class="col-xs-12 col-sm-8">
-                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main', '{{ url('page/admin/pemerintahan/pegawai') }}')">
+                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main')">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_penduduk as $data)
                                         @if (empty($detail))
@@ -114,14 +114,14 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" disabled="disabled" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
+                                <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" disabled="disabled" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
+                                <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;">
                             </div>
                         </div>

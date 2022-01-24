@@ -39,7 +39,7 @@
                                 <i class="fa fa-plus"></i> Tambah @yield('title')
                                 @endif
                             </h3>
-                            <a href="/pemerintahan/visi-misi" target="_blank" class="btn btn-info btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
+                            <a href="/pemerintahan/visi-misi" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
                         </div>
                         <div class="box-body">
                             @if ($data_visi_misi->count())
