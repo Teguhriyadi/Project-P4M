@@ -15,8 +15,10 @@ class PendudukWargaNegara extends Model
 
     public $timestamps = false;
 
+    // protected $with = [];
+
     public function getCountPenduduk()
     {
-        return $this->hasMany(Penduduk::class, 'id_sex', 'id');
+        return $this->hasMany(Penduduk::class, 'id_warga_negara', 'id');
     }
 }

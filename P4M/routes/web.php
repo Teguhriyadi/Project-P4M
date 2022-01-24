@@ -476,7 +476,7 @@ Route::prefix("page")->group(function() {
             });
 
             Route::prefix("/cetak_surat")->group(function() {
-                Route::get("/cetak", [CetakSuratController::class, "cetakSuratAfterUpdate"]);
+                Route::get("/cetak/{id}", [CetakSuratController::class, "cetakSuratAfterUpdate"]);
                 Route::get("/", [CetakSuratController::class, "data_surat"]);
                 Route::get("/form/{url_surat}", [CetakSuratController::class, "form_cetak_surat"]);
                 Route::put("/form/{url_surat}", [CetakSuratController::class, "ambil_data_penduduk"]);

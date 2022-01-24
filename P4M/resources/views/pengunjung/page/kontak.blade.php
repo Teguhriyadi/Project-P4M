@@ -1,6 +1,6 @@
 @extends('pengunjung/layouts/main')
 
-@section('title', '')
+@section('title', 'Kontak')
 
 @section('page_content')
 

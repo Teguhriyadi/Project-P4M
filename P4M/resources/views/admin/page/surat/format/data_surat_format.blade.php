@@ -39,6 +39,7 @@
                                 <tr>
                                     <th class="text-center">No.</th>
                                     <th>Nama Surat</th>
+                                    <th class="text-center">Akronim Surat</th>
                                     <th class="text-center">Url Surat</th>
                                     <th class="text-center">Kode/Klasifikasi</th>
                                     <th class="text-center">Aksi</th>
@@ -49,6 +50,7 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}.</td>
                                         <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->akronim }}</td>
                                         <td class="text-center">{{ $data->url_surat }}</td>
                                         <td class="text-center">{{ $data->getKlasifikasi->kode }}</td>
                                         <td class="text-center">

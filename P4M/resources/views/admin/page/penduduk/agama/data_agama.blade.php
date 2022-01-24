@@ -31,7 +31,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> Pekerjaan
+                        <i class="fa fa-bars"></i> Agama
                     </h3>
                     <a href="{{ url('/data/agama') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
                         <i class="fa fa-eye"></i> Preview

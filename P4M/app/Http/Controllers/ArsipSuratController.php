@@ -32,7 +32,7 @@ class ArsipSuratController extends Controller
             "keterangan" => $request->keterangan
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Alamat anda berhasil diubah', 'success')</script>");
     }
 
     public function destroy($id)

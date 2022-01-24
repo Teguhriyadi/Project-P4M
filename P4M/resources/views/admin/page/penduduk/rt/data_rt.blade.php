@@ -32,7 +32,11 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
+<<<<<<< HEAD
                         <i class="fa fa-bars"></i> Rukun Tetangga
+=======
+                        <i class="fa fa-bars"></i> Rukun Tangga
+>>>>>>> 7c40a77660bfa385ef9a05a1d19e7c520dd375bb
                     </h3>
                     <button class="btn btn-social btn-primary btn-flat btn-sm pull-right" data-toggle="modal" data-target="#modal-default" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah Data
