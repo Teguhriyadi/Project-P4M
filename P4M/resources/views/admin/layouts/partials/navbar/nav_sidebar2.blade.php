@@ -36,8 +36,8 @@
             <li class="header">Menu</li>
             <li class="{{ Request::is('page/admin/dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/page/admin/dashboard') }}">
-                    <i class="fa fa-tachometer"></i>
-                    <span>Dashboard</span>
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
                 </a>
             </li>
             <li class="treeview {{ Request::segment(3)=='info' ? 'active' : '' }}">

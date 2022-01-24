@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Home
             </a>
         </li>
         <li class="active">Data @yield('title')</li>
@@ -32,7 +32,11 @@
                         @endif
                         @csrf
                         <div class="col-md-8">
+<<<<<<< HEAD
                             <div class="box">
+=======
+                            <div class="box box-info">
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                                 <div class="box-header">
                                     <h3 class="box-title">
                                         @if($data_profil->count())
@@ -148,10 +152,17 @@
                             </div>
                         </div>
                         <div class="col-md-4">
+<<<<<<< HEAD
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">
                                         Upload Gambar
+=======
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        <i class="fa fa-upload"></i> Upload Gambar
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                                     </h3>
                                 </div>
                                 <div class="box-body">
@@ -172,6 +183,7 @@
                                 </div>
                                 <div class="box-footer">
                                     @if ($data_profil->count())
+<<<<<<< HEAD
                                     <button type="submit" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i> Simpan
                                     </button>
@@ -182,6 +194,18 @@
                                     @endif
                                     <button type="reset" class="btn btn-danger btn-sm">
                                         <i class="fa fa-refresh"></i> Batal
+=======
+                                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                                        <i class="fa fa-edit"></i> Simpan
+                                    </button>
+                                    @else
+                                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
+                                        <i class="fa fa-plus"></i> Tambah
+                                    </button>
+                                    @endif
+                                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                                        <i class="fa fa-times"></i> Batal
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                                     </button>
                                 </div>
                             </div>

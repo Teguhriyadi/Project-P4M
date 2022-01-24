@@ -21,20 +21,22 @@
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-body">
                     <div id="piechart"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-bars"></i> @yield('title')
                     </h3>
-                    <a href="/data/warga-negara" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
-                    <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
+                    <a href="{{ url('/data/warga-negara') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
+                        <i class="fa fa-eye"></i> Preview
+                    </a>
+                    <button class="btn btn-social btn-primary btn-flat btn-sm pull-right" data-toggle="modal" data-target="#modal-default" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah Data
                     </button>
                 </div>
@@ -54,13 +56,13 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">
-                                        <button onclick="editDataWargaNegara({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <button onclick="editDataWargaNegara({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                         <form action="{{ url('/page/admin/data/warga-negara/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
@@ -97,10 +99,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>
@@ -120,7 +122,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-pencil"></i> Edit Data
+                    <i class="fa fa-edit"></i> Edit Data
                 </h4>
             </div>
             <form action="{{ url('/page/admin/data/warga-negara/simpan') }}" method="POST" id="formEditWN">
@@ -130,10 +132,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>

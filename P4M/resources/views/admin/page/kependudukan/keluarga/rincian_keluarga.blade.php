@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a class="btn btn-social btn-success btn-flat btn-sm" data-toggle="dropdown">
+                    <a class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="dropdown">
                         <i class="fa fa-plus"></i> Tambah Anggota
                     </a>
                     <ul class="dropdown-menu" role="menu">
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                     </ul>
-                    <a href="{{ url('/page/admin/kependudukan/keluarga') }}" class="btn btn-social btn-info btn-flat btn-sm">
+                    <a href="{{ url('/page/admin/kependudukan/keluarga') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali ke Daftar Keluarga">
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Keluarga
                     </a>
                 </div>
@@ -159,10 +159,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left btn-flat btn-sm" data-dismiss="modal">
+                    <button type="reset" class="btn btn-social btn-danger pull-left btn-flat btn-sm">
                         <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-success btn-flat btn-sm">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>

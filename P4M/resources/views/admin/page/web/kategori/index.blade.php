@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -36,14 +36,17 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button id="tambahKategori" class="btn btn-success btn-sm">
+                    <button id="tambahKategori" class="btn btn-social btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
+                    </button>
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                        <i class="fa fa-times"></i> Batal
                     </button>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         Data Kategori

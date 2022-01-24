@@ -28,10 +28,10 @@
         @csrf
         <div class="row">
             <div class="col-md-8">
-                <div class="box">
+                <div class="box box-info">
                     <div class="box-header">
-                        <a href="{{ url('page/admin/web/artikel') }}" class="btn btn-warning btn-sm">
-                            <i class="fa fa-arrow-left"></i> Kembali
+                        <a href="{{ url('page/admin/web/artikel') }}" class="btn btn-social btn-danger btn-flat btn-sm" title="Kembali">
+                            <i class="fa fa-arrow-circle-left"></i> Kembali
                         </a>
                     </div>
                     <div class="box-body">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="box">
+                <div class="box box-info">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="kategori_id"> Nama Kategori </label>
@@ -70,11 +70,11 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
+                            <i class="fa fa-times"></i> Batal
                         </button>
                     </div>
                 </div>

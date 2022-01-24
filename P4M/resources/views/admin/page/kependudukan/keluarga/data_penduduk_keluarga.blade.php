@@ -35,10 +35,12 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('/page/admin/kependudukan/keluarga/form_tambah_penduduk_masuk') }}" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data Penduduk Masuk"><i class="fa fa-plus"></i> Tambah Penduduk Masuk</a>
+                                <a href="{{ url('/page/admin/kependudukan/keluarga/form_tambah_penduduk_masuk') }}" class="btn btn-social btn-flat btn-block btn-sm" title="Tambah Data Penduduk Masuk">
+                                    <i class="fa fa-plus"></i> Tambah Penduduk Masuk
+                                </a>
                             </li>
                             <li>
-                                <a class="btn btn-social btn-flat btn-block btn-sm" data-toggle="modal" data-target="#modal-default-penduduk">
+                                <a class="btn btn-social btn-flat btn-block btn-sm" data-toggle="modal" data-target="#modal-default-penduduk" title="Dari Data Penduduk">
                                     <i class="fa fa-plus"></i> Dari Penduduk Sudah Ada
                                 </a>
                             </li>
@@ -65,7 +67,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$data->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)">
+                                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$data->id) }}/rincian_keluarga" class="btn bg-purple btn-flat btn-sm" title="Rincian Anggota Keluarga (KK)" title="Rincian Data Keluarga">
                                             <i class="fa fa-list-ol"></i>
                                         </a>
                                         <div class="btn-group btn-group-vertical">
@@ -152,10 +154,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">
+                    <button type="reset" class="btn btn-social btn-danger pull-left btn-flat btn-sm" title="Batal">
                         <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-primary btn-flat btn-sm">
+                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>

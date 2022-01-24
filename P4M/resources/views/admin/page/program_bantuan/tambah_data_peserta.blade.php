@@ -1,27 +1,29 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sarana ')
+@section('title', 'Peserta Program Bantuan')
 
 @section('page_content')
-
-@php
-function selected($a, $b, $opt=0)
-{
-    if ($a == $b)
-    {
-        if ($opt)
-        echo "checked='checked'";
-        else echo "selected='selected'";
-    }
-}
-@endphp
 
 <section class="content-header">
     <h1>
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{  url('/page/admin/dashboard')  }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/program_bantuan') }}">
+                Daftar Program Bantuan
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/rincian') }}">
+                Rincian Program Bantuan
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -31,11 +33,11 @@ function selected($a, $b, $opt=0)
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/program_bantuan') }}" class="btn btn-social btn-primary btn-flat btn-sm">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Program Bantuan
+                    <a href="{{ url('/page/admin/program_bantuan') }}" class="btn btn-social btn-primary btn-flat btn-sm" title="Kembali ke Daftar Program Bantuan">
+                        <i class="fa fa-arrow-circle-left "></i> Kembali ke Daftar Program Bantuan
                     </a>
-                    <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/rincian') }}" class="btn btn-social btn-info btn-flat btn-sm">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Rincian Program Bantuan
+                    <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/rincian') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali ke Rincian Program Bantuan">
+                        <i class="fa fa-arrow-circle-left "></i> Kembali ke Rincian Program Bantuan
                     </a>
                 </div>
                 <div class="box-body">

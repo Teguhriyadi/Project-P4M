@@ -44,7 +44,7 @@ class ProgramBantuanController extends Controller
         $data["detail"] = ProgramBantuan::where("id", $id)->first();
         $data["daftar_peserta"] = ProgramPeserta::where("program_id", $data["detail"]->id)->get();
 
-        return view("/admin/page/program_bantuan/rincian_data_bantuan_peserta", $data);
+        return view("/admin/page/program_bantuan/rincian_bantuan_peserta", $data);
     }
 
     public function tambah_peserta($id)

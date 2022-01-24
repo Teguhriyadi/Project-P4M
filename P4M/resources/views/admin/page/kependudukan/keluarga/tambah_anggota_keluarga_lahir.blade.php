@@ -35,10 +35,10 @@
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <a href="{{ url('/page/admin/kependudukan/keluarga/') }}" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali Ke Data Penduduk">
+                        <a href="{{ url('/page/admin/kependudukan/keluarga/') }}" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali ke Daftar Keluarga">
                             <i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Daftar Keluarga
                         </a>
-                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$edit->id) }}/rincian_keluarga" class="btn btn-social btn-flat btn-sm btn-info">
+                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$edit->id) }}/rincian_keluarga" class="btn btn-social btn-flat btn-sm btn-info" title="Kembali ke Daftar Anggota Keluarga">
                             <i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Daftar Anggota Keluarga
                         </a>
                     </div>
@@ -511,10 +511,10 @@
                     </div>
 
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm">
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
                             <i class="fa fa-times"></i> Batal
                         </button>
-                        <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right">
+                        <button type="submit" class="btn btn-social btn-flat btn-primary btn-sm pull-right" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
                     </div>

@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -30,13 +30,13 @@
                 </ul>
             </div>
             @endif
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-users"></i> @yield('title')
                     </h3>
                     <div class="pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
+                        <button type="button" class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#modal-default" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Data
                         </button>
                     </div>
@@ -159,10 +159,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>
@@ -181,7 +181,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Edit @yield('title')
+                    <i class="fa fa-edit"></i> Edit @yield('title')
                 </h4>
             </div>
             <form id="editAkun" action="{{ url('/page/admin/pengaturan/akun') }}" method="POST">
@@ -191,10 +191,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                         <i class="fa fa-save"></i> Simpan
                     </button>
                 </div>

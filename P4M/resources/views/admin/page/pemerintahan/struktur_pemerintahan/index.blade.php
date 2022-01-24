@@ -21,7 +21,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-4">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
@@ -75,27 +75,29 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
+                            <i class="fa fa-times"></i> Batal
                         </button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-sign-out"></i> Struktur Pemerintahan
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/show') }}">
+                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/show') }}" class="btn btn-social btn-default btn-flat btn-sm" title="Lihat Struktur">
                             <i class="fa fa-search"></i> Lihat Struktur Pemerintahan
                         </a>
-                        <a href="/pemerintahan/struktur-organisasi" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
+                        <a href="{{ url('/page/admin/pemerintahan/struktur-organisasi') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
+                            <i class="fa fa-eye"></i> Preview
+                        </a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -116,13 +118,13 @@
                                     <td>{{ $data->getJabatan->nama_jabatan }}</td>
                                     <td>{{ $data->getPegawai->nama }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm" title="Ubah data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

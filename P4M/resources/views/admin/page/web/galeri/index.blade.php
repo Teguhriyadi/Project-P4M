@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -21,13 +21,13 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-image"></i> Image
                     </h3>
                     <div class="pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
+                        <button type="button" class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#modal-default" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Data
                         </button>
                     </div>
@@ -51,14 +51,14 @@
                                     <img src="{{ url('storage/'.$galeri->gambar) }}" alt="" width="100" height="70">
                                 </td>
                                 <td class="text-center">
-                                    <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                    <button onclick="editDataGaleri({{$galeri->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Edit Data">
                                         <i class="fa fa-edit"></i>
                                     </button>
                                     <form action="{{ url('/page/admin/web/galeri/'.$galeri->id) }}" method="POST" style="display: inline;">
                                         @method("DELETE")
                                         @csrf
                                         <input type="hidden" name="gambar" value="{{ $galeri->gambar }}">
-                                        <button type="submit" class="btn btn-danger btn-sm">
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Hapus Data">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     </form>
@@ -100,10 +100,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>
@@ -122,7 +122,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    <i class="fa fa-pencil"></i> Edit @yield('title')
+                    <i class="fa fa-edit"></i> Edit @yield('title')
                 </h4>
             </div>
             <form action="{{ url('/page/admin/web/galeri/simpan') }}" method="POST" enctype="multipart/form-data" id="formEditGaleri">
@@ -132,10 +132,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
+                        <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>

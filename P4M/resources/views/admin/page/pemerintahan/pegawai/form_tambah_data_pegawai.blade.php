@@ -28,10 +28,9 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-danger btn-sm">
+                    <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali">
                         <i class="fa fa-arrow-circle-o-left"></i> Kembali
                     </a>
                 </div>
@@ -56,7 +55,7 @@
                                 @csrf
                                 <label class="col-xs-12 col-sm-4 col-lg-2 control-label" for="id_pend">NIK / Nama Penduduk </label>
                                 <div class="col-xs-12 col-sm-8">
-                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main', '{{ url('page/admin/pemerintahan/pegawai') }}')">
+                                    <select class="form-control select2 input-sm" id="id_pend" name="id_pend" onchange="formAction('main')">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_penduduk as $data)
                                         @if (empty($detail))
@@ -115,14 +114,22 @@
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
+<<<<<<< HEAD
                                 {{-- <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;"> --}}
+=======
+                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
+<<<<<<< HEAD
                                 {{-- <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;"> --}}
+=======
+                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;">
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                             </div>
                         </div>
                         <!--
@@ -249,11 +256,11 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm">
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
                             <i class="fa fa-times"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm">
+                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm" title="Tambah Data">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                         </div>

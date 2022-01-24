@@ -11,7 +11,7 @@
   <ol class="breadcrumb">
     <li>
       <a href="{{ url('/page/admin/dashboard') }}">
-        <i class="fa fa-dashboard"></i> Dashboard
+        <i class="fa fa-home"></i> Home
       </a>
     </li>
     <li>
@@ -19,7 +19,7 @@
         Data @yield('title')
       </a>
     </li>
-    <li class="active">Tambah @yield('title')</li>
+    <li class="active">Edit @yield('title')</li>
   </ol>
 </section>
 
@@ -30,10 +30,10 @@
     <input type="hidden" name="oldImage" value="{{ $edit->image }}">
     <div class="row">
       <div class="col-md-8">
-        <div class="box">
+        <div class="box box-info">
             <div class="box-header">
-                <a href="{{ url('page/admin/web/artikel') }}" class="btn btn-warning btn-sm">
-                    <i class="fa fa-arrow-left"></i> Kembali
+                <a href="{{ url('page/admin/web/artikel') }}" class="btn btn-social btn-info btn-flat btn-sm">
+                    <i class="fa fa-arrow-circle-left"></i> Kembali
                 </a>
             </div>
           <div class="box-body">
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="box">
+        <div class="box box-info">
           <div class="box-body">
             <div class="form-group">
               <label for="kategori_id"> Nama Kategori </label>
@@ -82,11 +82,11 @@
             </div>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-success btn-sm">
+            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan">
               <i class="fa fa-edit"></i> Simpan
             </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-              <i class="fa fa-refresh"></i> Batal
+            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
+              <i class="fa fa-times"></i> Batal
             </button>
           </div>
         </div>

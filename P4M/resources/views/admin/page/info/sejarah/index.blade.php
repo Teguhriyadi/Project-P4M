@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -29,9 +29,11 @@
             <div class="row">
 
                 <div class="col-md-8">
-                    <div class="box">
+                    <div class="box box-info">
                         <div class="box-header">
-                            <a href="/profil/sejarah-desa" target="_blank" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Preview</a>
+                            <a href="{{ url('/profil/sejarah-desa') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm">
+                                <i class="fa fa-eye"></i> Preview
+                            </a>
                         </div>
                         <div class="box-body">
                             <div class="form-group">
@@ -46,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="box">
+                    <div class="box box-info">
                         <div class="box-body">
                             <label for="gambar" style="width: 100%"> Gambar </label>
                             @if ($sejarah)
@@ -59,16 +61,16 @@
                         </div>
                         <div class="box-footer">
                             @if ($sejarah)
-                            <button type="submit" class="btn btn-success btn-sm">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @else
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-refresh"></i> Batal
+                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                                <i class="fa fa-times"></i> Batal
                             </button>
                         </div>
                     </div>

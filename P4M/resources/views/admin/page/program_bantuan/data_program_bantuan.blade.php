@@ -1,6 +1,10 @@
 @extends('admin.layouts.main')
 
+<<<<<<< HEAD
 @section('title', 'Program Bantuan')
+=======
+@section('title', 'Data Program Bantuan')
+>>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
 
 @section('page_content')
 
@@ -13,7 +17,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -23,10 +31,10 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/program_bantuan/create') }}" class="btn btn-social btn-success btn-flat btn-sm">
+                    <a href="{{ url('/page/admin/program_bantuan/create') }}" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
-                    <a href="" class="btn btn-info btn-success btn-flat btn-sm">
+                    <a href="" class="btn btn-social btn-info btn-success btn-flat btn-sm" title="Panduan">
                         <i class="fa fa-arrow-right"></i> Panduan
                     </a>
                 </div>
@@ -50,15 +58,19 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/program_bantuan/'.$data->id."/rincian") }}" class="btn bg-purple btn-flat btn-sm">
-                                            <i class="fa fa-bars"></i>
+                                        <a href="{{ url('/page/admin/program_bantuan/'.$data->id."/rincian") }}" class="btn bg-purple btn-flat btn-sm" title="Rincian">
+                                            <i class="fa fa-list-ol"></i>
                                         </a>
-                                        <a href="" class="btn btn-warning btn-flat btn-sm">
+                                        <a href="" class="btn btn-warning btn-flat btn-sm" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-flat btn-sm">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                        <form action="" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-flat btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->asal_dana }}</td>
