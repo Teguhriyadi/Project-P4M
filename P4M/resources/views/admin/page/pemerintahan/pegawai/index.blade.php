@@ -27,7 +27,7 @@
                         <i class="fa fa-user"></i> Pegawai
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/pemerintahan/pegawai/create') }}" class="btn btn-primary btn-social btn-flat btn-sm" title="Tambah Data Pegawai">
+                        <a href="{{ url('/page/admin/pemerintahan/pegawai/create') }}" class="btn btn-primary btn-social btn-flat btn-sm" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>
@@ -62,14 +62,14 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm" title="Edit Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="oldImage" value="{{ $pegawai->foto }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

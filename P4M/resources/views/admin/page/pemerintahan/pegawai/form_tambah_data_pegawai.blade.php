@@ -28,10 +28,9 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-danger btn-sm">
+                    <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali">
                         <i class="fa fa-arrow-circle-o-left"></i> Kembali
                     </a>
                 </div>
@@ -249,11 +248,11 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm">
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
                             <i class="fa fa-times"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm">
+                            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm" title="Tambah Data">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                         </div>

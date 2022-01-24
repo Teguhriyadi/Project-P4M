@@ -78,16 +78,16 @@
                         </div>
                         <div class="box-footer">
                             @if ($data_visi_misi->count())
-                            <button type="submit" class="btn btn-success btn-sm">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @else
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-refresh"></i> Batal
+                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                                <i class="fa fa-times"></i> Batal
                             </button>
                         </div>
                     </div>

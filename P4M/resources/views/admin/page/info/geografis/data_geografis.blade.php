@@ -21,7 +21,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         @if (empty($data_geografis))
@@ -30,7 +30,7 @@
                         <i class="fa fa-edit"></i> Edit @yield('title')
                         @endif
                     </h3>
-                    <a href="/profil/wilayah-desa" target="_blank" class="btn btn-info btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
+                    <a href="/profil/wilayah-desa" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
                 </div>
                 @if (empty($data_geografis))
                 <form action="{{ url('/page/admin/info/geografis') }}" method="POST">
@@ -55,16 +55,16 @@
                         </div>
                         <div class="box-footer">
                             @if (empty($data_geografis))
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                             @else
-                            <button type="submit" class="btn btn-success btn-sm">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-refresh"></i> Batal
+                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                                <i class="fa fa-times"></i> Batal
                             </button>
                         </div>
                     </form>

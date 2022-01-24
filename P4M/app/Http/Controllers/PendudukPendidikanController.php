@@ -13,7 +13,7 @@ class PendudukPendidikanController extends Controller
             'data_penduduk_pendidikan' => PendudukPendidikan::orderBy("nama", "DESC")->withCount('getCountPenduduk')->get()
         ];
 
-        return view("/admin/page/penduduk/pendidikan/data_pendidikan", $data);
+        return view("/admin/page/penduduk/pendidikan/index", $data);
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class PendudukPendidikanController extends Controller
             "edit" => PendudukPendidikan::where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/penduduk/pendidikan/edit_data_pendidikan", $data);
+        return view("/admin/page/penduduk/pendidikan/edit", $data);
     }
 
     public function update(Request $request)
