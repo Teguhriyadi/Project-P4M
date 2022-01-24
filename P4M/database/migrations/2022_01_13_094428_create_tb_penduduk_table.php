@@ -60,6 +60,7 @@ class CreateTbPendudukTable extends Migration
             $table->tinyInteger('updated_by')->nullable();
             $table->string('tempat_cetak_ktp')->nullable();
             $table->date('tanggal_cetak_ktp')->nullable();
+            $table->integer('id_status_dasar')->default(1)->nullable();
             $table->string('email')->nullable()->unique();
             $table->timestamps();
         });

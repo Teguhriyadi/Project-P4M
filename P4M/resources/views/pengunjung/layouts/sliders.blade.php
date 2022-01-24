@@ -22,7 +22,7 @@ $artikel = Artikel::latest()->paginate(6);
         color: black;
         font-weight: bold;
         font-family: Oswald;
-        
+
         background-color: #ffffff;
         border: 1px solid black;
         border-radius: 3px;

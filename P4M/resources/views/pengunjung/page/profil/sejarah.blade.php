@@ -21,12 +21,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @if ($sejarah)
-                                    <img src="/storage/{{ $sejarah->gambar }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                    <img src="{{ $sejarah->gambar ? '/storage/'.$sejarah->gambar : '/frontend/img/no-images.png' }}" width="300" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                     <div style="text-align: justify; margin-bottom: 2rem;">
                                         {!! $sejarah->sejarah !!}
                                     </div>
                                     @else
-                                    <img src="/frontend/img/logo-desa.png" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                    <img src="/frontend/img/no-images.png" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                     <div style="text-align: justify; margin-bottom: 2rem;">
                                         Belum ada sejarah
                                     </div>

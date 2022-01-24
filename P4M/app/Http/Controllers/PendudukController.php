@@ -29,7 +29,7 @@ class PendudukController extends Controller
     {
         $data = [
             "data_status_dasar" => StatusDasar::get(),
-            "penduduk" => Penduduk::all()
+            "penduduk" => Penduduk::where('id_status_dasar', 1)->get()
         ];
 
         return view("admin/page/penduduk/home", $data);
@@ -185,7 +185,7 @@ class PendudukController extends Controller
             "edit" => Penduduk::select("id")->where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/penduduk/ubah_status_dasar", $data);
+        return view("admin.page.penduduk.ubah_status_dasar", $data);
     }
 
     public function simpan_status_dasar(Request $request)
@@ -199,7 +199,6 @@ class PendudukController extends Controller
         if ($request->status_dasar == 2) {
             // Apabila Status nya mati
             $log_penduduk->meninggal_di = $request->meninggal_di;
-            $log_penduduk->catatan = $request->catatan;
 
         } else if ($request->status_dasar == 3) {
             // Apabila Status nya pindah
@@ -209,13 +208,15 @@ class PendudukController extends Controller
 
         } else if ($request->status_dasar == 4) {
             // Apabila Status nya Hilang
-            $log_penduduk->catatan = $request->catatan;
         }
 
+        $log_penduduk->catatan = $request->catatan;
         $log_penduduk->created_by = auth()->user()->id;
         $log_penduduk->updated_by = auth()->user()->id;
 
         $log_penduduk->save();
+
+        Penduduk::where('id', $request->id_penduduk)->update(['id_status_dasar'=> $request->status_dasar]);
 
         return back();
     }
@@ -269,5 +270,10 @@ class PendudukController extends Controller
         Penduduk::create($request->all());
 
         return redirect("/page/admin/kependudukan/penduduk");
+    }
+
+    public function paging($page)
+    {
+        return view('admin.page.penduduk.status_dasar.'.$page);
     }
 }

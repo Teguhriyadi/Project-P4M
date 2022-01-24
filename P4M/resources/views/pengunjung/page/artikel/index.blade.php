@@ -36,8 +36,8 @@
                             </span>
                         </div>
                         <a href="/artikel/{!! $artikel->slug !!}" title="Baca Selengkapnya" style="font-weight:bold">
-                            <img src="/storage/{!! $artikel->image !!}" class="img-fluid img-thumbnail hidden-sm hidden-xs" style="float:left; margin:0 8px 4px 0; height: 200px; width: 300px" alt="{!! $artikel->judul !!}" />
-                            <img src="/storage/{!! $artikel->image !!}" class="img-fluid img-thumbnail hidden-lg hidden-md" style="float:left; margin:0 8px 4px 0; height: 200px; width: 100%" alt="{!! $artikel->judul !!}" />
+                            <img src="{!! $artikel->image ? '/storage/'.$artikel->image : '/frontend/img/no-images.png' !!}" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'" class="img-fluid img-thumbnail hidden-sm hidden-xs" style="float:left; margin:0 8px 4px 0; height: 200px; width: 300px" alt="{!! $artikel->judul !!}" />
+                            <img src="{!! $artikel->image ? '/storage/'.$artikel->image : '/frontend/img/no-images.png' !!}" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'" class="img-fluid img-thumbnail hidden-lg hidden-md" style="float:left; margin:0 8px 4px 0; height: 200px; width: 100%" alt="{!! $artikel->judul !!}" />
                         </a>
                         <div style="text-align: justify;" class="hidden-sm hidden-xs">
                             {!! Str::limit($artikel->body, 525) !!}

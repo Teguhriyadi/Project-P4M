@@ -2,12 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Model\GolonganDarah;
-use App\Models\Model\HakAkses;
-use App\Models\Model\Kategori;
+use App\Models\Model\Artikel;
+use App\Models\Model\Galeri;
 use App\Models\Model\Penduduk;
-use App\Models\Model\StatusDasar;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Penduduk::factory(500)->create();
+        Artikel::factory(50)->create();
+        // Galeri::factory(20)->create();
 
         $this->call(UserSeeder::class);
         $this->call(KategoriSeeder::class);

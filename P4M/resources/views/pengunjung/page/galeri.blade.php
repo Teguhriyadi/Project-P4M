@@ -31,7 +31,7 @@
                                 <div class="single-blog-post wow fadeInUp" data-wow-delay="300ms">
                                     <div class="blog-post-thumb mb-15">
                                         <a href="{{ url('/storage/'.$galeri->gambar) }}" rel="prettyPhoto[gallery1]">
-                                            <img src="{{ url('/storage/'.$galeri->gambar) }}" alt="" style="width: 100%; margin: 0 auto; height: 180px">
+                                            <img src="{{ url('/storage/'.$galeri->gambar) }}" alt="" style="width: 100%; margin: 0 auto; height: 180px" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'">
                                         </a>
                                     </div>
                                     <div style="height:100px">
