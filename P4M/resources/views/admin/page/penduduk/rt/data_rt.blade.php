@@ -43,6 +43,8 @@
                             <thead>
                                 <tr>
                                     <th>RT</th>
+                                    <th>RW</th>
+                                    <th>Dusun</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -50,6 +52,8 @@
                                 @foreach ($data_rt as $data)
                                 <tr>
                                     <td>{{ $data->rt }}</td>
+                                    <td>{{ $data->getRw->rw }}</td>
+                                    <td>{{ $data->getRw->getDusun->dusun }}</td>
                                     <td class="text-center">
                                         <button onclick="editRt({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>
@@ -88,6 +92,14 @@
             <form action="{{ url('/page/admin/data/rt') }}" method="POST" id="formTambahRT">
                 @csrf
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label for="id_rw">RW</label>
+                        <select class="form-control" name="id_rw" id="id_rw">
+                            @foreach ($data_rw as $rw)
+                                <option value="{{ $rw->id }}">{{ $rw->rw }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="rt"> RT </label>
                         <input type="text" class="form-control" name="rt" id="rt" placeholder="Masukkan RT">

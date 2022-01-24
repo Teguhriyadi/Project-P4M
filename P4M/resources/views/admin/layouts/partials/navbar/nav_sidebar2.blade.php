@@ -88,14 +88,14 @@
                             <i class="fa fa-circle-o"></i> Data Dusun
                         </a>
                     </li>
-                    <li class="{{ Request::is('page/admin/data/rt') ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/data/rt') }}">
-                            <i class="fa fa-circle-o"></i> Data RT
-                        </a>
-                    </li>
                     <li class="{{ Request::is('page/admin/data/rw') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/rw') }}">
                             <i class="fa fa-circle-o"></i> Data RW
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/data/rt') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/data/rt') }}">
+                            <i class="fa fa-circle-o"></i> Data RT
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/data/pendidikan') ? 'active' : '' }}">

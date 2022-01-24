@@ -188,6 +188,11 @@ Route::prefix("page")->group(function() {
             // Dashboard
             Route::get("/dashboard", [AppController::class, "dashboard"]);
 
+            // Coba
+            Route::get("/dashboard/coba/combobox", [AppController::class, "combobox"]);
+            Route::post("/dashboard/coba/combobox/ambil-rw", [AppController::class, "ambilRw"]);
+            Route::post("/dashboard/coba/combobox/ambil-rt", [AppController::class, "ambilRt"]);
+
             // Cetak Surat
             Route::get('/cetak/{type}', [AppController::class, "cetakSurat"]);
 
