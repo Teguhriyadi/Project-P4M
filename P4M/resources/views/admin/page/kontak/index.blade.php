@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('title', 'Kontak')
+
 @section('page_content')
 
 <section class="content-header">

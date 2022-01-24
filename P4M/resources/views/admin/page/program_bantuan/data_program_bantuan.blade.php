@@ -1,10 +1,6 @@
 @extends('admin.layouts.main')
 
-<<<<<<< HEAD
-@section('title', 'Program Bantuan')
-=======
 @section('title', 'Data Program Bantuan')
->>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
 
 @section('page_content')
 
