@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\Jabatan;
+use App\Models\Model\Pegawai;
 use App\Models\model\Penduduk;
 use App\Models\Model\SuratFormat;
 use Illuminate\Http\Request;
@@ -11,7 +13,9 @@ class CetakSuratController extends Controller
     public function data_surat()
     {
         $data = [
-            "data_surat" => SuratFormat::all()
+            "data_surat" => SuratFormat::all(),
+            "data_pegawai" => Pegawai::all(),
+            "data_jabatan" => Jabatan::all()
         ];
 
         return view("/admin/page/cetak_surat/data_surat", $data);
