@@ -15,8 +15,8 @@ class CreateTbDisposisiSuratMasukTable extends Migration
     {
         Schema::create('tb_disposisi_surat_masuk', function (Blueprint $table) {
             $table->id();
-            $table->integer("id_surat_masuk");
-            $table->integer("id_pegawai");
+            $table->foreignId("id_surat_masuk")->nullable()->constrained("tb_surat_masuk")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId("id_pegawai")->nullable()->constrained("tb_pegawai")->cascadeOnUpdate()->nullOnDelete();
             $table->string("disposisi_ke", 50);
         });
     }

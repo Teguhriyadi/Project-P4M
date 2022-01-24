@@ -20,7 +20,7 @@ class CreateTbProgramTable extends Migration
             $table->text("deskripsi");
             $table->date("tanggal_mulai");
             $table->date("tanggal_berakhir");
-            $table->integer("user_id");
+            $table->foreignId("user_id")->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->tinyInteger("status")->default(0);
             $table->string("asal_dana");
         });

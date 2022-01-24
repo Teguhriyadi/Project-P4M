@@ -15,7 +15,7 @@ class CreateCountersTable extends Migration
     {
         Schema::create('tb_counter', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_artikel');
+            $table->foreignId('id_artikel')->nullable()->constrained("tb_artikel")->cascadeOnUpdate()->nullOnDelete();
             $table->string('address', 50);
             $table->timestamps();
         });

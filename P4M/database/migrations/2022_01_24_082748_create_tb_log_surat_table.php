@@ -15,10 +15,10 @@ class CreateTbLogSuratTable extends Migration
     {
         Schema::create('tb_log_surat', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_format_surat');
-            $table->integer('id_penduduk')->nullable();
-            $table->integer('id_pegawai');
-            $table->integer('id_user');
+            $table->foreignId('id_format_surat')->nullable()->constrained("tb_surat_format")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('id_penduduk')->nullable()->constrained("tb_penduduk")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('id_pegawai')->nullable()->constrained("tb_pegawai")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('id_user')->nullable()->constrained("users")->cascadeOnUpdate()->nullOnDelete();
             $table->timestamp('tanggal');
             $table->string('bulan', 2)->nullable();
             $table->string('tahun', 4)->nullable();

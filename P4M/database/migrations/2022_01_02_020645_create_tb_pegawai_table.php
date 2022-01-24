@@ -21,11 +21,11 @@ class CreateTbPegawaiTable extends Migration
             $table->enum("status", [1, 0]);
             $table->date("tgl_terdaftar")->nullable();
             $table->string("foto")->nullable();
-            $table->tinyInteger("id_penduduk")->nullable();
+            $table->foreignId("id_penduduk")->nullable()->constrained("tb_penduduk")->cascadeOnUpdate()->nullOnDelete();
             $table->string("tempat_lahir", 100)->nullable();
             $table->date("tgl_lahir")->nullable();
-            $table->tinyInteger("sex")->nullable();
-            $table->integer("pendidikan")->nullable();
+            $table->foreignId("sex")->nullable()->constrained("tb_penduduk_sex")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId("pendidikan")->nullable()->constrained("tb_penduduk_pendidikan")->cascadeOnUpdate()->nullOnDelete();
             $table->string("agama", 50)->nullable();
             $table->string("no_sk", 30)->nullable();
             $table->date("tgl_sk")->nullable();
