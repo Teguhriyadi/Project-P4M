@@ -21,177 +21,171 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="nav-tabs-custom">
-                <div class="tab-content">
-                    <div class="tab-pane active">
-                        <div class="row">
-                            @if ($data_profil->count())
-                            @foreach ($data_profil as $profil)
-                            <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
-                                @method("PUT")
-                                @endforeach
-                                @else
-                                <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
+            <div class="row">
+                @if ($data_profil->count())
+                @foreach ($data_profil as $profil)
+                <form action="{{ url('/page/admin/info/profil/'.$profil->id) }}" method="POST" enctype="multipart/form-data" id="formEditProfil">
+                    @method("PUT")
+                    @endforeach
+                    @else
+                    <form action="{{ url('/page/admin/info/profil') }}" method="POST" enctype="multipart/form-data" id="formTambahProfil">
+                        @endif
+                        @csrf
+                        <div class="col-md-8">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        @if($data_profil->count())
+                                        <i class="fa fa-edit"></i> Edit @yield('title')
+                                        @else
+                                        <i class="fa fa-plus"></i> Tambah @yield('title')
+                                        @endif
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                    @if ($data_profil->count())
+                                    @foreach ($data_profil as $profil)
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_desa"> Nama Desa </label>
+                                                <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Masukkan Nama Desa" value="{{ $profil->nama_desa }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kecamatan"> Kecamatan </label>
+                                                <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukkan Kecamatan" value="{{ $profil->kecamatan }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kabupaten"> Kabupaten </label>
+                                                <input type="text" class="form-control" name="kabupaten" id="kabupaten" placeholder="Masukkan Kabupaten" value="{{ $profil->kabupaten }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="provinsi"> Provinsi </label>
+                                                <input type="text" class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Data Provinsi" value="{{ $profil->provinsi }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="negara"> Negara </label>
+                                                <input type="text" class="form-control" name="negara" id="negara" placeholder="Masukkan Negara" value="{{ $profil->negara }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kode_pos"> Kode Pos </label>
+                                                <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos" value="{{ $profil->kode_pos }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="deskripsi"> Deskripsi </label>
+                                        <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
+                                            {{ $profil->deskripsi }}
+                                        </textarea>
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="nama_desa"> Nama Desa </label>
+                                                <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Masukkan Nama Desa">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kecamatan"> Kecamatan </label>
+                                                <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukkan Kecamatan">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kabupaten"> Kabupaten </label>
+                                                <input type="text" class="form-control" name="kabupaten" id="kabupaten" placeholder="Masukkan Kabupaten">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="provinsi"> Provinsi </label>
+                                                <input type="text" class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Data Provinsi">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="negara"> Negara </label>
+                                                <input type="text" class="form-control" name="negara" id="negara" placeholder="Masukkan Negara">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="kode_pos"> Kode Pos </label>
+                                                <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="deskripsi"> Deskripsi </label>
+                                        <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
+                                            Deskripsi Desa
+                                        </textarea>
+                                    </div>
                                     @endif
-                                    @csrf
-                                    <div class="col-md-8">
-                                        <div class="box">
-                                            <div class="box-header">
-                                                <h3 class="box-title">
-                                                    @if($data_profil->count())
-                                                    <i class="fa fa-edit"></i> Edit @yield('title')
-                                                    @else
-                                                    <i class="fa fa-plus"></i> Tambah @yield('title')
-                                                    @endif
-                                                </h3>
-                                            </div>
-                                            <div class="box-body">
-                                                @if ($data_profil->count())
-                                                @foreach ($data_profil as $profil)
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="nama_desa"> Nama Desa </label>
-                                                            <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Masukkan Nama Desa" value="{{ $profil->nama_desa }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kecamatan"> Kecamatan </label>
-                                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukkan Kecamatan" value="{{ $profil->kecamatan }}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kabupaten"> Kabupaten </label>
-                                                            <input type="text" class="form-control" name="kabupaten" id="kabupaten" placeholder="Masukkan Kabupaten" value="{{ $profil->kabupaten }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="provinsi"> Provinsi </label>
-                                                            <input type="text" class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Data Provinsi" value="{{ $profil->provinsi }}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="negara"> Negara </label>
-                                                            <input type="text" class="form-control" name="negara" id="negara" placeholder="Masukkan Negara" value="{{ $profil->negara }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kode_pos"> Kode Pos </label>
-                                                            <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos" value="{{ $profil->kode_pos }}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="deskripsi"> Deskripsi </label>
-                                                    <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
-                                                        {{ $profil->deskripsi }}
-                                                    </textarea>
-                                                </div>
-                                                @endforeach
-                                                @else
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="nama_desa"> Nama Desa </label>
-                                                            <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Masukkan Nama Desa">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kecamatan"> Kecamatan </label>
-                                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukkan Kecamatan">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kabupaten"> Kabupaten </label>
-                                                            <input type="text" class="form-control" name="kabupaten" id="kabupaten" placeholder="Masukkan Kabupaten">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="provinsi"> Provinsi </label>
-                                                            <input type="text" class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Data Provinsi">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="negara"> Negara </label>
-                                                            <input type="text" class="form-control" name="negara" id="negara" placeholder="Masukkan Negara">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="kode_pos"> Kode Pos </label>
-                                                            <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="deskripsi"> Deskripsi </label>
-                                                    <textarea name="deskripsi" id="deskripsi" cols="80" rows="10">
-                                                        Deskripsi Desa
-                                                    </textarea>
-                                                </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="box">
-                                            <div class="box-header">
-                                                <h3 class="box-title">
-                                                    Upload Gambar
-                                                </h3>
-                                            </div>
-                                            <div class="box-body">
-                                                <div class="form-group">
-                                                    <label for="gambar"> Gambar </label>
-                                                    @if ($data_profil->count())
-                                                    @foreach ($data_profil as $profil)
-                                                    <img src="{{ url('/storage/'.$profil->gambar) }}" class="gambar-preview" style="width: 300px; margin-bottom: 5px;">
-                                                    @endforeach
-                                                    @else
-                                                    <br>
-                                                    <center>
-                                                        <img src="{{ url('/gambar/upload.png') }}" class="gambar-preview" style="width: 200px; margin-bottom: 20px;">
-                                                    </center>
-                                                    @endif
-                                                    <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
-                                                </div>
-                                            </div>
-                                            <div class="box-footer">
-                                                @if ($data_profil->count())
-                                                <button type="submit" class="btn btn-success btn-sm">
-                                                    <i class="fa fa-edit"></i> Simpan
-                                                </button>
-                                                @else
-                                                <button type="submit" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-plus"></i> Tambah
-                                                </button>
-                                                @endif
-                                                <button type="reset" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-refresh"></i> Batal
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        Upload Gambar
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="gambar"> Gambar </label>
+                                        @if ($data_profil->count())
+                                        @foreach ($data_profil as $profil)
+                                        <img src="{{ url('/storage/'.$profil->gambar) }}" class="gambar-preview" style="width: 300px; margin-bottom: 5px;">
+                                        @endforeach
+                                        @else
+                                        <br>
+                                        <center>
+                                            <img src="{{ url('/gambar/upload.png') }}" class="gambar-preview" style="width: 200px; margin-bottom: 20px;">
+                                        </center>
+                                        @endif
+                                        <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    @if ($data_profil->count())
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i> Simpan
+                                    </button>
+                                    @else
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-plus"></i> Tambah
+                                    </button>
+                                    @endif
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-refresh"></i> Batal
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </section>
 
                     @endsection

@@ -10,10 +10,11 @@
 
 <section class="content-header">
     <h1>
-        Dashboard
+        Home
     </h1>
     <ol class="breadcrumb">
-        <li class="active">Dashboard</li>
+        <li class="active">
+           <i class="fa fa-home"></i> Home </li>
     </ol>
 </section>
 
