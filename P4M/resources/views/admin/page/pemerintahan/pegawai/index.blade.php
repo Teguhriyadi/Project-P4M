@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Data Pegawai')
+@section('title', 'Data Pegawai Pemerintahan Desa')
 
 @section('page_content')
 
@@ -21,13 +21,13 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-user"></i> Pegawai
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/pemerintahan/pegawai/create') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/pemerintahan/pegawai/create') }}" class="btn btn-primary btn-social btn-flat btn-sm" title="Tambah Data Pegawai">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>

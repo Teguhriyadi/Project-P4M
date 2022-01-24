@@ -19,7 +19,12 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-
+                    <a href="{{ url('/page/admin/surat/arsip/perorangan') }}" class="btn btn-social btn-success btn-flat btn-sm" title="Rekam Surat Perorangan">
+                        <i class="fa fa-archive"></i> Rekam Surat Perorangan
+                    </a>
+                    <a href="" class="btn btn-social btn-warning btn-flat btn-sm" title="Pie Surat Keluar">
+                        <i class="fa fa-pie-chart"></i> Pie Chart
+                    </a>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -32,13 +37,37 @@
                                     <th>No. Urut</th>
                                     <th>Jenis Surat</th>
                                     <th>Nama Penduduk</th>
-                                    <th>Keterangan</th>
                                     <th>Ditandatangani Oleh</th>
                                     <th class="text-center">Tanggal</th>
                                     <th>User</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                @foreach ($data_arsip as $data)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">
+                                        <button onclick="ubahData({{ $data->id }})" type="button" data-toggle="modal" data-target="#ubah-data" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <form action="{{ url('/page/admin/surat/arsip/'.$data->id) }}" method="POST" style="display: inline">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>{{ $data->getSuratFormat->kode_surat }}</td>
+                                    <td>{{ $data->no_surat }}</td>
+                                    <td>{{ $data->getSuratFormat->getKlasifikasi->nama }}</td>
+                                    <td>{{ $data->getPenduduk->nama }}</td>
+                                    <td>{{ $data->getPegawai->nama }}</td>
+                                    <td class="text-center">{{ $data->tanggal }}</td>
+                                    <td>{{ $data->getUser->name }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -46,5 +75,52 @@
         </div>
     </div>
 </section>
+
+<!-- Ubah Data -->
+<div class="modal fade" id="ubah-data">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-edit"></i> Ubah Data
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/surat/arsip/ubah_data') }}" method="POST">
+                @method("PUT")
+                @csrf
+                <div class="modal-body" id="modal-content-edit">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger btn-flat btn-sm pull-left" data-dismiss="modal">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-success btn-flat btn-sm">
+                        <i class="fa fa-edit"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+<script type="text/javascript">
+    function ubahData(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/surat/arsip/edit') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
+    }
+</script>
 
 @endsection

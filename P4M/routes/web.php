@@ -362,7 +362,14 @@ Route::prefix("page")->group(function() {
                 Route::resource("/keluar", SuratKeluarController::class);
 
                 // Arsip Surat
-                Route::resource("/arsip", ArsipSuratController::class);
+                Route::prefix("/arsip")->group(function() {
+                    Route::resource("/", ArsipSuratController::class);
+                    Route::get("/edit", [ArsipSuratController::class, "edit"]);
+                    Route::put("/ubah_data", [ArsipSuratController::class, "update"]);
+                    Route::delete("/{id}", [ArsipSuratController::class, "destroy"]);
+                    Route::get("/perorangan", [ArsipSuratController::class, "perorangan"]);
+                    Route::put("/perorangan", [ArsipSuratController::class, "detail"]);
+                });
             });
 
             Route::get("/kotak-pesan", [KontakController::class, "index"]);

@@ -2,73 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model\LogSurat;
+use App\Models\Model\Penduduk;
 use Illuminate\Http\Request;
 
 class ArsipSuratController extends Controller
 {
     public function index()
     {
-        return view("/admin/page/surat/arsip/index");
+        $data = [
+            "data_arsip" => LogSurat::all()
+        ];
+
+        return view("/admin/page/surat/arsip/index", $data);
     }
 
-    public function create()
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => LogSurat::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/surat/arsip/edit_data", $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        //
+        LogSurat::where("id", $request->id)->update([
+            "keterangan" => $request->keterangan
+        ]);
+
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        LogSurat::where("id", $id)->delete();
+
+        return back();
     }
+
+    public function perorangan()
+    {
+        $data = [
+            "data_penduduk" => Penduduk::all(),
+            "data_log" => LogSurat::all()
+        ];
+
+        return view("/admin/page/surat/arsip/rekam_perorangan", $data);
+    }
+
+    public function detail(Request $request)
+    {
+        $data = [
+            "data_penduduk" => Penduduk::all(),
+            "data_log" => LogSurat::all(),
+            "detail" => LogSurat::where("id_penduduk", $request->id_penduduk)->first(),
+            "id" => $request->id_penduduk
+        ];
+
+        return view("/admin/page/surat/arsip/rekam_perorangan", $data);
+    }
+
 }

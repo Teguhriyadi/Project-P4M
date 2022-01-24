@@ -19,7 +19,7 @@ class CreateTbLogSuratTable extends Migration
             $table->integer('id_penduduk')->nullable();
             $table->integer('id_pegawai');
             $table->integer('id_user');
-            $table->timestamps('tanggal');
+            $table->timestamp('tanggal');
             $table->string('bulan', 2)->nullable();
             $table->string('tahun', 4)->nullable();
             $table->string('no_surat', 20)->nullable();

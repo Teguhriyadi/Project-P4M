@@ -58,11 +58,14 @@
                         </div>
                     </div>
                 </form>
-                <form id="validasi" action="{{ url('/page/admin/cetak_surat/form/'.$detail_surat->url_surat) }}" method="POST" class="form-surat form-horizontal" target="_blank">
+                <form id="validasi" action="{{ url('/page/admin/cetak_surat/form/'.$detail_surat->url_surat) }}"  method="POST" class="form-horizontal" target="_blank">
                     @csrf
                     <div class="box-body">
                         @if (empty($detail))
+
                         @else
+                        <input type="hidden" name="id_penduduk" value="{{ $detail->id }}">
+                        <input type="hidden" name="id_surat_format" value="{{ $detail_surat->id }}">
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Tempat / Tanggal Lahir / Umur </label>
                             <div class="col-sm-4">
@@ -96,9 +99,9 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Nomor Surat </label>
+                            <label for="no_surat" class="col-sm-4 col-lg-4"> Nomor Surat </label>
                             <div class="col-sm-8">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="no_surat" id="no_surat" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
@@ -108,9 +111,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Keterangan </label>
+                            <label for="keterangan" class="col-sm-4 col-lg-4"> Keterangan </label>
                             <div class="col-sm-8">
-                                <textarea name="" id="" rows="3" class="form-control input-sm" placeholder="Keterangan"></textarea>
+                                <textarea name="keterangan" id="keterangan" rows="3" class="form-control input-sm" placeholder="Keterangan"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -123,22 +126,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Staf Pemerintah Desa </label>
+                            <label for="id_pegawai" class="col-sm-4 col-lg-4"> Staf Pemerintah Desa </label>
                             <div class="col-sm-8">
-                                <select name="" id="" class="form-control input-sm select2" width="100%">
+                                <select name="id_pegawai" id="id_pegawai" class="form-control input-sm select2" width="100%">
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_pegawai as $pegawai)
-                                    <option value="">
-                                        {{ $ }}
+                                    <option value="{{ $pegawai->id }}">
+                                        {{ $pegawai->nama }}
                                     </option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Menjabat Sebagai </label>
-                            <div class="col-sm-8">
-                                <select name="" id="" class="form-control input-sm select2" width="100%"></select>
                             </div>
                         </div>
                     </div>

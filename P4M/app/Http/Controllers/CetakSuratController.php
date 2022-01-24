@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model\Jabatan;
+use App\Models\Model\LogSurat;
 use App\Models\Model\Pegawai;
 use App\Models\model\Penduduk;
 use App\Models\Model\SuratFormat;
@@ -14,8 +14,6 @@ class CetakSuratController extends Controller
     {
         $data = [
             "data_surat" => SuratFormat::all(),
-            "data_pegawai" => Pegawai::all(),
-            "data_jabatan" => Jabatan::all()
         ];
 
         return view("/admin/page/cetak_surat/data_surat", $data);
@@ -25,7 +23,8 @@ class CetakSuratController extends Controller
     {
         $data = [
             "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
-            "data_penduduk" => Penduduk::all()
+            "data_penduduk" => Penduduk::all(),
+            "data_pegawai" => Pegawai::all()
         ];
 
         return view("/admin/page/cetak_surat/form_cetak_surat", $data);
@@ -36,6 +35,8 @@ class CetakSuratController extends Controller
         $data = [
             "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
             "data_penduduk" => Penduduk::all(),
+            "data_penduduk" => Penduduk::all(),
+            "data_pegawai" => Pegawai::all(),
             "detail" => Penduduk::where("id", $request->id_penduduk)->first()
         ];
 
@@ -44,6 +45,16 @@ class CetakSuratController extends Controller
 
     public function unduh_rtf(Request $request)
     {
-        echo "mohammad";
+        LogSurat::create([
+            "id_format_surat" => $request->id_surat_format,
+            "id_penduduk" => $request->id_penduduk,
+            "id_pegawai" => $request->id_pegawai,
+            "id_user" => auth()->user()->id,
+            "tanggal" => now(),
+            "no_surat" => $request->no_surat,
+            "keterangan" => $request->keterangan
+        ]);
+
+        return back();
     }
 }
