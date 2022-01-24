@@ -50,6 +50,11 @@
                                         <button onclick="ubahData({{ $data->id }})" type="button" data-toggle="modal" data-target="#ubah-data" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </button>
+                                        @if ($data->getPenduduk->telepon != NULL)
+                                        <a href="" class="btn btn-success btn-sm">
+                                            <i class="fa fa-whatsapp"></i>
+                                        </a>
+                                        @endif
                                         <form action="{{ url('/page/admin/surat/arsip/'.$data->id) }}" method="POST" style="display: inline">
                                             @method("DELETE")
                                             @csrf

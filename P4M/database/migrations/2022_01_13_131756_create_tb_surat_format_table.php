@@ -18,6 +18,7 @@ class CreateTbSuratFormatTable extends Migration
             $table->string("nama");
             $table->string("url_surat");
             $table->string("kode_surat");
+            $table->string("akronim");
             $table->tinyInteger("kunci")->default(0);
             $table->tinyInteger("mandiri")->default(0);
             $table->integer("masa_berlaku")->default(1);

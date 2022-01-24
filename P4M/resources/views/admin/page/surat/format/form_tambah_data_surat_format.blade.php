@@ -53,6 +53,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="akronim" class="col-sm-2 control-label"> Akronim Surat </label>
+                            <div class="col-sm-10">
+                                <input type="text" name="akronim" id="akronim" class="form-control input-sm" placeholder="Ex. SKTM">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="masa_berlaku" class="col-sm-2 control-label"> Masa Berlaku </label>
                             <div class="col-sm-1">
                                 <input type="number" name="masa_berlaku" id="masa_berlaku" class="form-control input-sm" placeholder="0" min="1" max="31">

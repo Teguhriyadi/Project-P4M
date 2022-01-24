@@ -15,9 +15,10 @@ class RtSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i < 11; $i++) { 
+        for ($i=1; $i < 11; $i++) {
             Rt::create([
-                'rt' => $i
+                'id_rw' => mt_rand(1, 6),
+                'rt' => $i,
             ]);
         }
 

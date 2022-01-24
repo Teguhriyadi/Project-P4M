@@ -13,7 +13,8 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "nesbot/carbon": "^2.55"
+        "nesbot/carbon": "^2.55",
+        "phpoffice/phpword": "^0.18.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

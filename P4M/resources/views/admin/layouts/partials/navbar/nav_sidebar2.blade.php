@@ -180,7 +180,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview {{ Request::segment(3)=='surat' ? 'active' : '' }}">
+            <li class="treeview {{ Request::segment(3)=='surat' || Request::segment(3)=='cetak_surat' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>Layanan Surat</span>
                     <span class="pull-right-container">
@@ -218,9 +218,9 @@
                             <i class="fa fa-circle-o"></i> Surat Keluar
                         </a>
                     </li>
-                    <li class="{{ Request::segment(4)=='cetak' ? 'active' : '' }}">
+                    <li class="{{ Request::segment(3)=='cetak_surat' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/cetak_surat') }}">
-                            <i class="fa fa-file-word-o"></i> Cetak Surat
+                            <i class="fa fa-circle-o"></i> Cetak Surat
                         </a>
                     </li>
                     <li class="{{ Request::segment(4)=='arsip' ? 'active' : '' }}">

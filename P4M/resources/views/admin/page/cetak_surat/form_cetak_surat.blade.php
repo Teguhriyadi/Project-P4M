@@ -1,3 +1,6 @@
+@php
+    use App\Models\Model\StrukturPemerintahan;
+@endphp
 @extends('admin.layouts.main')
 
 @section('title', 'Surat '.$detail_surat->nama)
@@ -30,7 +33,7 @@
                 <form id="main" name="main" method="POST" class="form-horizontal">
                     @method("PUT")
                     @csrf
-                    <div class="box-body">
+                    <div class="box-body" style="margin-bottom: -20px">
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> NIK / Nama </label>
                             <div class="col-sm-8">
@@ -39,16 +42,16 @@
                                     @foreach ($data_penduduk as $penduduk)
                                     @if (empty($detail))
                                     <option value="{{ $penduduk->id }}">
-                                        {{ $penduduk->nama }}
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
                                     </option>
                                     @else
                                     @if ($detail->id == $penduduk->id)
                                     <option value="{{ $penduduk->id }}" selected>
-                                        {{ $penduduk->nama }}
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
                                     </option>
                                     @else
                                     <option value="{{ $penduduk->id }}">
-                                        {{ $penduduk->nama }}
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
                                     </option>
                                     @endif
                                     @endif
@@ -107,7 +110,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Keperluan </label>
                             <div class="col-sm-8">
-                                <textarea name="" id="" rows="3" class="form-control input-sm" placeholder="Keperluan"></textarea>
+                                <textarea name="keperluan" id="keperluan" rows="3" class="form-control input-sm" placeholder="Keperluan"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -131,8 +134,11 @@
                                 <select name="id_pegawai" id="id_pegawai" class="form-control input-sm select2" width="100%">
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_pegawai as $pegawai)
+                                    @php
+                                        $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
+                                    @endphp
                                     <option value="{{ $pegawai->id }}">
-                                        {{ $pegawai->nama }}
+                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})
                                     </option>
                                     @endforeach
                                 </select>

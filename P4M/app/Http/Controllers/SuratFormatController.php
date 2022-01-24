@@ -36,10 +36,11 @@ class SuratFormatController extends Controller
     public function store(Request $request)
     {
         $surat_format = new SuratFormat;
-        $surat_format->nama = $request->nama;
+        $surat_format->nama = 'Surat '.$request->nama;
         $surat_format->url_surat = 'surat-'.Str::slug($request->nama);
         $surat_format->kode_surat = $request->kode_surat;
         $surat_format->mandiri = $request->mandiri;
+        $surat_format->akronim = $request->akronim;
         $surat_format->masa_berlaku = $request->masa_berlaku;
         $surat_format->satuan_masa_berlaku = $request->satuan_masa_berlaku;
         $surat_format->save();
@@ -70,10 +71,11 @@ class SuratFormatController extends Controller
     public function update(Request $request, $id)
     {
         $surat_format = SuratFormat::find($id);
-        $surat_format->nama = $request->nama;
+        $surat_format->nama = 'Surat '.$request->nama;
         $surat_format->url_surat = Str::slug($request->nama);
         $surat_format->kode_surat = $request->kode_surat;
         $surat_format->mandiri = $request->mandiri;
+        $surat_format->akronim = $request->akronim;
         $surat_format->masa_berlaku = $request->masa_berlaku;
         $surat_format->satuan_masa_berlaku = $request->satuan_masa_berlaku;
         $surat_format->update();

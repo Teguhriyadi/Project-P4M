@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sarana Agama')
+@section('title', 'Program Bantuan')
 
 @section('page_content')
 
@@ -13,7 +13,7 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li><a href="/page/admin"><i class="fa fa-tachometer"></i> Dashboard</a></li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>

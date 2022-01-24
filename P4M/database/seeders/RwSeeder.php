@@ -15,8 +15,9 @@ class RwSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i < 7; $i++) { 
+        for ($i=1; $i < 7; $i++) {
             Rw::create([
+                'id_dusun' => mt_rand(1, 6),
                 'rw' => $i
             ]);
         }

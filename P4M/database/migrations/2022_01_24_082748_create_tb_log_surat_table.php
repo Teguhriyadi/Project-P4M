@@ -26,7 +26,8 @@ class CreateTbLogSuratTable extends Migration
             $table->string('nama_surat', 100)->nullable();
             $table->string('nik_non_warga', 100)->nullable();
             $table->string('nama_non_warga', 100)->nullable();
-            $table->string('keterangan', 200)->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('keperluan')->nullable();
         });
     }
 
