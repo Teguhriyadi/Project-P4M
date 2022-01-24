@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Wilayah Geografis')
+@section('title', 'Data Wilayah Geografis')
 
 @section('page_content')
 
@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -24,7 +24,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-map-marker"></i> @yield('title')
+                        <i class="fa fa-map-marker"></i> Wilayah Geografis
                     </h3>
                     <div class="pull-right">
                         <a href="{{ url('/page/admin/profil/wilayah-desa') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">

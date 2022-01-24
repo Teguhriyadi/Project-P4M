@@ -13,12 +13,12 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li>
             <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">
-                <i class="fa fa-user"></i> Data Pegawai
+                Data Pegawai
             </a>
         </li>
         <li class="active">Form Tambah Data Pegawai</li>
@@ -114,22 +114,14 @@
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
-<<<<<<< HEAD
-                                {{-- <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;"> --}}
-=======
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
->>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
-<<<<<<< HEAD
-                                {{-- <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;"> --}}
-=======
                                 <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;">
->>>>>>> 9afca961fab620a9eb00c8b3f8268bf762f6a039
                             </div>
                         </div>
                         <!--

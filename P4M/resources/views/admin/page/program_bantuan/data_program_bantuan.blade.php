@@ -31,7 +31,7 @@
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                     <a href="" class="btn btn-social btn-info btn-success btn-flat btn-sm" title="Panduan">
-                        <i class="fa fa-arrow-right"></i> Panduan
+                        <i class="fa fa-arrow-circle-right"></i> Panduan
                     </a>
                 </div>
                 <div class="box-body">

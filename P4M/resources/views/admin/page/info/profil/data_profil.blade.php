@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Profil Desa')
+@section('title', 'Data Profil Desa')
 
 @section('page_content')
 
@@ -11,10 +11,10 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
-        <li class="active">Data @yield('title')</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 

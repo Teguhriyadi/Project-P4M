@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Surat Masuk')
+@section('title', 'Form Edit Surat Masuk')
 
 @section('page_content')
 
@@ -11,7 +11,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin') }}">
+               <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -21,7 +25,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/masuk') }}" class="btn btn-social btn-flat btn-success btn-sm">
+                    <a href="{{ url('/page/admin/surat/masuk') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali ke Daftar Surat Masuk">
                         <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>
@@ -131,11 +135,11 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm">
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
                             <i class="fa fa-times"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-social btn-flat btn-success btn-sm">
+                            <button type="submit" class="btn btn-social btn-flat btn-success btn-sm" title="Simpan Data">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                         </div>

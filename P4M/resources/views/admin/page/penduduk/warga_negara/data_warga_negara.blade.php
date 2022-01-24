@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -31,7 +31,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> @yield('title')
+                        <i class="fa fa-bars"></i> Warga Negara
                     </h3>
                     <a href="{{ url('/data/warga-negara') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
                         <i class="fa fa-eye"></i> Preview

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sumber Daya Manusia')
+@section('title', 'Data Sumber Daya Manusia')
 
 @section('page_content')
 
@@ -9,7 +9,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -17,10 +21,10 @@
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-bars"></i> @yield('title')
+                        <i class="fa fa-bars"></i> Sumber Daya Manusia
                     </h3>
                 </div>
                 <div class="box-body">
@@ -28,7 +32,7 @@
                         <table id="example1" class="table table-bordered table-hover" width="100%">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th class="text-center">No.</th>
                                     <th>Nama</th>
                                     <th>Jumlah</th>
                                     <th>Presentasi (%)</th>
@@ -37,7 +41,7 @@
                             <tbody>
                                 @foreach ($kelamin as $data)
                                 <tr>
-                                    <th>{{ $loop->iteration }}</th>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->getCountPenduduk->count() }}</td>
                                     <td>{!! ($data->getCountPenduduk->count() / $penduduk) * 100 !!}%</td>
@@ -50,7 +54,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-body">
                     <div id="piechart"></div>
                 </div>

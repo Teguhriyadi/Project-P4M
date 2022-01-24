@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Surat Masuk')
+@section('title', 'Form Tambah Surat Keluar')
 
 @section('page_content')
 
@@ -11,7 +11,16 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/surat/keluar') }}">
+                Data Surat Keluar
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -21,8 +30,8 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/masuk') }}" class="btn btn-social btn-flat btn-success btn-sm">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Surat Masuk
+                    <a href="{{ url('/page/admin/surat/masuk') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali ke Daftar Surat Masuk">
+                        <i class="fa fa-arrow-circle-left"></i> Kembali ke Daftar Surat Masuk
                     </a>
                 </div>
                 <form action="{{ url('/page/admin/surat/keluar') }}" method="POST" class="form-horizontal" enctype="multipart/form-data" id="formTambahSurat">

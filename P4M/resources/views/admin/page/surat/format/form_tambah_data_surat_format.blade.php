@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Data Format Surat')
+@section('title', 'Tambah Data Format Surat')
 
 @section('page_content')
 
@@ -11,7 +11,12 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/surat/format') }}">
+                Format Surat
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -23,7 +28,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/format') }}" class="btn btn-social btn-flat btn-success btn-sm ">
+                    <a href="{{ url('/page/admin/surat/format') }}" class="btn btn-social btn-flat btn-info btn-sm ">
                         <i class="fa fa-arrow-circle-left"></i> Kembali
                     </a>
                 </div>
@@ -115,8 +120,8 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                            <i class="fa fa-times"></i> Batal
                         </button>
                         <button type="submit" class="btn btn-social btn-primary btn-sm pull-right">
                             <i class="fa fa-plus"></i> Tambah

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Surat Masuk')
+@section('title', 'Data Surat Masuk')
 
 @section('page_content')
 
@@ -14,7 +14,11 @@ use Carbon\Carbon;
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -24,7 +28,7 @@ use Carbon\Carbon;
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/masuk/create') }}" class="btn btn-social btn-flat btn-success btn-sm">
+                    <a href="{{ url('/page/admin/surat/masuk/create') }}" class="btn btn-social btn-flat btn-primary btn-sm" title="Tambah Surat Masuk Baru">
                         <i class="fa fa-plus"></i> Tambah Surat Masuk Baru
                     </a>
                 </div>

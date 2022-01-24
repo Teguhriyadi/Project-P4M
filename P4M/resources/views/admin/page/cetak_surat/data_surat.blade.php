@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Cetak Layanan Surat')
+@section('title', 'Data Cetak Layanan Surat')
 
 @section('page_content')
 
@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -43,7 +43,7 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}.</td>
                                         <td class="text-center">
-                                            <a href="{{ url('/page/admin/cetak_surat/form/'.$data->url_surat) }}" class="btn btn-social bg-purple btn-flat btn-sm">
+                                            <a href="{{ url('/page/admin/cetak_surat/form/'.$data->url_surat) }}" class="btn btn-social bg-purple btn-flat btn-sm" title="Buat Surat">
                                                 <i class="fa fa-file-word-o"></i> Buat Surat
                                             </a>
                                         </td>

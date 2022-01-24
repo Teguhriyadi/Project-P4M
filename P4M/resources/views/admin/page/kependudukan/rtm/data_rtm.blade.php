@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Keluarga')
+@section('title', 'Data Rumah Tangga')
 
 @section('page_content')
 
@@ -15,7 +15,7 @@ use App\Models\Model\Penduduk;
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -27,7 +27,7 @@ use App\Models\Model\Penduduk;
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a type="button" data-toggle="modal" data-target="#modalBox" class="btn btn-social btn-success btn-flat btn-sm">
+                    <a type="button" data-toggle="modal" data-target="#modalBox" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data Rumah Anggota">
                         <i class="fa fa-plus"></i> Tambah Rumah Tangga
                     </a>
                 </div>

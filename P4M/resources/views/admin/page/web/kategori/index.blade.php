@@ -21,7 +21,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-4">
-            <div class="box" id="">
+            <div class="box box-info" id="">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-plus"></i> Form Tambah Kategori

@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -21,13 +21,13 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-envelope-o"></i> @yield('title')
+                        <i class="fa fa-envelope-o"></i> Format Surat
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/surat/format/create') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ url('/page/admin/surat/format/create') }}" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>
@@ -52,13 +52,13 @@
                                         <td class="text-center">{{ $data->url_surat }}</td>
                                         <td class="text-center">{{ $data->getKlasifikasi->kode }}</td>
                                         <td class="text-center">
-                                            <a href="{{ url('/page/admin/surat/format/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
+                                            <a href="{{ url('/page/admin/surat/format/'.$data->id) }}/edit" class="btn btn-warning btn-sm" title="Ubah Data">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <form action="{{ url('/page/admin/surat/format/'.$data->id) }}" method="POST" style="display: inline;">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button type="submit" class="btn-delete btn btn-danger btn-sm">
+                                                <button type="submit" class="btn-delete btn btn-danger btn-sm" title="Hapus Data">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </form>

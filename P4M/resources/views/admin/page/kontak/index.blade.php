@@ -1,27 +1,27 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Kontak')
+@section('title', 'Data Kotak Pesan')
 
 @section('page_content')
 
 <section class="content-header">
     <h1>
-        Data Kotak Pesan
+        @yield("title")
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
-        <li class="active">Kotak Pesan</li>
+        <li class="active">@yield("title")</li>
     </ol>
 </section>
 
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
                         <i class="fa fa-envelope-o"></i> Kotak Pesan

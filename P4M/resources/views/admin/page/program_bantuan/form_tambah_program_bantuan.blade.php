@@ -14,6 +14,11 @@
                 <i class="fa fa-home"></i> Home
             </a>
         </li>
+        <li>
+            <a href="{{ url('/page/admin/program_bantuan') }}">
+                Data Program Bantuan
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>

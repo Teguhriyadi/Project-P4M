@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Arsip Layanan Surat')
+@section('title', 'Data Arsip Layanan Surat')
 
 @section('page_content')
 
@@ -9,7 +9,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('/page/admin') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>

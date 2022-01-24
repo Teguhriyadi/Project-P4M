@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -19,17 +19,19 @@
 </section>
 
 <section class="content">
-    <div class="box">
+    <div class="box box-info">
         <div class="box-header">
             <h3 class="box-title">
                 <i class="fa fa-minus"></i> Form Maps
             </h3>
-            <a href="/peta" target="_blank" class="btn btn-info btn-sm pull-right" style="margin-left: 5px"><i class="fa fa-eye"></i> Preview</a>
+            <a href="{{ url('/peta') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
+                <i class="fa fa-eye"></i> Preview
+            </a>
         </div>
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="/page/admin/peta/kantor" method="post" id="formPeta">
+                    <form action="{{ url('/page/admin/peta/kantor') }}" method="POST" id="formPeta">
                         @if ($kantor)
                         @method("put")
                         <input type="hidden" name="id" id="id" value="{{ $kantor->id }}">
@@ -38,13 +40,15 @@
                         <div class="form-group">
                             <label for="url">Masukan Url</label>
                             @if (empty($kantor))
-                            <textarea name="url" id="url" rows="8" class="form-control"></textarea>
+                            <textarea name="url" id="url" rows="8" class="form-control" placeholder="Silahkan Masukkan URL"></textarea>
                             @else
-                            <textarea name="url" id="url" rows="8" class="form-control">{!! $kantor->lokasi_kantor !!}</textarea>
+                            <textarea name="url" id="url" rows="8" class="form-control" placeholder="Silahkan Masukkan URL">{!! $kantor->lokasi_kantor !!}</textarea>
                             @endif
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
+                                <i class="fa fa-plus"></i> Tambah
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -57,9 +61,11 @@
             </div>
         </div>
     </div>
-    <div class="box">
+    <div class="box box-info">
         <div class="box-header">
-            <h3 class="title"><i class="fa fa-minus"></i> Hasil</h3>
+            <h3 class="title">
+                <i class="fa fa-minus"></i> Hasil
+            </h3>
         </div>
         <div class="box-body">
             @if (empty($kantor) || $kantor->lokasi_kantor == NULL)

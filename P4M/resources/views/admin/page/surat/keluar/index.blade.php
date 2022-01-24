@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Surat Keluar')
+@section('title', 'Data Surat Keluar')
 
 @section('page_content')
 
@@ -9,7 +9,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -19,7 +23,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/surat/keluar/create') }}" class="btn btn-social btn-flat btn-success btn-sm">
+                    <a href="{{ url('/page/admin/surat/keluar/create') }}" class="btn btn-social btn-flat btn-primary btn-sm" title="Tambah Surat Keluar Baru">
                         <i class="fa fa-plus"></i> Tambah Surat Keluar Baru
                     </a>
                 </div>
@@ -47,14 +51,14 @@
                                     <td>{{ $data->tujuan }}</td>
                                     <td>{{ $data->isi_singkat }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/surat/keluar/'.$data->id) }}/edit" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/surat/keluar/'.$data->id) }}/edit" class="btn btn-warning btn-sm" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form action="{{ url('/page/admin/surat/keluar/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="oldBerkasScan" value="{{ $data->berkas_scan }}">
-                                            <button type="submit" class="btn-delete btn btn-danger btn-sm">
+                                            <button type="submit" class="btn-delete btn btn-danger btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

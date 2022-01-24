@@ -11,15 +11,15 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li>
             <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
-                <i class="fa fa-gavel"></i> @yield('title')
+                Data Jabatan
             </a>
         </li>
-        <li class="active">Edit @yield('title')</li>
+        <li class="active">@yield('title')</li>
     </ol>
 </section>
 
@@ -29,7 +29,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-edit"></i> Edit @yield('title')
+                        <i class="fa fa-edit"></i> @yield('title')
                     </h3>
                 </div>
                 <form id="editJabatan" action="{{ url('/page/admin/pemerintahan/jabatan/'.$edit->id) }}" method="POST">

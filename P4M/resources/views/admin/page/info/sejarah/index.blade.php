@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sejarah Desa')
+@section('title', 'Data Sejarah Desa')
 
 @section('page_content')
 
