@@ -342,12 +342,7 @@
                                 <div class="form-group">
                                     <label for="id_rw"> RW KK </label>
                                     <select name="id_rw" id="id_rw" class="form-control input-sm select2">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($data_rw as $rw)
-                                        <option value="{{ $rw->id }}">
-                                            {{ $rw->rw }}
-                                        </option>
-                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -355,12 +350,7 @@
                                 <div class="form-group">
                                     <label for="id_rt"> RT KK </label>
                                     <select name="id_rt" id="id_rt" class="form-control input-sm select2">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($data_rt as $rt)
-                                        <option value="{{ $rt->id }}">
-                                            {{ $rt->rt }}
-                                        </option>
-                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -511,6 +501,22 @@
 <script src="{{ url('backend/template/bower_components/moment/min/moment.min.js') }}"></script>
 <script src="{{ url('backend/template/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ url('backend/template/plugins/timepicker/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_rw').hide();
+        $('#id_rt').hide();
+    });
+
+    function loadRw()
+    {
+        $("#id_dusun").change(function() {
+            let getDusun = $("#id_rw").val();
+
+        });
+    }
+
+</script>
 
 <script>
     $(function() {

@@ -296,31 +296,35 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="id_dusun">Dusun</label>
-                  <select name="id_dusun" id="id_dusun" class="form-control input-sm">
+                  <select name="id_dusun" id="id_dusun" class="form-control input-sm" onchange="getRW()">
                     @foreach ($data_dusun as $dusun)
-                        <option value="{{ $dusun->id }}" {{ $dusun->id == old('id_dusun') }}>{{ $dusun->dusun }}</option>
+                        <option value="{{ $dusun->id }}" {{ $dusun->id == old('id_dusun') }}>
+                            {{ $dusun->dusun }}
+                        </option>
                     @endforeach
                   </select>
                 </div>
               </div>
 
               <div class="col-md-3">
-                <div class="form-group">
-                  <label for="id_rt">RT</label>
-                  <select name="id_rt" id="id_rt" class="form-control input-sm">
-                    @foreach ($data_rt as $rt)
-                        <option value="{{ $rt->id }}" {{ $rt->id == old('id_rt') }}>{{ $rt->rt }}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group">
+                <div id="isi_rw" class="form-group">
                   <label for="id_rw">RW</label>
                   <select name="id_rw" id="id_rw" class="form-control input-sm">
                     @foreach ($data_rw as $rw)
                         <option value="{{ $rw->id }}" {{ $rw->id == old('id_rw') }}>{{ $rw->rw }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div id="isi_rw" class="form-group">
+                  <label for="id_rt">RT</label>
+                  <select name="id_rt" id="id_rt" class="form-control input-sm">
+                    @foreach ($data_rt as $rt)
+                        <option value="{{ $rt->id }}" {{ $rt->id == old('id_rt') }}>
+                            {{ $rt->rt }}
+                        </option>
                     @endforeach
                   </select>
                 </div>
@@ -362,6 +366,26 @@
       locale:'id'
     });
   })
+
+  function getRW() {
+    let str = '';
+    let val = document.getElementById('id_dusun');
+    for (i = 0; i < val.length; i++) {
+        if (val[i].selected) {
+            str += val[i].value + ',';
+        }
+    }
+    let str = str.slice(0, str.length - 1);
+    $.ajax({
+        type : 'GET',
+        url : "{{ url('/page/admin/kependudukan/penduduk/tambah_penduduk_masuk') }}",
+        data : 'id_dusun'+str,
+        success : function(data) {
+            $('#id_rw').html(data);
+        }
+    });
+  }
+
 </script>
 
 @endsection

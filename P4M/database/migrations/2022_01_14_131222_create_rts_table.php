@@ -15,6 +15,7 @@ class CreateRtsTable extends Migration
     {
         Schema::create('tb_rt', function (Blueprint $table) {
             $table->id();
+            $table->string('id_rw')->nullable();
             $table->string('rt');
             $table->integer("id_pejabat")->nullable();
             $table->timestamps();

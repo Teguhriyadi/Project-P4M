@@ -15,6 +15,7 @@ class CreateRwsTable extends Migration
     {
         Schema::create('tb_rw', function (Blueprint $table) {
             $table->id();
+            $table->string('id_dusun')->nullable();
             $table->string('rw');
             $table->integer("id_pejabat")->nullable();
             $table->timestamps();

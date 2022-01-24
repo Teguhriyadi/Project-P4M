@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Keluarga')
+@section('title', 'Surat '.$detail_surat->nama)
 
 @section('page_content')
 
@@ -37,44 +37,63 @@
                                 <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%" onchange="formAction('main')">
                                     <option value="">-- Cari NIK / Nama Penduduk /</option>
                                     @foreach ($data_penduduk as $penduduk)
+                                    @if (empty($detail))
                                     <option value="{{ $penduduk->id }}">
                                         {{ $penduduk->nama }}
                                     </option>
+                                    @else
+                                    @if ($detail->id == $penduduk->id)
+                                    <option value="{{ $penduduk->id }}" selected>
+                                        {{ $penduduk->nama }}
+                                    </option>
+                                    @else
+                                    <option value="{{ $penduduk->id }}">
+                                        {{ $penduduk->nama }}
+                                    </option>
+                                    @endif
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
+                    </div>
+                </form>
+                <form id="validasi" action="{{ url('/page/admin/cetak_surat/form/'.$detail_surat->url_surat) }}" method="POST" class="form-surat form-horizontal" target="_blank">
+                    @csrf
+                    <div class="box-body">
+                        @if (empty($detail))
+                        @else
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Tempat / Tanggal Lahir / Umur </label>
                             <div class="col-sm-4">
-                                <input type="text" name="" id="" class="form-control input-sm" value="">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->tempat_lahir }}" readonly>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->tgl_lahir }}" readonly>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="50" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Alamat </label>
                             <div class="col-sm-8">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->alamat_sekarang }}" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Pendidikan / Warga Negara / Agama </label>
                             <div class="col-sm-4">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getPendidikan->nama) ? '' : ''.$detail->getPendidikan->nama.'' }}" readonly>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getWargaNegara->nama) ? '' : ''.$detail->getWargaNegara->nama.'' }}" readonly>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="" id="" class="form-control input-sm">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getAgama->nama) ? '' : ''.$detail->getAgama->nama.'' }}" readonly>
                             </div>
                         </div>
+                        @endif
 
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Nomor Surat </label>
@@ -126,9 +145,18 @@
                         <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
                             <i class="fa fa-times"></i> Batal
                         </button>
-                        <button type="submit" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
+                        <button type="button" onclick="tambah_elemen_cetak('cetak_rtf'); $('#validasi').submit()" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
                             <i class="fa fa-file-word-o"></i> Unduh RTF
                         </button>
+                        <script type="text/javascript">
+                            function tambah_elemen_cetak($nilai) {
+                                $('<input>').attr({
+                                    type: 'hidden',
+                                    name: 'submit_cetak',
+                                    value: $nilai
+                                }).appendTo($('#validasi'));
+                            }
+                        </script>
                     </div>
                 </form>
             </div>

@@ -20,6 +20,7 @@ class CetakSuratController extends Controller
     public function form_cetak_surat($url_surat)
     {
         $data = [
+            "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
             "data_penduduk" => Penduduk::all()
         ];
 
@@ -29,10 +30,16 @@ class CetakSuratController extends Controller
     public function ambil_data_penduduk(Request $request, $url_surat)
     {
         $data = [
+            "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
             "data_penduduk" => Penduduk::all(),
             "detail" => Penduduk::where("id", $request->id_penduduk)->first()
         ];
 
         return view("/admin/page/cetak_surat/form_cetak_surat", $data);
+    }
+
+    public function unduh_rtf(Request $request)
+    {
+        echo "mohammad";
     }
 }
