@@ -22,6 +22,7 @@ use App\Models\Model\Penduduk;
     </ol>
 </section>
 
+@if ($data_penduduk->count())
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -87,6 +88,29 @@ use App\Models\Model\Penduduk;
         </div>
     </div>
 </section>
+@else
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Perhatian</h3>
+                </div>
+                <div class="box-body">
+                    <div class="callout callout-danger">
+                        <h4>Tidak Bisa Menginputkan Data</h4>
+
+                        <p>
+                            Karena <b> Data Penduduk </b> Masih Kosong. <a href="{{ url('/page/admin/kependudukan/penduduk') }}">Silahkan Inputkan Data Penduduk Terlebih Dahulu</a>
+                        </p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Tambah Rumah Tangga -->
 <div class="modal fade" id="modalBox">
@@ -107,12 +131,8 @@ use App\Models\Model\Penduduk;
                         <label for="nik_kepala"> Kepala Rumah Tangga </label>
                         <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
                             <option value="">- Pilih -</option>
-                            @php
-                            $getDataPenduduk = DB::table("tb_penduduk")
-                            ->where("id_rtm", NULL)
-                            ->get();
-                            @endphp
-                            @foreach ($getDataPenduduk as $penduduk)
+
+                            @foreach ($data_penduduk as $penduduk)
                             <option value="{{ $penduduk->id }}">
                                 NIK : {{ $penduduk->nik }} - {{ $penduduk->nama }}
                             </option>

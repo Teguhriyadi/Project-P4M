@@ -25,6 +25,7 @@
     </ol>
 </section>
 
+@if ($data_penduduk->count())
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -272,8 +273,32 @@
             </div>
         </form>
     </div>
-
 </section>
+@else
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Perhatian</h3>
+                </div>
+                <div class="box-body">
+                    <div class="callout callout-danger">
+                        <h4>Tidak Bisa Menginputkan Data</h4>
+
+                        <p>
+                            Karena <b> Data Penduduk </b> Masih Kosong.
+                            <a href="{{ url('/page/admin/kependudukan/penduduk') }}">Silahkan Inputkan Data Penduduk Terlebih Dahulu</a>
+                        </p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
 @endsection
 
 @section('page_scripts')

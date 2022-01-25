@@ -39,11 +39,15 @@
                                     <i class="fa fa-plus"></i> Tambah Penduduk Masuk
                                 </a>
                             </li>
+                            @if ($data_penduduk->count())
                             <li>
                                 <a class="btn btn-social btn-flat btn-block btn-sm" data-toggle="modal" data-target="#modal-default-penduduk" title="Dari Data Penduduk">
                                     <i class="fa fa-plus"></i> Dari Penduduk Sudah Ada
                                 </a>
                             </li>
+                            @else
+
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -135,10 +139,6 @@
                         <label for="nik_kepala"> Kepala Keluarga </label>
                         <select name="nik_kepala" id="nik_kepala" class="form-control input-sm select2" style="width: 100%">
                             <option value="">- Pilih -</option>
-                            @php
-                            use App\Models\Model\Penduduk;
-                            $data_penduduk = Penduduk::where("id_kk", NULL)->get()
-                            @endphp
 
                             @foreach ($data_penduduk as $data)
                             <option value="{{ $data->id }}">

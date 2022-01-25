@@ -13,6 +13,7 @@ class RtmController extends Controller
     public function index()
     {
         $data = [
+            "data_penduduk" => Penduduk::where("id_rtm", NULL)->get(),
             "data_rtm" => RTM::all()
         ];
 
@@ -98,6 +99,10 @@ class RtmController extends Controller
         $data = [
             "edit" => RTM::where("id", $id)->first()
         ];
+
+        if (!$data["edit"]) {
+            abort(404);
+        }
 
         return view("/admin/page/kependudukan/rtm/rincian_rtm", $data);
     }
