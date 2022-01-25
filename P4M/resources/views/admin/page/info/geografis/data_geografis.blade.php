@@ -30,7 +30,9 @@
                         <i class="fa fa-edit"></i> Edit @yield('title')
                         @endif
                     </h3>
-                    <a href="/profil/wilayah-desa" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
+                    <a href="{{ url('/profil/wilayah-desa') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" title="Lihat">
+                        <i class="fa fa-eye"></i> Preview
+                    </a>
                 </div>
                 @if (empty($data_geografis))
                 <form action="{{ url('/page/admin/info/geografis') }}" method="POST">
@@ -55,15 +57,15 @@
                         </div>
                         <div class="box-footer">
                             @if (empty($data_geografis))
-                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                             @else
-                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
                                 <i class="fa fa-times"></i> Batal
                             </button>
                         </div>
