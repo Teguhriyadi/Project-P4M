@@ -11,7 +11,7 @@ class Rw extends Model
 
     protected $table = "tb_rw";
 
-    protected $fillable = ['rw', 'id_pejabat'];
+    protected $guarded = [''];
 
     protected $with = ['getDusun'];
 
@@ -22,6 +22,6 @@ class Rw extends Model
 
     public function getDusun()
     {
-        return $this->belongsTo("App\Models\Model\Dusun", 'id_dusun', 'id');
+        return $this->hasOne(Dusun::class, 'id', 'id_dusun');
     }
 }
