@@ -278,6 +278,10 @@ Route::prefix("page")->group(function() {
                 Route::resource("/jabatan", JabatanController::class);
 
                 // Pegawai
+                Route::get("/pegawai/{id}/luar", [PegawaiController::class, "luar"]);
+                Route::get("/pegawai/{id}/dalam", [PegawaiController::class, "dalam"]);
+                Route::put("/pegawai/{id}/dalam", [PegawaiController::class, "updateDalam"]);
+                Route::put("/pegawai/{id}/luar", [PegawaiController::class, "updateLuar"]);
                 Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
                 Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
                 Route::put("/pegawai/create", [PegawaiController::class, "data"]);

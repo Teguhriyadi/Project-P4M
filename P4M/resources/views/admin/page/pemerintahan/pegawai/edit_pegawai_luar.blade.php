@@ -58,7 +58,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$edit->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$edit->id.'/luar') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
             @method("PUT")
             @csrf
             <input type="hidden" name="oldImage" value="{{ $edit->foto }}">
@@ -70,16 +70,14 @@
                         </h3>
                     </div>
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="foto"> Foto </label>
-                            @if ($edit->foto)
-                            <br>
-                            <img class="gambar-preview img-fluid" src="{{ url('/storage/'.$edit->foto) }}" width="300" style="margin-bottom: 5px;">
-                            @else
-                            <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
-                            @endif
-                            <input onchange="previewImage()" type="file" class="form-control input-sm" name="foto" id="foto">
-                        </div>
+                        <label for="foto"> Foto </label>
+                        @if ($edit->foto)
+                        <br>
+                        <img class="gambar-preview img-fluid" src="{{ url('/storage/'.$edit->foto) }}" width="300" style="margin-bottom: 5px;">
+                        @else
+                        <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
+                        @endif
+                        <input onchange="previewImage()" type="file" class="form-control input-sm" name="foto" id="foto">
                     </div>
                 </div>
             </div>
@@ -103,11 +101,7 @@
                                 <input type="text" class="form-control input-sm" name="nik" id="nik" placeholder="Nomor Induk Kependudukan" value="{{ $edit->nik }}">
                             </div>
                         </div>
-                        <!--
-                            <div class="form-group">
-                                <label for="nip" class="col-sm-4 control-label"> NIPD </label>
-                            </div>
-                        -->
+
                         <div class="form-group">
                             <label for="nip" class="col-sm-4 control-label"> NIP </label>
                             <div class="col-sm-7">
@@ -134,18 +128,11 @@
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label"> Jenis Kelamin </label>
                             <div class="col-sm-7">
-                                <select name="sex" id="sex" class="form-control input-sm">
+                                <select name="sex" id="sex" class="form-control input-sm select2">
                                     <option value="">- Pilih -</option>
-                                    @if ($edit->sex == "L")
-                                    <option value="L" selected>Laki - Laki</option>
-                                    <option value="P">Perempuan</option>
-                                    @elseif($edit->sex == "P")
-                                    <option value="L">Laki - Laki</option>
-                                    <option value="P" selected>Perempuan</option>
-                                    @else
-                                    <option value="L">Laki - Laki</option>
-                                    <option value="P">Perempuan</option>
-                                    @endif
+                                    @foreach ($data_sex as $sex)
+                                        <option value="{{ $sex->id }}" {{ $sex->id == $edit->sex ? 'selected' : '' }}>{{ $sex->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -154,16 +141,8 @@
                             <div class="col-sm-7">
                                 <select name="pendidikan" class="form-control input-sm select2" id="pendidikan">
                                     <option value="">- Pilih Pendidikan (Dalam KK) -</option>
-                                    @foreach ($data_pendidikan_kk as $data)
-                                        @if ($edit->pendidikan == $data->id)
-                                        <option value="{{ $data->id }}" selected>
-                                            {{ $data->nama }}
-                                        </option>
-                                        @else
-                                        <option value="{{ $data->id }}">
-                                            {{ $data->nama }}
-                                        </option>
-                                        @endif
+                                    @foreach ($data_pendidikan_kk as $pendidikan)
+                                        <option value="{{ $pendidikan->id }}" {{ $pendidikan->id == $edit->pendidikan ? 'selected' : '' }}>{{ $pendidikan->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -174,9 +153,9 @@
                                 <select name="agama" class="form-control input-sm select2" id="agama">
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_agama as $agama)
-                                        <option value="{{ $agama->nama }}">
-                                            {{ $agama->nama }}
-                                        </option>
+                                    <option value="{{ $agama->id }}" {{ $agama->id == $edit->agama ? 'selected' : '' }}>
+                                        {{ $agama->nama }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
