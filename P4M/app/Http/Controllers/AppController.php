@@ -43,7 +43,7 @@ class AppController extends Controller
             'rw' => Rw::where('id_dusun', $request->id_dusun)->get()
         ];
 
-        return view("/admin/page/penduduk/ajax/rw", $data);
+        return view("admin.page.penduduk.ajax.rw", $data);
     }
 
     public function ambilRt(Request $request)
@@ -52,7 +52,7 @@ class AppController extends Controller
             'rt' => Rt::where('id_rw', $request->id_rw)->get()
         ];
 
-        return view("/admin/page/penduduk/ajax/rt", $data);
+        return view("admin.page.penduduk.ajax.rt", $data);
     }
 
 }

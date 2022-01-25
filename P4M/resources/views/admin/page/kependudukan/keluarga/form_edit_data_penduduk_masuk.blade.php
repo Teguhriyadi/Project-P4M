@@ -13,7 +13,7 @@
             <select name="id_dusun" id="id_dusun" class="form-control input-sm select2" width="100%">
                 <option value="">Pilih Dusun</option>
                 @foreach ($data_dusun as $d)
-                <option value="{{ $d->id }}">
+                <option value="{{ $d->id }}" {{ $kepala_keluarga->id_dusun == $d->id ? 'selected' : '' }}>
                     {{ $d->dusun }}
                 </option>
                 @endforeach
@@ -22,10 +22,28 @@
     </div>
 
     <div class="col-md-4">
+        <div class="form-group" id="rwSebelumnya">
+            <label for="rw">RW</label>
+            <select class="form-control input-sm select2">
+                <option value="">Pilih RW</option>
+                @foreach ($data_rw as $rw)
+                    <option value="{{ $rw->id }}" {{ $rw->id == $kepala_keluarga->id_rw ? 'selected' : '' }}>{{ $rw->rw }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="form-group" id="rw"></div>
     </div>
 
     <div class="col-md-4">
+        <div class="form-group" id="rtSebelumnya">
+            <label for="rt">RT</label>
+            <select class="form-control input-sm select2">
+                <option value="">Pilih RT</option>
+                @foreach ($data_rt as $rt)
+                    <option value="{{ $rt->id }}" {{ $rt->id == $kepala_keluarga->id_rt ? 'selected' : '' }}>{{ $rt->rt }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="form-group" id="rt"></div>
     </div>
 </div>
@@ -57,6 +75,7 @@
                 url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rw') }}",
                 data: { id_dusun: id_dusun },
                 success: function(data){
+                    $("#rwSebelumnya").addClass('hidden')
                     $("#rw").html(data);
                 }
             });
