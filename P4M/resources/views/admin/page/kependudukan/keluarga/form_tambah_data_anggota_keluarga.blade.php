@@ -1,4 +1,4 @@
-<input type="hidden" name="id_kk" value="{{ $detail->id }}">
+<input type="hidden" name="id_kk" value="{{ $detail->nik_kepala }}">
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover" width="100%">
         <thead class="bg-purple">
@@ -13,7 +13,7 @@
             @php
                 use App\Models\Model\Penduduk;
 
-                $data_penduduk = Penduduk::where("id_kk", $detail->id_kk)
+                $data_penduduk = Penduduk::where("id_kk", $detail->nik_kepala)
                 ->where("id_kk", "!=", NULL)
                 ->get();
             @endphp

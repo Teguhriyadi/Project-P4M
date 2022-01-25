@@ -7,6 +7,7 @@ use App\Models\Model\Dusun;
 use App\Models\Model\GolonganDarah;
 use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukAgama;
+use App\Models\Model\PendudukHubungan;
 use App\Models\Model\PendudukPekerjaan;
 use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukSex;
@@ -37,12 +38,13 @@ class PendudukFactory extends Factory
         $cacat = Cacat::all()->pluck('id')->toArray();
         $sakit = SakitMenahun::all()->pluck('id')->toArray();
         $status = StatusDasar::all()->pluck('id')->toArray();
+        $kk_level = PendudukHubungan::all()->pluck('id')->toArray();
 
         return [
             'nama' => $this->faker->name(['male', 'female']),
             'nik' => mt_rand(1000000000, 9999999999),
             'kk_sebelumnya' => mt_rand(1000000000, 9999999999),
-            'kk_level' => mt_rand(1, 3),
+            'kk_level' => $this->faker->randomElement($kk_level),
             'id_sex' => $this->faker->randomElement($sex),
             'tempat_lahir' => $this->faker->citySuffix(),
             'tgl_lahir' => $this->faker->date("Y-m-d"),

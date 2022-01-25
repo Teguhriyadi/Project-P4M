@@ -9,18 +9,18 @@ class HakAksesController extends Controller
 {
     public function index()
     {
-        return view("admin/page/pengaturan/hak_akses/index");
+        $data = [
+            "data_hak_akses" => HakAkses::all()
+        ];
+
+        return view("admin/page/pengaturan/hak_akses/index", $data);
     }
 
     public function store(Request $request)
     {
-        $cek = HakAkses::create($request->all());
+        HakAkses::create($request->all());
 
-        if ($cek) {
-            echo 1;
-        } else {
-            echo 2;
-        }
+        return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
 
     }
 
@@ -58,13 +58,13 @@ class HakAksesController extends Controller
             "nama_hak_akses" => $request->nama_hak_akses
         ]);
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        return redirect("/page/admin/pengaturan/hak_akses/")->with('message', "<script>swal('Selamat!', 'Data berhasil diubah', 'success')</script>");
     }
 
     public function destroy($id)
     {
         HakAkses::where("id", $id)->delete();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
     }
 }
