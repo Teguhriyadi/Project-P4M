@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Pegawai;
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikanKK;
 use Illuminate\Http\Request;
