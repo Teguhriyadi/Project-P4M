@@ -27,11 +27,13 @@
             @endif
             @csrf
             <div class="row">
-
                 <div class="col-md-8">
                     <div class="box box-info">
                         <div class="box-header">
-                            <a href="{{ url('/profil/sejarah-desa') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm">
+                            <h3 class="box-title">
+                                <i class="fa fa-plus"></i> Tambah Sejarah Desa
+                            </h3>
+                            <a href="{{ url('/profil/sejarah-desa') }}" target="_blank" class="pull-right btn btn-social btn-info btn-flat btn-sm">
                                 <i class="fa fa-eye"></i> Preview
                             </a>
                         </div>
@@ -39,9 +41,9 @@
                             <div class="form-group">
                                 <label for="sejarah">Sejarah</label>
                                 @if ($sejarah)
-                                <textarea name="sejarah" id="sejarah" rows="10" class="form-control">{{ $sejarah->sejarah }}</textarea>
+                                <textarea name="sejarah" id="sejarah" rows="10" class="form-control" placeholder="Masukkan Sejarah Desa">{{ $sejarah->sejarah }}</textarea>
                                 @else
-                                <textarea name="sejarah" id="sejarah" rows="10" class="form-control"></textarea>
+                                <textarea name="sejarah" id="sejarah" rows="10" class="form-control">Masukkan Sejarah Desa</textarea>
                                 @endif
                             </div>
                         </div>
@@ -49,6 +51,11 @@
                 </div>
                 <div class="col-md-4">
                     <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">
+                                <i class="fa fa-upload"></i> Upload Gambar
+                            </h3>
+                        </div>
                         <div class="box-body">
                             <label for="gambar" style="width: 100%"> Gambar </label>
                             @if ($sejarah)
