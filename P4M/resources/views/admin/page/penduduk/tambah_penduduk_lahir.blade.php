@@ -27,9 +27,16 @@
             <div class="col-md-4">
                 <div class="box box-info">
                     <div class="box-body box-profile">
-                        <img class="gambar-preview img-responsive img-circle profile-user-img" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
-
-                        <input type="file" name="foto" id="foto" class="form-control input-sm">
+                        <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 35px; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
+                        <div class="input-group input-group-sm">
+                            <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                            <input type="file" class="hidden" id="file4" name="foto" onchange="previewImage()">
+                            <span class="input-group-btn">
+                                <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                    <i class="fa fa-upload"></i> Upload
+                                </button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,19 +82,23 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="kk_sebelumnya"> Nomor KK Sebelumnya </label>
-                                <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya">
+                                <div class="form-group">
+                                    <label for="kk_sebelumnya"> Nomor KK Sebelumnya </label>
+                                    <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya">
+                                </div>
                             </div>
                             <div class="col-sm-6">
-                                <label for="id_sex"> Jenis Kelamin </label>
-                                <select name="id_sex" id="id_sex" class="form-control input-sm">
-                                    <option value="">- Pilih -</option>
-                                    @foreach ($data_kelamin as $sex)
-                                    <option value="{{ $sex->id }}">
-                                        {{ $sex->nama }}
-                                    </option>
-                                    @endforeach
-                                </select>
+                                <div class="form-group">
+                                    <label for="id_sex"> Jenis Kelamin </label>
+                                    <select name="id_sex" id="id_sex" class="form-control input-sm">
+                                        <option value="">- Pilih -</option>
+                                        @foreach ($data_kelamin as $sex)
+                                        <option value="{{ $sex->id }}">
+                                            {{ $sex->nama }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="col-sm-7">
@@ -504,6 +515,34 @@
 </script>
 
 <script>
+    function previewImage() {
+        const image = document.querySelector("#file4");
+        const imgPreview = document.querySelector(".img-preview");
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+    $('#file_browser4').click(function(e)
+	{
+		e.preventDefault();
+		$('#file4').click();
+	});
+	$('#file4').change(function()
+	{
+		$('#file_path4').val($(this).val());
+	});
+	$('#file_path4').click(function()
+	{
+		$('#file_browser4').click();
+	});
+
     ! function(a, i, r) {
         var e = {};
         e.UTIL = {
