@@ -33,11 +33,13 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li>
-            <a href="{{ url('/page/admin/kependudukan/penduduk') }}">Daftar Penduduk</a>
+            <a href="{{ url('/page/admin/kependudukan/penduduk') }}">
+                Data Penduduk
+            </a>
         </li>
         <li class="active">@yield('title')</li>
     </ol>
@@ -48,9 +50,15 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-info btn-sm"><i class="fa fa-arrow-circle-o-left"></i> Kembali</a>
-                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/edit') }}" class="btn btn-social btn-flat btn-warning btn-sm"><i class="fa fa-edit"></i> Ubah Biodata</a>
-                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/cetak') }}" class="btn btn-social btn-flat btn-primary btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak Penduduk</a>
+                    <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali">
+                        <i class="fa fa-arrow-circle-o-left"></i> Kembali
+                    </a>
+                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/edit') }}" class="btn btn-social btn-flat btn-warning btn-sm" title="Ubah Biodata">
+                        <i class="fa fa-edit"></i> Ubah Biodata
+                    </a>
+                    <a href="{{ url('page/admin/kependudukan/penduduk/'.$penduduk->id.'/cetak') }}" class="btn btn-social btn-flat btn-primary btn-sm" target="_blank" title="Cetak Penduduk">
+                        <i class="fa fa-print"></i> Cetak Penduduk
+                    </a>
                 </div>
 
                 <div class="box-body">
