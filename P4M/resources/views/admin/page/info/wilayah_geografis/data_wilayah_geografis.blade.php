@@ -18,6 +18,7 @@
     </ol>
 </section>
 
+@if ($data_geografis)
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -76,6 +77,30 @@
         </div>
     </div>
 </section>
+@else
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Perhatian</h3>
+                </div>
+                <div class="box-body">
+                    <div class="callout callout-danger">
+                        <h4>Tidak Bisa Menginputkan Data</h4>
+
+                        <p>
+                            Karena <b> Data Geografis </b> Masih Kosong.
+                            <a href="{{ url('/page/admin/info/geografis') }}"> Silahkan Inputkan Data Geografis Terlebih Dahulu</a>
+                        </p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Tambah Data -->
 <div class="modal fade" id="modal-default">
@@ -111,8 +136,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
