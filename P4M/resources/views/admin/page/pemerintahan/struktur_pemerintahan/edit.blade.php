@@ -75,8 +75,8 @@
                         <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                             <i class="fa fa-edit"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
-                            <i class="fa fa-refresh"></i> Batal
+                        <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                            <i class="fa fa-refresh"></i> Reset
                         </button>
                         <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" class="pull-right btn btn-info btn-social btn-flat btn-sm">
                             <i class="fa fa-sign-out"></i> Kembali

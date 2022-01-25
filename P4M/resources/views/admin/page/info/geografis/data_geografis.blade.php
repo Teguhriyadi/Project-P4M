@@ -65,8 +65,8 @@
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
-                                <i class="fa fa-times"></i> Batal
+                            <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                                <i class="fa fa-refresh"></i> Reset
                             </button>
                         </div>
                     </form>

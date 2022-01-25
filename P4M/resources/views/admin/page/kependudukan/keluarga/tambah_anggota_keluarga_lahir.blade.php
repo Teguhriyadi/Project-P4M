@@ -511,8 +511,8 @@
                     </div>
 
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
-                            <i class="fa fa-times"></i> Batal
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"  title="Reset">
+                            <i class="fa fa-refresh"></i> Reset
                         </button>
                         <button type="submit" class="btn btn-social btn-flat btn-primary btn-sm pull-right" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah

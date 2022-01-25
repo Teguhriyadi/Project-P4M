@@ -125,8 +125,8 @@ use App\Models\Model\Penduduk;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger btn-flat btn-sm pull-left">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah
@@ -156,8 +156,8 @@ use App\Models\Model\Penduduk;
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger btn-flat btn-sm pull-left">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-danger btn-flat btn-sm pull-left" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-primary btn-flat btn-sm">
                         <i class="fa fa-plus"></i> Tambah

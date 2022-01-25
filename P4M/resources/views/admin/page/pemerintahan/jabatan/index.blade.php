@@ -39,8 +39,8 @@
                         <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
-                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
-                            <i class="fa fa-times"></i> Batal
+                        <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                            <i class="fa fa-refresh"></i> Reset
                         </button>
                     </div>
                 </form>
