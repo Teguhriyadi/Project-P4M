@@ -20,17 +20,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dataDusun as $data)
-                        @php
-                            $data_sex = DB::table("tb_penduduk_sex")->get();
-                        @endphp
+                    @forelse ($dataDusun as $data)
                         <tr>
                             <td>{!! $data->dusun !!}</td>
                             <td></td>
                             <td></td>
                             <td>{!! $data->getCountPenduduk->count() !!}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <i>
+                                    <b>Data Tidak Ada</b>
+                                </i>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

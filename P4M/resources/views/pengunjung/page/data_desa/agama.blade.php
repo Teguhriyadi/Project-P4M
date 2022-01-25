@@ -8,19 +8,20 @@
 
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald; margin-bottom: 5rem;">@yield('title')</h2>
+        @if ($agama->count())
         <center><div id="piechart"></div></center>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th class="text-center">No</th>
                         <th>Agama</th>
-                        <th>Jumlah</th>
-                        <th>Persentase</th>
+                        <th class="text-center">Jumlah</th>
+                        <th class="text-center">Persentase</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($agama as $a)
+                    @forelse ($agama as $a)
                     <tr>
                         <th>{!! $loop->iteration !!}</th>
                         <td>{!! $a->nama !!}</td>
@@ -34,10 +35,23 @@
                             %
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <i>
+                                <b>Daat Saat Ini Masih Kosong</b>
+                            </i>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+        @else
+        <div class="alert alert-danger" role="alert">
+            <strong>Maaf, </strong> Data Agama Belum Tersedia
+        </div>
+        @endif
     </div>
 </div>
 

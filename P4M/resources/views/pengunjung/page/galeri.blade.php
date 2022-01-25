@@ -25,6 +25,7 @@
             <div class="main">
                 <div class="main_body">
                     <div class="academy-blog-posts">
+                        @if ($data_galeri->count())
                         <div class="row">
                             @foreach ($data_galeri as $galeri)
                             <div class="col-md-4 col-sm-6 col-xs-6">
@@ -44,6 +45,15 @@
                         <div style="display: flex; justify-content: end;">
                             {{ $data_galeri->links() }}
                         </div>
+                        @else
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Maaf, </strong> Belum Ada Galeri yang Tersedia
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

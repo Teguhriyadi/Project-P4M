@@ -9,6 +9,7 @@ $komentar = Komentar::latest()->paginate(6);
     <div id="mostPopular2" class="tab-pane fade in active" role="tabpanel">
         <ul id="ul-menu">
             <div class="box-body">
+                @if ($komentar->count())
                 <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="3" direction="up" width="100%" height="250" align="center" behavior=”alternate”>
                     <ul class="sidebar-latest" id="li-komentar">
                         @foreach ($komentar as $k)
@@ -31,6 +32,11 @@ $komentar = Komentar::latest()->paginate(6);
                         @endforeach
                     </ul>
                 </marquee>
+                @else
+                <h4>
+                    Belum Ada Komentar
+                </h4>
+                @endif
             </div>
         </ul>
     </div>

@@ -20,6 +20,7 @@
 </div>
 <div class="single_category wow fadeInDown">
     <div class="archive_style_1">
+        @if ($data_artikel->count())
         @foreach ($data_artikel as $artikel)
         <div class="business_category_left wow fadeInDown">
             <ul class="fashion_catgnav">
@@ -50,6 +51,12 @@
         <div class="d-flex justify-content-end">
             {{ $data_artikel->links() }}
         </div>
+        @else
+        <br>
+        <div class="alert alert-danger" role="alert">
+            <strong>Maaf, </strong> Belum Ada Artikel yang Tersedia
+        </div>
+        @endif
     </div>
 </div>
 

@@ -13,13 +13,19 @@
         </span>
     </div>
     <div class="single_page_content" style="margin-bottom:10px;">
-        
-       @foreach ($data_visimisi as $vm)
-           {!! $vm->visi !!}
-           <br>
-           {!! $vm->misi !!}
-       @endforeach        
-        
+
+        @if ($data_visimisi->count())
+        @foreach ($data_visimisi as $vm)
+        {!! $vm->visi !!}
+        <br>
+        {!! $vm->misi !!}
+        @endforeach
+        @else
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <strong>Maaf,</strong> Data Visi Misi Belum Tersedia
+        </div>
+        @endif
+
     </div>
 </div>
 

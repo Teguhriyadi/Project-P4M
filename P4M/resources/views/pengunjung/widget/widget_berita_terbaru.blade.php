@@ -10,6 +10,7 @@
     </h2>
     <div class="tab-content" style="padding-top: 0;">
         <div id="" class="active" role="">
+            @if ($artikel->count())
             @foreach ($artikel as $a)
             <table id="ul-menu">
                 <tr>
@@ -27,6 +28,11 @@
                 </tr>
             </table>
             @endforeach
+            @else
+            <h4>
+                Belum Ada Komentar
+            </h4>
+            @endif
         </div>
     </div>
 </div>

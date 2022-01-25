@@ -27,13 +27,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data_wgeografis as $wilayah)
+                    @forelse ($data_wgeografis as $wilayah)
                     <tr>
                         <td>{{ $wilayah->batas }}</td>
                         <td>{{ $wilayah->desa }}</td>
                         <td>{{ $wilayah->kecamatan }}</td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            <i>
+                                <b>Data Saat Ini Masih Kosong</b>
+                            </i>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -8,24 +8,25 @@
 
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald; margin-bottom: 5rem;">@yield('title')</h2>
+        @if ($wargaNegara->count())
         <center><div id="piechart"></div></center>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th class="text-center">No</th>
                         <th>Warga Negara</th>
-                        <th>Jumlah</th>
-                        <th>Persentase</th>
+                        <th class="text-center">Jumlah</th>
+                        <th class="text-center">Persentase</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($wargaNegara as $wn)
+                    @forelse ($wargaNegara as $wn)
                     <tr>
-                        <th>{!! $loop->iteration !!}</th>
+                        <td class="text-center">{!! $loop->iteration !!}</td>
                         <td>{!! $wn->nama !!}</td>
-                        <td>{!! $wn->getCountPenduduk->count() !!} Orang</td>
-                        <td>
+                        <td class="text-center">{!! $wn->getCountPenduduk->count() !!} Orang</td>
+                        <td class="text-center">
                             @if ($wn->getCountPenduduk->count() == 0)
                             0
                             @else
@@ -34,10 +35,23 @@
                             %
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <i>
+                                <b>Data Saat Ini Masih Kosong</b>
+                            </i>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+        @else
+        <div class="alert alert-danger" role="alert">
+            <strong>Maaf, </strong> Data Warga Negara Belum Tersedia
+        </div>
+        @endif
     </div>
 </div>
 

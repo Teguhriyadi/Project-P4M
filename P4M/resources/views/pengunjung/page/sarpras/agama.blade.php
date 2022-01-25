@@ -12,21 +12,29 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th class="text-center">No</th>
                         <th>Jenis</th>
-                        <th>Jumlah</th>
+                        <th class="text-center">Jumlah</th>
                         <th>Lokasi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($agama as $a)
+                    @forelse ($agama as $a)
                     <tr>
-                        <th>{!! $loop->iteration !!}</th>
+                        <td class="text-center">{!! $loop->iteration !!}</td>
                         <td>{!! $a->jenis !!}</td>
-                        <td>{!! $a->jumlah !!}</td>
+                        <td class="text-center">{!! $a->jumlah !!}</td>
                         <td>{!! $a->lokasi !!}</td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <i>
+                                <b>Data Saat Ini Masih Kosong</b>
+                            </i>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
