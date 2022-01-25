@@ -16,8 +16,8 @@ use App\Models\Model\PendudukPendidikan;
 use App\Models\Model\PendudukPendidikanKK;
 use App\Models\Model\PendudukSex;
 use App\Models\Model\PendudukWargaNegara;
-use App\Models\model\Rt;
-use App\Models\model\Rw;
+use App\Models\Model\Rt;
+use App\Models\Model\Rw;
 use App\Models\Model\SakitMenahun;
 use Illuminate\Http\Request;
 
