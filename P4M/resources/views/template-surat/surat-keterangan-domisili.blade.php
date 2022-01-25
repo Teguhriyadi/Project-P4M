@@ -3,7 +3,7 @@ use App\Models\Model\StrukturPemerintahan;
 @endphp
 @extends('admin.layouts.main')
 
-@section('title', 'Surat '.$detail_surat->nama)
+@section('title', $detail_surat->nama)
 
 @section('page_content')
 

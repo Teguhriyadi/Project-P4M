@@ -53,12 +53,13 @@ class CetakSuratController extends Controller
 
     public function cetakSuratBeforeUpdate(Request $request)
     {
-        // $this->simpanLogSurat($request);
+        $this->simpanLogSurat($request);
 
         $no_surat = $request->no_surat;
         $keperluan = $request->keperluan;
         $keterangan = $request->keterangan;
         $penduduk = Penduduk::where('id', $request->id_penduduk)->first();
+        $kepala_kk = Penduduk::where('id_kk', $penduduk->id_kk)->where('kk_level', 1)->first();
         $format = SuratFormat::where('id', $request->id_surat_format)->first();
         $pegawai = Pegawai::where('id', $request->id_pegawai)->first();
         $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
@@ -86,6 +87,8 @@ class CetakSuratController extends Controller
             'bulan' => $this->bulanRomawi(date('m')),
             'tahun' => date("Y"),
             'nama' => $penduduk->nama,
+            'no_kk' => $penduduk->getKeluarga->no_kk,
+            'kepala_kk' => $kepala_kk->nama,
             'nik' => $penduduk->nik,
             'kelamin' => $penduduk->getKelamin->nama,
             'tempat' => $penduduk->tempat_lahir,
@@ -93,6 +96,7 @@ class CetakSuratController extends Controller
             'warga_negara' => $penduduk->getWargaNegara->nama,
             'agama' => $penduduk->getAgama->nama,
             'pekerjaan' => $penduduk->getPekerjaan->nama,
+            'pendidikan' => $penduduk->getPendidikan->nama,
             'status_kawin' => $penduduk->getKawin->nama,
             'dusun' => $penduduk->getDusun->dusun,
             'rt' => $penduduk->getRt->rt,

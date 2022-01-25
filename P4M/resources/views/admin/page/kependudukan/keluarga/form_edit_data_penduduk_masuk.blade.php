@@ -9,6 +9,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
+<<<<<<< HEAD
             <label for="dusun"> Dusun </label>
             <select name="dusun" id="dusun" class="form-control input-sm select2">
                 <option value="">- Pilih -</option>
@@ -22,25 +23,26 @@
                         {{ $dusun->dusun }}
                     </option>
                     @endif
+=======
+            <label for="id_dusun">Dusun</label>
+            <select name="id_dusun" id="id_dusun" class="form-control input-sm select2" width="100%">
+                <option value="">Pilih Dusun</option>
+                @foreach ($data_dusun as $d)
+                <option value="{{ $d->id }}">
+                    {{ $d->dusun }}
+                </option>
+>>>>>>> 8918f43dab49aba578a29652befe7e02b06f8e58
                 @endforeach
             </select>
         </div>
     </div>
+
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="rw"> RW </label>
-            <select name="rw" id="rw" class="form-control input-sm select2">
-                <option value="">- Pilih -</option>
-            </select>
-        </div>
+        <div class="form-group" id="rw"></div>
     </div>
+
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="rt"> RT </label>
-            <select name="rt" id="rt" class="form-control input-sm select2">
-                <option value="">- Pilih -</option>
-            </select>
-        </div>
+        <div class="form-group" id="rt"></div>
     </div>
 </div>
 <div class="form-group">
@@ -61,5 +63,19 @@
 
 
 <script>
-    $(".select2").select2()
+    $(".select2").select2();
+    $(document).ready(function () {
+        $("#id_dusun").change(function () {
+            let id_dusun = $(this).val();
+
+            $.ajax({
+                type: "POST",
+                url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rw') }}",
+                data: { id_dusun: id_dusun },
+                success: function(data){
+                    $("#rw").html(data);
+                }
+            });
+        })
+    })
 </script>

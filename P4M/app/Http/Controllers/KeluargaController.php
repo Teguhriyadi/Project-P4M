@@ -113,11 +113,10 @@ class KeluargaController extends Controller
     {
         $data = [
             "data_keluarga_sejahtera" => KeluargaSejahtera::get(),
-            "edit" => Keluarga::where("id", $request->id)->first(),
-            "data_desa" => Dusun::all()
+            "data_dusun" => Dusun::get(),
         ];
 
-        return view("/admin/page/kependudukan/keluarga/form_edit_data_penduduk_masuk", $data);
+        return view("admin.page.kependudukan.keluarga.form_edit_data_penduduk_masuk", $data);
     }
 
     public function rincian_keluarga($id)
