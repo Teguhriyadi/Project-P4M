@@ -11,7 +11,7 @@ class Rt extends Model
 
     protected $table = "tb_rt";
 
-    protected $fillable = ['rt', 'id_pejabat'];
+    protected $guarded = [''];
 
     protected $with = ['getRw'];
 
