@@ -117,6 +117,7 @@ class KeluargaController extends Controller
             "data_dusun" => Dusun::get(),
             "data_rw" => Rw::get(),
             "data_rt" => Rt::get(),
+            "edit" => Keluarga::where("id", $request->id)->first()
         ];
 
         $data['kepala_keluarga'] = Penduduk::where('id_kk', $data['keluarga']->nik_kepala)->where('kk_level', 1)->first();

@@ -132,7 +132,7 @@
                                     <td class="text-center">{{ $data->nik }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->tgl_lahir }}</td>
-                                    <td></td>
+                                    <td class="text-center">{{ $data->getKelamin->nama }}</td>
                                     <td class="text-center">
                                         @if (empty($data->getHubungan->nama))
                                         <i>
