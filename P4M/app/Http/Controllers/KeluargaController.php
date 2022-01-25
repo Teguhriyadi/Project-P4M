@@ -113,10 +113,11 @@ class KeluargaController extends Controller
     {
         $data = [
             "data_keluarga_sejahtera" => KeluargaSejahtera::get(),
-            "data_dusun" => Dusun::get(),
+            "edit" => Keluarga::where("id", $request->id)->first(),
+            "data_dusun" => Dusun::all()
         ];
 
-        return view("admin.page.kependudukan.keluarga.form_edit_data_penduduk_masuk", $data);
+        return view("/admin/page/kependudukan/keluarga/form_edit_data_penduduk_masuk", $data);
     }
 
     public function rincian_keluarga($id)
@@ -247,6 +248,25 @@ class KeluargaController extends Controller
         ]);
 
         return back();
+    }
+
+    public function ubah_hubungan_keluarga(Request $request)
+    {
+        $data = [
+            "detail" => Penduduk::where("id", $request->id)->first(),
+            "data_hubungan" => PendudukHubungan::all()
+        ];
+
+        return view("/admin/page/kependudukan/keluarga/ubah_hubungan_keluarga", $data);
+    }
+
+    public function ubah_data_hubungan_keluarga(Request $request)
+    {
+        Penduduk::where("id", $request->id_penduduk)->update([
+            "kk_level" => $request->kk_level
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
 }

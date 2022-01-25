@@ -96,12 +96,12 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No.</th>
+                                    <th class="text-center">Aksi</th>
                                     <th class="text-center">NIK</th>
                                     <th>Nama</th>
                                     <th class="text-center">Tanggal Lahir</th>
                                     <th class="text-center">Jenis Kelamin</th>
                                     <th class="text-center">Hubungan Keluarga</th>
-                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,6 +113,22 @@
                                 @foreach ($data_penduduk as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-warning btn-flat btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a onclick="ubahHubunganKeluarga({{ $data->id }})" data-toggle="modal" data-target="#ubahHubungan" class="btn bg-navy btn-flat btn-sm" title="Ubah Hubungan Keluarga">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                        <form action="{{ url('/page/admin/kependudukan/keluarga/rincian_keluarga/hapus') }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <input type="hidden" name="id_penduduk" value="{{ $data->id }}">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Bukan Anggota Keluarga Ini">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                     <td class="text-center">{{ $data->nik }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td class="text-center">{{ $data->tgl_lahir }}</td>
@@ -125,19 +141,6 @@
                                         @else
                                         {{ $data->getHubungan->nama }}
                                         @endif
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-flat btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <form action="{{ url('/page/admin/kependudukan/keluarga/rincian_keluarga/hapus') }}" method="POST" style="display: inline;">
-                                            @method("DELETE")
-                                            @csrf
-                                            <input type="hidden" name="id_penduduk" value="{{ $data->id }}">
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Bukan Anggota Keluarga Ini">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -182,6 +185,38 @@
 </div>
 <!-- END -->
 
+<!-- Ubah Hubungan Keluarga -->
+<div class="modal fade" id="ubahHubungan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-edit"></i> Ubah Hubungan Keluarga
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/kependudukan/keluarga/ubah_data_hubungan_keluarga') }}" method="POST">
+                @method("PUT")
+                @csrf
+                <div class="modal-body" id="ubah-hubungan">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-social btn-warning pull-left btn-flat btn-sm" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan">
+                        <i class="fa fa-edit"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
 @endsection
 
 @section('page_scripts')
@@ -196,6 +231,19 @@
             data : { id : id },
             success : function(data) {
                 $("#modal-content-edit").html(data);
+                return true;
+            }
+        });
+    }
+
+    function ubahHubunganKeluarga(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/kependudukan/keluarga/ubah_hubungan_keluarga') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#ubah-hubungan").html(data);
                 return true;
             }
         });
