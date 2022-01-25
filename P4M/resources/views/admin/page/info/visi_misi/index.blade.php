@@ -39,7 +39,9 @@
                                 <i class="fa fa-plus"></i> Tambah @yield('title')
                                 @endif
                             </h3>
-                            <a href="/pemerintahan/visi-misi" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right"><i class="fa fa-eye"></i> Preview</a>
+                            <a href="{{ url('/pemerintahan/visi-misi') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" title="Lihat">
+                                <i class="fa fa-eye"></i> Preview
+                            </a>
                         </div>
                         <div class="box-body">
                             @if ($data_visi_misi->count())
@@ -78,15 +80,15 @@
                         </div>
                         <div class="box-footer">
                             @if ($data_visi_misi->count())
-                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
                             @else
-                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>
                             @endif
-                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                            <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm" title="Batal">
                                 <i class="fa fa-times"></i> Batal
                             </button>
                         </div>
