@@ -37,13 +37,13 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
+                        <button type="submit" class="btn btn-success btn-sm" title="Simpan">
                             <i class="fa fa-edit"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
-                        </button>
-                        <a href="{{ url('/page/admin/tahun') }}" class="btn btn-info btn-sm pull-right">
+                        <button type="reset" class="btn btn-social btn-warning btn-sm" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
+                        <a href="{{ url('/page/admin/tahun') }}" class="btn btn-info btn-sm pull-right" title="Kembali">
                             <i class="fa fa-sign-out"></i> Kembali
                         </a>
                     </div>

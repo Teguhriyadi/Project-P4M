@@ -497,7 +497,7 @@
                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                             <i class="fa fa-refresh"></i> Reset
                         </button>
-                        <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right">
+                        <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right" title="Tambah">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
                     </div>
