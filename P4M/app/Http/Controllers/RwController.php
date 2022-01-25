@@ -16,12 +16,15 @@ class RwController extends Controller
             "data_dusun" => Dusun::all(),
         ];
 
-        return view("/admin/page/penduduk/rw/data_rw", $data);
+        return view("admin.page.penduduk.rw.data_rw", $data);
     }
 
     public function store(Request $request)
     {
-        Rw::create($request->all());
+        Rw::create([
+            'id_dusun' => $request->id_dusun,
+            'rw' => $request->rw
+        ]);
 
         return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
