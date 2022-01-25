@@ -136,7 +136,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="id_rw">RW</label>
-                        <select class="form-control" name="id_rw" id="id_rw">
+                        <select class="form-control select2" name="id_rw" id="id_rw" style="width: 100%">
+                            <option value="">- Silahkan cari RW -</option>
                             @foreach ($data_rw as $rw)
                                 <option value="{{ $rw->id }}">{{ $rw->rw }}</option>
                             @endforeach
