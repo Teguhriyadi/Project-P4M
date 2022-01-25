@@ -204,7 +204,7 @@ class KeluargaController extends Controller
     public function form_tambah_data_anggota_keluarga(Request $request)
     {
         $data = [
-            "detail" => Penduduk::where("id", $request->id)->first()
+            "detail" => Keluarga::where("id", $request->id)->first()
         ];
 
         return view("/admin/page/kependudukan/keluarga/form_tambah_data_anggota_keluarga", $data);
@@ -216,7 +216,7 @@ class KeluargaController extends Controller
             "id_kk" => $request->id_kk
         ]);
 
-        return redirect("/page/admin/kependudukan/keluarga/".$request->id_penduduk."/rincian_keluarga");
+        return redirect("/page/admin/kependudukan/keluarga/".$request->id_kk."/rincian_keluarga");
     }
 
 }

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/select2/dist/css/select2.min.css">
+<link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/select2bs/select2-bootstrap4.min.css">
 
 <!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet" href="{{ url('/backend/template') }}/bower_components/bootstrap/dist/css/bootstrap.min.css">

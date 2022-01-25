@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Edit Hak Akses')
+@section('title', 'Edit Data Hak Akses')
 
 @section('page_content')
 
@@ -11,7 +11,12 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/pengaturan/hak_akses') }}">
+                Data Hak Akses
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -21,10 +26,10 @@
 <section class="content">
     <div class="row">
         <div class="col-md-4">
-            <div class="box" id="">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-plus"></i> Tambah @yield('title')
+                        <i class="fa fa-edit"></i> Edit Data
                     </h3>
                 </div>
                 <form action="{{ url('/page/admin/pengaturan/hak_akses/'.$edit->id) }}" method="POST" id="editHakAkses">
@@ -37,15 +42,15 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
+                        <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                             <i class="fa fa-edit"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                            <i class="fa fa-times"></i> Batal
                         </button>
                         <div class="pull-right">
-                            <a href="{{ url('/page/admin/pengaturan/hak_akses') }}" class="btn btn-info btn-sm">
-                                <i class="fa fa-sign-out"></i> Kembali
+                            <a href="{{ url('/page/admin/pengaturan/hak_akses') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali">
+                                <i class="fa fa-arrow-circle-left"></i> Kembali
                             </a>
                         </div>
                     </div>
@@ -53,10 +58,10 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        @yield('title')
+                        Data Hak Akses
                     </h3>
                 </div>
                 <div class="box-body">
