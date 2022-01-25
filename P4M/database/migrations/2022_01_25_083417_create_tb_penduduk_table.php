@@ -26,8 +26,8 @@ class CreateTbPendudukTable extends Migration
             $table->string('waktu_lahir', 10)->nullable();
             $table->foreignId('id_rtm')->nullable()->constrained("tb_rtm")->cascadeOnUpdate()->nullOnDelete();
             $table->integer('rtm_level')->default(0);
-            $table->foreignId('id_agama')->nullable()->constrained("tb_penduduk_sex")->cascadeOnUpdate()->nullOnDelete();
-            $table->foreignId('id_pendidikan')->nullable()->constrained("tb_penduduk_pendidikan_kk")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('id_agama')->nullable()->constrained("tb_penduduk_agama")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('id_pendidikan')->nullable()->constrained("tb_penduduk_pendidikan")->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('id_pendidikan_sedang')->nullable()->constrained("tb_penduduk_pendidikan")->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('id_pekerjaan')->nullable()->constrained("tb_penduduk_pekerjaan")->cascadeOnUpdate()->nullOnDelete();
             $table->integer('status_kawin')->nullable();

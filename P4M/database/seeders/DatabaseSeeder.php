@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Model\Artikel;
-use App\Models\Model\Galeri;
 use App\Models\Model\Penduduk;
+use App\Models\model\Rt;
+use App\Models\model\Rw;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Penduduk::factory(500)->create();
-        Artikel::factory(50)->create();
-        // Galeri::factory(20)->create();
 
+        $this->call(HakAksesSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(KategoriSeeder::class);
-        $this->call(HakAksesSeeder::class);
         $this->call(JabatanSeeder::class);
         //$this->call(PegawaiSeeder::class);
         $this->call(AgamaSeeder::class);
@@ -45,11 +43,15 @@ class DatabaseSeeder extends Seeder
         $this->call(PeristiwaSeeder::class);
         $this->call(GolonganDarahSeeder::class);
         $this->call(DusunSeeder::class);
-        $this->call(RtSeeder::class);
         $this->call(RwSeeder::class);
+        $this->call(RtSeeder::class);
         $this->call(SakitMenahunSeeder::class);
         $this->call(RtmHubunganSeeder::class);
         // $this->call(PendudukSeeder::class);
         $this->call(StatusDasarSeeder::class);
+
+        Artikel::factory(50)->create();
+        Penduduk::factory(500)->create();
+        // Galeri::factory(20)->create();
     }
 }

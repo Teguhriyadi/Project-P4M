@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Model\HakAkses;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
