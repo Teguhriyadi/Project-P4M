@@ -65,13 +65,13 @@
                             <div class="form-group row">
                                 <h3 for="visi" class="col-sm-2">Visi</h3>
                                 <div class="col-sm-10">
-                                    <textarea name="visi" id="visi" cols="80" rows="10"></textarea>
+                                    <textarea name="visi" id="visi" cols="80" rows="10">Masukkan Visi Desa</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <h3 for="misi" class="col-sm-2 control-label">Misi</h3>
                                 <div class="col-sm-10">
-                                    <textarea name="misi" id="misi" cols="80" rows="10"></textarea>
+                                    <textarea name="misi" id="misi" cols="80" rows="10">Masukkan Misi Desa</textarea>
                                 </div>
                             </div>
                             @endif

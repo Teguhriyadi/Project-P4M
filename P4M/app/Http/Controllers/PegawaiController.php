@@ -33,7 +33,6 @@ class PegawaiController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
         $validatedData = $request->validate([
             "nama" => "required",
             "nip" => "required",
