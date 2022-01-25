@@ -57,7 +57,7 @@
                                         {{ $pegawai->getKelamin->nama }}
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm" title="Edit Data">
+                                        <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/luar" class="btn btn-warning btn-sm" title="Edit Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
@@ -95,7 +95,7 @@
                                     {{ $penduduk->getKelamin->nama }}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm" title="Edit Data">
+                                    <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/dalam" class="btn btn-warning btn-sm" title="Edit Data">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
