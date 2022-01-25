@@ -29,7 +29,7 @@ class PendudukController extends Controller
     {
         $data = [
             "data_status_dasar" => StatusDasar::get(),
-            "penduduk" => Penduduk::where('id_status_dasar', 1)->get()
+            "penduduk" => Penduduk::where('id_status_dasar', 1)->latest()
         ];
 
         return view("admin/page/penduduk/home", $data);
