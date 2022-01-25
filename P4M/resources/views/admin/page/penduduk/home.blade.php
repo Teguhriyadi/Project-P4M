@@ -57,7 +57,7 @@ setLocale(LC_ALL, 'id', 'ID')
                   <div class="box box-info">
                     <div class="box-header">
                       <div class="btn-group btn-group-vertical">
-                        <a class="btn btn-social btn-flat btn-success btn-sm" data-toggle="dropdown">
+                        <a class="btn btn-social btn-flat btn-primary btn-sm" data-toggle="dropdown" title="Tambah Penduduk">
                           <i class="fa fa-plus"></i> Tambah Penduduk
                         </a>
                         <ul class="dropdown-menu" role="menu">

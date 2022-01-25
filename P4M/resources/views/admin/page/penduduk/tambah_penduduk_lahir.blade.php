@@ -42,7 +42,6 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <label for=""> Tanggal Lapor </label>
@@ -61,6 +60,7 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" name="id_hubungan" id="id_hubungan" value="4">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="nik"> NIK </label>
@@ -74,22 +74,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <label for="kk_sebelumnya"> Nomor KK Sebelumnya </label>
                                 <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya">
                             </div>
-                            <div class="col-sm-4">
-                                <label for="kk_level"> Hubungan Dalam Keluarga </label>
-                                <select name="kk_level" id="kk_level" class="form-control input-sm select2">
-                                    <option value="">- Pilih -</option>
-                                    @foreach ($data_hubungan as $hubungan)
-                                    <option value="{{ $hubungan->id }}">
-                                        {{ $hubungan->nama }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <label for="id_sex"> Jenis Kelamin </label>
                                 <select name="id_sex" id="id_sex" class="form-control input-sm">
                                     <option value="">- Pilih -</option>
