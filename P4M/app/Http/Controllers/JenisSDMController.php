@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukSex;
 use Illuminate\Http\Request;
 
