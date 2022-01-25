@@ -50,7 +50,13 @@
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">{{ $data->kode }}</td>
                                     <td>{{ $data->nama }}</td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        @if ($data->status == 1)
+                                            Aktif
+                                        @else
+                                            Non-Aktif
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         <button onclick="editDataKlasifikasi({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
                                             <i class="fa fa-edit"></i>

@@ -1,9 +1,9 @@
 @php
-    use App\Models\Model\StrukturPemerintahan;
+use App\Models\Model\StrukturPemerintahan;
 @endphp
 @extends('admin.layouts.main')
 
-@section('title', $detail_surat->nama)
+@section('title', 'Surat '.$detail_surat->nama)
 
 @section('page_content')
 
@@ -114,18 +114,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="keterangan" class="col-sm-4 col-lg-4"> Keterangan </label>
-                            <div class="col-sm-8">
-                                <textarea name="keterangan" id="keterangan" rows="3" class="form-control input-sm" placeholder="Keterangan"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Berlaku Dari - Sampai </label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control input-sm">
+                            <div class="col-sm-3 col-lg-2">
+                                <div class="input-group input-group-sm date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input title="Pilih Tanggal" id="tgl_akhir" class="form-control datepicker input-sm required readonly-permohonan" name="berlaku_sampai" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
+                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control input-sm">
+                            <div class="col-sm-3 col-lg-2">
+                                <div class="input-group input-group-sm date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input title="Pilih Tanggal" id="tgl_akhir" class="form-control datepicker input-sm required readonly-permohonan" name="berlaku_sampai" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -135,7 +139,7 @@
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_pegawai as $pegawai)
                                     @php
-                                        $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
+                                    $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
                                     @endphp
                                     <option value="{{ $pegawai->id }}">
                                         NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})
@@ -183,6 +187,13 @@
         console.log();
         $('#'+idForm).submit();
     }
+
+    $(function() {
+        $('.datepicker').datetimepicker({
+            locale:'id',
+            format: 'DD-MM-YYYY'
+        });
+    })
 </script>
 
 @endsection

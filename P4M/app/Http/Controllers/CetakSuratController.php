@@ -34,7 +34,7 @@ class CetakSuratController extends Controller
             "max_nomer" => $this->maxNumber()
         ];
 
-        return view("admin.page.cetak_surat.".$url_surat, $data);
+        return view("template-surat.".$url_surat, $data);
     }
 
     public function ambil_data_penduduk(Request $request, $url_surat)
@@ -48,7 +48,7 @@ class CetakSuratController extends Controller
             "max_nomer" => $this->maxNumber()
         ];
 
-        return view("admin.page.cetak_surat.".$url_surat, $data);
+        return view("template-surat.".$url_surat, $data);
     }
 
     public function cetakSuratBeforeUpdate(Request $request)

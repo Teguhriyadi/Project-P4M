@@ -26,7 +26,7 @@ class SuratFormatController extends Controller
     public function create()
     {
         $data = [
-            "data_klasifikasi" => KlasifikasiSurat::orderBy("kode", "DESC")->get(),
+            "data_klasifikasi" => KlasifikasiSurat::orderBy("kode", "asc")->get(),
             "data_syarat" => RefSyaratSurat::get()
         ];
 
@@ -46,12 +46,14 @@ class SuratFormatController extends Controller
         $surat_format->save();
 
         $syarat = $request->syarat;
-        foreach ($request->syarat as $d => $unit) {
-            $c = new SyaratSurat;
-            $c->surat_format_id = $surat_format->id;
-            $c->ref_syarat_id = $syarat[$d];
+        if ($syarat != null) {
+            foreach ($request->syarat as $d => $unit) {
+                $c = new SyaratSurat;
+                $c->surat_format_id = $surat_format->id;
+                $c->ref_syarat_id = $syarat[$d];
 
-            $c->save();
+                $c->save();
+            }
         }
 
         return redirect("/page/admin/surat/format")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");

@@ -15,7 +15,7 @@ class KlasifikasiSuratController extends Controller
     public function index()
     {
         $data = [
-            "data_klasifikasi_surat" => KlasifikasiSurat::orderBy("nama", "DESC")->get()
+            "data_klasifikasi_surat" => KlasifikasiSurat::orderBy("kode", "asc")->get()
         ];
 
         return view("/admin/page/surat/klasifikasi/data_klasifikasi_surat", $data);
