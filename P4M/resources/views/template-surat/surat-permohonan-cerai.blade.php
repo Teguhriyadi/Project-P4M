@@ -1,9 +1,9 @@
 @php
-    use App\Models\Model\StrukturPemerintahan;
+use App\Models\Model\StrukturPemerintahan;
 @endphp
 @extends('admin.layouts.main')
 
-@section('title', $detail_surat->nama)
+@section('title', 'Surat '.$detail_surat->nama)
 
 @section('page_content')
 
@@ -105,13 +105,12 @@
                             <label for="no_surat" class="col-sm-4 col-lg-4"> Nomor Surat </label>
                             <div class="col-sm-8">
                                 <input type="text" name="no_surat" id="no_surat" class="form-control input-sm" value="{{ $max_nomer }}">
-                                <input type="hidden" name="surat" id="surat" class="form-control input-sm" value="{{ $detail_surat->url_surat }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-4 col-lg-4"> Keperluan </label>
+                            <label for="" class="col-sm-4 col-lg-4"> Sebab - Sebab </label>
                             <div class="col-sm-8">
-                                <input type="text" name="keperluan" id="keperluan" class="form-control input-sm">
+                                <textarea name="sebab" id="sebab" rows="3" class="form-control input-sm" placeholder="Sebab"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -121,7 +120,7 @@
                                     <option value="">- Pilih -</option>
                                     @foreach ($data_pegawai as $pegawai)
                                     @php
-                                        $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
+                                    $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
                                     @endphp
                                     <option value="{{ $pegawai->id }}">
                                         NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})

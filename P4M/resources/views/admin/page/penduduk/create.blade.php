@@ -335,10 +335,6 @@
 
 @section('page_scripts')
 
-<script src="{{ url('backend/template/bower_components/moment/min/moment.min.js') }}"></script>
-<script src="{{ url('backend/template/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ url('backend/template/plugins/timepicker/bootstrap-datetimepicker.min.js') }}"></script>
-
 <script>
     $(function() {
         $('#datepicker').datetimepicker({
