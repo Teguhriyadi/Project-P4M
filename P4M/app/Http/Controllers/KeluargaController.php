@@ -131,6 +131,32 @@ class KeluargaController extends Controller
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
     }
 
+    public function rincian_keluarga_hapus(Request $request)
+    {
+        $cek = Penduduk::where("id_kk", $request->id_kk)->first();
+        echo $cek->kk_level;
+        die();
+
+        if ($cek->kk_level == 1) {
+            Penduduk::where("id_kk", $request->id_kk)->update([
+                "id_kk" => NULL,
+                "kk_level" => NULL
+            ]);
+
+            Keluarga::where("nik_kepala", $request->id_kk)->delete();
+
+            return redirect("/page/admin/kependudukan/keluarga");
+        } else {
+            Penduduk::where("id_kk", $request->id_kk)->update([
+                "id_kk" => NULL,
+                "kk_level" => NULL
+            ]);
+
+            return back();
+        }
+
+    }
+
     public function anggota_keluarga_lahir($id)
     {
         $data = $this->data();

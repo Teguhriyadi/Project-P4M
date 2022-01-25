@@ -46,6 +46,7 @@
         <option value="">- Pilih -</option>
         @php
             $getPenduduk = Penduduk::where("id_kk", NULL)
+            ->where("kk_level", "!=", 1)
             ->get();
         @endphp
         @forelse($getPenduduk as $data)
