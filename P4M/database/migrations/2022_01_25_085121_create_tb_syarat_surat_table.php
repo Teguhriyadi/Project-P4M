@@ -15,8 +15,8 @@ class CreateTbSyaratSuratTable extends Migration
     {
         Schema::create('tb_syarat_surat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("surat_format_id")->constrained("tb_surat_format")->cascadeOnUpdate()->nullOnDelete();
-            $table->foreignId("ref_syarat_id")->constrained("tb_ref_syarat_surat")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId("surat_format_id")->nullable()->constrained("tb_surat_format")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId("ref_syarat_id")->nullable()->constrained("tb_ref_syarat_surat")->cascadeOnUpdate()->nullOnDelete();
         });
     }
 

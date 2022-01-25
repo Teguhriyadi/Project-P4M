@@ -31,6 +31,6 @@ class CreateTbKomentarTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_counter');
+        Schema::dropIfExists('tb_komentar');
     }
 }
