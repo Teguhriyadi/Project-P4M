@@ -22,6 +22,11 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-pie-chart"></i> Grafik Data Warga Negara
+                    </h3>
+                </div>
                 <div class="box-body">
                     <div id="piechart"></div>
                 </div>
@@ -36,9 +41,6 @@
                     <a href="{{ url('/data/warga-negara') }}" target="_blank" class="btn btn-social btn-info btn-flat btn-sm pull-right" style="margin-left: 5px" title="Lihat">
                         <i class="fa fa-eye"></i> Preview
                     </a>
-                    <button class="btn btn-social btn-primary btn-flat btn-sm pull-right" data-toggle="modal" data-target="#modal-default" title="Tambah Data">
-                        <i class="fa fa-plus"></i> Tambah Data
-                    </button>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -59,13 +61,6 @@
                                         <button onclick="editDataWargaNegara({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="{{ url('/page/admin/data/warga-negara/'.$data->id) }}" method="POST" style="display: inline;">
-                                            @method("DELETE")
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -78,42 +73,7 @@
     </div>
 </section>
 
-<!-- Tambah Data -->
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">
-                    <i class="fa fa-plus"></i> Tambah Data
-                </h4>
-            </div>
-            <form action="{{ url('/page/admin/data/warga-negara') }}" method="POST"  id="formTambahWN">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Warga Negara">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
-                        <i class="fa fa-times"></i> Batal
-                    </button>
-                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
-                        <i class="fa fa-plus"></i> Tambah
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- END -->
-
-<!-- Tambah Data -->
+<!-- Edit Data -->
 <div class="modal fade" id="modal-default-edit">
     <div class="modal-dialog">
         <div class="modal-content">

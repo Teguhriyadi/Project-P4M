@@ -16,13 +16,6 @@ class PendudukSexController extends Controller
         return view("/admin/page/penduduk/sex/data_sex", $data);
     }
 
-    public function store(Request $request)
-    {
-        PendudukSex::create($request->all());
-
-        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Tambahkan', 'success')</script>");
-    }
-
     public function edit(Request $request)
     {
         $data = [
@@ -39,12 +32,5 @@ class PendudukSexController extends Controller
         ]);
 
         return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Ubah', 'success')</script>");
-    }
-
-    public function destroy($id)
-    {
-        PendudukSex::where("id", $id)->delete();
-
-        return back()->with('message', "<script>swal('Berhasil!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

@@ -22,6 +22,11 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-male"></i> Grafik Data Pekerjaaan
+                    </h3>
+                </div>
                 <div class="box-body">
                     <div id="piechart"></div>
                 </div>

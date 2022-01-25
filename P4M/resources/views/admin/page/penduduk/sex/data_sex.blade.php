@@ -22,6 +22,11 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-book"></i> Grafik Data Jenis Kelamin
+                    </h3>
+                </div>
                 <div class="box-body">
                     <div id="piechart"></div>
                 </div>
@@ -33,9 +38,6 @@
                     <h3 class="box-title">
                         <i class="fa fa-bars"></i> Jenis Kelamin
                     </h3>
-                    {{-- <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal-default">
-                        <i class="fa fa-plus"></i> Tambah Data
-                    </button> --}}
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
@@ -56,13 +58,6 @@
                                         <button onclick="editDataSex({{$data->id}})" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="{{ url('/page/admin/data/jenis-kelamin/'.$data->id) }}" method="POST" style="display: inline;">
-                                            @method("DELETE")
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
