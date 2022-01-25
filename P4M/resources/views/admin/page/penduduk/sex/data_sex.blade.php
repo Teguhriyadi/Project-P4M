@@ -124,10 +124,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left">
+                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Reset">
                         <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm pull-right" title="Simpan">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>
