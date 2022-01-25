@@ -37,7 +37,7 @@ class AkunController extends Controller
 
         User::create($validasi);
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)
@@ -50,13 +50,6 @@ class AkunController extends Controller
         return view("admin/page/akun/edit", $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $validasi = $request->validate([
@@ -77,21 +70,15 @@ class AkunController extends Controller
 
                 User::where('id', $request->id)->update($validasi);
 
-                return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+                return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
             } else {
                 return back()->with('message', "<script>swal('Ooops!', 'Password anda salah!', 'error')</script>");
             }
         } else {
-            return back()->with('message', "<script>swal('Ooops!', 'Data anda gagal diubah', 'error')</script>");
+            return back()->with('message', "<script>swal('Ooops!', 'Data Gagal Diubah', 'error')</script>");
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $cek = User::where('id', $id)->first();
@@ -100,6 +87,6 @@ class AkunController extends Controller
 
         User::where('id', $cek->id)->delete();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
     }
 }

@@ -20,7 +20,7 @@ class AlamatController extends Controller
     {
         Alamat::create($request->all());
 
-        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat anda berhasil ditambahkan', 'success')</script>");
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat Berhasil Ditambahkan', 'success')</script>");
     }
 
     public function update(Request $request, Alamat $alamat)
@@ -31,7 +31,7 @@ class AlamatController extends Controller
             "alamat" => $request->alamat
         ]);
 
-        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat anda berhasil diperbaharui', 'success')</script>");
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Alamat Berhasil Diperbaharui', 'success')</script>");
     }
 
 }

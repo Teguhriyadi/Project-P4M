@@ -30,7 +30,7 @@ class GaleriController extends Controller
 
         Galeri::create($validasi);
 
-        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data Berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)

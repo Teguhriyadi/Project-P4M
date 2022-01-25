@@ -133,9 +133,9 @@
                                         <form action="{{ url('/page/admin/kependudukan/keluarga/rincian_keluarga/hapus') }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <input type="hidden" name="id_kk" value="{{ $edit->nik_kepala }}">
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash-o"></i>
+                                            <input type="hidden" name="id_penduduk" value="{{ $data->id }}">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Bukan Anggota Keluarga Ini">
+                                                <i class="fa fa-times"></i>
                                             </button>
                                         </form>
                                     </td>
