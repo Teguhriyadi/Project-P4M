@@ -6,6 +6,7 @@ use App\Models\Model\Pegawai;
 use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikanKK;
+use App\Models\Model\PendudukSex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,6 +18,12 @@ class PegawaiController extends Controller
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 
+        foreach ($data['data_pegawai'] as $pegawai) {
+            if (!empty($pegawai->id_penduduk)) {
+                $data['penduduk'] = Penduduk::where('id', $pegawai->id_penduduk)->first();
+            }
+        }
+
         return view("admin/page/pemerintahan/pegawai/index", $data);
     }
 
@@ -25,6 +32,7 @@ class PegawaiController extends Controller
         $data = [
             "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
             "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get(),
+            "data_sex" => PendudukSex::all(),
             "data_penduduk" => Penduduk::all()
         ];
 
@@ -33,11 +41,29 @@ class PegawaiController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $validatedData = $request->validate([
-            "nama" => "required",
-            "nip" => "required",
-            "foto" => "image|file|max:1024"
+            'nip' => 'required',
+            'pangkat' => 'required',
+            'no_sk' => 'required',
+            'tgl_sk' => 'required',
+            'no_henti' => 'required',
+            'tgl_henti' => 'required',
+            'masa_jabatan' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
         ]);
+        if ($request->id_penduduk) {
+            $validatedData['id_penduduk'] = $request->id_penduduk;
+        } else {
+            $validatedData['nama'] = $request->nama;
+            $validatedData['nik'] = $request->nik;
+            $validatedData['tempat_lahir'] = $request->tempat_lahir;
+            $validatedData['tgl_lahir'] = $request->tgl_lahir;
+            $validatedData['sex'] = $request->sex;
+            $validatedData['pendidikan'] = $request->pendidikan;
+            $validatedData['agama'] = $request->agama;
+        }
 
         if($request->file("foto")) {
             $validatedData["foto"] = $request->file('foto')->store('pegawai');
@@ -98,6 +124,7 @@ class PegawaiController extends Controller
             "data_pendidikan_kk" => PendudukPendidikanKK::orderBy("nama", "DESC")->get(),
             "data_agama" => PendudukAgama::orderBy("nama", "DESC")->get(),
             "data_penduduk" => Penduduk::all(),
+            "data_sex" => PendudukSex::all(),
             "detail" => Penduduk::where("id", $request->id_pend)->first()
         ];
 
