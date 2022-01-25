@@ -179,7 +179,7 @@
                     <i class="fa fa-edit"></i> Ubah Data
                 </h4>
             </div>
-            <form action="" method="POST">
+            <form action="" method="POST" id="formUbah">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
@@ -251,7 +251,10 @@
                             required: true
                         },
                         no_kk: {
-                            required: true
+                            required: true,
+                            number: true,
+                            minlength: 16,
+                            maxlength: 16,
                         },
                     },
 
@@ -260,7 +263,64 @@
                             required: "Kepala keluarga harap di isi!"
                         },
                         no_kk: {
+                            required: "No kartu keluarga harap di isi!",
+                            number: "Harap masukan angka!",
+                            minlength: "Panjang minimal no KK 16!",
+                            maxlength: "Panjang maksimal no KK 16!",
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+                $("#formUbah").validate({
+                    ignore: "",
+                    rules: {
+                        no_kk: {
+                            required: true
+                        },
+                        alamat: {
+                            required: true
+                        },
+                        dusun: {
+                            required: true
+                        },
+                        rw: {
+                            required: true
+                        },
+                        rt: {
+                            required: true
+                        },
+                        tanggal_cetak: {
+                            required: true
+                        },
+                        kelas_sosial: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        no_kk: {
                             required: "No kartu keluarga harap di isi!"
+                        },
+                        alamat: {
+                            required: "Alamat harap di isi!"
+                        },
+                        dusun: {
+                            required: "Dusun harap di isi!"
+                        },
+                        rw: {
+                            required: "RW harap di isi!"
+                        },
+                        rt: {
+                            required: "RT harap di isi!"
+                        },
+                        tanggal_cetak: {
+                            required: "Tanggal cetak harap di isi!"
+                        },
+                        kelas_sosial: {
+                            required: "Kelas sosial harap di isi!"
                         },
                     },
 

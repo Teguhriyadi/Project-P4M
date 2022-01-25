@@ -28,7 +28,7 @@ class PegawaiController extends Controller
             "data_penduduk" => Penduduk::all()
         ];
 
-        return view("/admin/page/pemerintahan/pegawai/form_tambah_data_pegawai", $data);
+        return view("admin.page.pemerintahan.pegawai.form_tambah_data_pegawai", $data);
     }
 
     public function store(Request $request)

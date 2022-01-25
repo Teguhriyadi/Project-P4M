@@ -44,7 +44,7 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->getCountPenduduk->count() }}</td>
-                                    <td>{!! ($data->getCountPenduduk->count() / $penduduk) * 100 !!}%</td>
+                                    <td>{!! round($data->getCountPenduduk->count() / $penduduk * 100, 2) !!}%</td>
                                 </tr>
                                 @endforeach
                             </tbody>

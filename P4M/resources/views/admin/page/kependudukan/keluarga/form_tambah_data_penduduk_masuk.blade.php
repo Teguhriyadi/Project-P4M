@@ -58,7 +58,7 @@
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="gambar-preview img-fluid" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
+                        <img class="penduduk profile-user-img img-responsive" style="border-radius: 35px; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
                         <input type="file" name="foto" id="foto" class="form-control input-sm">
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control input-sm pull-right" id="tgl_5" name="tgl_peristiwa" type="text" value="19-01-2022">
+                                        <input class="form-control input-sm pull-right" id="tgl_5" name="tgl_peristiwa" type="date" value="{{ date('Y-m-d') }}">
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control input-sm pull-right" id="tgl_6" name="tgl_lapor" type="text" value="19-01-2022">
+                                        <input class="form-control input-sm pull-right" id="tgl_6" name="tgl_lapor" type="date" value="{{ date('Y-m-d') }}">
                                     </div>
                                 </div>
                             </div>
@@ -552,7 +552,237 @@
         });
     })
 
-    !function(a,i,r){var e={};e.UTIL={setupFormValidation:function(){a("#formTambahKPendudukLahir").validate({ignore:"",rules:{foto:{accept:!0},tgl_lapor:{required:!0},no_kk:{required:!0},nik:{required:!0},nama:{required:!0},kk_level:{required:!0},id_sex:{required:!0},id_agama:{required:!0},tempat_lahir:{required:!0},tgl_lahir:{required:!0},waktu_lahir:{required:!0},kelahiran_ke:{required:!0},berat_lahir:{required:!0},panjang_lahir:{required:!0},id_pendidikan:{required:!0},id_pendidikan_sedang:{required:!0},id_pekerjaan:{required:!0},id_warga_negara:{required:!0},nik_ayah:{required:!0},nama_ayah:{required:!0},nik_ibu:{required:!0},nama_ibu:{required:!0},alamat_sekarang:{required:!0},id_dusun:{required:!0},id_rw:{required:!0},id_rt:{required:!0},alamat_sebelumnya:{required:!0}},messages:{foto:{accept:"Upload format gambar!"},tgl_lapor:{required:"Tanggal lapor harap di isi!"},nik:{required:"NIK harap di isi!"},nik:{required:"No KK harap di isi!"},nama:{required:"Nama harap di isi!"},kk_level:{required:"Hubungan keluarga harap di isi!"},id_sex:{required:"Jenis kelamin harap di isi!"},id_agama:{required:"Agama harap di isi!"},tempat_lahir:{required:"Tempat lahir harap di isi!"},tgl_lahir:{required:"Tanggal lahir harap di isi!"},waktu_lahir:{required:"Waktu lahir harap di isi!"},kelahiran_ke:{required:"Anak ke harap di isi!"},berat_lahir:{required:"Berat lahir harap di isi!"},panjang_lahir:{required:"Panjang lahir harap di isi!"},id_pendidikan:{required:"Pendidikan harap di isi!"},id_pendidikan_sedang:{required:"Pendidikan harap di isi!"},id_pekerjaan:{required:"Pekerjaan harap di isi!"},id_warga_negara:{required:"Warga negara harap di isi!"},nik_ayah:{required:"NIK ayah harap di isi!"},nama_ayah:{required:"Nama ayah harap di isi!"},nik_ibu:{required:"NIK ibu harap di isi!"},nama_ibu:{required:"Nama ibu harap di isi!"},alamat_sekarang:{required:"Alamat kk harap di isi!"},id_dusun:{required:"Dusun harap di isi!"},id_rw:{required:"RW harap di isi!"},id_rt:{required:"RT harap di isi!"},alamat_sebelumnya:{required:"Alamat sebelumnya harap di isi!"}},submitHandler:function(a){a.submit()}})}},a(r).ready(function(a){e.UTIL.setupFormValidation()})}(jQuery,window,document);
+    ! function(a, i, r) {
+        var e = {};
+        e.UTIL = {
+            setupFormValidation: function() {
+                a("#formTambahKPendudukLahir").validate({
+                    ignore: "",
+                    rules: {
+                        foto: {
+                            accept: !0
+                        },
+                        tgl_peristiwa: {
+                            required: !0,
+                            date: true
+                        },
+                        tgl_lapor: {
+                            required: !0,
+                            date: true
+                        },
+                        nik: {
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        no_kk: {
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        kk_sebelumnya: {
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        nama: {
+                            required: !0
+                        },
+                        kk_level: {
+                            required: !0
+                        },
+                        id_sex: {
+                            required: !0
+                        },
+                        id_agama: {
+                            required: !0
+                        },
+                        tempat_lahir: {
+                            required: !0
+                        },
+                        tgl_lahir: {
+                            required: !0
+                        },
+                        waktu_lahir: {
+                            required: !0
+                        },
+                        kelahiran_ke: {
+                            required: !0
+                        },
+                        berat_lahir: {
+                            required: !0
+                        },
+                        panjang_lahir: {
+                            required: !0
+                        },
+                        id_pendidikan: {
+                            required: !0
+                        },
+                        id_pendidikan_sedang: {
+                            required: !0
+                        },
+                        id_pekerjaan: {
+                            required: !0
+                        },
+                        id_warga_negara: {
+                            required: !0
+                        },
+                        nik_ayah: {
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        nama_ayah: {
+                            required: !0
+                        },
+                        nik_ibu: {
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        nama_ibu: {
+                            required: !0
+                        },
+                        alamat_sekarang: {
+                            required: !0
+                        },
+                        id_dusun: {
+                            required: !0
+                        },
+                        id_rw: {
+                            required: !0
+                        },
+                        id_rt: {
+                            required: !0
+                        },
+                        akta_lahir: {
+                            required: !0
+                        },
+                        alamat_sebelumnya: {
+                            required: !0
+                        }
+                    },
+                    messages: {
+                        foto: {
+                            accept: "Upload format gambar!"
+                        },
+                        tgl_lapor: {
+                            required: "Tanggal lapor harap di isi!",
+                            date: "Format : 2022-12-28"
+                        },
+                        tgl_peristiwa: {
+                            required: "Tanggal peristiwa harap di isi!",
+                            date: "Format : 2022-12-28"
+                        },
+                        akta_lahir: {
+                            required: "Akta lahir harap di isi!"
+                        },
+                        nik: {
+                            required: "NIK harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        no_kk: {
+                            required: "NIK harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        kk_sebelumnya: {
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        nama: {
+                            required: "Nama harap di isi!"
+                        },
+                        kk_level: {
+                            required: "Hubungan keluarga harap di isi!"
+                        },
+                        id_sex: {
+                            required: "Jenis kelamin harap di isi!"
+                        },
+                        id_agama: {
+                            required: "Agama harap di isi!"
+                        },
+                        tempat_lahir: {
+                            required: "Tempat lahir harap di isi!"
+                        },
+                        tgl_lahir: {
+                            required: "Tanggal lahir harap di isi!"
+                        },
+                        waktu_lahir: {
+                            required: "Waktu lahir harap di isi!"
+                        },
+                        kelahiran_ke: {
+                            required: "Anak ke harap di isi!"
+                        },
+                        berat_lahir: {
+                            required: "Berat lahir harap di isi!"
+                        },
+                        panjang_lahir: {
+                            required: "Panjang lahir harap di isi!"
+                        },
+                        id_pendidikan: {
+                            required: "Pendidikan harap di isi!"
+                        },
+                        id_pendidikan_sedang: {
+                            required: "Pendidikan harap di isi!"
+                        },
+                        id_pekerjaan: {
+                            required: "Pekerjaan harap di isi!"
+                        },
+                        id_warga_negara: {
+                            required: "Warga negara harap di isi!"
+                        },
+                        nik_ayah: {
+                            required: "NIK ayah harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        nama_ayah: {
+                            required: "Nama ayah harap di isi!"
+                        },
+                        nik_ibu: {
+                            required: "NIK ibu harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        nama_ibu: {
+                            required: "Nama ibu harap di isi!"
+                        },
+                        alamat_sekarang: {
+                            required: "Alamat kk harap di isi!"
+                        },
+                        id_dusun: {
+                            required: "Dusun harap di isi!"
+                        },
+                        id_rw: {
+                            required: "RW harap di isi!"
+                        },
+                        id_rt: {
+                            required: "RT harap di isi!"
+                        },
+                        alamat_sebelumnya: {
+                            required: "Alamat sebelumnya harap di isi!"
+                        }
+                    },
+                    submitHandler: function(a) {
+                        a.submit()
+                    }
+                })
+            }
+        }, a(r).ready(function(a) {
+            e.UTIL.setupFormValidation()
+        })
+    }(jQuery, window, document);
 </script>
 
 @endsection

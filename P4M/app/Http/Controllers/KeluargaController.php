@@ -62,7 +62,7 @@ class KeluargaController extends Controller
         //
     }
 
-    public function form_tambah_penduduk_masuk()
+    public function data()
     {
         $data = [
             "data_hubungan" => PendudukHubungan::all(),
@@ -81,6 +81,13 @@ class KeluargaController extends Controller
             "data_sakit_menahun" => SakitMenahun::all()
         ];
 
+        return $data;
+    }
+
+    public function form_tambah_penduduk_masuk()
+    {
+        $data = $this->data();
+
         return view("admin.page.kependudukan.keluarga.form_tambah_data_penduduk_masuk", $data);
     }
 
@@ -98,7 +105,7 @@ class KeluargaController extends Controller
             "updated_at" => date("Y-m-d H:i:s")
         ]);
 
-        return redirect("/page/admin/kependudukan/keluarga");
+        return redirect("page.admin.kependudukan.keluarga");
     }
 
     public function form_edit_data_penduduk_masuk(Request $request)
@@ -121,30 +128,16 @@ class KeluargaController extends Controller
 
     public function anggota_keluarga_lahir($id)
     {
-        $data = [
-            "data_hubungan" => PendudukHubungan::all(),
-            "data_kelamin" => PendudukSex::all(),
-            "data_agama" => PendudukAgama::all(),
-            "data_pendidikan" => PendudukPendidikan::all(),
-            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
-            "data_pekerjaan" => PendudukPekerjaan::all(),
-            "data_warganegara" => PendudukWargaNegara::all(),
-            "data_kawin" => PendudukKawin::all(),
-            "data_darah" => GolonganDarah::all(),
-            "data_dusun" => Dusun::all(),
-            "data_rt" => Rt::all(),
-            "data_rw" => Rw::all(),
-            "data_cacat" => Cacat::all(),
-            "data_sakit_menahun" => SakitMenahun::all(),
-            "edit" => Keluarga::where("id", $id)->first()
-        ];
+        $data = $this->data();
+        $data["edit"] = Keluarga::where("id", $id)->first();
 
-        return view("/admin/page/kependudukan/keluarga/anggota_keluarga_lahir", $data);
+        return view("admin.page.kependudukan.keluarga.anggota_keluarga_lahir", $data);
     }
 
     public function anggota_keluarga_masuk()
     {
-        return view("/admin/page/kependudukan/keluarga/anggota_keluarga_masuk");
+        $data = $this->data();
+        return view("admin.page.kependudukan.keluarga.anggota_keluarga_masuk", $data);
     }
 
     public function tambah_kepala_keluarga(Request $request)
@@ -172,23 +165,8 @@ class KeluargaController extends Controller
 
     public function tambah_anggota_keluarga_lahir($id)
     {
-        $data = [
-            "data_hubungan" => PendudukHubungan::all(),
-            "data_kelamin" => PendudukSex::all(),
-            "data_agama" => PendudukAgama::all(),
-            "data_pendidikan" => PendudukPendidikan::all(),
-            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
-            "data_pekerjaan" => PendudukPekerjaan::all(),
-            "data_warganegara" => PendudukWargaNegara::all(),
-            "data_kawin" => PendudukKawin::all(),
-            "data_darah" => GolonganDarah::all(),
-            "data_dusun" => Dusun::all(),
-            "data_rt" => Rt::all(),
-            "data_rw" => Rw::all(),
-            "data_cacat" => Cacat::all(),
-            "data_sakit_menahun" => SakitMenahun::all(),
-            "edit" => Keluarga::where("id", $id)->first()
-        ];
+        $data = $this->data();
+        $data["edit"] = Keluarga::where("id", $id)->first();
 
         return view("/admin/page/kependudukan/keluarga/tambah_anggota_keluarga_lahir", $data);
     }
@@ -206,25 +184,10 @@ class KeluargaController extends Controller
 
     public function tambah_anggota_keluarga_masuk($id)
     {
-        $data = [
-            "data_hubungan" => PendudukHubungan::all(),
-            "data_kelamin" => PendudukSex::all(),
-            "data_agama" => PendudukAgama::all(),
-            "data_pendidikan" => PendudukPendidikan::all(),
-            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
-            "data_pekerjaan" => PendudukPekerjaan::all(),
-            "data_warganegara" => PendudukWargaNegara::all(),
-            "data_kawin" => PendudukKawin::all(),
-            "data_darah" => GolonganDarah::all(),
-            "data_dusun" => Dusun::all(),
-            "data_rt" => Rt::all(),
-            "data_rw" => Rw::all(),
-            "data_cacat" => Cacat::all(),
-            "data_sakit_menahun" => SakitMenahun::all(),
-            "edit" => Keluarga::where("id", $id)->first()
-        ];
+        $data = $this->data();
+        $data["edit"] = Keluarga::where("id", $id)->first();
 
-        return view("/admin/page/kependudukan/keluarga/tambah_anggota_keluarga_masuk", $data);
+        return view("admin.page.kependudukan.keluarga.tambah_anggota_keluarga_masuk", $data);
     }
 
     public function tambah_data_anggota_keluarga_masuk(Request $request)

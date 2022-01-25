@@ -518,7 +518,15 @@
                             required: !0
                         },
                         nik: {
-                            required: !0
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
+                        },
+                        kk_sebelumnya: {
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
                         },
                         nama: {
                             required: !0
@@ -563,13 +571,19 @@
                             required: !0
                         },
                         nik_ayah: {
-                            required: !0
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
                         },
                         nama_ayah: {
                             required: !0
                         },
                         nik_ibu: {
-                            required: !0
+                            required: !0,
+                            number: !0,
+                            minlength: 16,
+                            maxlength: 16,
                         },
                         nama_ibu: {
                             required: !0
@@ -601,16 +615,24 @@
                             accept: "Upload format gambar!"
                         },
                         tempat_lahir: {
-                            accept: "Tempat lahir harap di isi!"
+                            required: "Tempat lahir harap di isi!"
                         },
                         akta_lahir: {
-                            accept: "Akta lahir harap di isi!"
+                            required: "Akta lahir harap di isi!"
                         },
                         tgl_lapor: {
                             required: "Tanggal lapor harap di isi!"
                         },
                         nik: {
-                            required: "NIK harap di isi!"
+                            required: "NIK harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
+                        },
+                        kk_sebelumnya: {
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
                         },
                         nama: {
                             required: "Nama harap di isi!"
@@ -655,13 +677,19 @@
                             required: "Warga negara harap di isi!"
                         },
                         nik_ayah: {
-                            required: "NIK ayah harap di isi!"
+                            required: "NIK ayah harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
                         },
                         nama_ayah: {
                             required: "Nama ayah harap di isi!"
                         },
                         nik_ibu: {
-                            required: "NIK ibu harap di isi!"
+                            required: "NIK ibu harap di isi!",
+                            minlength: "Panjang NIK minimal 16!",
+                            maxlength: "Panjang NIK maksimal 16!",
+                            number: "Harap masukan angka!"
                         },
                         nama_ibu: {
                             required: "Nama ibu harap di isi!"

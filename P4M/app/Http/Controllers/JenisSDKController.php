@@ -86,7 +86,7 @@ class JenisSDKController extends Controller
         JenisSDK::where("id", $request->id)->update([
             "jenis_organisasi" => $request->jenis_organisasi,
             "jumlah_anggota" => $request->jumlah_anggota,
-            "lokasi" => $request->lokasi
+            "lokasi" => $request->lokasi_sdk
         ]);
 
         return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");

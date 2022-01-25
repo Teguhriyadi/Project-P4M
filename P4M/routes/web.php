@@ -280,7 +280,7 @@ Route::prefix("page")->group(function() {
                 // Pegawai
                 Route::get("/pegawai/edit", [PegawaiController::class, "edit"]);
                 Route::put("/pegawai/simpan", [PegawaiController::class, "update"]);
-                Route::put("/pegawai", [PegawaiController::class, "data"]);
+                Route::put("/pegawai/create", [PegawaiController::class, "data"]);
                 Route::resource("/pegawai", PegawaiController::class);
 
                 // Struktur Pemerintahan

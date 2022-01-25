@@ -18,7 +18,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="rw"> RW </label>
-            <select name="rw" id="rw" class="form-control input-sm">
+            <select name="rw" id="rw" class="form-control input-sm select2">
                 <option value="">- Pilih -</option>
             </select>
         </div>
@@ -26,7 +26,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="rt"> RT </label>
-            <select name="rt" id="rt" class="form-control input-sm">
+            <select name="rt" id="rt" class="form-control input-sm select2">
                 <option value="">- Pilih -</option>
             </select>
         </div>
@@ -38,7 +38,7 @@
 </div>
 <div class="form-group">
     <label for="kelas_sosial"> Kelas Sosial </label>
-    <select name="" id="" class="form-control input-sm">
+    <select name="kelas_sosial" id="kelas_sosial" class="form-control input-sm">
         <option value="">- Pilih -</option>
         @foreach ($data_keluarga_sejahtera as $data)
         <option value="{{ $data->id }}">
@@ -47,3 +47,8 @@
         @endforeach
     </select>
 </div>
+
+
+<script>
+    $(".select2").select2()
+</script>

@@ -53,7 +53,7 @@
                         <b>Rincian Keluarga</b>
                     </h5>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
+                        <table class="table table-bordered table-hover">
                             <tbody>
                                 <tr>
                                     <td width="20%">Nomor Kartu Keluarga (KK)</td>
