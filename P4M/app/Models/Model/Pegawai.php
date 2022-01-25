@@ -18,4 +18,9 @@ class Pegawai extends Model
         return $this->hasOne(PendudukSex::class, 'id', 'sex');
     }
 
+    public function getPenduduk()
+    {
+        return $this->hasOne(Penduduk::class, "id", "id_penduduk");
+    }
+
 }

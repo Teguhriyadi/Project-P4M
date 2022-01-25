@@ -142,7 +142,13 @@ use App\Models\Model\StrukturPemerintahan;
                                     $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
                                     @endphp
                                     <option value="{{ $pegawai->id }}">
-                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})
+                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }}
+
+                                            @if (empty($jabatan->getJabatan->nama_jabatan))
+                                                (Luar Desa)
+                                            @else
+                                            ({{ $jabatan->getJabatan->nama_jabatan }})
+                                            @endif
                                     </option>
                                     @endforeach
                                 </select>
