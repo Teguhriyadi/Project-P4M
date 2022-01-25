@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ url('/page/admin') }}">
+            <a href="{{ url('/page/admin/dashboard') }}">
                 <i class="fa fa-home"></i> Home
             </a>
         </li>
@@ -58,7 +58,7 @@
                                         <form action="{{ url('page/admin/sarana/tempat-usaha/'.$p->id) }}" method="POST" style="display: inline">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-danger btn-sm">
+                                            <button class="btn btn-danger btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
