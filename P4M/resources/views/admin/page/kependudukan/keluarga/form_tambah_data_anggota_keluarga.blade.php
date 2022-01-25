@@ -45,13 +45,12 @@
     <select name="id_penduduk" id="selectPenduduk" class="form-control input-sm select2" width="100%">
         <option value="">- Pilih -</option>
         @php
-            $getPenduduk = DB::table("tb_penduduk")
-                        ->where("id_kk", NULL)
-                        ->get();
+            $getPenduduk = Penduduk::where("id_kk", NULL)
+            ->get();
         @endphp
         @forelse($getPenduduk as $data)
         <option value="{{ $data->id }}">
-            NIK : {{ $data->nik }} - {{ $data->nama }}
+            NIK : {{ $data->nik }} - {{ $data->nama }} - {{ $data->getHubungan->nama }}
         </option>
         @empty
         <option disabled>
