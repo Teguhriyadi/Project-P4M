@@ -94,7 +94,7 @@ class PendudukController extends Controller
 
     public function show($id)
     {
-        $penduduk = Penduduk::first('id', $id)->first();
+        $penduduk = Penduduk::where('id', $id)->first();
 
         return view('admin/page/penduduk/show', compact('penduduk'));
     }

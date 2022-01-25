@@ -90,4 +90,9 @@ class Penduduk extends Model
         return $this->hasOne(RTM::class, "no_kk", "id_rtm");
     }
 
+    public function getStatusDasar()
+    {
+        return $this->hasOne(StatusDasar::class, "id", "id_status_dasar");
+    }
+
 }

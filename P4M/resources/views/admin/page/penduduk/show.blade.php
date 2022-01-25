@@ -81,6 +81,7 @@
                                             <td>Status Dasar</td>
                                             <td >:</td>
                                             <td>
+                                                {{ $penduduk->getStatusDasar->nama }}
                                             </td>
                                         </tr>
                                         <tr>
