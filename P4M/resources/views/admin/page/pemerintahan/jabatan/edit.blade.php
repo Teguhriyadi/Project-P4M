@@ -50,7 +50,7 @@
                         </button>
                         <div class="pull-right">
                             <a href="{{ url('/page/admin/pemerintahan/jabatan') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali">
-                                <i class="fa fa-sign-in"></i> Kembali
+                                <i class="fa fa-arrow-circle-left"></i> Kembali
                             </a>
                         </div>
                     </div>

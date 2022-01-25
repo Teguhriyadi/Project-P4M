@@ -27,7 +27,8 @@ class JabatanController extends Controller
             Jabatan::create($request->all());
         }
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+        return redirect("/page/admin/pemerintahan/jabatan")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+
     }
 
     public function edit($id)

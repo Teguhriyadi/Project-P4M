@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -25,7 +25,7 @@
         <div class="row">
 
             <div class="col-md-4">
-                <div class="box box-primary">
+                <div class="box box-info">
                     <div class="box-body box-profile">
                         <img class="gambar-preview img-responsive img-circle profile-user-img" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
 
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="box box-primary">
+                <div class="box box-info">
                     <div class="box-header">
                         <a href="{{ url('/page/admin/kependudukan/penduduk/') }}" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali Ke Data Penduduk">
                             <i class="fa fa-arrow-circle-o-left"></i>Kembali Ke Daftar Penduduk

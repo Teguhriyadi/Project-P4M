@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Penduduk')
+@section('title', 'Data Penduduk')
 
 @section('page_content')
 
@@ -31,7 +31,7 @@ setLocale(LC_ALL, 'id', 'ID')
   <ol class="breadcrumb">
     <li>
       <a href="{{ url('/page/admin/dashboard') }}">
-        <i class="fa fa-dashboard"></i> Dashboard
+        <i class="fa fa-home"></i> Home
       </a>
     </li>
     <li class="active">@yield('title')</li>

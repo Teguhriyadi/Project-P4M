@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Keluarga')
+@section('title', 'Data Keluarga')
 
 @section('page_content')
 
@@ -17,7 +17,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>

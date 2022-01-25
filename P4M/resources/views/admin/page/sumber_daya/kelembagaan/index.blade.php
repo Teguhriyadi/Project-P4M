@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Sumber Daya Kelembagaan')
+@section('title', 'Data Sumber Daya Kelembagaan')
 
 @section('page_content')
 
@@ -9,7 +9,11 @@
         @yield('title')
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/page/admin">Dashboard</a></li>
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -17,13 +21,13 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <i class="fa fa-users"></i> @yield('title')
+                        <i class="fa fa-users"></i> Sumber Daya Kelembagaan
                     </h3>
                     <div class="pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahSDK">
+                        <button type="button" class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#modalTambahSDK" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Data
                         </button>
                     </div>
