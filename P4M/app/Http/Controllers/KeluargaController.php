@@ -7,7 +7,7 @@ use App\Models\Model\Dusun;
 use App\Models\Model\GolonganDarah;
 use App\Models\Model\Keluarga;
 use App\Models\Model\KeluargaSejahtera;
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukHubungan;
 use App\Models\Model\PendudukKawin;
