@@ -18,9 +18,15 @@ class HakAksesController extends Controller
 
     public function store(Request $request)
     {
-        HakAkses::create($request->all());
+        $cek = HakAkses::where("nama_hak_akses", $request->nama_hak_akses)->count();
 
-        return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
+        if ($cek) {
+            return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Oops!', 'Maaf, Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            HakAkses::create($request->all());
+
+            return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
+        }
 
     }
 
@@ -53,18 +59,23 @@ class HakAksesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $cek = HakAkses::where("nama_hak_akses", $request->nama_hak_akses)->count();
 
-        HakAkses::where("id", $id)->update([
-            "nama_hak_akses" => $request->nama_hak_akses
-        ]);
+        if ($cek) {
+            return redirect("/page/admin/pengaturan/hak_akses/")->with('message', "<script>swal('Oops', 'Maaf, Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            HakAkses::where("id", $id)->update([
+                "nama_hak_akses" => $request->nama_hak_akses
+            ]);
 
-        return redirect("/page/admin/pengaturan/hak_akses/")->with('message', "<script>swal('Selamat!', 'Data berhasil diubah', 'success')</script>");
+            return redirect("/page/admin/pengaturan/hak_akses/")->with('message', "<script>swal('Selamat!', 'Data berhasil diubah', 'success')</script>");
+        }
     }
 
     public function destroy($id)
     {
         HakAkses::where("id", $id)->delete();
 
-        return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return redirect("/page/admin/pengaturan/hak_akses")->with('message', "<script>swal('Selamat!', 'Data berhasil dihapus', 'success')</script>");
     }
 }

@@ -78,7 +78,7 @@ setLocale(LC_ALL, 'id', 'ID')
                           <thead>
                             <tr>
                               <th class="text-center">No.</th>
-                              <th>Aksi</th>
+                              <th class="text-center">Aksi</th>
                               <th>Nama</th>
                               <th>No. KK</th>
                               <th>Nama Ayah</th>
@@ -94,7 +94,7 @@ setLocale(LC_ALL, 'id', 'ID')
                           <tbody>
                             @foreach ($penduduk as $p)
                             <tr>
-                              <th>{{ $loop->iteration }}</th>
+                              <td class="text-center">{{ $loop->iteration }}.</td>
                               <td>
                                 <div class="btn-group">
                                   <button type="button" class="btn btn-social btn-flat btn-info btn-sm" data-toggle="dropdown"><i class='fa fa-arrow-circle-down'></i> Pilih Aksi</button>
