@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Keluarga;
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\RTM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
