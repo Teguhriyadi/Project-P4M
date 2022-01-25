@@ -219,22 +219,47 @@
 </script>
 
 <script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'piechart',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: 0,
+        plotOptions: {
+            index: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels:
+                {
+                    enabled: true
+                },
+                showInLegend: true
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            backgroundColor: '#FFFFFF',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -30,
+            y: 0,
+            floating: true,
+            shadow: true,
+            enabled:true
+        },
+        series: [{
+            type: 'pie',
+            name: 'Populasi',
+            data: [
+            @foreach ($data_golongan_darah as $data)
+            ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
+            @endforeach
+            ]
+        }]
+    });
 
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Month'],
-        <?php foreach ($data_golongan_darah as $data): ?>
-        ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
-        <?php endforeach; ?>
-        ]);
-
-        var options = {'title' : "@yield('title')", 'width':550, 'height':400};
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-    }
 </script>
 
 @endsection

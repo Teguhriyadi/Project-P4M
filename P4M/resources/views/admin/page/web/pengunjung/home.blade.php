@@ -12,7 +12,7 @@ use App\Models\Model\Counter;
 <section class="content-header">
     <h1>@yield('title')</h1>
     <ol class="breadcrumb">
-        <li><a href="https://demo.opensid.or.id/hom_sid"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="{{ url('page/admin') }}"><i class="fa fa-home"></i> Home</a></li>
         <li class="active">@yield('title')</li>
     </ol>
 </section>
@@ -157,13 +157,7 @@ use App\Models\Model\Counter;
     @endsection
 
     @section('page_scripts')
-    <script src="/frontend/highcharts/highcharts.js"></script>
-    <script src="/frontend/highcharts/highcharts-3d.js"></script>
-    <script src="/frontend/highcharts/exporting.js"></script>
-    <script src="/frontend/highcharts/highcharts-more.js"></script>
-    <script src="/frontend/highcharts/sankey.js"></script>
-    <script src="/frontend/highcharts/organization.js"></script>
-    <script src="/frontend/highcharts/accessibility.js"></script>
+
     <script type="text/javascript">
         var chart;
         $(document).ready(function()

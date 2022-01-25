@@ -11,7 +11,12 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/kependudukan/keluarga') }}">
+                Data Keluarga
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -23,7 +28,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="dropdown">
+                    <a class="btn btn-social btn-primary btn-flat btn-sm" data-toggle="dropdown" title="Tambah Anggota">
                         <i class="fa fa-plus"></i> Tambah Anggota
                     </a>
                     <ul class="dropdown-menu" role="menu">

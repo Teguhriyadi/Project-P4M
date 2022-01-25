@@ -5,7 +5,7 @@
 @section('page_content')
 
 <div id="printableArea">
-    
+
     <div class="single_page_area" style="margin-bottom:10px;">
         <h2 class="post_title" style="font-family: Oswald; margin-bottom: 5rem;">@yield('title')</h2>
         <center><div id="piechart"></div></center>
@@ -15,6 +15,7 @@
                     <tr>
                         <th>No</th>
                         <th>Pekerjaan</th>
+                        <th>Jumlah</th>
                         <th>Persentase</th>
                     </tr>
                 </thead>
@@ -23,11 +24,12 @@
                     <tr>
                         <th>{!! $loop->iteration !!}</th>
                         <td>{!! $p->nama !!}</td>
+                        <td>{!! $p->getCountPenduduk->count() !!} Orang</td>
                         <td>
                             @if ($p->getCountPenduduk->count() == 0)
                             0
                             @else
-                            {!! ($p->getCountPenduduk->count() / $penduduk) * 100 !!}
+                            {!! round($p->getCountPenduduk->count() / $penduduk * 100, 2) !!}
                             @endif
                             %
                         </td>
@@ -43,21 +45,46 @@
 
 @section('page_scripts')
 <script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Month'],
-        <?php foreach($pekerjaan as $p) : ?>
-        ['{{ $p->nama }}', {{ $p->getCountPenduduk->count() }}],
-        <?php endforeach; ?>
-        ]);
-        
-        var options = {'width':550, 'height':400};
-        
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-    }
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'piechart',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: 0,
+        plotOptions: {
+            index: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels:
+                {
+                    enabled: true
+                },
+                showInLegend: true
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            backgroundColor: '#FFFFFF',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -30,
+            y: 0,
+            floating: true,
+            shadow: true,
+            enabled:true
+        },
+        series: [{
+            type: 'pie',
+            name: 'Populasi',
+            data: [
+            @foreach ($pekerjaan as $data)
+            ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
+            @endforeach
+            ]
+        }]
+    });
+
 </script>
 @endsection

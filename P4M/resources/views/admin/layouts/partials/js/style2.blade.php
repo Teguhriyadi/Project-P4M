@@ -19,6 +19,13 @@
 <script src="{{ url('/backend/template') }}/dist/js/sweetalert.min.js"></script>
 {{-- <script src="{{ url('/backend/template') }}/dist/js/my-validate.js"></script> --}}
 <script src="/frontend/js/chart/loader.js"></script>
+<script src="/frontend/highcharts/highcharts.js"></script>
+<script src="/frontend/highcharts/highcharts-3d.js"></script>
+<script src="/frontend/highcharts/exporting.js"></script>
+<script src="/frontend/highcharts/highcharts-more.js"></script>
+<script src="/frontend/highcharts/sankey.js"></script>
+<script src="/frontend/highcharts/organization.js"></script>
+<script src="/frontend/highcharts/accessibility.js"></script>
 
 <script>
     $(function() {
