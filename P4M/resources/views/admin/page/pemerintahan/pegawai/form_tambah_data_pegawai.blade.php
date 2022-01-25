@@ -28,6 +28,15 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="box box-info">
                 <div class="box-header with-border">
                     <a href="{{ url('/page/admin/pemerintahan/pegawai') }}" class="btn btn-social btn-flat btn-info btn-sm" title="Kembali">
@@ -87,7 +96,7 @@
     <div class="row">
         <form action="{{ url('/page/admin/pemerintahan/pegawai/') }}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="tambahPegawai">
             @csrf
-            <input type="hidden" name="id_pend" value="">
+            <input type="hidden" name="id_penduduk" value="{{ empty($detail) ? '' : ''.$detail->id.'' }}">
             <div class="col-md-4">
                 <div class="box box-info">
                     <div class="box-header">
@@ -113,15 +122,15 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}">
-                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nama" id="nama" placeholder="Nama" style="display: none;">
+                                <input type="text" class="form-control input-sm pengurus-desa readonly" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}" readonly>
+                                <input id="nama" name="nama" class="form-control input-sm pengurus-luar-desa" type="text" placeholder="Nama" value="" style="display: none;"></input>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa" name="nik" id="nik" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}">
-                                <input type="text" class="form-control input-sm pengurus-luar-desa required" name="nik" id="nik" placeholder="Nama" style="display: none;">
+                                <input type="text" class="form-control input-sm pengurus-desa readonly" placeholder="Masukkan NIK" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}" readonly>
+                                <input id="nik" name="nik" class="form-control input-sm pengurus-luar-desa" type="text" placeholder="Masukan NIK" value="" style="display: none;"></input>
                             </div>
                         </div>
                         <!--
@@ -138,7 +147,8 @@
                         <div class="form-group">
                             <label for="tempat_lahir" class="col-sm-4 control-label"> Tempat Lahir </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir">
+                                <input type="text" class="form-control input-sm readonly readonly2" placeholder="Tempat Lahir" value="{{ empty($detail) ? '' : ''.$detail->tempat_lahir.'' }}" readonly>
+                                <input type="text" class="form-control input-sm pengurus-luar-desa" name="tempat_lahir" style="display: none;">
                             </div>
                         </div>
                         <div class="form-group">
@@ -148,29 +158,31 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                                    <input type="text" class="form-control pull-right  readonly readonly2" value="{{ empty($detail) ? old('tgl_lahir') : ''.$detail->tgl_lahir.'' }}" readonly>
+                                    <input type="text" id="datepicker" class="form-control input-sm pengurus-luar-desa" name="tgl_lahir" style="display: none;">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label"> Jenis Kelamin </label>
                             <div class="col-sm-7">
-                                <select name="sex" id="sex" class="form-control input-sm">
-                                    <option value="">- Pilih -</option>
-                                    <option value="L">Laki - Laki</option>
-                                    <option value="P">Perempuan</option>
+                                <input type="text" class="form-control input-sm readonly readonly2" value="{{ empty($detail) ? '' : $detail->getKelamin->nama }}" readonly>
+                                <select class="form-control input-sm pengurus-luar-desa" name="sex" style="display: none;">
+                                    <option value="">Jenis Kelamin </option>
+                                    @foreach ($data_sex as $sex)
+                                        <option value="{{ $sex->id }}">{{ $sex->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pendidikan" class="col-sm-4 control-label"> Pendidikan </label>
                             <div class="col-sm-7">
-                                <select name="pendidikan" class="form-control input-sm select2" id="pendidikan">
-                                    <option value="">- Pilih Pendidikan (Dalam KK) -</option>
-                                    @foreach ($data_pendidikan_kk as $data)
-                                    <option value="{{ $data->id }}">
-                                        {{ $data->nama }}
-                                    </option>
+                                <input type="text" class="form-control input-sm readonly readonly2" value="{{ empty($detail) ? '' : $detail->getPendidikan->nama }}" readonly>
+                                <select class="form-control input-sm pengurus-luar-desa" name="pendidikan" style="display: none;">
+                                    <option value="">Pilih Pendidikan (Dalam KK) </option>
+                                    @foreach ($data_pendidikan_kk as $pendidikan)
+                                        <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -178,12 +190,11 @@
                         <div class="form-group">
                             <label for="agama" class="col-sm-4 control-label"> Agama </label>
                             <div class="col-sm-7">
-                                <select name="agama" class="form-control input-sm select2" id="agama">
-                                    <option value="">- Pilih -</option>
+                                <input type="text" class="form-control input-sm readonly readonly2" value="{{ empty($detail) ? '' : $detail->getAgama->nama }}" readonly>
+                                <select class="form-control input-sm pengurus-luar-desa" name="agama" style="display: none;">
+                                    <option value="">Pilih Agama </option>
                                     @foreach ($data_agama as $agama)
-                                    <option value="">
-                                        {{ $agama->nama }}
-                                    </option>
+                                        <option value="{{ $agama->id }}">{{ $agama->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -191,7 +202,7 @@
                         <div class="form-group">
                             <label for="pangkat" class="col-sm-4 control-label"> Pangkat / Golongan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm" placeholder="Pangkat / Golongan">
+                                <input type="text" class="form-control input-sm" placeholder="Pangkat / Golongan" name="pangkat">
                             </div>
                         </div>
                         <div class="form-group">
@@ -307,6 +318,8 @@
             format: 'HH:mm',
             locale:'id'
         });
+
+
     })
 </script>
 
@@ -316,12 +329,18 @@
             $('#main').show();
             $('.pengurus-luar-desa').hide();
             $('.pengurus-desa').show();
+            $('.readonly').attr('readonly', true);
+            $('.readonly2').show()
+            $('select').removeClass('select2');
         } else {
+            $('.readonly').hide()
+            $('input').attr('readonly', false);
             $('#main').hide();
             $("input[name='id_pend']").val('');
             $('.pengurus-luar-desa').show();
             $('.pengurus-desa').hide();
             $('#nama').addClass('required');
+            $('select').addClass('select2');
         }
     }
 

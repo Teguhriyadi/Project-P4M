@@ -49,17 +49,12 @@
                                 @foreach ($data_pegawai as $pegawai)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
+                                    @if (empty($pegawai->id_penduduk))
                                     <td class="text-center">{{ $pegawai->nik }}</td>
                                     <td>{{ $pegawai->nama }}</td>
                                     <td class="text-center">{{ $pegawai->no_hp }}</td>
                                     <td class="text-center">
-                                        @if ($pegawai->jenis_kelamin == "L")
-                                        Laki - Laki
-                                        @elseif($pegawai->jenis_kelamin == "P")
-                                        Perempuan
-                                        @else
-                                        Tidak Ada
-                                        @endif
+                                        {{ $pegawai->getKelamin->nama }}
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm" title="Edit Data">
@@ -69,7 +64,7 @@
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="oldImage" value="{{ $pegawai->foto }}">
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Hapus Data">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
@@ -92,14 +87,53 @@
                                         @endif
                                     </td>
                                 </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                @else
+                                <td class="text-center">{{ $penduduk->nik }}</td>
+                                <td>{{ $penduduk->nama }}</td>
+                                <td class="text-center">{{ $penduduk->telepon }}</td>
+                                <td class="text-center">
+                                    {{ $penduduk->getKelamin->nama }}
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}/edit" class="btn btn-warning btn-sm" title="Edit Data">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <form action="{{ url('/page/admin/pemerintahan/pegawai/'.$pegawai->id) }}" method="POST" style="display: inline;">
+                                        @method("DELETE")
+                                        @csrf
+                                        <input type="hidden" name="oldImage" value="{{ $pegawai->foto }}">
+                                        <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </form>
+                                    @if($pegawai->status == 1)
+                                    <form action="" method="POST" style="display: none">
+                                        @method("PUT")
+                                        @csrf
+                                        <button type="submit" class="btn btn-navy btn-flat btn-sm">
+                                            <i class="fa fa-lock"></i>
+                                        </button>
+                                    </form>
+                                    @elseif($pegawai->status == 0)
+                                    <form action="" method="POST" style="display: none">
+                                        @method("PUT")
+                                        @csrf
+                                        <button type="submit" class="btn btn-navy btn-flat btn-sm">
+                                            <i class="fa fa-lock"></i>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
+                                @endif
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </section>
 
 @endsection

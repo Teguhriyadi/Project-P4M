@@ -13,4 +13,9 @@ class Pegawai extends Model
 
     protected $guarded = [''];
 
+    public function getKelamin()
+    {
+        return $this->hasOne(PendudukSex::class, 'id', 'sex');
+    }
+
 }
