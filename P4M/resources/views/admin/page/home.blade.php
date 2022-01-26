@@ -35,7 +35,7 @@
                                     <p>Jumlah Dusun</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="ion ion-location"></i>
                                 </div>
                                 <a href="{{ url('page/admin/data/dusun') }}" class="small-box-footer">
                                     Selengkapnya <i class="fa fa-arrow-circle-right"></i>
@@ -49,7 +49,7 @@
                                     <p>Jumlah Penduduk</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="ion ion-person"></i>
                                 </div>
                                 <a href="{{ url('page/admin/kependudukan/penduduk') }}" class="small-box-footer">
                                     Selengkapnya <i class="fa fa-arrow-circle-right"></i>
@@ -57,36 +57,36 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row">
+                    <div class="row">
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>New Orders</p>
+                                    <h3>{{ $data_keluarga }}</h3>
+                                    <p>Keluarga</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="ion ion-ios-people"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
-                                    Selengkapnya <i class="fa fa-arrow-circle-right"></i>
+                                <a href="{{ url('/page/admin/kependudukan/keluarga') }}" class="small-box-footer">
+                                    Selengkapnya <i class="fa fa-arrow-users"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>New Orders</p>
+                                    <h3>{{ $data_arsip }}</h3>
+                                    <p>Surat Tercetak</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="ion-ios-paper"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="{{ url('/page/admin/surat/arsip') }}" class="small-box-footer">
                                     Selengkapnya <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>

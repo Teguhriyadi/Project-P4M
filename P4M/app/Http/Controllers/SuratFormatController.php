@@ -76,7 +76,7 @@ class SuratFormatController extends Controller
     public function update(Request $request, $id)
     {
         $surat_format = SuratFormat::find($id);
-        $surat_format->nama = 'Surat '.$request->nama;
+        $surat_format->nama = $request->nama;
         $surat_format->url_surat = Str::slug($request->nama);
         $surat_format->kode_surat = $request->kode_surat;
         $surat_format->mandiri = $request->mandiri;
@@ -86,12 +86,14 @@ class SuratFormatController extends Controller
         $surat_format->update();
 
         $syarat = $request->syarat;
-        foreach ($request->syarat as $d => $unit) {
-            $c = SyaratSurat::find($surat_format->id);
-            $c->surat_format_id = $surat_format->id;
-            $c->ref_syarat_id = $syarat[$d];
+        if ($syarat != null) {
+            foreach ($request->syarat as $d => $unit) {
+                $c = SyaratSurat::find($surat_format->id);
+                $c->surat_format_id = $surat_format->id;
+                $c->ref_syarat_id = $syarat[$d];
 
-            $c->update();
+                $c->update();
+            }
         }
 
         return redirect("/page/admin/surat/format")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");

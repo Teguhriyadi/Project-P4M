@@ -55,7 +55,7 @@ class ArtikelController extends Controller
 
         Artikel::create($validatedData);
 
-        return redirect("/page/admin/web/artikel")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambahkan', 'success')</script>");
+        return redirect("/page/admin/web/artikel")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambahkan', 'success')</script>");
     }
 
     public function edit($slug)
@@ -92,7 +92,7 @@ class ArtikelController extends Controller
 
         Artikel::where("slug", $slug)->update($validatedData);
 
-        return redirect("/page/admin/web/artikel")->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        return redirect("/page/admin/web/artikel")->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
     public function destroy(Request $request, $id)
@@ -103,7 +103,7 @@ class ArtikelController extends Controller
 
         Artikel::where("id", $id)->delete();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
     }
 
     public function checkSlug(Request $request)
@@ -130,6 +130,6 @@ class ArtikelController extends Controller
     {
         Komentar::where('id', $id)->delete();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
     }
 }

@@ -13,7 +13,7 @@ class RtmController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::where("id_rtm", NULL)->get(),
+            "data_penduduk" => Penduduk::where("id_kk", "!=" , NULL)->get(),
             "data_rtm" => RTM::all()
         ];
 

@@ -46,8 +46,22 @@
                             @endif
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                                 <i class="fa fa-save"></i> Simpan
+=======
+                            @if (empty($desa))
+                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
+                                <i class="fa fa-plus"></i> Tambah
+>>>>>>> eff972bd2b1608b81fcce60898a3c88012b4d5a6
+                            </button>
+                            @else
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
+                                <i class="fa fa-edit"></i> Simpan
+                            </button>
+                            @endif
+                            <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+                                <i class="fa fa-refresh"></i> Batal
                             </button>
                         </div>
                     </form>

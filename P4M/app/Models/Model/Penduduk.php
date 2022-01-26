@@ -77,7 +77,7 @@ class Penduduk extends Model
 
     public function getKeluarga()
     {
-        return $this->hasOne(Keluarga::class, "nik_kepala", "id");
+        return $this->hasOne(Keluarga::class, "nik_kepala", "id_kk");
     }
 
     public function getHubunganRtm()

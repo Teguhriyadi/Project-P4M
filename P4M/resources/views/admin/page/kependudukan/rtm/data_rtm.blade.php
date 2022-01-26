@@ -134,7 +134,12 @@ use App\Models\Model\Penduduk;
 
                             @foreach ($data_penduduk as $penduduk)
                             <option value="{{ $penduduk->id }}">
-                                NIK : {{ $penduduk->nik }} - {{ $penduduk->nama }}
+                                NIK : {{ $penduduk->nik }} - {{ $penduduk->nama }} -
+                                @if (empty($penduduk->getHubungan->nama))
+
+                                @else
+                                {{ $penduduk->getHubungan->nama }}
+                                @endif
                             </option>
                             @endforeach
                         </select>

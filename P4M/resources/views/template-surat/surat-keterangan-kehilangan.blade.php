@@ -1,55 +1,179 @@
-<div class="content-wrapper">
-	<?php $this->load->view("surat/form/breadcrumb.php"); ?>
-	<section class="content">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="box box-info">
-					<div class="box-header with-border tdk-permohonan tdk-periksa">
-						<a href="<?= site_url("surat") ?>" class="btn btn-social btn-flat btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali Ke Daftar Wilayah">
-							<i class="fa fa-arrow-circle-left "></i>Kembali Ke Daftar Cetak Surat
-						</a>
-					</div>
-					<div class="box-body">
-						<form id="main" name="main" method="POST" class="form-horizontal">
-							<?php include("donjo-app/views/surat/form/_cari_nik.php"); ?>
-						</form>
-						<form id="validasi" action="<?= $form_action ?>" method="POST" target="_blank" class="form-surat form-horizontal">
-							<input type="hidden" id="url_surat" name="url_surat" value="<?= $url ?>">
-							<input type="hidden" id="url_remote" name="url_remote" value="<?= site_url('surat/nomor_surat_duplikat') ?>">
-							<div class="row jar_form">
-								<label for="nomor" class="col-sm-3"></label>
-								<div class="col-sm-8">
-									<input class="required" type="hidden" name="nik" value="<?= $individu['id'] ?>">
-								</div>
-							</div>
-							<?php if ($individu) : ?>
-								<?php include("donjo-app/views/surat/form/konfirmasi_pemohon.php"); ?>
-							<?php endif; ?>
-							<?php include("donjo-app/views/surat/form/nomor_surat.php"); ?>
-							<div class="form-group">
-								<label for="barang" class="col-sm-3 control-label">Barang Yang Hilang</label>
-								<div class="col-sm-8">
-									<input id="barang" class="form-control input-sm required <?= jecho($cek_anjungan['keyboard'] == 1, TRUE, 'kbvtext'); ?>" type="text" placeholder="Barang Yang Hilang" name="barang">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="rincian" class="col-sm-3 control-label">Rincian</label>
-								<div class="col-sm-8">
-									<input id="rincian" class="form-control input-sm required <?= jecho($cek_anjungan['keyboard'] == 1, TRUE, 'kbvtext'); ?>" type="text" placeholder="Rincian Barang Yang Hilang" name="rincian">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="keterangan" class="col-sm-3 control-label">Keterangan Kejadian</label>
-								<div class="col-sm-8">
-									<textarea name="keterangan" class="form-control input-sm required <?= jecho($cek_anjungan['keyboard'] == 1, TRUE, 'kbvtext'); ?>" placeholder="Keterangan Kejadian"></textarea>
-								</div>
-							</div>
-							<?php include("donjo-app/views/surat/form/_pamong.php"); ?>
-						</form>
-					</div>
-					<?php include("donjo-app/views/surat/form/tombol_cetak.php"); ?>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
+@php
+use App\Models\Model\StrukturPemerintahan;
+@endphp
+@extends('admin.layouts.main')
+
+@section('title', $detail_surat->nama)
+
+@section('page_content')
+
+<section class="content-header">
+    <h1>
+        @yield('title')
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="{{ url('/page/admin/dashboard') }}">
+                <i class="fa fa-dashboard"></i> Dashboard
+            </a>
+        </li>
+        <li class="active">@yield('title')</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <a href="{{ url('/page/admin/cetak_surat') }}" class="btn btn-social btn-info btn-flat btn-sm">
+                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Cetak Surat
+                    </a>
+                </div>
+                <form id="main" name="main" method="POST" class="form-horizontal">
+                    @method("PUT")
+                    @csrf
+                    <div class="box-body" style="margin-bottom: -20px">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> NIK / Nama </label>
+                            <div class="col-sm-8">
+                                <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%" onchange="formAction('main')">
+                                    <option value="">-- Cari NIK / Nama Penduduk /</option>
+                                    @foreach ($data_penduduk as $penduduk)
+                                    @if (empty($detail))
+                                    <option value="{{ $penduduk->id }}">
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
+                                    </option>
+                                    @else
+                                    @if ($detail->id == $penduduk->id)
+                                    <option value="{{ $penduduk->id }}" selected>
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
+                                    </option>
+                                    @else
+                                    <option value="{{ $penduduk->id }}">
+                                        NIK : {{ $penduduk->nik .' - '. $penduduk->nama }}
+                                    </option>
+                                    @endif
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form id="validasi" action="{{ url('/page/admin/cetak_surat/form/'.$detail_surat->url_surat) }}"  method="POST" class="form-horizontal" target="_blank">
+                    @csrf
+                    <div class="box-body">
+                        @if (empty($detail))
+
+                        @else
+                        <input type="hidden" name="id_penduduk" value="{{ $detail->id }}">
+                        <input type="hidden" name="id_surat_format" value="{{ $detail_surat->id }}">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> Tempat / Tanggal Lahir / Umur </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->tempat_lahir }}" readonly>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->tgl_lahir }}" readonly>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" name="" id="" class="form-control input-sm" value="50" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> Alamat </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ $detail->alamat_sekarang }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> Pendidikan / Warga Negara / Agama </label>
+                            <div class="col-sm-4">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getPendidikan->nama) ? '' : ''.$detail->getPendidikan->nama.'' }}" readonly>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getWargaNegara->nama) ? '' : ''.$detail->getWargaNegara->nama.'' }}" readonly>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" name="" id="" class="form-control input-sm" value="{{ empty($detail->getAgama->nama) ? '' : ''.$detail->getAgama->nama.'' }}" readonly>
+                            </div>
+                        </div>
+                        @endif
+
+                        <div class="form-group">
+                            <label for="no_surat" class="col-sm-4 col-lg-4"> Nomor Surat </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="no_surat" id="no_surat" class="form-control input-sm" value="{{ $max_nomer }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> Barang Yang Hilang </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-sm" name="barang">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-lg-4"> Rincian </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-sm" name="rincian">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_pegawai" class="col-sm-4 col-lg-4"> Staf Pemerintah Desa </label>
+                            <div class="col-sm-8">
+                                <select name="id_pegawai" id="id_pegawai" class="form-control input-sm select2" width="100%">
+                                    <option value="">- Pilih -</option>
+                                    @foreach ($data_pegawai as $pegawai)
+                                    @php
+                                    $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
+                                    @endphp
+                                    <option value="{{ $pegawai->id }}">
+                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
+                            <i class="fa fa-times"></i> Batal
+                        </button>
+                        <button type="button" onclick="tambah_elemen_cetak('cetak_rtf'); $('#validasi').submit()" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
+                            <i class="fa fa-file-word-o"></i> Cetak
+                        </button>
+                        <script type="text/javascript">
+                            function tambah_elemen_cetak($nilai) {
+                                $('<input>').attr({
+                                    type: 'hidden',
+                                    name: 'submit_cetak',
+                                    value: $nilai
+                                }).appendTo($('#validasi'));
+                            }
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@endsection
+
+@section('page_scripts')
+
+<script type="text/javascript">
+    function formAction(idForm, action, target = '')
+    {
+        if (target != '')
+        {
+            $('#'+idForm).attr('target', target);
+        }
+        $('#'+idForm).attr('action', action);
+        console.log();
+        $('#'+idForm).submit();
+    }
+</script>
+
+@endsection

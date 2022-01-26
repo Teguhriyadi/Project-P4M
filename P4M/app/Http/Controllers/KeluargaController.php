@@ -112,10 +112,17 @@ class KeluargaController extends Controller
     public function form_edit_data_penduduk_masuk(Request $request)
     {
         $data = [
-            "data_keluarga_sejahtera" => KeluargaSejahtera::get()
+            "data_keluarga_sejahtera" => KeluargaSejahtera::get(),
+            "keluarga" => Keluarga::where('id', $request->id)->first(),
+            "data_dusun" => Dusun::get(),
+            "data_rw" => Rw::get(),
+            "data_rt" => Rt::get(),
+            "edit" => Keluarga::where("id", $request->id)->first()
         ];
 
-        return view("/admin/page/kependudukan/keluarga/form_edit_data_penduduk_masuk", $data);
+        $data['kepala_keluarga'] = Penduduk::where('id_kk', $data['keluarga']->nik_kepala)->where('kk_level', 1)->first();
+
+        return view("admin.page.kependudukan.keluarga.form_edit_data_penduduk_masuk", $data);
     }
 
     public function rincian_keluarga($id)
@@ -129,6 +136,30 @@ class KeluargaController extends Controller
         }
 
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
+    }
+
+    public function rincian_keluarga_hapus(Request $request)
+    {
+        $cek = Penduduk::where("id", $request->id_penduduk)->first();
+
+        if ($cek->kk_level == 1) {
+            Penduduk::where("id", $cek->id)->update([
+                "id_kk" => NULL,
+                "kk_level" => NULL
+            ]);
+
+            Keluarga::where("nik_kepala", $request->id_kk)->delete();
+
+            return redirect("/page/admin/kependudukan/keluarga");
+        } else {
+            Penduduk::where("id", $cek->id)->update([
+                "id_kk" => NULL,
+                "kk_level" => NULL
+            ]);
+
+            return back();
+        }
+
     }
 
     public function anggota_keluarga_lahir($id)
@@ -221,7 +252,26 @@ class KeluargaController extends Controller
             "id_kk" => $request->id_kk
         ]);
 
-        return redirect("/page/admin/kependudukan/keluarga/".$request->id_kk."/rincian_keluarga");
+        return back();
+    }
+
+    public function ubah_hubungan_keluarga(Request $request)
+    {
+        $data = [
+            "detail" => Penduduk::where("id", $request->id)->first(),
+            "data_hubungan" => PendudukHubungan::all()
+        ];
+
+        return view("/admin/page/kependudukan/keluarga/ubah_hubungan_keluarga", $data);
+    }
+
+    public function ubah_data_hubungan_keluarga(Request $request)
+    {
+        Penduduk::where("id", $request->id_penduduk)->update([
+            "kk_level" => $request->kk_level
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
 }
