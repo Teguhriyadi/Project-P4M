@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\Coba;
 use App\Models\Model\Jabatan;
 use App\Models\Model\Pegawai;
+use App\Models\Model\Penduduk;
 use App\Models\Model\StrukturPemerintahan;
 use Dotenv\Util\Str;
 use Illuminate\Http\Request;
@@ -19,7 +20,13 @@ class StrukturPemerintahanController extends Controller
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 
-        return view("admin/page/pemerintahan/struktur_pemerintahan/index", $data);
+        foreach ($data['data_pegawai'] as $pegawai) {
+            if (!empty($pegawai->id_penduduk)) {
+                $data['penduduk'] = Penduduk::where('id', $pegawai->id_penduduk)->first();
+            }
+        }
+
+        return view("admin.page.pemerintahan.struktur_pemerintahan.index", $data);
     }
 
     public function store(Request $request)
@@ -135,7 +142,7 @@ class StrukturPemerintahanController extends Controller
             echo 2;
         }
     }
-    
+
     public function hapusChart($id)
     {
         $data = Coba::where('id_balkan', $id)->first();

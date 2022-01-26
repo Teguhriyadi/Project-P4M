@@ -7,57 +7,25 @@ use Illuminate\Http\Request;
 
 class SaranaPendidikanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pendidikan = SaranaPendidikan::all();
         return view('admin.page.sarana.pendidikan.index', compact('pendidikan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        SaranaPendidikan::create($request->all());
+        $cek = SaranaPendidikan::where("jenis", $request->jenis)->count();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
+        if ($cek) {
+            return redirect("/page/admin/sarana/pendidikan")->with('message', "<script>swal('Oops!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            SaranaPendidikan::create($request->all());
+
+            return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $edit = SaranaPendidikan::where('id', $request->id)->first();
@@ -65,13 +33,6 @@ class SaranaPendidikanController extends Controller
         return view('admin.page.sarana.pendidikan.edit', compact('edit'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         SaranaPendidikan::where('id', $request->id)->update([

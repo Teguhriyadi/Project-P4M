@@ -36,7 +36,7 @@ use App\Models\Model\StrukturPemerintahan;
                     <div class="box-body" style="margin-bottom: -20px">
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> NIK / Nama </label>
-                            <div class="col-sm-8">
+                            <div class="col-lg-8">
                                 <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%" onchange="formAction('main')">
                                     <option value="">-- Cari NIK / Nama Penduduk /</option>
                                     @foreach ($data_penduduk as $penduduk)
@@ -115,20 +115,20 @@ use App\Models\Model\StrukturPemerintahan;
                         </div>
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> Berlaku Dari - Sampai </label>
-                            <div class="col-sm-3 col-lg-2">
+                            <div class="col-sm-4 col-lg-4" style="margin-bottom: 15px">
                                 <div class="input-group input-group-sm date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input title="Pilih Tanggal" id="tgl_akhir" class="form-control datepicker input-sm required readonly-permohonan" name="berlaku_sampai" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
+                                    <input title="Pilih Tanggal" id="tgl_mulai" class="form-control datepicker input-sm required readonly-permohonan" name="tgl_mulai" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
                                 </div>
                             </div>
-                            <div class="col-sm-3 col-lg-2">
+                            <div class="col-sm-4 col-lg-4">
                                 <div class="input-group input-group-sm date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input title="Pilih Tanggal" id="tgl_akhir" class="form-control datepicker input-sm required readonly-permohonan" name="berlaku_sampai" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
+                                    <input title="Pilih Tanggal" id="tgl_akhir" class="form-control datepicker input-sm required readonly-permohonan" name="tgl_akhir" type="text" data-masa-berlaku="1" data-satuan-masa-berlaku="M"/>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,13 @@ use App\Models\Model\StrukturPemerintahan;
                                     $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
                                     @endphp
                                     <option value="{{ $pegawai->id }}">
-                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }} ({{ $jabatan->getJabatan->nama_jabatan }})
+                                        NIP : {{ $pegawai->nip . ' - ' . $pegawai->nama }}
+
+                                            @if (empty($jabatan->getJabatan->nama_jabatan))
+                                                (Luar Desa)
+                                            @else
+                                            ({{ $jabatan->getJabatan->nama_jabatan }})
+                                            @endif
                                     </option>
                                     @endforeach
                                 </select>

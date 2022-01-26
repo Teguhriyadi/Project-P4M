@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Home
+                <i class="fa fa-home"></i> Home
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -19,40 +19,40 @@
 </section>
 
 @if ($data_jabatan->count())
-    @if ($data_pegawai->count())
-    <section class="content">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="box box-info">
-                    <div class="box-header">
-                        <h3 class="box-title">
-                            <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
-                        </h3>
-                    </div>
-                    <form id="tambahStruktur" action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" method="POST">
-                        @csrf
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="jabatan_id"> Jabatan </label>
-                                <select name="jabatan_id" id="jabatan_id" class="form-control select2" style="width: 100%">
-                                    <option value="" selected>- Pilih -</option>
-                                    @foreach ($data_jabatan as $data)
-                                    @php
-                                    $cek_jabatan = App\Models\Model\StrukturPemerintahan::where('jabatan_id', $data->id)->first();
-                                    @endphp
-                                    @if (!$cek_jabatan)
-                                    <option value="{{ $data->id }}">
-                                        {{ $data->nama_jabatan }}
-                                    </option>
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="pegawai_id"> Pegawai </label>
-                                <select name="pegawai_id" id="pegawai_id" class="form-control select2" style="width: 100%;">
-                                    <option value="" selected>- Pilih -</option>
-                                    @foreach ($data_pegawai as $pegawai)
+@if ($data_pegawai->count())
+<section class="content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <i class="fa fa-plus"></i> Tambah Struktur Pemerintahan
+                    </h3>
+                </div>
+                <form id="tambahStruktur" action="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" method="POST">
+                    @csrf
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="jabatan_id"> Jabatan </label>
+                            <select name="jabatan_id" id="jabatan_id" class="form-control select2" style="width: 100%">
+                                <option value="" selected>- Pilih -</option>
+                                @foreach ($data_jabatan as $data)
+                                @php
+                                $cek_jabatan = App\Models\Model\StrukturPemerintahan::where('jabatan_id', $data->id)->first();
+                                @endphp
+                                @if (!$cek_jabatan)
+                                <option value="{{ $data->id }}">
+                                    {{ $data->nama_jabatan }}
+                                </option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pegawai_id"> Pegawai </label>
+                            <select name="pegawai_id" id="pegawai_id" class="form-control select2" style="width: 100%;">
+                                <option value="" selected>- Pilih -</option>
+                                {{-- @foreach ($data_pegawai as $pegawai)
                                     @php
                                     $cek_pegawai = App\Models\Model\StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
                                     @endphp
@@ -60,6 +60,13 @@
                                     <option value="{{ $pegawai->id }}">
                                         {{ $pegawai->nama }}
                                     </option>
+                                    @endif
+                                    @endforeach --}}
+                                    @foreach ($data_pegawai as $pegawai)
+                                    @if (empty($pegawai->id_penduduk))
+                                    <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                                    @else
+                                    <option value="{{ $pegawai->id }}">{{ $penduduk->nama }}</option>
                                     @endif
                                     @endforeach
                                 </select>
@@ -157,14 +164,14 @@
                             <p>
                                 Karena <b> Data Pegawai </b> Masih Kosong. <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">Silahkan Inputkan Data Pegawai Terlebih Dahulu</a>
                             </p>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     @endif
-@else
+    @else
     @if ($data_pegawai->count())
     <section class="content">
         <div class="row">
@@ -181,7 +188,7 @@
                             <p>
                                 Karena <b> Data Jabatan </b> Masih Kosong. <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">Silahkan Inputkan Data Jabatan Terlebih Dahulu</a>
                             </p>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -203,56 +210,56 @@
                             <p>
                                 Karena <b> Data Jabatan </b> Masih Kosong. <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">Silahkan Inputkan Data Jabatan Terlebih Dahulu</a>
                             </p>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     @endif
-@endif
+    @endif
 
-@endsection
+    @endsection
 
-@section('page_scripts')
-<script>
-    (function($,W,D) {
-        var JQUERY4U = {};
-        JQUERY4U.UTIL =
-        {
-            setupFormValidation: function()
+    @section('page_scripts')
+    <script>
+        (function($,W,D) {
+            var JQUERY4U = {};
+            JQUERY4U.UTIL =
             {
-                $("#tambahStruktur").validate({
-                    ignore: "",
-                    rules: {
-                        jabatan_id: {
-                            required: true
+                setupFormValidation: function()
+                {
+                    $("#tambahStruktur").validate({
+                        ignore: "",
+                        rules: {
+                            jabatan_id: {
+                                required: true
+                            },
+                            pegawai_id: {
+                                required: true
+                            },
                         },
-                        pegawai_id: {
-                            required: true
-                        },
-                    },
 
-                    messages: {
-                        jabatan_id: {
-                            required: "Jabatan harap di isi!"
+                        messages: {
+                            jabatan_id: {
+                                required: "Jabatan harap di isi!"
+                            },
+                            pegawai_id: {
+                                required: "Pegawai harap di isi!"
+                            },
                         },
-                        pegawai_id: {
-                            required: "Pegawai harap di isi!"
-                        },
-                    },
 
-                    submitHandler: function(form) {
-                        form.submit();
-                    }
-                });
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+                }
             }
-        }
 
-        $(D).ready(function($) {
-            JQUERY4U.UTIL.setupFormValidation();
-        });
+            $(D).ready(function($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
 
-    })(jQuery, window, document);
-</script>
-@endsection
+        })(jQuery, window, document);
+    </script>
+    @endsection

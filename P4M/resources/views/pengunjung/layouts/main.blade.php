@@ -12,7 +12,7 @@ $profil = Profil::first();
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <title>Desa {{ $profil ? $profil->nama_desa : 'Anonymous' }}</title>
     <link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
-    @include('pengunjung/layouts/partials/css/style_css')
+    @include('pengunjung.layouts.partials.css.style_css')
 
     <style>
         #piechart g {
