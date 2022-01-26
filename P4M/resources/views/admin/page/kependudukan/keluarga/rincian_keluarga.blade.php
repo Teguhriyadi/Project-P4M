@@ -57,28 +57,28 @@
                             <tbody>
                                 <tr>
                                     <td width="20%">Nomor Kartu Keluarga (KK)</td>
-								    <td width="1%">:</td>
+                                    <td width="1%">:</td>
                                     <td>
                                         {{ $edit->no_kk }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Kepala Keluarga</td>
-								    <td>:</td>
+                                    <td>:</td>
                                     <td>
                                         {{ $edit->getDataPenduduk->nama }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-								    <td>:</td>
+                                    <td>:</td>
                                     <td>
                                         {{ $edit->alamat }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Program Bantuan</td>
-								    <td>:</td>
+                                    <td>:</td>
                                     <td>
                                         -
                                     </td>
@@ -106,9 +106,9 @@
                             </thead>
                             <tbody>
                                 @php
-                                    use App\Models\Model\Penduduk;
-                                    $data_penduduk = Penduduk::where("id_kk", $edit->nik_kepala)
-                                                ->get();
+                                use App\Models\Model\Penduduk;
+                                $data_penduduk = Penduduk::where("id_kk", $edit->nik_kepala)
+                                ->get();
                                 @endphp
                                 @foreach ($data_penduduk as $data)
                                 <tr>
@@ -130,9 +130,14 @@
                                         <a href="" class="btn btn-warning btn-flat btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn bg-purple btn-flat btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
+                                        <form action="{{ url('/page/admin/kependudukan/keluarga/rincian_keluarga/hapus') }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <input type="hidden" name="id_kk" value="{{ $edit->nik_kepala }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -183,7 +188,7 @@
 
 <script type="text/javascript">
 
-function tambahAnggotaKeluarga(id)
+    function tambahAnggotaKeluarga(id)
     {
         $.ajax({
             url : "{{ url('/page/admin/kependudukan/keluarga/form_tambah_data_anggota_keluarga') }}",
