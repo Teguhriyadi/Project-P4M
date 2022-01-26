@@ -17,6 +17,7 @@
             url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rt') }}",
             data: { id_rw: id_rw },
             success: function(data){
+                $('#rtSebelumnya').addClass('hidden')
                 $("#rt").html(data);
             }
         });
