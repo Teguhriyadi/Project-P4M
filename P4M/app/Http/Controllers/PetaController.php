@@ -35,8 +35,9 @@ class PetaController extends Controller
     public function kantor()
     {
         $kantor = Peta::select("id", "lokasi_kantor")->first();
+        $kantor_desa = Peta::select("id", "lokasi_kantor")->where("lokasi_kantor", NULL)->first();
 
-        return view("admin/page/peta/kantor", compact('kantor'));
+        return view("admin/page/peta/kantor", compact('kantor', 'kantor_desa'));
     }
 
     public function kantorUpdate(Request $request)
