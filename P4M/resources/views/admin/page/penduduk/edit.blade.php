@@ -33,9 +33,9 @@
         </ul>
     </div>
     @endif
-    <form action="{{ url('/page/admin/kependudukan/penduduk/'.$data_penduduk->id) }}" method="POST" enctype="multipart/form-data" id="formTambahPendudukLahir">
+    <form action="{{ url('/page/admin/kependudukan/penduduk/'.$data_penduduk->id.'/edit') }}" method="POST" enctype="multipart/form-data" id="formTambahPendudukLahir">
+        @method("PUT")
         @csrf
-        @method('put')
         <div class="row">
             <div class="col-md-4">
                 <div class="box box-info">
@@ -498,8 +498,8 @@
                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                             <i class="fa fa-refresh"></i> Reset
                         </button>
-                        <button type="submit" class="btn btn-social btn-flat btn-success btn-sm pull-right" title="Tambah Data">
-                            <i class="fa fa-save"></i> Save
+                        <button type="submit" class="btn btn-social btn-flat btn-success btn-sm pull-right" title="Simpan Data">
+                            <i class="fa fa-edit"></i> Simpan
                         </button>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ class RTM extends Model
 
     public function getDataPenduduk()
     {
-        return $this->hasOne(Penduduk::class, "id_rtm", "no_kk");
+        return $this->hasOne(Penduduk::class, "id", "nik_kepala");
     }
 
 }
