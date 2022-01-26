@@ -14,7 +14,7 @@ class ArsipSuratController extends Controller
             "data_arsip" => LogSurat::all()
         ];
 
-        return view("/admin/page/surat/arsip/index", $data);
+        return view("admin.page.surat.arsip.index", $data);
     }
 
     public function edit(Request $request)

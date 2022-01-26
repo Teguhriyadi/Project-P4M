@@ -54,14 +54,12 @@
                                         <button onclick="ubahData({{ $data->id }})" type="button" data-toggle="modal" data-target="#ubah-data" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        @if ($data->getPenduduk->telepon != NULL)
+                                        @if ($data->getPenduduk != NULL)
                                         <a href="https://api.whatsapp.com/send?phone={{ $data->getPenduduk->telepon }}&text=Test%20With%20API%20WhatsApp" target="_blank" class="btn btn-success btn-sm">
                                             <i class="fa fa-whatsapp"></i>
                                         </a>
                                         @endif
-                                        @if (session('message'))
-                                        <a href="{{ url('page/admin/cetak_surat/cetak/'.$data->id) }}" target="_blank" class="btn btn-sm bg-purple"><i class="fa fa-file-word-o"></i></a>
-                                        @endif
+                                        <a href="{{ url('arsip/'.$data->getPenduduk->nama.' - '.$data->getPenduduk->nik.'.docx') }}" target="_blank" class="btn btn-sm bg-purple"><i class="fa fa-file-word-o"></i></a>
                                         <form action="{{ url('/page/admin/surat/arsip/'.$data->id) }}" method="POST" style="display: inline">
                                             @method("DELETE")
                                             @csrf
@@ -74,7 +72,11 @@
                                     <td>{{ $data->no_surat }}</td>
                                     <td>{{ $data->getSuratFormat->getKlasifikasi->nama }}</td>
                                     <td>{{ $data->getPenduduk->nama }}</td>
+                                    @if (empty($data->getPegawai->getPenduduk->nama))
                                     <td>{{ $data->getPegawai->nama }}</td>
+                                    @else
+                                    <td>{{ $data->getPegawai->getPenduduk->nama }}</td>
+                                    @endif
                                     <td class="text-center">{{ $data->tanggal }}</td>
                                     <td>{{ $data->getUser->name }}</td>
                                 </tr>

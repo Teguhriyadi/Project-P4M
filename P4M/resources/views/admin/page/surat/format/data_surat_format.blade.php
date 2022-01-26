@@ -22,6 +22,15 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            <div class="alert alert-warning" role="alert">
+                <h4>Surat yang udah bisa</h4>
+                <ul>
+                    <li>Surat Jalan</li>
+                    <li>Surat Keterangan Domisili</li>
+                    <li>Surat Keterangan Kehilangan</li>
+                    <li>Surat Keterangan Usaha</li>
+                </ul>
+            </div>
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
@@ -49,29 +58,29 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_surat_format as $data)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}.</td>
-                                        <td class="text-center">
-                                            <a href="{{ url('/page/admin/surat/format/'.$data->id) }}/edit" class="btn btn-flat btn-warning btn-sm" title="Ubah Data">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <form action="{{ url('/page/admin/surat/format/'.$data->id) }}" method="POST" style="display: inline;">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button type="submit" class="btn-delete btn-flat btn btn-danger btn-sm" title="Hapus Data">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->akronim }}</td>
-                                        <td class="text-center">{{ $data->url_surat }}</td>
-                                        <td class="text-center">{{ $data->getKlasifikasi->kode }}</td>
-                                        <td>
-                                            <a href="{{ url('template/surat/'.$data->url_surat.'.docx') }}" class="btn btn-sm btn-flat bg-purple" title="Download Template"><i class="fa fa-download"></i></a>
-                                            <a href="{{ url('template/surat/'.$data->url_surat.'.docx') }}" class="btn btn-sm btn-flat btn-warning" title="Upload Template Baru"><i class="fa fa-upload"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}.</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('/page/admin/surat/format/'.$data->id) }}/edit" class="btn btn-flat btn-warning btn-sm" title="Ubah Data">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <form action="{{ url('/page/admin/surat/format/'.$data->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn-delete btn-flat btn btn-danger btn-sm" title="Hapus Data">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td>{{ $data->akronim }}</td>
+                                    <td class="text-center">{{ $data->url_surat }}</td>
+                                    <td class="text-center">{{ $data->getKlasifikasi->kode }}</td>
+                                    <td>
+                                        <a href="{{ url('template/surat/'.$data->url_surat.'.docx') }}" class="btn btn-sm btn-flat bg-purple" title="Download Template"><i class="fa fa-download"></i></a>
+                                        <a href="{{ url('template/surat/'.$data->url_surat.'.docx') }}" class="btn btn-sm btn-flat btn-warning" title="Upload Template Baru"><i class="fa fa-upload"></i></a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -98,7 +107,7 @@
                             Karena <b> Data Klasifikasi Surat </b> Masih Kosong.
                             <a href="{{ url('/page/admin/surat/klasifikasi') }}">Silahkan Inputkan Data Klasifikasi Surat Terlebih Dahulu</a>
                         </p>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>

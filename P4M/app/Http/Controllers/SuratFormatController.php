@@ -76,7 +76,7 @@ class SuratFormatController extends Controller
     public function update(Request $request, $id)
     {
         $surat_format = SuratFormat::find($id);
-        $surat_format->nama = $request->nama;
+        $surat_format->nama = 'Surat '.$request->nama;
         $surat_format->url_surat = Str::slug($request->nama);
         $surat_format->kode_surat = $request->kode_surat;
         $surat_format->mandiri = $request->mandiri;
