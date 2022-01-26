@@ -26,6 +26,7 @@ class KeluargaController extends Controller
     public function index()
     {
         $data = [
+            "data_penduduk" => Penduduk::where("id_kk", NULL)->get(),
             "data_keluarga" => Keluarga::all()
         ];
 
@@ -122,6 +123,10 @@ class KeluargaController extends Controller
         $data = [
             "edit" => Keluarga::where("id", $id)->first()
         ];
+
+        if (!$data["edit"]) {
+            abort(404);
+        }
 
         return view("/admin/page/kependudukan/keluarga/rincian_keluarga", $data);
     }

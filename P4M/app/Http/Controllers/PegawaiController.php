@@ -15,6 +15,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $data = [
+            "data_penduduk" => Penduduk::all(),
             "data_pegawai" => Pegawai::orderBy("nama", "DESC")->get()
         ];
 

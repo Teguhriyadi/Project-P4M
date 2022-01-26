@@ -14,6 +14,7 @@ class SuratMasukController extends Controller
     public function index()
     {
         $data = [
+            "data_klasifikasi" => KlasifikasiSurat::get(),
             "data_surat_masuk" => SuratMasuk::get()
         ];
 
