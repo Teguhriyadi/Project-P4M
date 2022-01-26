@@ -14,4 +14,10 @@ class SakitMenahun extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getCountPenduduk()
+    {
+        return $this->hasMany(Penduduk::class, 'id_sakit_menahun', 'id');
+    }
+
 }

@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class SakitMenahunController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            "data_sakit_menahun" => SakitMenahun::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/penduduk/sakit_menahun/data_sakit_menahun", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        SakitMenahun::create($request->all());
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\SakitMenahun  $sakitMenahun
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SakitMenahun $sakitMenahun)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => SakitMenahun::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/penduduk/sakit_menahun/edit_data_sakit_menahun", $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\SakitMenahun  $sakitMenahun
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SakitMenahun $sakitMenahun)
+    public function update(Request $request)
     {
-        //
+        SakitMenahun::where("id", $request->id)->update([
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\SakitMenahun  $sakitMenahun
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SakitMenahun $sakitMenahun)
+    public function destroy($id)
     {
-        //
-    }
+        SakitMenahun::where("id", $id)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\SakitMenahun  $sakitMenahun
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SakitMenahun $sakitMenahun)
-    {
-        //
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

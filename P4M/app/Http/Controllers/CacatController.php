@@ -7,79 +7,50 @@ use Illuminate\Http\Request;
 
 class CacatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = [
+            "data_cacat" => Cacat::orderBy("nama", "DESC")->get()
+        ];
+
+        return view("/admin/page/penduduk/cacat/data_cacat", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $cek = Cacat::where("nama", $request->nama)->count();
+
+        if ($cek) {
+            return back()->with('message', "<script>swal('Oops', 'Tidak Boleh Duplikasi Data' , 'error')</script>");
+        } else {
+            Cacat::create($request->all());
+
+            return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Tambahkan', 'success')</script>");
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\Cacat  $cacat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cacat $cacat)
+    public function edit(Request $request)
     {
-        //
+        $data = [
+            "edit" => Cacat::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/penduduk/cacat/edit_data_cacat", $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\Cacat  $cacat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cacat $cacat)
+    public function update(Request $request)
     {
-        //
+        Cacat::where("id", $request->id)->update([
+            "nama" => $request->nama
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Ubah', 'success')</script>");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\Cacat  $cacat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cacat $cacat)
+    public function destroy($id)
     {
-        //
-    }
+        Cacat::where("id", $id)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\Cacat  $cacat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cacat $cacat)
-    {
-        //
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil di Hapus', 'success')</script>");
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ArsipSuratController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\CacatController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\CetakSuratController;
 use App\Http\Controllers\DusunController;
@@ -53,6 +54,7 @@ use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\RtmController;
+use App\Http\Controllers\SakitMenahunController;
 use App\Http\Controllers\SejarahController;
 use App\Models\Model\Artikel;
 use App\Models\Model\Komentar;
@@ -271,6 +273,17 @@ Route::prefix("page")->group(function() {
                 Route::get("/golongan-darah/edit", [GolonganDarahController::class, "edit"]);
                 Route::put("/golongan-darah/simpan", [GolonganDarahController::class, "update"]);
                 Route::resource("/golongan-darah", GolonganDarahController::class);
+
+                // Cacat
+                Route::get("/cacat/edit", [CacatController::class, "edit"]);
+                Route::put("/cacat/simpan", [CacatController::class, "update"]);
+                Route::resource("/cacat", CacatController::class);
+
+                // Sakit Menahun
+                Route::get("/sakit-menahun/edit", [SakitMenahunController::class, "edit"]);
+                Route::put("/sakit-menahun/simpan", [SakitMenahunController::class, "update"]);
+                Route::resource("/sakit-menahun", SakitMenahunController::class);
+
             });
 
             Route::prefix("/pemerintahan")->group(function() {
