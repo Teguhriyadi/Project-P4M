@@ -108,6 +108,9 @@
                     <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
                         <i class="fa fa-times"></i> Batal
                     </button>
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="reset">
+                        <i class="fa fa-refresh"></i> Reset
+                    </button>
                     <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
