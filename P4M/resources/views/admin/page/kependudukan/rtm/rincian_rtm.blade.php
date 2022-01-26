@@ -11,8 +11,11 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
             </a>
+        </li>
+        <li>
+
         </li>
         <li class="active">@yield('title')</li>
     </ol>
@@ -91,14 +94,17 @@
                             </thead>
                             <tbody>
                                 @php
-                                    use App\Models\Model\Penduduk;
+                                use App\Models\Model\Penduduk;
 
-                                    $getData = Penduduk::where("id_rtm", $edit->no_kk)->get();
+                                $getData = Penduduk::where("id_rtm", $edit->no_kk)->get();
                                 @endphp
                                 @foreach ($getData as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
+                                        <button onclick="ubahHubungan({{ $data->id }})" data-toggle="modal" data-target="#ubahHubungan" class="btn btn-warning btn-sm" title="Ubah Hubungan Rumah Tangga">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
                                         <a href="" class="btn btn-danger btn-flat btn-sm">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
@@ -150,12 +156,43 @@
 </div>
 <!-- END -->
 
+<!-- Ubah Hubungan -->
+<div class="modal fade" id="ubahHubungan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-edit"></i> Ubah Hubungan Rumah Tangga
+                </h4>
+            </div>
+            <form action="{{ url('/page/admin/kependudukan/rtm/ubah_hubungan') }}" method="POST">
+                @csrf
+                <div class="modal-body" id="content-isi">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger pull-left btn-flat btn-sm">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-success btn-flat btn-sm" title="Simpan Data">
+                        <i class="fa fa-plus"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
 @endsection
 
 @section('page_scripts')
 
 <script type="text/javascript">
-function tambahAnggotaRTM(id)
+    function tambahAnggotaRTM(id)
     {
         $.ajax({
             url : "{{ url('/page/admin/kependudukan/rtm/tambah_data_anggota_rtm') }}",
@@ -163,6 +200,19 @@ function tambahAnggotaRTM(id)
             data : { id : id },
             success : function(data) {
                 $("#isian-modal").html(data);
+                return true;
+            }
+        });
+    }
+
+    function ubahHubungan(id)
+    {
+        $.ajax({
+            url : "{{ url('/page/admin/kependudukan/rtm/ubah_hubungan_rumah_tangga') }}",
+            type : "GET",
+            data : { id : id },
+            success : function(data) {
+                $("#content-isi").html(data);
                 return true;
             }
         });
