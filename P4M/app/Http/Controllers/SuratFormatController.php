@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Model\SuratFormat;
 use App\Models\Model\KlasifikasiSurat;
+use App\Models\Model\LogSurat;
+use App\Models\Model\Pegawai;
+use App\Models\Model\Penduduk;
 use App\Models\Model\RefSyaratSurat;
 use App\Models\Model\SuratMasuk;
 use App\Models\Model\SyaratSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use DB;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class SuratFormatController extends Controller
 {
@@ -99,5 +102,14 @@ class SuratFormatController extends Controller
         SuratFormat::where("id", $id)->delete();
 
         return redirect("/page/admin/surat/format")->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+    }
+
+    public function maxNumber()
+    {
+        $max = LogSurat::max('no_surat');
+        $urutan = (int) substr($max, 2);
+        $urutan++;
+        $hasil = sprintf("%03s", $urutan);
+        return $hasil;
     }
 }

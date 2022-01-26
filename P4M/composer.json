@@ -14,7 +14,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "nesbot/carbon": "^2.55",
-        "phpoffice/phpword": "^0.18.2"
+        "phpoffice/phpword": "^0.18.2",
+        "sunra/php-simple-html-dom-parser": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

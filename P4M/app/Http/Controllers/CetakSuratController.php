@@ -53,7 +53,7 @@ class CetakSuratController extends Controller
 
     public function cetakSuratBeforeUpdate(Request $request)
     {
-        $this->simpanLogSurat($request);
+        // $this->simpanLogSurat($request);
 
         $no_surat = $request->no_surat;
         $keperluan = $request->keperluan;
@@ -61,10 +61,13 @@ class CetakSuratController extends Controller
         $penduduk = Penduduk::where('id', $request->id_penduduk)->first();
         $format = SuratFormat::where('id', $request->id_surat_format)->first();
         $pegawai = Pegawai::where('id', $request->id_pegawai)->first();
+
         $jabatan = StrukturPemerintahan::where('pegawai_id', $pegawai->id)->first();
         $profil = Profil::first();
 
-        $template = new \PhpOffice\PhpWord\TemplateProcessor('./template/surat/'.$request->surat.'.docx');
+        dd($jabatan);
+
+        $template = new \PhpOffice\PhpWord\TemplateProcessor('./template/surat/'.$format->url_surat.'.docx');
         $template->setValues([
             'provinsi' => $profil->provinsi,
             'kabupaten' => $profil->kabupaten,
@@ -97,6 +100,8 @@ class CetakSuratController extends Controller
             'jabatan' => $jabatan->getJabatan->nama_jabatan,
             'pejabat' => $jabatan->getPegawai->nama,
             'nip' => $jabatan->getPegawai->nip,
+            'tgl_mulai' => $request->tgl_mulai,
+            'tgl_akhir' => $request->tgl_akhir,
         ]);
         header("Content-Disposition: attachment; filename=".$penduduk->nama." - ".$format->nama.".docx");
 
