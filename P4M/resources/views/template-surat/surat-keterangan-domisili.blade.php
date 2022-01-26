@@ -89,6 +89,7 @@ use App\Models\Model\StrukturPemerintahan;
                                     @endif
                                     @endforeach
                                 </select>
+                                <label class="error hidden">NIK/Nama harap di isi!</label>
                             </div>
                         </div>
                     </div>
@@ -166,16 +167,15 @@ use App\Models\Model\StrukturPemerintahan;
                         <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
                             <i class="fa fa-times"></i> Batal
                         </button>
-                        <button type="button" onclick="tambah_elemen_cetak('cetak_rtf'); $('#validasi').submit()" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
+                        <button type="button" onclick="tambah_elemen_cetak(); $('#validasi').submit()" class="btn btn-social bg-purple btn-flat btn-sm pull-right">
                             <i class="fa fa-file-word-o"></i> Cetak
                         </button>
                         <script type="text/javascript">
-                            function tambah_elemen_cetak($nilai) {
-                                $('<input>').attr({
-                                    type: 'hidden',
-                                    name: 'submit_cetak',
-                                    value: $nilai
-                                }).appendTo($('#validasi'));
+                            function tambah_elemen_cetak() {
+                                let nik = $("#main #id_penduduk").val()
+                                if (nik == '') {
+                                    $('.error').removeClass('hidden')
+                                }
                             }
                         </script>
                     </div>

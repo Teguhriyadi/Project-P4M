@@ -56,7 +56,6 @@ class CetakSuratController extends Controller
 
     public function cetakSuratBeforeUpdate(Request $request)
     {
-        $this->simpanLogSurat($request);
 
         $no_surat = $request->no_surat;
         $keterangan = $request->keterangan;
@@ -117,6 +116,7 @@ class CetakSuratController extends Controller
             'tgl_akhir' => $request->tgl_akhir,
             'usaha' => $request->usaha,
         ]);
+        $this->simpanLogSurat($request);
 
         $template->saveAs('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx");
         return response()->download(public_path('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx"));
