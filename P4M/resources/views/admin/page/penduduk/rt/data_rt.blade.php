@@ -157,8 +157,8 @@
                     <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm pull-right" title="Simpan">
-                        <i class="fa fa-edit"></i> Simpan
+                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right" title="Tambah Data">
+                        <i class="fa fa-edit"></i> Tambah
                     </button>
                 </div>
             </form>
