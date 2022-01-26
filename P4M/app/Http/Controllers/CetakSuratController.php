@@ -53,7 +53,7 @@ class CetakSuratController extends Controller
 
     public function cetakSuratBeforeUpdate(Request $request)
     {
-        // $this->simpanLogSurat($request);
+        $this->simpanLogSurat($request);
 
         $no_surat = $request->no_surat;
         $keperluan = $request->keperluan;
