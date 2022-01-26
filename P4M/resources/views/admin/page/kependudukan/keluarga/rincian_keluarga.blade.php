@@ -142,6 +142,17 @@
                                         {{ $data->getHubungan->nama }}
                                         @endif
                                     </td>
+<<<<<<< HEAD
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-warning btn-flat btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-flat btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+=======
+>>>>>>> eff972bd2b1608b81fcce60898a3c88012b4d5a6
                                 </tr>
                                 @endforeach
                             </tbody>

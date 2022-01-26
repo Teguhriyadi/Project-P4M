@@ -39,7 +39,7 @@ class ArsipSuratController extends Controller
     {
         LogSurat::where("id", $id)->delete();
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus'success')</script>");
     }
 
     public function perorangan()

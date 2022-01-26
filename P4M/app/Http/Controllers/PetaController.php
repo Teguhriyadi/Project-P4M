@@ -21,7 +21,7 @@ class PetaController extends Controller
         if ($cek) {
             Peta::where("id", $cek->id)->update(['wilayah_desa'=>$request->url]);
 
-            return back();
+            return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Disimpan', 'success')</script>");
         }
     }
 
@@ -29,7 +29,7 @@ class PetaController extends Controller
     {
         Peta::create(['wilayah_desa' => $request->url]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
     }
 
     public function kantor()
@@ -46,7 +46,7 @@ class PetaController extends Controller
         if ($cek) {
             Peta::where("id", $cek->id)->update(['lokasi_kantor'=>$request->url]);
 
-            return back();
+            return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Disimpan', 'success')</script>");
         }
     }
 
@@ -54,6 +54,6 @@ class PetaController extends Controller
     {
         Peta::create(['lokasi_kantor' => $request->url]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
     }
 }

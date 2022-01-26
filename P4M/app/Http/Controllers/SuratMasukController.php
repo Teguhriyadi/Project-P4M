@@ -59,7 +59,7 @@ class SuratMasukController extends Controller
             $s->save();
         }
 
-        return redirect("/page/admin/surat/masuk");
+        return redirect("/page/admin/surat/masuk")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
     }
 
     /**
@@ -116,7 +116,7 @@ class SuratMasukController extends Controller
             $s->update();
         }
 
-        return redirect("/page/admin/surat/masuk");
+        return redirect("/page/admin/surat/masuk")->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
     /**

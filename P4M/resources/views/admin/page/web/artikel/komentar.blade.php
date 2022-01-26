@@ -92,7 +92,7 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning pull-right" data-dismiss="modal">
+                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">
                     <i class="fa fa-arrow-left"></i> Kembali
                 </button>
             </div>

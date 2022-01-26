@@ -44,12 +44,12 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm" id="simpan">
+                        <button type="submit" class="btn btn-success btn-social btn-flat btn-sm" id="simpan">
                             <i class="fa fa-save"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
-                        </button>
+		                <button type="reset" class="btn btn-warning btn-social btn-flat btn-sm" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
                     </div>
                 </form>
             </div>
@@ -61,7 +61,7 @@
                         Data Kategori
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/web/kategori') }}" class="btn btn-danger btn-sm">
+                        <a href="{{ url('/page/admin/web/kategori') }}" class="btn btn-info btn-sm">
                             <i class="fa fa-arrow-left"></i> Kembali
                         </a>
                     </div>
