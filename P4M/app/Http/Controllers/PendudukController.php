@@ -124,10 +124,11 @@ class PendudukController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $validatedData = $request->validate([
             "nik" => "required|max:20",
             "nama" => "required",
-            "kk_sebelumnya" => "required|max:20",
+            "kk_sebelumnya" => "max:20",
             "id_hubungan" => "required",
             "id_sex" => "required",
             "id_agama" => "required",
@@ -146,9 +147,6 @@ class PendudukController extends Controller
             "nama_ayah" => "required",
             "nama_ibu" => "required",
             "status_kawin" => "required",
-            "id_rt" => "required",
-            "id_rw" => "required",
-            "id_dusun" => "required",
         ]);
 
         $validatedData["status_hidup"] = 1;
@@ -157,7 +155,7 @@ class PendudukController extends Controller
 
         Penduduk::where('id', $id)->update($validatedData);
 
-        return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        // return redirect('/page/admin/kependudukan/penduduk')->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
     }
 
     public function destroy($id)
