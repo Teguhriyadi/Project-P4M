@@ -472,8 +472,8 @@
                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                             <i class="fa fa-refresh"></i> Reset
                         </button>
-                        <button type="submit" class="btn btn-social btn-flat btn-primary btn-sm pull-right" title="Tambah Data">
-                            <i class="fa fa-plus"></i> Tambah
+                        <button type="submit" class="btn btn-social btn-flat btn-success btn-sm pull-right" title="Tambah Data">
+                            <i class="fa fa-save"></i> Save
                         </button>
                     </div>
                 </div>

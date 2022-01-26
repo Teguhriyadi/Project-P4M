@@ -132,15 +132,15 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-4 control-label"> Nama </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa readonly" placeholder="Masukkan Nama" value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}" readonly>
+                                <input type="text" class="form-control input-sm pengurus-desa readonly"  value="{{ empty($detail) ? '' : ''.$detail->nama.'' }}" readonly>
                                 <input id="nama" name="nama" class="form-control input-sm pengurus-luar-desa" type="text" placeholder="Nama" value="" style="display: none;"></input>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nik" class="col-sm-4 control-label"> Nomor Induk Kependudukan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm pengurus-desa readonly" placeholder="Masukkan NIK" value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}" readonly>
-                                <input id="nik" name="nik" class="form-control input-sm pengurus-luar-desa" type="text" placeholder="Masukan NIK" value="" style="display: none;"></input>
+                                <input type="text" class="form-control input-sm pengurus-desa readonly"  value="{{ empty($detail) ? '' : ''.$detail->nik.'' }}" readonly>
+                                <input id="nik" name="nik" class="form-control input-sm pengurus-luar-desa" placeholder="NIK" type="text"  value="" style="display: none;"></input>
                             </div>
                         </div>
                         <!--
@@ -157,8 +157,8 @@
                         <div class="form-group">
                             <label for="tempat_lahir" class="col-sm-4 control-label"> Tempat Lahir </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm readonly readonly2" placeholder="Tempat Lahir" value="{{ empty($detail) ? '' : ''.$detail->tempat_lahir.'' }}" readonly>
-                                <input type="text" class="form-control input-sm pengurus-luar-desa" name="tempat_lahir" style="display: none;">
+                                <input type="text" class="form-control input-sm readonly readonly2"  value="{{ empty($detail) ? '' : ''.$detail->tempat_lahir.'' }}" readonly>
+                                <input type="text" class="form-control input-sm pengurus-luar-desa" name="tempat_lahir" style="display: none;" placeholder="Tempat Lahir">
                             </div>
                         </div>
                         <div class="form-group">
