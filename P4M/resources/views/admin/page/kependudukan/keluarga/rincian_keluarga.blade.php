@@ -130,7 +130,7 @@
                                         <a href="" class="btn btn-warning btn-flat btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn bg-purple btn-flat btn-sm">
+                                        <a href="" class="btn btn-danger btn-flat btn-sm">
                                             <i class="fa fa-times"></i>
                                         </a>
                                     </td>

@@ -98,10 +98,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
-                    </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
+                    <button type="submit" class="btn btn-primary" title="Simpan Data" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>
@@ -127,10 +127,10 @@
                 <div class="modal-body" id="modal-content-edit">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset"  data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" title="Simpan Data">
                         <i class="fa fa-plus"></i> Simpan
                     </button>
                 </div>
