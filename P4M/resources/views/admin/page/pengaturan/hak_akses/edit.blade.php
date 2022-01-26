@@ -45,8 +45,8 @@
                         <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                             <i class="fa fa-edit"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
-                            <i class="fa fa-times"></i> Batal
+                        <button type="reset" class="btn btn-social btn-warning btn-flat pull-left btn-sm" title="Reset">
+                            <i class="fa fa-refresh"></i> Reset
                         </button>
                         <div class="pull-right">
                             <a href="{{ url('/page/admin/pengaturan/hak_akses') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali">

@@ -46,8 +46,8 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm">
-                                <i class="fa fa-plus"></i> Tambah
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan data">
+                                <i class="fa fa-save"></i> Simpan
                             </button>
                         </div>
                     </form>

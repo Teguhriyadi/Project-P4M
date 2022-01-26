@@ -43,7 +43,8 @@ class SuratKeluarController extends Controller
 
         $simpan->save();
 
-        return redirect("/page/admin/surat/keluar");
+        return redirect("/page/admin/surat/keluar")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
+
     }
 
     public function show($id)
@@ -89,7 +90,7 @@ class SuratKeluarController extends Controller
 
         $simpan->update();
 
-        return redirect("/page/admin/surat/keluar");
+        return redirect("/page/admin/surat/keluar")->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
     public function destroy(Request $request, $id)
