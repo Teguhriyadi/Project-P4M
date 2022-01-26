@@ -189,7 +189,7 @@
                     <button type="button" class="btn btn-danger pull-left btn-flat btn-sm" data-dismiss="modal" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-success btn-flat btn-sm">
+                    <button type="submit" class="btn btn-success btn-flat btn-sm" title="Simpan">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>

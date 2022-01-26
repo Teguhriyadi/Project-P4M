@@ -167,7 +167,7 @@
                     <button type="reset" class="btn btn-social btn-warning pull-left btn-flat btn-sm" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                    <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan">
                         <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>
