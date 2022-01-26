@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                     <a href="{{ url('/page/admin/kependudukan/keluarga') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali ke Daftar Keluarga">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Keluarga
+                        <i class="fa fa-arrow-circle-left"></i> Kembali ke Daftar Keluarga
                     </a>
                 </div>
                 <div class="box-body">
@@ -114,7 +114,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-flat btn-sm">
+                                        <a href="{{ url('/page/admin/kependudukan/penduduk/'.$data->id.'/edit') }}" class="btn btn-warning btn-flat btn-sm" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a onclick="ubahHubunganKeluarga({{ $data->id }})" data-toggle="modal" data-target="#ubahHubungan" class="btn bg-navy btn-flat btn-sm" title="Ubah Hubungan Keluarga">
@@ -142,17 +142,6 @@
                                         {{ $data->getHubungan->nama }}
                                         @endif
                                     </td>
-<<<<<<< HEAD
-                                    <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-flat btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-flat btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </td>
-=======
->>>>>>> eff972bd2b1608b81fcce60898a3c88012b4d5a6
                                 </tr>
                                 @endforeach
                             </tbody>

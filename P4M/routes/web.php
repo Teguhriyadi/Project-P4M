@@ -341,6 +341,7 @@ Route::prefix("page")->group(function() {
                     Route::post('/tambah_data_anggota_keluarga_masuk', [KeluargaController::class, "tambah_data_anggota_keluarga_masuk"]);
                     Route::get('/form_tambah_data_anggota_keluarga', [KeluargaController::class, "form_tambah_data_anggota_keluarga"]);
                     Route::put('/tambah_penduduk_dari_daftar', [KeluargaController::class, "tambah_penduduk_dari_daftar"]);
+                    Route::put("/simpan_data_keluarga", [KeluargaController::class, "simpan_data_keluarga"]);
                 });
 
                 Route::prefix('/rtm')->group(function() {

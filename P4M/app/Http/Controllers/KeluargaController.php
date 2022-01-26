@@ -274,4 +274,22 @@ class KeluargaController extends Controller
         return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
+    public function simpan_data_keluarga(Request $request)
+    {
+        Keluarga::where("id", $request->id_keluarga)->update([
+            "no_kk" => $request->no_kk,
+            "alamat" => $request->alamat,
+            "tgl_cetak_kk" => $request->tanggal_cetak,
+            "kelas_sosial" => $request->kelas_sosial
+        ]);
+
+        Penduduk::where("id", $request->nik)->update([
+            "id_dusun" => $request->id_dusun,
+            "id_rw" => $request->id_rw,
+            "id_rt" => $request->id_rt
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
+    }
+
 }

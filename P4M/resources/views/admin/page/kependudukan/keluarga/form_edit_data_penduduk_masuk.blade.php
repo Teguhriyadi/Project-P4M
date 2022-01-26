@@ -1,3 +1,5 @@
+<input type="hidden" name="id_keluarga" value="{{ $edit->id }}">
+<input type="hidden" name="nik" value="{{ $edit->nik_kepala }}">
 <div class="form-group">
     <label for="no_kk"> Nomor KK </label>
     <input type="text" name="no_kk" id="no_kk" class="form-control input-sm" placeholder="Masukkan No. KK" value="{{ $edit->no_kk }}">
@@ -23,8 +25,8 @@
 
     <div class="col-md-4">
         <div class="form-group" id="rwSebelumnya">
-            <label for="rw">RW</label>
-            <select class="form-control input-sm select2">
+            <label for="id_rw">RW</label>
+            <select id="rw" name="id_rw" class="form-control input-sm select2">
                 <option value="">Pilih RW</option>
                 @foreach ($data_rw as $rw)
                     <option value="{{ $rw->id }}" {{ $rw->id == $kepala_keluarga->id_rw ? 'selected' : '' }}>{{ $rw->rw }}</option>
@@ -36,8 +38,8 @@
 
     <div class="col-md-4">
         <div class="form-group" id="rtSebelumnya">
-            <label for="rt">RT</label>
-            <select class="form-control input-sm select2">
+            <label for="id_rt">RT</label>
+            <select name="id_rt" id="id_rt" class="form-control input-sm select2">
                 <option value="">Pilih RT</option>
                 @foreach ($data_rt as $rt)
                     <option value="{{ $rt->id }}" {{ $rt->id == $kepala_keluarga->id_rt ? 'selected' : '' }}>{{ $rt->rt }}</option>
@@ -53,7 +55,7 @@
 </div>
 <div class="form-group">
     <label for="kelas_sosial"> Kelas Sosial </label>
-    <select name="kelas_sosial" id="kelas_sosial" class="form-control input-sm">
+    <select name="kelas_sosial" id="kelas_sosial" class="form-control input-sm select2">
         <option value="">- Pilih -</option>
         @foreach ($data_keluarga_sejahtera as $data)
         <option value="{{ $data->id }}">

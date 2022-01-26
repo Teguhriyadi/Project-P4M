@@ -179,14 +179,14 @@
                     <i class="fa fa-edit"></i> Ubah Data
                 </h4>
             </div>
-            <form action="" method="POST" id="formUbah">
+            <form action="{{ url('/page/admin/kependudukan/keluarga/simpan_data_keluarga') }}" method="POST" id="formUbah">
                 @method("PUT")
                 @csrf
                 <div class="modal-body" id="modal-content-edit">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left btn-flat btn-sm" data-dismiss="modal" title="Reset">
+                    <button type="reset" class="btn btn-warning pull-left btn-flat btn-sm" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-success btn-flat btn-sm" title="Simpan">
