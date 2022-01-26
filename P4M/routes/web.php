@@ -151,7 +151,7 @@ Route::prefix('/data')->group(function () {
 
 });
 
-Route::get('/peta', [UserController::class, 'peta']);
+Route::get('/kependudukan', [UserController::class, 'kependudukan']);
 Route::resource('/surat', SuratOnlineController::class);
 
 Route::post('/komentar/{slug}', function (Request $request, $slug) {

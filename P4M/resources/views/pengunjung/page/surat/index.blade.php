@@ -19,6 +19,11 @@
 
         <h5 style="margin-bottom: 2rem">Silahkan lengkapi semua isian sesuai dengan data yang diperlukan</h5>
 
+        <div class="alert alert-danger" style="text-align:center;">
+            <b> Pastikan nama anda sudah terdaftar di kependudukan Desa Arahan Lor! </b>
+            <br>
+            <p>Silahkan lihat data anda pada link berikut ini <p><a href="/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p> 
+        </div>
         <form action="/surat" method="post" id="permohonanSurat">
             @csrf
             <div class="row">

@@ -44,6 +44,7 @@
                             </li>
                         </ul>
                     </li>
+                    <li class=""><a href="/kependudukan">Kependudukan</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#">Data Desa<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -66,9 +67,6 @@
                                 <a href="/data/warga-negara">Data Warga Negara</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="/peta">Peta</a>
                     </li>
                     <li class=""><a href="/artikel">Artikel</a></li>
                     <li class="dropdown">
