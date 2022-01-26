@@ -86,15 +86,15 @@
                     @csrf
                     <div class="form-group">
                         <label for="jenis_organisasi"> Jenis Organisasi </label>
-                        <input type="text" class="form-control" name="jenis_organisasi" id="jenis_organisasi">
+                        <input type="text" class="form-control" name="jenis_organisasi" id="jenis_organisasi" placeholder="Jenis Organisasi">
                     </div>
                     <div class="form-group">
                         <label for="jumlah_anggota"> Jumlah Anggota </label>
-                        <input type="text" class="form-control" name="jumlah_anggota" id="jumlah_anggota">
+                        <input type="text" class="form-control" name="jumlah_anggota" id="jumlah_anggota"  placeholder="Jumlah Anggota">
                     </div>
                     <div class="form-group">
                         <label for="lokasi_sdk"> Lokasi </label>
-                        <input type="text" class="form-control" name="lokasi_sdk" id="lokasi_sdk">
+                        <input type="text" class="form-control" name="lokasi_sdk" id="lokasi_sdk" placeholder="Lokasi">
                     </div>
                 </div>
                 <div class="modal-footer">

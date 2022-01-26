@@ -28,6 +28,9 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            <div class="alert alert-warning" role="alert">
+                <p>*Nama diisi tanpa memasukan surat</p>
+            </div>
             <div class="box box-info">
                 <div class="box-header">
                     <a href="{{ url('/page/admin/surat/format') }}" class="btn btn-social btn-flat btn-info btn-sm ">

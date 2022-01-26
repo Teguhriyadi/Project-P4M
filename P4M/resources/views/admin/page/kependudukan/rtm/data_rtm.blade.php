@@ -153,7 +153,7 @@ use App\Models\Model\Penduduk;
                     <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
+                    <button type="submit" class="btn btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>

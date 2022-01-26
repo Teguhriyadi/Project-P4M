@@ -58,13 +58,13 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <button onclick="editDataKlasifikasi({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit">
+                                        <button onclick="editDataKlasifikasi({{$data->id}})" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                         <form action="{{ url('/page/admin/surat/klasifikasi/'.$data->id) }}" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm btn-delete">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

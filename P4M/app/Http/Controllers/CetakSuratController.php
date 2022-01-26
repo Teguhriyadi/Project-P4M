@@ -7,10 +7,11 @@ use Carbon\Carbon;
 use App\Models\Model\KlasifikasiSurat;
 use App\Models\Model\LogSurat;
 use App\Models\Model\Pegawai;
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\Profil;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\SuratFormat;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,7 +57,6 @@ class CetakSuratController extends Controller
         $this->simpanLogSurat($request);
 
         $no_surat = $request->no_surat;
-        $keperluan = $request->keperluan;
         $keterangan = $request->keterangan;
         $penduduk = Penduduk::where('id', $request->id_penduduk)->first();
         $kepala_kk = Penduduk::where('id_kk', $penduduk->id_kk)->where('kk_level', 1)->first();
@@ -69,6 +69,10 @@ class CetakSuratController extends Controller
             $nama_ttd = $jabatan->getPegawai->nama;
         } else {
             $nama_ttd = $jabatan->getPegawai->getPenduduk->nama;
+        }
+        $no_kk = '-';
+        if (!empty($penduduk->getKeluarga->no_kk)) {
+            $no_kk = $penduduk->getKeluarga->no_kk;
         }
 
         $template = new \PhpOffice\PhpWord\TemplateProcessor('./template/surat/'.$format->url_surat.'.docx');
@@ -87,7 +91,7 @@ class CetakSuratController extends Controller
             'bulan' => $this->bulanRomawi(date('m')),
             'tahun' => date("Y"),
             'nama' => $penduduk->nama,
-            'no_kk' => $penduduk->getKeluarga->no_kk,
+            'no_kk' => $no_kk,
             'kepala_kk' => $kepala_kk->nama,
             'nik' => $penduduk->nik,
             'kelamin' => $penduduk->getKelamin->nama,
@@ -102,17 +106,18 @@ class CetakSuratController extends Controller
             'rt' => $penduduk->getRt->rt,
             'rw' => $penduduk->getRw->rw,
             'keterangan' => $keterangan,
-            'keperluan' => $keperluan,
+            'keperluan' => $request->keperluan,
             'tgl_surat' => Carbon::now()->isoFormat("D MMMM Y"),
             'jabatan' => $jabatan->getJabatan->nama_jabatan,
             'pejabat' => $nama_ttd,
             'nip' => $jabatan->getPegawai->nip,
             'tgl_mulai' => $request->tgl_mulai,
             'tgl_akhir' => $request->tgl_akhir,
+            'usaha' => $request->usaha,
         ]);
-        header("Content-Disposition: attachment; filename=".$penduduk->nama." - ".$format->nama.".docx");
 
-        $template->saveAs('php://output');
+        $template->saveAs('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx");
+        return response()->download(public_path('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx"));
     }
 
     public function simpanLogSurat($request)

@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
+                        <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                             <i class="fa fa-edit"></i> Simpan
                         </button>
                         <button type="reset" class="btn btn-social btn-warning btn-flat pull-left btn-sm" title="Reset">
@@ -80,13 +80,13 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $hak_akses->nama_hak_akses }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/page/admin/pengaturan/hak_akses/'.$hak_akses->id.'/edit') }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/page/admin/pengaturan/hak_akses/'.$hak_akses->id.'/edit') }}" class="btn btn-warning btn-sm" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form style="display: inline;" action="{{ url('/page/admin/pengaturan/hak_akses/'.$hak_akses->id) }}" method="POST">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

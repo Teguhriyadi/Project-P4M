@@ -176,4 +176,57 @@ use App\Models\Model\StrukturPemerintahan;
     }
 </script>
 
+<script>
+    (function($,W,D) {
+        var JQUERY4U = {};
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                $("#validasi").validate({
+                    ignore: "",
+                    rules: {
+                        id_pegawai: {
+                            required: true
+                        },
+                        barang: {
+                            required: true
+                        },
+                        rincian: {
+                            required: true
+                        },
+                        no_surat: {
+                            required: true
+                        },
+                    },
+
+                    messages: {
+                        id_pegawai: {
+                            required: "Pegawai harap di isi!"
+                        },
+                        barang: {
+                            required: "Barang harap di isi!"
+                        },
+                        rincian: {
+                            required: "Rincian harap di isi!"
+                        },
+                        no_surat: {
+                            required: "No surat harap di isi!"
+                        },
+                    },
+
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+</script>
+
 @endsection
