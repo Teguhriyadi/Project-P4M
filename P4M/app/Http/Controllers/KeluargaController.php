@@ -113,12 +113,13 @@ class KeluargaController extends Controller
         $cek = Penduduk::where("id", $request->id_penduduk)->first();
 
         if ($cek->kk_level == 1) {
+
+            Keluarga::where("nik_kepala", $cek->id)->delete();
+
             Penduduk::where("id", $cek->id)->update([
                 "id_kk" => NULL,
                 "kk_level" => NULL
             ]);
-
-            Keluarga::where("nik_kepala", $request->id_kk)->delete();
 
             return redirect("/page/admin/kependudukan/keluarga");
         } else {
