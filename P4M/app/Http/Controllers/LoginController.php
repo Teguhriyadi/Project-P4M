@@ -22,6 +22,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            TerakhirLogin::create([
+                "nama" => auth()->user()->name,
+            ]);
+
             return redirect()->intended('/page/admin/dashboard')->with("success", "Anda Berhasil Login");
         }
 
@@ -30,10 +35,6 @@ class LoginController extends Controller
 
     public function logout()
     {
-
-        TerakhirLogin::create([
-            "nama" => auth()->user()->name,
-        ]);
 
         Auth::logout();
 

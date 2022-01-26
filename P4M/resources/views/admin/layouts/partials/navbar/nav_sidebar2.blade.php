@@ -130,31 +130,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview {{ Request::segment(3)=='pemerintahan' ? 'active' : '' }}">
-                <a href="#">
-                    <i class="fa fa-balance-scale "></i> <span>Pemerintahan Desa</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{ Request::segment(4)=='jabatan' ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
-                            <i class="fa fa-circle-o"></i> Jabatan
-                        </a>
-                    </li>
-                    <li class="{{ Request::segment(4)=='pegawai' ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">
-                            <i class="fa fa-circle-o"></i> Pegawai
-                        </a>
-                    </li>
-                    <li class="{{ Request::segment(4)=='struktur_pemerintahan' ? 'active' : '' }}">
-                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}">
-                            <i class="fa fa-circle-o"></i> Struktur Pemerintahan
-                        </a>
-                    </li>
-                </ul>
-            </li>
             <li class="treeview {{ Request::segment(3)=='kependudukan' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Kependudukan</span>
@@ -176,6 +151,31 @@
                     <li class="{{ Request::segment(4)=='rtm' ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/kependudukan/rtm') }}">
                             <i class="fa fa-circle-o"></i> Rumah Tangga
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {{ Request::segment(3)=='pemerintahan' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-balance-scale "></i> <span>Pemerintahan Desa</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ Request::segment(4)=='jabatan' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pemerintahan/jabatan') }}">
+                            <i class="fa fa-circle-o"></i> Jabatan
+                        </a>
+                    </li>
+                    <li class="{{ Request::segment(4)=='pegawai' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pemerintahan/pegawai') }}">
+                            <i class="fa fa-circle-o"></i> Pegawai
+                        </a>
+                    </li>
+                    <li class="{{ Request::segment(4)=='struktur_pemerintahan' ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}">
+                            <i class="fa fa-circle-o"></i> Struktur Pemerintahan
                         </a>
                     </li>
                 </ul>

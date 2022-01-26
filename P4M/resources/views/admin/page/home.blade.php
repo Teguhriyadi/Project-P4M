@@ -94,7 +94,7 @@
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Terakhir Login
+                        <i class="fa fa-book"></i> Terakhir Login
                     </h3>
                     <div class="pull-right">
                         <a href="{{ url('/page/admin/pengaturan/terakhir_login') }}" class="btn btn-social btn-primary btn-flat btn-sm" title="Selengkapnya">

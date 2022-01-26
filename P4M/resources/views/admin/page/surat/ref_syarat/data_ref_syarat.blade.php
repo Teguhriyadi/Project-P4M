@@ -91,9 +91,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
-                        <i class="fa fa-times"></i> Batal
-                    </button>
+                        <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
                     <button type="submit" class="btn btn-social btn-primary btn-flat bt-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
@@ -123,8 +123,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                         <i class="fa fa-edit"></i> Simpan
