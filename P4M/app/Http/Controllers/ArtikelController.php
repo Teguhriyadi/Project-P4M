@@ -38,7 +38,6 @@ class ArtikelController extends Controller
 
     public function store(Request $request)
     {
-        dd($_FILES);
         $validatedData = $request->validate([
             "judul" => "required|max:255",
             "kategori_id" => "required",
