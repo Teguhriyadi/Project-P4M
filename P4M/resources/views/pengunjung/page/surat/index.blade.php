@@ -4,9 +4,17 @@
 
 @section('page_content')
 
+<link rel="stylesheet" href="/backend/template/bower_components/select2/dist/css/select2.min.css">
+<script src="/backend/template/bower_components/select2/dist/js/select2.full.js"></script>
+
 <style>
     label.error {
         color: red;
+    }
+
+    .select2-container .select2-selection--single {
+        height: 34px;
+        border: 1px solid #ccc;
     }
 </style>
 
@@ -22,21 +30,15 @@
         <div class="alert alert-danger" style="text-align:center;">
             <b> Pastikan nama anda sudah terdaftar di kependudukan Desa Arahan Lor! </b>
             <br>
-            <p>Silahkan lihat data anda pada link berikut ini <p><a href="/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p> 
+            <p>Silahkan lihat data anda pada link berikut ini <p><a href="/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p>
         </div>
         <form action="/surat" method="post" id="permohonanSurat">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nik">NIK</label>
-                        <input type="text" class="form-control" name="nik" id="nik">
+                        <label for="id_penduduk">Nama</label>
+                        <select name="id_penduduk" id="id_penduduk" class="form-control penduduk"></select>
                     </div>
                 </div>
             </div>
@@ -50,9 +52,10 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="id_surat">Pilih Jenis Surat</label>
-                        <select name="id_surat" id="id_surat" class="form-control">
-                            @foreach ($jenis_surat as $surat)
-                            <option value="{{ $surat->id }}">{{ $surat->nama }}</option>
+                        <select name="id_surat" id="id_surat" class="form-control" style="width: 100%">
+                            <option value="">Pilih Surat</option>
+                            @foreach ($surat as $s)
+                            <option value="{{ $s->id }}">{{ $s->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -62,6 +65,7 @@
                 <label for="kebutuhan">Kebutuhan</label>
                 <textarea name="kebutuhan" id="kebutuhan" class="form-control" rows="5"></textarea>
             </div>
+            <div class="form-group" id="syaratSurat"></div>
             <div class="form-group">
                 <button type="reset" class="btn btn-warning"><i class="fa fa-refresh"></i> Reset</button>
                 <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-paper-plane"></i> Kirim</button>
@@ -73,6 +77,44 @@
 @endsection
 
 @section('page_scripts')
+
+<script>
+    $(document).ready(function () {
+        $('#id_surat').select2();
+        $('.penduduk').select2({
+            minimumInputLength: 3,
+            allowClear: true,
+            placeholder: 'Cari Penduduk',
+            ajax: {
+                dataType: 'json',
+                url: '/penduduk/json',
+                delay: 800,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                    return {
+                        results: data
+                    };
+                },
+            }
+        });
+
+        $('#id_surat').change(function () {
+            let id_surat = $(this).val()
+
+            $.ajax({
+                url: '/surat/'+id_surat,
+                type: 'get',
+                success: function (response) {
+                    $("#syaratSurat").html(response)
+                }
+            });
+        })
+    })
+</script>
 
 <script>
     (function($, W, D) {

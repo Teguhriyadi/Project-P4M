@@ -15,4 +15,9 @@ class SyaratSurat extends Model
 
     public $timestamps = false;
 
+    public function getSyarat()
+    {
+        return $this->hasOne(RefSyaratSurat::class, 'id', 'ref_syarat_id');
+    }
+
 }

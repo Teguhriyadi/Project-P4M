@@ -30,22 +30,24 @@
                         <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th class="text-center">No.</th>
-                                    <th class="text-center">Nama</th>
-                                    <th class="text-center">NIK</th>
-                                    <th class="text-center">Jenis Surat</th>
-                                    <th class="text-center">Telepon</th>
-                                    <th class="text-center">Aksi</th>
+                                    <th class="">No.</th>
+                                    <th class="">Nama</th>
+                                    <th class="">NIK</th>
+                                    <th class="">Jenis Surat</th>
+                                    <th class="">Telepon</th>
+                                    <th class="">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pemohon as $p)
                                     <th>{{ $loop->iteration }}</th>
-                                    <td>{{ $p->nama }}</td>
-                                    <td>{{ $p->nik }}</td>
-                                    <td>{{ $p->id_surat }}</td>
+                                    <td>{{ $p->getPenduduk->nama }}</td>
+                                    <td>{{ $p->getPenduduk->nik }}</td>
+                                    <td>{{ $p->getSurat->nama }}</td>
                                     <td>{{ $p->telepon }}</td>
-                                    <td>{{ $p->telepon }}</td>
+                                    <td>
+                                        <a href="{{ url('page/admin/cetak_surat/form/'.$p->getSurat->url_surat.'/'.$p->nik) }}" class="btn bg-purple"><i class="fa fa-file-word-o"></i></a>
+                                    </td>
                                 @endforeach
                             </tbody>
                         </table>

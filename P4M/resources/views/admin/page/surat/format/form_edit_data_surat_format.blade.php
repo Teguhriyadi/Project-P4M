@@ -61,10 +61,7 @@
                         <div class="form-group">
                             <label for="nama" class="col-sm-2 control-label"> Nama </label>
                             <div class="col-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon input-sm">Surat</span>
-                                    <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Nama Layanan" value="{{ $edit->nama }}">
-                                </div>
+                                <input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Nama Layanan" value="{{ $edit->nama }}">
                             </div>
                         </div>
                         <div class="form-group">

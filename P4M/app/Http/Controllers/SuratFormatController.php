@@ -70,13 +70,13 @@ class SuratFormatController extends Controller
             "data_syarat" => RefSyaratSurat::get()
         ];
 
-        return view("/admin/page/surat/format/form_edit_data_surat_format", $data);
+        return view("admin.page.surat.format.form_edit_data_surat_format", $data);
     }
 
     public function update(Request $request, $id)
     {
         $surat_format = SuratFormat::find($id);
-        $surat_format->nama = 'Surat '.$request->nama;
+        $surat_format->nama = $request->nama;
         $surat_format->url_surat = Str::slug($request->nama);
         $surat_format->kode_surat = $request->kode_surat;
         $surat_format->mandiri = $request->mandiri;
@@ -84,15 +84,15 @@ class SuratFormatController extends Controller
         $surat_format->masa_berlaku = $request->masa_berlaku;
         $surat_format->satuan_masa_berlaku = $request->satuan_masa_berlaku;
         $surat_format->update();
-
+        SyaratSurat::where('surat_format_id', $id)->delete();
         $syarat = $request->syarat;
         if ($syarat != null) {
             foreach ($request->syarat as $d => $unit) {
-                $c = SyaratSurat::find($surat_format->id);
+                $c = new SyaratSurat;
                 $c->surat_format_id = $surat_format->id;
                 $c->ref_syarat_id = $syarat[$d];
 
-                $c->update();
+                $c->save();
             }
         }
 
