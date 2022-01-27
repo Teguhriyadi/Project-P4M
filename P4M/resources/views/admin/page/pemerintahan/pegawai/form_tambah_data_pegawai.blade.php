@@ -106,9 +106,18 @@
                         </h3>
                     </div>
                     <div class="box-body">
-                        <label for="foto">Foto</label>
-                        <img class="gambar-preview img-fluid" width="300" style="margin-bottom: 5px;">
-                        <input onchange="previewImage()" type="file" class="form-control input-sm" name="foto" id="foto">
+                        <div class="box-profile">
+                            <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 35px; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
+                            <div class="input-group input-group-sm">
+                                <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                                <input type="file" class="hidden" id="file4" name="foto" onchange="previewImage()">
+                                <span class="input-group-btn">
+                                    <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                        <i class="fa fa-upload"></i> Upload
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -203,7 +212,7 @@
                         <div class="form-group">
                             <label for="pangkat" class="col-sm-4 control-label"> Pangkat / Golongan </label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control input-sm" placeholder="Pangkat / Golongan" name="pangkat">
+                                <input type="text" id="pangkat" class="form-control input-sm" placeholder="Pangkat / Golongan" name="pangkat">
                             </div>
                         </div>
                         <div class="form-group">
@@ -213,7 +222,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tgl_sk" class="col-sm-4 control-label"> Tanggal SK Pengangkatan </label>
+                            <label for="datepicker2" class="col-sm-4 control-label"> Tanggal SK Pengangkatan </label>
                             <div class="col-sm-7">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
@@ -230,7 +239,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tgl_henti" class="col-sm-4 control-label"> Tanggal SK Pemberhentian </label>
+                            <label for="datepicker3" class="col-sm-4 control-label"> Tanggal SK Pemberhentian </label>
                             <div class="col-sm-7">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
@@ -317,11 +326,33 @@
 </script>
 
 <script type="text/javascript">
+    function previewImage() {
+        const image = document.querySelector("#file4");
+        const imgPreview = document.querySelector(".img-preview");
 
-    function pilih()
-    {
-        alert('hay');
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
     }
+
+    $('#file_browser4').click(function(e)
+    {
+        e.preventDefault();
+        $('#file4').click();
+    });
+    $('#file4').change(function()
+    {
+        $('#file_path4').val($(this).val());
+    });
+    $('#file_path4').click(function()
+    {
+        $('#file_browser4').click();
+    });
 
     $(function() {
         $('#datepicker').datetimepicker({
@@ -378,21 +409,6 @@
         $('#'+idForm).attr('action', action);
         console.log();
         $('#'+idForm).submit();
-    }
-
-    function previewImage()
-    {
-        const gambar = document.querySelector("#foto");
-        const gambarPreview = document.querySelector(".gambar-preview");
-
-        gambarPreview.style.display = "block";
-
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(gambar.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            gambarPreview.src = oFREvent.target.result;
-        }
     }
 
 </script>

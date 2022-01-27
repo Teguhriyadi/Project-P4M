@@ -20,17 +20,6 @@ class RtmController extends Controller
         return view("admin.page.kependudukan.rtm.data_rtm", $data);
     }
 
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $ambil = Keluarga::where("nik_kepala" , $request->nik_kepala)->first();
@@ -42,8 +31,7 @@ class RtmController extends Controller
 
         RTM::create([
             "nik_kepala" => $request->nik_kepala,
-            "no_kk" => $ambil->no_kk,
-            "kelas_sosial" => 1
+            "no_kk" => $ambil->no_kk
         ]);
 
         return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
