@@ -31,7 +31,8 @@ class RtmController extends Controller
 
         RTM::create([
             "nik_kepala" => $request->nik_kepala,
-            "no_kk" => $ambil->no_kk
+            "no_kk" => $ambil->no_kk,
+            "kelas_sosial" => 1
         ]);
 
         return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");

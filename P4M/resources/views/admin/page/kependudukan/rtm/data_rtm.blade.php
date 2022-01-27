@@ -102,7 +102,8 @@ use App\Models\Model\Penduduk;
                         <h4>Tidak Bisa Menginputkan Data</h4>
 
                         <p>
-                            Karena <b> Data Penduduk </b> Masih Kosong. <a href="{{ url('/page/admin/kependudukan/penduduk') }}">Silahkan Inputkan Data Penduduk Terlebih Dahulu</a>
+                            Karena <b> Data Keluarga </b> Masih Kosong.
+                            <a href="{{ url('/page/admin/kependudukan/keluarga') }}">Silahkan Inputkan Data Keluarga Terlebih Dahulu</a>
                         </p>
                       </div>
                 </div>

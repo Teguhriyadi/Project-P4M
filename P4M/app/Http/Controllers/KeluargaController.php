@@ -33,36 +33,6 @@ class KeluargaController extends Controller
         return view("/admin/page/kependudukan/keluarga/data_penduduk_keluarga", $data);
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Keluarga $keluarga)
-    {
-        //
-    }
-
-    public function edit(Keluarga $keluarga)
-    {
-        //
-    }
-
-    public function update(Request $request, Keluarga $keluarga)
-    {
-        //
-    }
-
-    public function destroy(Keluarga $keluarga)
-    {
-        //
-    }
-
     public function data()
     {
         $data = [
@@ -178,6 +148,12 @@ class KeluargaController extends Controller
 
     public function tambah_kepala_keluarga(Request $request)
     {
+        $cek = Keluarga::where("no_kk", $request->no_kk)->count();
+
+        if ($cek) {
+            return back()->with('message', "<script>swal('Maaf!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        }
+
         $ambil = Penduduk::where("id", $request->nik_kepala)->first();
 
         Penduduk::where("id", $request->nik_kepala)->update([
@@ -248,11 +224,12 @@ class KeluargaController extends Controller
 
     public function tambah_penduduk_dari_daftar(Request $request)
     {
+
         Penduduk::where("id", $request->id_penduduk)->update([
             "id_kk" => $request->id_kk
         ]);
 
-        return back();
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah', 'success')</script>");
     }
 
     public function ubah_hubungan_keluarga(Request $request)
