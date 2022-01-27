@@ -8,8 +8,7 @@
     <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">@yield('title')</font></h4>
     <div class="post_commentbox">
         <span class="meta_date">
-            <i class="fa fa-user"></i>Administrator&nbsp;
-            <i class="fa fa-eye"></i>0 Kali Dibaca&nbsp;
+            <i class="fa fa-user"></i>Administrator&nbsp;     
         </span>
     </div>
     <div class="single_category wow fadeInDown">

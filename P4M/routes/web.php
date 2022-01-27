@@ -358,6 +358,7 @@ Route::prefix("page")->group(function() {
                     Route::get("/kartu_rtm/{id}", [RtmController::class, "kartu_rtm"]);
                     Route::get("/cetak_rtm/{id}", [RtmController::class, "cetak_rtm"]);
                     Route::delete("/{id}", [RtmController::class, "hapus_data_rtm"]);
+                    Route::get("/ubah_hubungan_rumah_tangga", [RtmController::class, "ubah_hubungan_rumah_tangga"]);
                 });
 
             });
@@ -507,6 +508,7 @@ Route::prefix("page")->group(function() {
                 Route::get("/form/{url_surat}", [CetakSuratController::class, "form_cetak_surat"]);
                 Route::put("/form/{url_surat}", [CetakSuratController::class, "ambil_data_penduduk"]);
                 Route::post("/form/{url_surat}", [CetakSuratController::class, "cetakSuratBeforeUpdate"]);
+                Route::put("/form/{url_surat}", [CetakSuratController::class, "cari_data"]);
             });
 
         });

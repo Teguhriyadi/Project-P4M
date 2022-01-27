@@ -18,6 +18,10 @@
             <i class="fa fa-user"></i>Administrator&nbsp;
         </span>
     </div>
+    <br>
+    <div class="alert alert-danger" style="text-align:center; margin-top: 50px;">
+            <b> Jika Tidak Terdaftar Silahkan Datang ke Balai Desa Arahan Lor! </b>
+        </div>
     <div class="box" style="margin-bottom:10px;">
         <div class="box-body">
             <table class="table table-bordered table-hover" id="dataTable">
