@@ -124,7 +124,7 @@
                                             @method("DELETE")
                                             @csrf
                                             <input type="hidden" name="id_penduduk" value="{{ $data->id }}">
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Bukan Anggota Keluarga Ini">
+                                            <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Bukan Anggota Keluarga Ini">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </form>
