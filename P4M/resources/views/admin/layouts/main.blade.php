@@ -17,7 +17,7 @@ $profil = Profil::first();
     <meta name="copyright" content="Team P4M"./>
     <meta name="author" content="Team P4M"./>
 
-    <link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
+    <link rel="icon" href="{{ $profil ? url('/storage/'.$profil->gambar) : url('/frontend/img/logo-desa.png') }}">
     @include('admin/layouts/partials/css/style2')
 
     @yield('page_css')
