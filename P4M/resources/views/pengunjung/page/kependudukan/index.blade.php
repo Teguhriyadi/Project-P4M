@@ -20,7 +20,7 @@
     </div>
     <br>
     <div class="alert alert-danger" style="text-align:center; margin-top: 50px;">
-            <b> Jika Tidak Terdaftar Silahkan Datang ke Desa Arahan Lor! </b>
+            <b> Jika Tidak Terdaftar Silahkan Datang ke Balai Desa Arahan Lor! </b>
         </div>
     <div class="box" style="margin-bottom:10px;">
         <div class="box-body">
