@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Models\Model\KlasifikasiSurat;
 use App\Models\Model\LogSurat;
 use App\Models\Model\Pegawai;
-use App\Models\model\Penduduk;
+use App\Models\Model\Penduduk;
 use App\Models\Model\Profil;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\SuratFormat;
