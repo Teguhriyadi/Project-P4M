@@ -11,7 +11,7 @@ $profil = Profil::first();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <title>Desa {{ $profil ? $profil->nama_desa : 'Anonymous' }}</title>
-    <link rel="icon" href="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}">
+    <link rel="icon" href="{{ $profil ? url('/storage/'.$profil->gambar) : url('/frontend/img/logo-desa.png') }}">
     @include('pengunjung.layouts.partials.css.style_css')
 
     <style>
@@ -118,13 +118,13 @@ $profil = Profil::first();
             setTimeout("renderDate()",1000)
         }
     </script>
-    <link rel="stylesheet" href="/backend/template/bower_components/jquery-ui/jquery-ui.css">
-    <script src="/backend/template/bower_components/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" href="{{ url('/backend/template/bower_components/jquery-ui/jquery-ui.css') }}">
+    <script src="{{ url('/backend/template/bower_components/jquery-ui/jquery-ui.js') }}"></script>
     <script>
         $( "#cari" ).autocomplete({
             source: function( request, response ) {
                 $.ajax({
-                    url:"/artikel",
+                    url:"{{ url('') }}/artikel",
                     type: 'post',
                     dataType: "json",
                     data: {

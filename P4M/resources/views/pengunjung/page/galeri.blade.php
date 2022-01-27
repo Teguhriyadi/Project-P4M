@@ -66,8 +66,8 @@
 
 @section('page_scripts')
 
-<link rel="stylesheet" href="/frontend/prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" />
-<script src="/frontend/prettyphoto/js/jquery.prettyPhoto.js"></script>
+<link rel="stylesheet" href="{{ url('/frontend/prettyphoto/css/prettyPhoto.css') }}" type="text/css" media="screen" />
+<script src="{{ url('/frontend/prettyphoto/js/jquery.prettyPhoto.js') }}"></script>
 
 <script>
     $(document).ready(function(){

@@ -369,6 +369,7 @@ Route::prefix("page")->group(function() {
                     Route::get("/cetak_rtm/{id}", [RtmController::class, "cetak_rtm"]);
                     Route::delete("/{id}", [RtmController::class, "hapus_data_rtm"]);
                     Route::get("/ubah_hubungan_rumah_tangga", [RtmController::class, "ubah_hubungan_rumah_tangga"]);
+                    Route::put("/ubah_hubungan", [RtmController::class, "ubah_hubungan"]);
                 });
 
             });

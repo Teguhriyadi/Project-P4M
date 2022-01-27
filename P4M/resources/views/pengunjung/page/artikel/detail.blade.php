@@ -47,7 +47,7 @@ use Carbon\Carbon;
                         <div class="catgimg2_container2">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="/storage/{{ $artikel->image }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                    <img src="{{ url('') }}/storage/{{ $artikel->image }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                     <div style="text-align: justify; margin-bottom: 2rem;">
                                         {!! $artikel->body !!}
                                     </div>
@@ -105,7 +105,7 @@ use Carbon\Carbon;
         </div>
         @endif
         <div class="contact_bottom">
-            <form class="contact_form form-komentar" id="kirimKomentar" name="form" action="/komentar/{{ $artikel->slug }}" method="POST">
+            <form class="contact_form form-komentar" id="kirimKomentar" name="form" action="{{ url('') }}/komentar/{{ $artikel->slug }}" method="POST">
                 @csrf
                 <div class="form-group row">
                     <label for="nama" class="col-sm-3">Nama</label>

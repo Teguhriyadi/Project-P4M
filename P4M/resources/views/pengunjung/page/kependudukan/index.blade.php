@@ -53,7 +53,7 @@
         $('#dataTable').DataTable({
             processing: true,
         serverSide: true,
-        ajax: '/data/penduduk',
+        ajax: '{{ url("") }}/data/penduduk',
         columns: [
         {
             data: 'DT_RowIndex',

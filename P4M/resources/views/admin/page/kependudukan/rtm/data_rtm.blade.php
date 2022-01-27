@@ -37,7 +37,7 @@ use App\Models\Model\Penduduk;
                         <table id="example1" class="table table-bordered table-striped table-hover" width="100%">
                             <thead>
                                 <tr>
-                                    <th class="text-center">No.</th>
+                                    <th class="text-center" width="5%">No.</th>
                                     <th class="text-center">Aksi</th>
                                     <th class="text-center">Foto</th>
                                     <th>Nomor Rumah Tangga</th>

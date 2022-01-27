@@ -9,7 +9,7 @@
                             <table>
                                 <tr>
                                     <td class="hidden-xs">
-                                        <img class="" src="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}" width="30" valign="top" alt="Arahan Lor"/>
+                                        <img class="" src="{{ $profil ? url('/storage/'.$profil->gambar) : url('/frontend/img/logo-desa.png') }}" width="30" valign="top" alt="Arahan Lor"/>
                                     </td>
                                     <td>
                                         <a href="">
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="navbar-right" style="margin-right: 0px; margin-top: 15px; margin-bottom: 3px;">
-                    <form method="post" action="/artikel/cari" class="form-inline">
+                    <form method="post" action="{{ url('/artikel/cari') }}" class="form-inline">
                         @csrf
                         <table align="center">
                             <tr>

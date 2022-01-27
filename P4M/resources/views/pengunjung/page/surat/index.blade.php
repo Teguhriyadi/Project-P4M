@@ -32,7 +32,7 @@
             <br>
             <p>Silahkan lihat data anda pada link berikut ini <p><a href="/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p>
         </div>
-        <form action="/surat" method="post" id="permohonanSurat">
+        <form action="{{ url('') }}/surat" method="post" id="permohonanSurat">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -87,7 +87,7 @@
             placeholder: 'Cari Penduduk',
             ajax: {
                 dataType: 'json',
-                url: '/penduduk/json',
+                url: '{{ url('') }}/penduduk/json',
                 delay: 800,
                 data: function(params) {
                     return {
@@ -106,7 +106,7 @@
             let id_surat = $(this).val()
 
             $.ajax({
-                url: '/surat/'+id_surat,
+                url: '{{ url('') }}/surat/'+id_surat,
                 type: 'get',
                 success: function (response) {
                     $("#syaratSurat").html(response)

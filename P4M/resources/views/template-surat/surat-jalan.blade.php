@@ -69,7 +69,8 @@ use App\Models\Model\StrukturPemerintahan;
                         <div class="form-group">
                             <label for="" class="col-sm-4 col-lg-4"> NIK / Nama </label>
                             <div class="col-lg-8">
-                                <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" width="100%" onchange="formAction('main')">
+                                @if(empty($detail))
+                                <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" onchange="formAction('main')" style="width: 100%">
                                     <option value="">-- Cari NIK / Nama Penduduk /</option>
                                     @foreach ($data_penduduk as $penduduk)
                                     @if (empty($detail))
@@ -89,6 +90,9 @@ use App\Models\Model\StrukturPemerintahan;
                                     @endif
                                     @endforeach
                                 </select>
+                                @else
+                                <input type="text" class="form-control input-sm" value="{{ $detail->nama }}" disabled>
+                                @endif
                             </div>
                         </div>
                     </div>

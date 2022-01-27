@@ -40,6 +40,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($pemohon as $p)
+                                <tr>
                                     <th>{{ $loop->iteration }}</th>
                                     <td>{{ $p->getPenduduk->nama }}</td>
                                     <td>{{ $p->getPenduduk->nik }}</td>
@@ -48,6 +49,7 @@
                                     <td>
                                         <a href="{{ url('page/admin/cetak_surat/form/'.$p->getSurat->url_surat.'/'.$p->nik) }}" class="btn bg-purple"><i class="fa fa-file-word-o"></i></a>
                                     </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

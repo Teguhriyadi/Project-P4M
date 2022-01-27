@@ -120,8 +120,15 @@ class CetakSuratController extends Controller
             'tgl_mulai' => $request->tgl_mulai,
             'tgl_akhir' => $request->tgl_akhir,
             'usaha' => $request->usaha,
+            'rincian' => $request->rincian,
         ]);
         $this->simpanLogSurat($request);
+
+        $pemohon = PermohonanSurat::where('nik', $request->id_penduduk)->first();
+
+        if ($pemohon) {
+            PermohonanSurat::where('nik', $request->id_penduduk)->delete();
+        }
 
         $template->saveAs('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx");
         return response()->download(public_path('arsip/'.$penduduk->nama." - ".$penduduk->nik.".docx"));
@@ -215,7 +222,7 @@ class CetakSuratController extends Controller
     public function maxNumber()
     {
         $max = LogSurat::max('no_surat');
-        $urutan = (int) substr($max, 2);
+        $urutan = $max;
         $urutan++;
         $hasil = sprintf("%03s", $urutan);
         return $hasil;

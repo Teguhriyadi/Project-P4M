@@ -68,7 +68,9 @@
                                     <td>Program Bantuan</td>
                                     <td>:</td>
                                     <td>
-                                        -
+                                        @foreach ($program_bantuan as $program)
+                                            {{ $program->nama }}
+                                        @endforeach
                                     </td>
                                 </tr>
                             </tbody>
@@ -97,6 +99,7 @@
                                 use App\Models\Model\Penduduk;
 
                                 $getData = Penduduk::where("id_rtm", $edit->no_kk)->get();
+
                                 @endphp
                                 @foreach ($getData as $data)
                                 <tr>
@@ -111,7 +114,7 @@
                                     </td>
                                     <td>{{ $data->nik }}</td>
                                     <td>{{ $data->nama }}</td>
-                                    <td class="text-center">{{ $data->nama }}</td>
+                                    <td class="text-center">{{ $data->getKelamin->nama }}</td>
                                     <td></td>
                                     <td>{{ $data->getHubunganRtm->nama }}</td>
                                 </tr>
@@ -169,16 +172,17 @@
                 </h4>
             </div>
             <form action="{{ url('/page/admin/kependudukan/rtm/ubah_hubungan') }}" method="POST">
+                @method("PUT")
                 @csrf
                 <div class="modal-body" id="content-isi">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger pull-left btn-flat btn-sm">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-warning pull-left btn-flat btn-sm">
+                        <i class="fa fa-refresh"></i> Batal
                     </button>
                     <button type="submit" class="btn btn-success btn-flat btn-sm" title="Simpan Data">
-                        <i class="fa fa-plus"></i> Simpan
+                        <i class="fa fa-edit"></i> Simpan
                     </button>
                 </div>
             </form>
