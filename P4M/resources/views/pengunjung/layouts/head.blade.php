@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="navbar-right" style="margin-right: 0px; margin-top: 15px; margin-bottom: 3px;">
-                    <form method="post" action="/artikel/cari" class="form-inline">
+                    <form method="post" action="{{ url('/artikel/cari') }}" class="form-inline">
                         @csrf
                         <table align="center">
                             <tr>
