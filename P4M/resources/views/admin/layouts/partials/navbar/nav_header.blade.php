@@ -1,3 +1,6 @@
+@php
+    use App\Models\Model\PermohonanSurat;
+@endphp
 <header class="main-header">
     <!-- Logo -->
     <a href="{{ url('/page/admin/dashboard') }}" class="logo">
@@ -21,29 +24,43 @@
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                        <span class="label label-success">
+                            @php
+                                echo $jumlah = PermohonanSurat::count();
+                            @endphp
+                        </span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">You have {{ $jumlah }} messages</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                <li><!-- start message -->
+                                @php
+                                    $data_penduduk = PermohonanSurat::paginate(3);
+                                @endphp
+                                @foreach ($data_penduduk as $penduduk)
+                                <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="{{ url('/backend/template') }}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="{{ url('/gambar/gambar_user.png') }}" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            {{ $penduduk->nik }}
+                                            <small>
+                                                <i class="fa fa-clock-o"></i> {{ $penduduk->created_at->diffForHumans() }}
+                                            </small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>{{ $penduduk->kebutuhan }}</p>
                                     </a>
                                 </li>
-                                <!-- end message -->
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer">
+                            <a href="{{ url('/page/admin/surat/permohonan') }}">
+                                <i class="fa fa-arrow-circle-right"></i> Lihat Selengkapnya
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->

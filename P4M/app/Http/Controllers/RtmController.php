@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Model\Keluarga;
 use App\Models\Model\Penduduk;
+use App\Models\Model\ProgramBantuan;
 use App\Models\Model\RTM;
 use App\Models\Model\RtmHubungan;
 use Illuminate\Http\Request;
@@ -48,6 +49,8 @@ class RtmController extends Controller
             "edit" => RTM::where("id", $id)->first()
         ];
 
+        $data["program_bantuan"] = ProgramBantuan::get();
+
         if (!$data["edit"]) {
             abort(404);
         }
@@ -66,10 +69,8 @@ class RtmController extends Controller
 
     public function tambah_data_anggota(Request $request)
     {
-        $ambil = Keluarga::where("id", $request->nik_kepala)->first();
-
-        Penduduk::where("id", $request->nik_kepala)->update([
-            "id_rtm" => $ambil->no_kk,
+        Penduduk::where("id", $request->id_penduduk)->update([
+            "id_rtm" => $request->no_kk,
             "rtm_level" => 2
         ]);
 
@@ -140,10 +141,30 @@ class RtmController extends Controller
     {
         $data = [
             "data_rtm_hubungan" => RtmHubungan::get(),
-            "edit" => RTM::where("id", $request->id)->first()
+            "edit" => Penduduk::where("id", $request->id)->first()
         ];
 
         return view("/admin/page/kependudukan/rtm/ubah_hubungan", $data);
+    }
+
+    public function ubah_hubungan(Request $request)
+    {
+        $data = Penduduk::where("id", $request->id_penduduk)->first();
+
+        Penduduk::where("id_rtm", $data->id_rtm)->where("rtm_level", 1)->update([
+            "rtm_level" => 2
+        ]);
+
+        Penduduk::where("id", $data->id)->update([
+            "rtm_level" => 1
+        ]);
+
+        RTM::where("no_kk", $data->id_rtm)->update([
+            "nik_kepala" => $data->id
+        ]);
+
+        return back();
+
     }
 
 }

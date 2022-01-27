@@ -98,21 +98,34 @@
                                         <div class="form-group">
                                             <label for="" class="col-sm-4 col-lg-3 "> Cari Nama Kepala Rumah Tangga</label>
                                             <div class="col-sm-9">
-                                                <select name="nik" id="nik" class="form-control input-sm select2" onchange="formAction('main')" width="100%">
+                                                <select name="id_penduduk" id="id_penduduk" class="form-control input-sm select2" onchange="formAction('main')" width="100%">
                                                     <option value="">- Pilih -</option>
-                                                    @foreach ($data_keluarga as $keluarga)
-                                                    <option value="{{ $keluarga->getDataPenduduk->nik }}">
-                                                        NIK : {{ $keluarga->getDataPenduduk->nik }} - {{ $keluarga->getDataPenduduk->nama }}
-                                                    </option>
+                                                    @foreach ($data_penduduk as $data)
+                                                        @if (empty($edit))
+                                                        <option value="{{ $data->id }}">
+                                                            NIK : {{ $data->nik }} - {{ $data->nama }}
+                                                        </option>
+                                                        @else
+                                                            @if ($edit->id == $data->id)
+                                                            <option value="{{ $data->id }}" selected>
+                                                                NIK : {{ $data->nik }} - {{ $data->nama }}
+                                                            </option>
+                                                            @else
+                                                            <option value="{{ $data->id }}">
+                                                                NIK : {{ $data->nik }} - {{ $data->nama }}
+                                                            </option>
+                                                            @endif
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </form>
-                                    @if (empty($detail_keluarga))
+
+                                    <!-- Sini -->
+                                    @if (empty($edit))
 
                                     @else
-                                    @if ($detail_keluarga->nik_kepala)
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="box box-info box-solid">
@@ -122,23 +135,26 @@
                                                         Konfirmasi Peserta
                                                     </h3>
                                                 </div>
-                                                <div class="box-body">
+                                                <div class="box-body form-horizontal">
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-lg-5"> NIK Penduduk </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled value="{{ $detail_keluarga->getDataPenduduk->nik }}">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->nik }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Nama Peserta </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled value="{{ $detail_keluarga->getDataPenduduk->nama }}">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->nama }}">
                                                         </div>
                                                     </div>
+                                                    @if ($detail->sasaran == 1)
+
+                                                    @elseif($detail->sasaran == 2)
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Nomer KK </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled value="{{ $detail_keluarga->no_kk }}">
+                                                            <input type="text" class="form-control input-sm" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -166,7 +182,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="" class="col-sm-4 col-lg-5"> Jenis Kelamin Peserta </label>
+                                                        <label for="" class="col-sm-4 col-lg-4"> Jenis Kelamin Peserta </label>
                                                         <div class="col-sm-7">
                                                             <input type="text" class="form-control input-sm" disabled>
                                                         </div>
@@ -189,6 +205,38 @@
                                                             <input type="text" class="form-control input-sm" disabled>
                                                         </div>
                                                     </div>
+                                                    @elseif($detail->sasaran == 3)
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 col-lg-5">Alamat</label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->alamat_sekarang }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 col-lg-5">Tempat Tanggal, Lahir Kepala RTM</label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->tempat_lahir }}, {{ $edit->tgl_lahir }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 col-lg-5">Jenis Kelamin Kepala RTM</label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getKelamin->nama }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 col-lg-5">Umur Kepala RTM</label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->umur }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-4 col-lg-5">Warga Negara / Agama Kepada RTM</label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getWargaNegara->nama }} / {{ $edit->getAgama->nama }}">
+                                                        </div>
+                                                    </div>
+                                                    @endif
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Bantuan Peserta Yang Sedang Diterima </label>
                                                     </div>
@@ -205,9 +253,9 @@
                                                 </div>
                                                 <form action="{{ url('/page/admin/program_bantuan/tambah_data_peserta_bantuan') }}" method="POST" class="form-horizontal">
                                                     @csrf
-                                                    <input type="hidden" name="peserta" value="{{ $detail_keluarga->no_kk }}">
-                                                    <input type="hidden" name="program_id" value="{{ $detail->id }}">
-                                                    <input type="hidden" name="kartu_id_penduduk" value="{{ $detail->id }}">
+
+                                                    <input type="hidden" name="program_id" value="{{ $edit->id }}">
+                                                    <input type="hidden" name="kartu_id_penduduk" value="{{ $edit->id }}">
                                                     <div class="box-body">
                                                         <div class="form-group">
                                                             <label for="" class="col-sm-4 col-lg-4"> Nomor Kartu Peserta </label>
@@ -225,19 +273,19 @@
                                                         <div class="form-group">
                                                             <label for="kartu_nik" class="col-sm-4 col-lg-4"> NIK </label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="kartu_nik" id="kartu_nik" class="form-control input-sm" placeholder="Masukkan NIK" value="{{ $detail_keluarga->getDataPenduduk->nik }}">
+                                                                <input type="text" name="kartu_nik" id="kartu_nik" class="form-control input-sm" placeholder="Masukkan NIK" value="{{ $edit->nik }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="kartu_nama" class="col-sm-4 col-lg-4"> Nama </label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="kartu_nama" id="kartu_nama" class="form-control input-sm" placeholder="Masukkan Nama" value="{{ $detail_keluarga->getDataPenduduk->nama }}">
+                                                                <input type="text" name="kartu_nama" id="kartu_nama" class="form-control input-sm" placeholder="Masukkan Nama" value="{{ $edit->nama }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="kartu_tempat_lahir" class="col-sm-4 col-lg-4"> Tempat Lahir </label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="kartu_tempat_lahir" id="kartu_tempat_lahir" class="form-control input-sm" placeholder="Masukkan Tempat Lahir" value="{{ $detail_keluarga->getDataPenduduk->tempat_lahir }}">
+                                                                <input type="text" name="kartu_tempat_lahir" id="kartu_tempat_lahir" class="form-control input-sm" placeholder="Masukkan Tempat Lahir" value="{{ $edit->tempat_lahir }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -247,14 +295,14 @@
                                                                     <div class="input-group-addon">
                                                                         <i class="fa fa-calendar"></i>
                                                                     </div>
-                                                                    <input type="text" class="form-control pull-right datepicker" name="kartu_tanggal_lahir" placeholder="Tgl. Mulai" value="{{ $detail_keluarga->getDataPenduduk->tgl_lahir }}">
+                                                                    <input type="text" class="form-control pull-right datepicker" name="kartu_tanggal_lahir" placeholder="Tgl. Mulai" value="{{ $edit->tgl_lahir }}">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="kartu_alamat" class="col-sm-4 col-lg-4"> Alamat </label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="kartu_alamat" id="kartu_alamat" class="form-control input-sm" placeholder="Masukkan Data Alamat" value="{{ $detail_keluarga->getDataPenduduk->alamat }}">
+                                                                <input type="text" name="kartu_alamat" id="kartu_alamat" class="form-control input-sm" placeholder="Masukkan Data Alamat" value="{{ $edit->alamat }}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -262,7 +310,7 @@
                                                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                                                             <i class="fa fa-refresh"></i> Reset
                                                         </button>
-                                                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right">
+                                                        <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right" title="Tambah Data">
                                                             <i class="fa fa-check"></i> Tambah
                                                         </button>
                                                     </div>
@@ -271,7 +319,8 @@
                                         </div>
                                     </div>
                                     @endif
-                                    @endif
+                                    <!-- END -->
+
                                 </div>
                             </div>
                         </div>

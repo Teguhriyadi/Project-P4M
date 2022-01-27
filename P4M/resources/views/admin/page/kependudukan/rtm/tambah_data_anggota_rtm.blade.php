@@ -1,3 +1,4 @@
+<input type="hidden" name="no_kk" value="{{ $edit->no_kk }}">
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover" width="100%">
         <thead class="bg-purple">
@@ -24,8 +25,8 @@
 </div>
 
 <div class="form-group">
-    <label for=""> NIK / Nama Penduduk </label>
-    <select name="nik_kepala" id="selectPenduduk" class="form-control input-sm select2" width="100%">
+    <label for="selectPenduduk"> NIK / Nama Penduduk </label>
+    <select name="id_penduduk" id="selectPenduduk" class="form-control input-sm select2" width="100%">
         <option value="">- Pilih -</option>
         @php
             $getData = Penduduk::where("id_rtm", NULL)->get();

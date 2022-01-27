@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model\Keluarga;
+use App\Models\Model\Penduduk;
 use App\Models\Model\ProgramBantuan;
 use App\Models\Model\ProgramPeserta;
+use App\Models\Model\RTM;
 use Illuminate\Http\Request;
 
 class ProgramBantuanController extends Controller
@@ -50,21 +52,32 @@ class ProgramBantuanController extends Controller
 
     public function tambah_peserta($id)
     {
-        $data = [
-            "detail" => ProgramBantuan::where("id", $id)->first(),
-            "data_keluarga" => Keluarga::all()
-        ];
+        $data["detail"] = ProgramBantuan::where("id", $id)->first();
+
+        if ($data["detail"]["sasaran"] == 1) {
+            $data["data_penduduk"] = Penduduk::where("id_kk", NULL)->where("id_rtm", NULL)->get();
+        } else if($data["detail"]["sasaran"] == 2) {
+            $data["data_penduduk"] = Penduduk::where("id_kk", "!=", NULL)->where("kk_level", "1")->get();
+        } else if($data["detail"]["sasaran"] == 3) {
+            $data["data_penduduk"] = Penduduk::where("id_rtm", "!=", NULL)->where("rtm_level", "1")->get();
+        }
 
         return view("/admin/page/program_bantuan/tambah_data_peserta", $data);
     }
 
     public function data_program_bantuan(Request $request)
     {
-        $data = [
-            "detail" => ProgramBantuan::where("id", $request->id)->first(),
-            "data_keluarga" => Keluarga::all(),
-            "detail_keluarga" => Keluarga::where("nik_kepala", $request->nik)->first()
-        ];
+        $data["detail"] = ProgramBantuan::where("id", $request->id)->first();
+
+        if ($data["detail"]["sasaran"] == 1) {
+            $data["data_penduduk"] = Penduduk::where("id_kk", NULL)->where("id_rtm", NULL)->get();
+        } else if($data["detail"]["sasaran"] == 2) {
+            $data["data_penduduk"] = Penduduk::where("id_kk", "!=", NULL)->where("kk_level", "1")->get();
+        } else if($data["detail"]["sasaran"] == 3) {
+            $data["data_penduduk"] = Penduduk::where("id_rtm", "!=", NULL)->where("rtm_level", "1")->get();
+        }
+
+        $data["edit"] = Penduduk::where("id", $request->id_penduduk)->first();
 
         return view("/admin/page/program_bantuan/tambah_data_peserta", $data);
     }
