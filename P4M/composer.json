@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "nesbot/carbon": "^2.55",
         "phpoffice/phpword": "^0.18.2",
-        "sunra/php-simple-html-dom-parser": "^1.5"
+        "sunra/php-simple-html-dom-parser": "^1.5",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

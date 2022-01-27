@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Counter as ModelsCounter;
 use App\Models\Model\Rt;
 use App\Models\Model\Rw;
 use App\Models\Model\Dusun;
@@ -30,7 +29,7 @@ use App\Models\Model\SaranaPendidikan;
 use App\Models\Model\SaranaTempatUsaha;
 use App\Models\Model\Sejarah;
 use Illuminate\Http\Request;
-use SebastianBergmann\LinesOfCode\Counter as LinesOfCodeCounter;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -241,8 +240,14 @@ class UserController extends Controller
 
     public function kependudukan()
     {
-        $kependudukan = Penduduk::where('id_status_dasar', 1)->latest()->get();
+        return view("pengunjung.page.kependudukan.index");
+    }
 
-        return view("pengunjung/page/kependudukan/index", compact('kependudukan'));
+    public function penduduk()
+    {
+        $data = Penduduk::select('nama','id_sex','id_rt')->where('id_status_dasar', 1)->orderBy('nama', 'asc')->get();
+        return DataTables::of($data)
+                        ->addIndexColumn()
+                        ->toJson();
     }
 }

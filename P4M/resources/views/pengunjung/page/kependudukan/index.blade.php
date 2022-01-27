@@ -16,55 +16,66 @@
     <div class="post_commentbox">
         <span class="meta_date">
             <i class="fa fa-user"></i>Administrator&nbsp;
-            <i class="fa fa-eye"></i>0 Kali Dibaca&nbsp;
         </span>
     </div>
-    <div class="single_page_content" style="margin-bottom:10px;">
-    <table class="table table-bordered" id="example3">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Nama</th>
-      <th scope="col">Jenis Kelamin</th>
-      <th scope="col">Dusun</th>
-      <th scope="col">RT / RW</th>
-    </tr>
-  </thead>
-  <tbody>
-      @foreach ($kependudukan as $penduduk)
-      <tr>
-          <td class="text-center">{{ $loop->iteration }}</td>
-          <td>{{ $penduduk->nama }}</td>
-          <td>{{ $penduduk->getKelamin->nama }}  </td>
-          <td>{{ $penduduk->getDusun->dusun }}</td>
-          <td>{{ $penduduk->getRt->rt }} / {{$penduduk->getRw->rw}}</td>
-      </tr>
-      @endforeach
-  </tbody>
-</table>
+    <div class="box" style="margin-bottom:10px;">
+        <div class="box-body">
+            <table class="table table-bordered table-hover" id="dataTable">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jenis Kelamin</th>
+                        <th scope="col">Dusun</th>
+                        <th scope="col">RT</th>
+                        <th scope="col">RW</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 </div>
 
 @endsection
 
 @section('page_scripts')
-<link rel="stylesheet" href="http://127.0.0.1:8000/backend/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<script src="http://127.0.0.1:8000/backend/template/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="http://127.0.0.1:8000/backend/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="/backend/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<script src="/backend/template/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/backend/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 <script>
     $(function () {
-        $('#example1').DataTable({
-            scrollX: true,
-        }),
-        $('#example3').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
+        $('#dataTable').DataTable({
+            processing: true,
+        serverSide: true,
+        ajax: '/data/penduduk',
+        columns: [
+        {
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex'
+        },
+        {
+            data: 'nama',
+            name: 'nama'
+        },
+        {
+            data: 'get_kelamin.nama',
+            name: 'jenis_kelamin'
+        },
+        {
+            data: 'get_rt.get_rw.get_dusun.dusun',
+            name: 'dusun'
+        },
+        {
+            data: 'get_rt.rt',
+            name: 'rt'
+        },
+        {
+            data: 'get_rt.get_rw.rw',
+            name: 'rw'
+        }
+        ]
         })
     })
 </script>
