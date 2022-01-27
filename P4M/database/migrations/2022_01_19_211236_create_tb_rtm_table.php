@@ -16,8 +16,8 @@ class CreateTbRtmTable extends Migration
         Schema::create('tb_rtm', function (Blueprint $table) {
             $table->id();
             $table->integer("nik_kepala");
-            $table->string("no_kk");
-            $table->integer("kelas_sosial");
+            $table->string("no_kk")->nullable();
+            $table->integer("kelas_sosial")->nullable();
             $table->timestamps();
         });
     }

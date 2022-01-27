@@ -13,7 +13,7 @@ class RtmController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::where("id_kk", "!=" , NULL)->get(),
+            "data_penduduk" => Penduduk::where("id_rtm", NULL)->get(),
             "data_rtm" => RTM::all()
         ];
 
@@ -22,66 +22,23 @@ class RtmController extends Controller
 
     public function store(Request $request)
     {
-        $ambil = Keluarga::where("nik_kepala" , $request->nik_kepala)->first();
+        $data = [
+            "max" => $this->maxNumber()
+        ];
 
         Penduduk::where("id", $request->nik_kepala)->update([
-            "id_rtm" => $ambil->no_kk,
+            "id_rtm" => $data['max'],
             "rtm_level" => 1
         ]);
 
         RTM::create([
             "nik_kepala" => $request->nik_kepala,
-            "no_kk" => $ambil->no_kk,
+            "no_kk" => $data['max'],
             "kelas_sosial" => 1
         ]);
 
-        return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah', 'success')</script>");
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Model\RTM  $rTM
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RTM $rTM)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Model\RTM  $rTM
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RTM $rTM)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Model\RTM  $rTM
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RTM $rTM)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Model\RTM  $rTM
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RTM $rTM)
-    {
-        //
     }
 
     public function rincian_rtm($id)
@@ -116,7 +73,6 @@ class RtmController extends Controller
         ]);
 
         return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
-
 
     }
 
@@ -154,6 +110,29 @@ class RtmController extends Controller
             "detail" => RTM::where("id", $id)->first()
         ];
         return view("/admin/page/kependudukan/rtm/cetak_rtm", $data);
+    }
+
+    public function maxNumber()
+    {
+        $max = RTM::max('no_kk');
+        $urutan = (int) substr($max, 2);
+        $urutan++;
+        $hasil = sprintf("%03s", $urutan);
+        return $hasil;
+    }
+
+    public function hapus_data_rtm($id)
+    {
+        $ambil = RTM::where("id", $id)->first();
+
+        Penduduk::where("id_rtm", $ambil->no_kk)->update([
+            "id_rtm" => NULL,
+            "rtm_level" => 0
+        ]);
+
+        $ambil->delete();
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
     }
 
 }

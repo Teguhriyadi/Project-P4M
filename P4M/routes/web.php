@@ -321,7 +321,9 @@ Route::prefix("page")->group(function() {
                 Route::get('/penduduk/tambah_penduduk_lahir', [PendudukController::class, "tambah_penduduk_lahir"]);
                 Route::get('/penduduk/tambah_penduduk_masuk', [PendudukController::class, "tambah_penduduk_masuk"]);
                 Route::post('/penduduk/simpan_data_penduduk_masuk', [PendudukController::class, "simpan_data_penduduk_masuk"]);
+                Route::put('/penduduk/{id}/edit', [PendudukController::class, "edit_data_penduduk"]);
                 Route::resource('/penduduk', PendudukController::class);
+
 
                 // Keluarga
                 Route::prefix('/keluarga')->group(function() {
@@ -354,6 +356,7 @@ Route::prefix("page")->group(function() {
                     Route::post("/simpan_data_anggota_rumah_tangga", [RtmController::class, "simpan_data_anggota_rumah_tangga"]);
                     Route::get("/kartu_rtm/{id}", [RtmController::class, "kartu_rtm"]);
                     Route::get("/cetak_rtm/{id}", [RtmController::class, "cetak_rtm"]);
+                    Route::delete("/{id}", [RtmController::class, "hapus_data_rtm"]);
                 });
 
             });

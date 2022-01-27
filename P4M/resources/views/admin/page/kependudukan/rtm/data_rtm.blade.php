@@ -61,14 +61,18 @@ use App\Models\Model\Penduduk;
                                         <a type="button" data-toggle="modal" data-target="#modal-default-ubah" class="btn btn-warning btn-flat btn-sm" title="Ubah Data">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-flat btn-sm" title="Hapus Data">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                        <form action="{{ url('/page/admin/kependudukan/rtm/'.$data->id) }}" method="POST" style="display: inline;">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                     <td class="text-center">
                                         <img src="{{ url('/gambar/gambar_kepala_user.png') }}" width="50" >
                                     </td>
-                                    <td>{{ $data->getDataPenduduk->id_rtm }}</td>
+                                    <td>{{ $data->no_kk }}</td>
                                     <td>{{ $data->getDataPenduduk->nama }}</td>
                                     <td class="text-center">{{ $data->getDataPenduduk->nik }}</td>
                                     <td class="text-center">

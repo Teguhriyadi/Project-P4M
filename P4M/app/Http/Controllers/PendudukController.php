@@ -277,4 +277,14 @@ class PendudukController extends Controller
     {
         return view('admin.page.penduduk.status_dasar.'.$page);
     }
+
+    public function edit_data_penduduk(Request $request, $id)
+    {
+        Penduduk::where("id", $id)->update([
+            "nik" => $request->nik,
+            "nama" => $request->nama
+        ]);
+
+        return redirect("/page/admin/kependudukan/penduduk")->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
+    }
 }
