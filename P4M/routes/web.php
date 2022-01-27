@@ -153,6 +153,7 @@ Route::prefix('/data')->group(function () {
 
 Route::get('/kependudukan', [UserController::class, 'kependudukan']);
 Route::get('/data/penduduk', [UserController::class, 'penduduk']);
+Route::get('/penduduk/json', [SuratOnlineController::class, 'penduduk']);
 Route::resource('/surat', SuratOnlineController::class);
 
 Route::post('/komentar/{slug}', function (Request $request, $slug) {
