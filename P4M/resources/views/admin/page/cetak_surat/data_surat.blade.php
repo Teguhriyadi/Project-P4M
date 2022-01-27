@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="" class="btn btn-primary btn-flat btn-sm">
+                    <a href="" class="btn btn-primary btn-flat btn-sm" title="Contoh">
                         Contoh
                     </a>
                 </div>
