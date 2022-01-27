@@ -9,7 +9,7 @@
                             <table>
                                 <tr>
                                     <td class="hidden-xs">
-                                        <img class="" src="{{ $profil ? '/storage/'.$profil->gambar : '/frontend/img/logo-desa.png' }}" width="30" valign="top" alt="Arahan Lor"/>
+                                        <img class="" src="{{ $profil ? url('/storage/'.$profil->gambar) : url('/frontend/img/logo-desa.png') }}" width="30" valign="top" alt="Arahan Lor"/>
                                     </td>
                                     <td>
                                         <a href="">

@@ -8,7 +8,7 @@
     <h4 class="catg_titile" style="font-family: Oswald"><font color="#FFFFFF">@yield('title')</font></h4>
     <div class="post_commentbox">
         <span class="meta_date">
-            <i class="fa fa-user"></i>Administrator&nbsp;     
+            <i class="fa fa-user"></i>Administrator&nbsp;
         </span>
     </div>
     <div class="single_category wow fadeInDown">
@@ -20,12 +20,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @if ($sejarah)
-                                    <img src="{{ $sejarah->gambar ? '/storage/'.$sejarah->gambar : '/frontend/img/no-images.png' }}" width="300" onerror="this.onerror=null; this.src='/frontend/img/no-images.png'" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                    <img src="{{ $sejarah->gambar ? url('/storage/'.$sejarah->gambar) : url('/frontend/img/no-images.png') }}" width="300" onerror="this.onerror=null; this.src={{ url('/frontend/img/no-images.png') }}" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                     <div style="text-align: justify; margin-bottom: 2rem;">
                                         {!! $sejarah->sejarah !!}
                                     </div>
                                     @else
-                                    <img src="/frontend/img/no-images.png" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                    <img src="{{ url('/frontend/img/no-images.png') }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                     <div style="text-align: justify; margin-bottom: 2rem;">
                                         Belum ada sejarah
                                     </div>

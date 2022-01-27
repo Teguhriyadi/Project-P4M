@@ -10,13 +10,13 @@ setlocale(LC_ALL, 'id_ID', 'id', 'ID');
 $artikel = Artikel::latest()->paginate(6);
 @endphp
 
-<script src="/frontend/highcharts/highcharts.js"></script>
-<script src="/frontend/highcharts/highcharts-3d.js"></script>
-<script src="/frontend/highcharts/exporting.js"></script>
-<script src="/frontend/highcharts/highcharts-more.js"></script>
-<script src="/frontend/highcharts/sankey.js"></script>
-<script src="/frontend/highcharts/organization.js"></script>
-<script src="/frontend/highcharts/accessibility.js"></script>
+<script src="{{ url('/frontend/highcharts/highcharts.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/highcharts-3d.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/exporting.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/highcharts-more.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/sankey.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/organization.js') }}"></script>
+<script src="{{ url('/frontend/highcharts/accessibility.js') }}"></script>
 
 <div class="single_bottom_rightbar">
     <h2><i class="fa fa-bar-chart"></i> Statistik Penduduk</h2>

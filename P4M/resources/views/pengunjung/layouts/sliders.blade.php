@@ -33,8 +33,8 @@ $artikel = Artikel::latest()->paginate(6);
 </style>
 <div class="slick_slider" style="margin-bottom:5px;">
     @foreach ($artikel as $a)
-    <div class="single_iteam" data-artikel="168"  onclick="location.href='artikel/{{ $a->slug }}'" >
-        <img class="tlClogo" src="/storage/{{ $a->image }}">
+    <div class="single_iteam" data-artikel="168"  onclick="location.href='{{ url('artikel/'.$a->slug) }}'" >
+        <img class="tlClogo" src="{{ url('/storage/'.$a->image) }}">
         <div class="textgambar hidden-xs">{{ $a->judul }} </div>
     </div>
     @endforeach

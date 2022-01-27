@@ -10,12 +10,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @if ($data_profil)
-                                <img src="{{ $data_profil->gambar ? '/storage/'.$data_profil->gambar : '/frontend/img/no-images.png' }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                <img src="{{ $data_profil ? url('/storage/'.$data_profil->gambar) : url('/frontend/img/logo-desa.png') }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                 <div style="text-align: justify; margin-bottom: 2rem;">
                                     {!! $data_profil->deskripsi !!}
                                 </div>
                                 @else
-                                <img src="/frontend/img/no-images.png" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
+                                <img src="{{ url('/frontend/img/no-images.png') }}" width="300" class="img-fluid img-thumbnail" style="float:left; margin:5px 20px 20px 0;" />
                                 <div style="text-align: justify; margin-bottom: 2rem;">
                                     Belum ada deskripsi
                                 </div>
