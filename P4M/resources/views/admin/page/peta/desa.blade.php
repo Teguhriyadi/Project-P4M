@@ -46,7 +46,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            @if(empty($desa))
+                            @if (empty($desa))
                             <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                                 <i class="fa fa-plus"></i> Tambah
                             </button>

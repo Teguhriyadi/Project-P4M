@@ -46,17 +46,11 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            @if ($kantor_desa)
-                            <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
-                                <i class="fa fa-plus"></i> Tambah
-                            </button>
-                            @else
-                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
+                            <button type="submit" class="btn btn-social btn-success btn-flat btn-sm">
                                 <i class="fa fa-edit"></i> Simpan
                             </button>
-                            @endif
-                            <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
-                                <i class="fa fa-refresh"></i> Reset
+                            <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm">
+                                <i class="fa fa-refresh"></i> Batal
                             </button>
                         </div>
                     </form>

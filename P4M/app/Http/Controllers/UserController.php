@@ -239,10 +239,10 @@ class UserController extends Controller
         return view("pengunjung/page/data_desa/wilayah-administratif", compact('dataDusun'));
     }
 
-    public function peta()
+    public function kependudukan()
     {
-        $peta = Peta::first();
+        $kependudukan = Penduduk::where('id_status_dasar', 1)->latest()->get();
 
-        return view("pengunjung/page/peta/index", compact('peta'));
+        return view("pengunjung/page/kependudukan/index", compact('kependudukan'));
     }
 }
