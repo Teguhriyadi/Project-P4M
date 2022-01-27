@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Keluarga')
+@section('title', 'Biodata Anggota Keluarga')
 
 @section('page_content')
 
@@ -11,7 +11,12 @@
     <ol class="breadcrumb">
         <li>
             <a href="{{ url('/page/admin/dashboard') }}">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/page/admin/kependudukan/keluarga') }}">
+                Daftar Keluarga
             </a>
         </li>
         <li class="active">@yield('title')</li>
@@ -25,20 +30,28 @@
         <div class="row">
 
             <div class="col-md-4">
-                <div class="box box-primary">
+                <div class="box box-info">
                     <div class="box-body box-profile">
-                        <img class="gambar-preview img-fluid" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
-                        <input type="file" name="foto" id="foto" class="form-control input-sm">
+                        <img class="penduduk profile-user-img img-responsive gambar-preview" style="border-radius: 35px; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/gambar_kepala_user.png') }}" alt="Foto Penduduk">
+                        <div class="input-group input-group-sm">
+                            <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                            <input type="file" class="hidden" id="file4" name="foto" onchange="previewImage()">
+                            <span class="input-group-btn">
+                                <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                    <i class="fa fa-upload"></i> Upload
+                                </button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="box box-primary">
+                <div class="box box-info">
                     <div class="box-header">
                         <a href="{{ url('/page/admin/kependudukan/keluarga/') }}" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali Ke Data Penduduk">
                             <i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Daftar Keluarga
                         </a>
-                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$edit->id) }}/rincian_keluarga" class="btn btn-social btn-flat btn-sm btn-info">
+                        <a href="{{ url('/page/admin/kependudukan/keluarga/'.$edit->id) }}/rincian_keluarga" class="btn btn-social btn-flat btn-sm btn-info" title="Kembali ke Daftar Anggota Keluarga">
                             <i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Daftar Anggota Keluarga
                         </a>
                     </div>
@@ -526,7 +539,7 @@
                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                             <i class="fa fa-refresh"></i> Reset
                         </button>
-                        <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right">
+                        <button type="submit" class="btn btn-social btn-flat btn-primary btn-sm pull-right" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah
                         </button>
                     </div>
@@ -545,6 +558,34 @@
 <script src="{{ url('backend/template/plugins/timepicker/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script>
+    function previewImage() {
+        const image = document.querySelector("#file4");
+        const imgPreview = document.querySelector(".gambar-preview");
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+    $('#file_browser4').click(function(e)
+    {
+        e.preventDefault();
+        $('#file4').click();
+    });
+    $('#file4').change(function()
+    {
+        $('#file_path4').val($(this).val());
+    });
+    $('#file_path4').click(function()
+    {
+        $('#file_browser4').click();
+    });
+
     $(function() {
         $('.datepicker').datetimepicker({
             locale:'id',

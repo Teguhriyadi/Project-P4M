@@ -138,8 +138,8 @@ if ($noUrutAkhir) {
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm" title="Batal">
-                                <i class="fa fa-times"></i> Batal
+                            <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+	    	                    <i class="fa fa-refresh"></i> Reset
                             </button>
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-social btn-flat btn-primary btn-sm" title="Tambah Data">

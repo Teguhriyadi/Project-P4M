@@ -86,22 +86,22 @@
                     @csrf
                     <div class="form-group">
                         <label for="jenis_organisasi"> Jenis Organisasi </label>
-                        <input type="text" class="form-control" name="jenis_organisasi" id="jenis_organisasi">
+                        <input type="text" class="form-control" name="jenis_organisasi" id="jenis_organisasi" placeholder="Jenis Organisasi">
                     </div>
                     <div class="form-group">
                         <label for="jumlah_anggota"> Jumlah Anggota </label>
-                        <input type="text" class="form-control" name="jumlah_anggota" id="jumlah_anggota">
+                        <input type="text" class="form-control" name="jumlah_anggota" id="jumlah_anggota"  placeholder="Jumlah Anggota">
                     </div>
                     <div class="form-group">
                         <label for="lokasi_sdk"> Lokasi </label>
-                        <input type="text" class="form-control" name="lokasi_sdk" id="lokasi_sdk">
+                        <input type="text" class="form-control" name="lokasi_sdk" id="lokasi_sdk" placeholder="Lokasi">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
-                    </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
+                    <button type="submit" class="btn btn-primary" title="Simpan Data" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>
@@ -127,10 +127,10 @@
                 <div class="modal-body" id="modal-content-edit">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                        <i class="fa fa-refresh"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset"  data-dismiss="modal">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" title="Simpan Data">
                         <i class="fa fa-plus"></i> Simpan
                     </button>
                 </div>

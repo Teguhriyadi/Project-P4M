@@ -44,12 +44,12 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success btn-sm" id="simpan">
+                        <button type="submit" class="btn btn-success btn-social btn-flat btn-sm" id="simpan" title="Simpan Data">
                             <i class="fa fa-save"></i> Simpan
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-refresh"></i> Batal
-                        </button>
+		                <button type="reset" class="btn btn-warning btn-social btn-flat btn-sm" title="Reset">
+	    	                <i class="fa fa-refresh"></i> Reset
+                	    </button>
                     </div>
                 </form>
             </div>
@@ -61,7 +61,7 @@
                         Data Kategori
                     </h3>
                     <div class="pull-right">
-                        <a href="{{ url('/page/admin/web/kategori') }}" class="btn btn-danger btn-sm">
+                        <a href="{{ url('/page/admin/web/kategori') }}" class="btn btn-info btn-sm" title="Kembali">
                             <i class="fa fa-arrow-left"></i> Kembali
                         </a>
                     </div>
@@ -81,13 +81,13 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $kategori->nama }}</td>
                                 <td class="text-center">
-                                    <a href="{{ url('/page/admin/kategori') }}/{{ $kategori->slug }}/edit" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('/page/admin/kategori') }}/{{ $kategori->slug }}/edit" class="btn btn-warning btn-sm" title="Ubah Data">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <form action="{{ url('/page/admin/kategori') }}/{{ $kategori->slug }}" method="POST" style="display: inline;">
                                         @method('delete')
                                         @csrf
-                                        <button class="btn btn-danger btn-sm" type="submit">
+                                        <button class="btn btn-danger btn-sm" type="submit" title="Hapus Data">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     </form>

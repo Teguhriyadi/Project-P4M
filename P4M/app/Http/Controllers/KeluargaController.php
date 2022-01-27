@@ -117,6 +117,7 @@ class KeluargaController extends Controller
             "data_dusun" => Dusun::get(),
             "data_rw" => Rw::get(),
             "data_rt" => Rt::get(),
+            "edit" => Keluarga::where("id", $request->id)->first()
         ];
 
         $data['kepala_keluarga'] = Penduduk::where('id_kk', $data['keluarga']->nik_kepala)->where('kk_level', 1)->first();
@@ -252,6 +253,43 @@ class KeluargaController extends Controller
         ]);
 
         return back();
+    }
+
+    public function ubah_hubungan_keluarga(Request $request)
+    {
+        $data = [
+            "detail" => Penduduk::where("id", $request->id)->first(),
+            "data_hubungan" => PendudukHubungan::all()
+        ];
+
+        return view("/admin/page/kependudukan/keluarga/ubah_hubungan_keluarga", $data);
+    }
+
+    public function ubah_data_hubungan_keluarga(Request $request)
+    {
+        Penduduk::where("id", $request->id_penduduk)->update([
+            "kk_level" => $request->kk_level
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
+    }
+
+    public function simpan_data_keluarga(Request $request)
+    {
+        Keluarga::where("id", $request->id_keluarga)->update([
+            "no_kk" => $request->no_kk,
+            "alamat" => $request->alamat,
+            "tgl_cetak_kk" => $request->tanggal_cetak,
+            "kelas_sosial" => $request->kelas_sosial
+        ]);
+
+        Penduduk::where("id", $request->nik)->update([
+            "id_dusun" => $request->id_dusun,
+            "id_rw" => $request->id_rw,
+            "id_rt" => $request->id_rt
+        ]);
+
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
 }

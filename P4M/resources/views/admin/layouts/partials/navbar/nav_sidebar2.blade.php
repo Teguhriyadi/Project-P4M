@@ -128,6 +128,16 @@
                             <i class="fa fa-circle-o"></i> Data Golongan Darah
                         </a>
                     </li>
+                    <li class="{{ Request::is('page/admin/data/cacat') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/data/cacat') }}">
+                            <i class="fa fa-circle-o"></i> Data Cacat
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('page/admin/data/sakit-menahun') ? 'active' : '' }}">
+                        <a href="{{ url('/page/admin/data/sakit-menahun') }}">
+                            <i class="fa fa-circle-o"></i> Data Sakit Menahun
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview {{ Request::segment(3)=='kependudukan' ? 'active' : '' }}">

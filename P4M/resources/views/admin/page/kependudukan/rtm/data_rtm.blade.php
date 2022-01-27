@@ -134,7 +134,12 @@ use App\Models\Model\Penduduk;
 
                             @foreach ($data_penduduk as $penduduk)
                             <option value="{{ $penduduk->id }}">
-                                NIK : {{ $penduduk->nik }} - {{ $penduduk->nama }}
+                                NIK : {{ $penduduk->nik }} - {{ $penduduk->nama }} -
+                                @if (empty($penduduk->getHubungan->nama))
+
+                                @else
+                                {{ $penduduk->getHubungan->nama }}
+                                @endif
                             </option>
                             @endforeach
                         </select>
@@ -148,7 +153,7 @@ use App\Models\Model\Penduduk;
                     <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                         <i class="fa fa-refresh"></i> Reset
                     </button>
-                    <button type="submit" class="btn btn-primary btn-flat btn-sm">
+                    <button type="submit" class="btn btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>

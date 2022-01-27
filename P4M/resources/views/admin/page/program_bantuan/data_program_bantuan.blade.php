@@ -63,7 +63,7 @@
                                         <form action="" method="POST" style="display: inline;">
                                             @method("DELETE")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-flat btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-flat btn-sm" title="Hapus Data">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>

@@ -6,17 +6,23 @@
 </div>
 <div class="form-group">
     <label for="gambar"> Gambar </label>
-    @if ($edit->gambar)
-    <br>
-    <img src="{{ url('/storage/'.$edit->gambar) }}" class="gambar-preview img-fluid mb-3 col-sm-5 d-block" style="margin-bottom: 10px">
-    @else
-    <img class="gambar-preview img-fluid mb-3" width="300">
-    @endif
-    <br>
-    <input type="file" onchange="previewImage()" class="form-control" name="gambar" id="gambar">
+    <div class="box-profile">
+        @if ($edit->gambar)
+        <img src="{{ url('/storage/'.$edit->gambar) }}" class="gambar-preview penduduk profile-user-img img-responsive" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/upload.png') }}" alt="Foto Penduduk">
+        @else
+        <img class="penduduk profile-user-img img-responsive gambar-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/upload.png') }}" alt="Foto Penduduk">
+        @endif
+        <div class="input-group input-group-sm">
+            <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+            <input type="file" class="hidden" id="gambar" name="gambar" onchange="previewImage()">
+            <span class="input-group-btn">
+                <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                    <i class="fa fa-upload"></i> Upload
+                </button>
+            </span>
+        </div>
+    </div>
 </div>
-
-@section("page_scripts")
 
 <script type="text/javascript">
 	function previewImage()
@@ -33,6 +39,18 @@
 			gambarPreview.src = oFREvent.target.result;
 		}
 	}
-</script>
 
-@endsection
+    $('#file_browser4').click(function(e)
+    {
+        e.preventDefault();
+        $('#gambar').click();
+    });
+    $('#gambar').change(function()
+    {
+        $('#file_path4').val($(this).val());
+    });
+    $('#file_path4').click(function()
+    {
+        $('#file_browser4').click();
+    });
+</script>

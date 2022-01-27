@@ -13,7 +13,7 @@ class RtmController extends Controller
     public function index()
     {
         $data = [
-            "data_penduduk" => Penduduk::where("id_rtm", NULL)->get(),
+            "data_penduduk" => Penduduk::where("id_kk", "!=" , NULL)->get(),
             "data_rtm" => RTM::all()
         ];
 
@@ -46,7 +46,8 @@ class RtmController extends Controller
             "kelas_sosial" => 1
         ]);
 
-        return redirect("/page/admin/kependudukan/rtm");
+        return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
+
     }
 
     /**
@@ -125,7 +126,8 @@ class RtmController extends Controller
             "rtm_level" => 2
         ]);
 
-        return redirect("/page/admin/kependudukan/rtm");
+        return redirect("/page/admin/kependudukan/rtm")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
+
 
     }
 

@@ -94,14 +94,23 @@
                     </div>
                     <div class="form-group">
                         <label for="gambar"> Gambar </label>
-                        <img class="gambar-preview img-fluid" width="300">
-                        <br>
-                        <input type="file" class="form-control" name="gambar" id="gambar" onchange="previewImage()">
+                        <div class="box-profile">
+                            <img class="penduduk profile-user-img img-responsive gambar-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/upload.png') }}" alt="Foto Penduduk">
+                            <div class="input-group input-group-sm">
+                                <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                                <input type="file" class="hidden" id="gambar" name="gambar" onchange="previewImage()">
+                                <span class="input-group-btn">
+                                    <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                        <i class="fa fa-upload"></i> Upload
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
@@ -132,8 +141,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm pull-left" title="Batal">
-                        <i class="fa fa-times"></i> Batal
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm pull-left" title="Reset">
+                        <i class="fa fa-refresh"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-social btn-success btn-flat btn-sm" title="Simpan Data">
                         <i class="fa fa-edit"></i> Simpan
@@ -186,6 +195,20 @@
             ],
         })
     })
+
+    $('#file_browser4').click(function(e)
+    {
+        e.preventDefault();
+        $('#gambar').click();
+    });
+    $('#gambar').change(function()
+    {
+        $('#file_path4').val($(this).val());
+    });
+    $('#file_path4').click(function()
+    {
+        $('#file_browser4').click();
+    });
 
 </script>
 

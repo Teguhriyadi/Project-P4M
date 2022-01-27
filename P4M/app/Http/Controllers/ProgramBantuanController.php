@@ -36,7 +36,8 @@ class ProgramBantuanController extends Controller
             "asal_dana" => $request->asal_dana
         ]);
 
-        return redirect("/page/admin/program_bantuan");
+        return redirect("/page/admin/program_bantuan")->with('message', "<script>swal('Selamat!', 'Data Berhasil Ditambah'success')</script>");
+
     }
 
     public function rincian_bantuan($id)

@@ -36,12 +36,12 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button id="tambahKategori" class="btn btn-social btn-primary btn-flat btn-sm">
+                    <button id="tambahKategori" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
-                    <button type="reset" class="btn btn-social btn-danger btn-flat btn-sm">
-                        <i class="fa fa-times"></i> Batal
-                    </button>
+                    <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
+	    	            <i class="fa fa-refresh"></i> Reset
+                	 </button>
                 </div>
             </div>
         </div>

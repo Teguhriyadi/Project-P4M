@@ -140,7 +140,7 @@
                     <button type="reset" class="btn btn-danger pull-left btn-flat btn-sm">
                         <i class="fa fa-times"></i> Batal
                     </button>
-                    <button type="submit" class="btn btn-primary btn-flat btn-sm">
+                    <button type="submit" class="btn btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                 </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ArsipSuratController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\CacatController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\CetakSuratController;
 use App\Http\Controllers\DusunController;
@@ -53,6 +54,7 @@ use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\RtmController;
+use App\Http\Controllers\SakitMenahunController;
 use App\Http\Controllers\SejarahController;
 use App\Models\Model\Artikel;
 use App\Models\Model\Komentar;
@@ -271,6 +273,17 @@ Route::prefix("page")->group(function() {
                 Route::get("/golongan-darah/edit", [GolonganDarahController::class, "edit"]);
                 Route::put("/golongan-darah/simpan", [GolonganDarahController::class, "update"]);
                 Route::resource("/golongan-darah", GolonganDarahController::class);
+
+                // Cacat
+                Route::get("/cacat/edit", [CacatController::class, "edit"]);
+                Route::put("/cacat/simpan", [CacatController::class, "update"]);
+                Route::resource("/cacat", CacatController::class);
+
+                // Sakit Menahun
+                Route::get("/sakit-menahun/edit", [SakitMenahunController::class, "edit"]);
+                Route::put("/sakit-menahun/simpan", [SakitMenahunController::class, "update"]);
+                Route::resource("/sakit-menahun", SakitMenahunController::class);
+
             });
 
             Route::prefix("/pemerintahan")->group(function() {
@@ -316,6 +329,8 @@ Route::prefix("page")->group(function() {
                     Route::post('/tambah_data_penduduk_masuk', [KeluargaController::class, "tambah_data_penduduk_masuk"]);
                     Route::post('/tambah_kepala_keluarga', [KeluargaController::class, "tambah_kepala_keluarga"]);
                     Route::get('/{id}/rincian_keluarga', [KeluargaController::class, "rincian_keluarga"]);
+                    Route::get('/ubah_hubungan_keluarga', [KeluargaController::class, "ubah_hubungan_keluarga"]);
+                    Route::put('/ubah_data_hubungan_keluarga', [KeluargaController::class, "ubah_data_hubungan_keluarga"]);
                     Route::delete('/rincian_keluarga/hapus', [KeluargaController::class, "rincian_keluarga_hapus"]);
                     Route::get('/{id}/rincian_keluarga/anggota_keluarga_lahir', [KeluargaController::class, "anggota_keluarga_lahir"]);
                     Route::get('/{id}/rincian_keluarga/anggota_keluarga_masuk', [KeluargaController::class, "anggota_keluarga_masuk"]);
@@ -326,6 +341,7 @@ Route::prefix("page")->group(function() {
                     Route::post('/tambah_data_anggota_keluarga_masuk', [KeluargaController::class, "tambah_data_anggota_keluarga_masuk"]);
                     Route::get('/form_tambah_data_anggota_keluarga', [KeluargaController::class, "form_tambah_data_anggota_keluarga"]);
                     Route::put('/tambah_penduduk_dari_daftar', [KeluargaController::class, "tambah_penduduk_dari_daftar"]);
+                    Route::put("/simpan_data_keluarga", [KeluargaController::class, "simpan_data_keluarga"]);
                 });
 
                 Route::prefix('/rtm')->group(function() {

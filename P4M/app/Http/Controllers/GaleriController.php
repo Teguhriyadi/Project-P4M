@@ -11,7 +11,7 @@ class GaleriController extends Controller
     public function index()
     {
         $data = [
-            "data_galeri" => Galeri::all()
+            "data_galeri" => Galeri::latest()->get()
         ];
 
         return view("/admin/page/web/galeri/index", $data);
@@ -19,18 +19,24 @@ class GaleriController extends Controller
 
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            "judul" => "required",
-            "gambar" => "image|file"
-        ]);
+        $cek = Galeri::where("judul", $request->judul)->count();
 
-        if ($request->file("gambar")) {
-            $validasi["gambar"] = $request->file("gambar")->store("galeri");
+        if ($cek) {
+            return redirect()->back()->with('message', "<script>swal('Oops!', 'Tidak Boleh Duplikasi Data', 'error')</script>");
+        } else {
+            $validasi = $request->validate([
+                "judul" => "required",
+                "gambar" => "image|file"
+            ]);
+
+            if ($request->file("gambar")) {
+                $validasi["gambar"] = $request->file("gambar")->store("galeri");
+            }
+
+            Galeri::create($validasi);
+
+            return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data Berhasil ditambahkan', 'success')</script>");
         }
-
-        Galeri::create($validasi);
-
-        return redirect()->back()->with('message', "<script>swal('Selamat!', 'Data Berhasil ditambahkan', 'success')</script>");
     }
 
     public function edit(Request $request)
@@ -59,7 +65,7 @@ class GaleriController extends Controller
 
         Galeri::where("id", $request->id)->update($validasi);
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil diubah', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Diubah', 'success')</script>");
     }
 
     public function destroy(Request $request, $id)
@@ -70,6 +76,6 @@ class GaleriController extends Controller
 
         Galeri::where("id", $id)->delete();
 
-        return back()->with('message', "<script>swal('Selamat!', 'Data anda berhasil dihapus', 'success')</script>");
+        return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
     }
 }

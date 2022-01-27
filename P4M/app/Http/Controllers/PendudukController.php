@@ -106,6 +106,7 @@ class PendudukController extends Controller
             "data_hubungan" => PendudukHubungan::all(),
             "data_kelamin" => PendudukSex::all(),
             "data_agama" => PendudukAgama::all(),
+            "data_pendidikan_kk" => PendudukPendidikanKK::all(),
             "data_pendidikan" => PendudukPendidikan::all(),
             "data_pekerjaan" => PendudukPekerjaan::all(),
             "data_warganegara" => PendudukWargaNegara::all(),
@@ -114,6 +115,8 @@ class PendudukController extends Controller
             "data_dusun" => Dusun::all(),
             "data_rt" => Rt::all(),
             "data_rw" => Rw::all(),
+            "data_cacat" => Cacat::all(),
+            "data_sakit_menahun" => SakitMenahun::all()
         ];
 
         return view('admin/page/penduduk/edit', $data);
