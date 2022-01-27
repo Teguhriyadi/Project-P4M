@@ -78,7 +78,7 @@
                         <button type="reset" class="btn btn-social btn-warning btn-flat btn-sm" title="Reset">
                             <i class="fa fa-refresh"></i> Reset
                         </button>
-                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" class="pull-right btn btn-info btn-social btn-flat btn-sm">
+                        <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan') }}" class="pull-right btn btn-info btn-social btn-flat btn-sm" title="kembali">
                             <i class="fa fa-sign-out"></i> Kembali
                         </a>
                     </div>
