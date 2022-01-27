@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\Keluarga;
 use App\Models\Model\Penduduk;
 use App\Models\Model\RTM;
+use App\Models\Model\RtmHubungan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -133,6 +134,16 @@ class RtmController extends Controller
         $ambil->delete();
 
         return back()->with('message', "<script>swal('Selamat!', 'Data Berhasil Dihapus', 'success')</script>");
+    }
+
+    public function ubah_hubungan_rumah_tangga(Request $request)
+    {
+        $data = [
+            "data_rtm_hubungan" => RtmHubungan::get(),
+            "edit" => RTM::where("id", $request->id)->first()
+        ];
+
+        return view("/admin/page/kependudukan/rtm/ubah_hubungan", $data);
     }
 
 }

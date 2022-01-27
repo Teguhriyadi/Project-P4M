@@ -8,6 +8,7 @@ use App\Models\Model\KlasifikasiSurat;
 use App\Models\Model\LogSurat;
 use App\Models\Model\Pegawai;
 use App\Models\Model\Penduduk;
+use App\Models\Model\PermohonanSurat;
 use App\Models\Model\Profil;
 use App\Models\Model\StrukturPemerintahan;
 use App\Models\Model\SuratFormat;
@@ -32,7 +33,8 @@ class CetakSuratController extends Controller
             "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
             "data_penduduk" => Penduduk::all(),
             "data_pegawai" => Pegawai::all(),
-            "max_nomer" => $this->maxNumber()
+            "max_nomer" => $this->maxNumber(),
+            "cari" => ""
         ];
 
         return view("template-surat.".$url_surat, $data);
@@ -134,6 +136,7 @@ class CetakSuratController extends Controller
         ]);
     }
 
+
     public function cetakSuratAfterUpdate($id)
     {
         if ($id) {
@@ -182,6 +185,26 @@ class CetakSuratController extends Controller
             abort(404);
         }
 
+    }
+
+    public function cari_data(Request $request, $url_surat)
+    {
+        $data = [
+            "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
+            "data_penduduk" => Penduduk::all(),
+            "data_pegawai" => Pegawai::all(),
+            "max_nomer" => $this->maxNumber()
+        ];
+
+        $data["cari"] = $request->cari;
+
+        if ($data["cari"] == 1) {
+            $data["data_penduduk"] = Penduduk::all();
+        } else {
+            $data["data_penduduk"] = PermohonanSurat::all();
+        }
+
+        return view("template-surat.".$url_surat, $data);
     }
 
     public function maxNumber()

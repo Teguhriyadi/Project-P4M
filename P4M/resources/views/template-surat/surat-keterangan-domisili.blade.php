@@ -26,9 +26,41 @@ use App\Models\Model\StrukturPemerintahan;
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="{{ url('/page/admin/cetak_surat') }}" class="btn btn-social btn-info btn-flat btn-sm">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Cetak Surat
+                    <a href="" class="btn btn-social btn-info btn-flat btn-sm">
+                        <i class="fa fa-arrow-circle-left"></i> Kembali ke Daftar Cetak Surat
                     </a>
+                </div>
+                <div class="box-body">
+                    <form id="main" name="main" method="POST">
+                        @method("PUT")
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-12 form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-lg-4" for="cari">Pilih Data Penduduk</label>
+                                    <div class="col-sm-8">
+                                        <select name="cari" id="cari" class="form-control input-sm select2" width="100%" onchange="formAction('main')">
+                                            <option value="">- Pilih -</option>
+                                            <option value="1" {{ $cari == 1 ? 'selected ' : '' }} >Dari Database Penduduk</option>
+                                            <option value="2" {{ $cari == 2 ? 'selected ' : '' }} >Dari Database Pemohon Surat</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Form Data <b>{{ $detail_surat->nama }}</b>
+                    </h3>
                 </div>
                 <form id="main" name="main" method="POST" class="form-horizontal">
                     @method("PUT")
