@@ -24,11 +24,19 @@
 </section>
 
 <section class="content">
-    <form action="{{ url('/page/admin/kependudukan/penduduk/simpan_data_penduduk_masuk/') }}" method="POST" enctype="multipart/form-data" id="formTambahPendudukLahir">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <form action="{{ url('/page/admin/kependudukan/penduduk/'.$data_penduduk->id) }}" method="POST" enctype="multipart/form-data" id="formTambahPendudukLahir">
         @csrf
-
+        @method('put')
         <div class="row">
-
             <div class="col-md-4">
                 <div class="box box-info">
                     <div class="box-body box-profile">
@@ -61,7 +69,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control input-sm pull-right" id="tgl_6" name="tgl_lapor" type="text" value="20-01-2022">
+                                        <input class="form-control input-sm pull-right" id="tgl_6" name="tgl_lapor" type="text" value="{{ $data_penduduk->created_at->formatLocalized("%Y-%m-%d") }}">
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +97,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="kk_sebelumnya"> Nomor KK Sebelumnya </label>
-                                    <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya" value="{{ $data_penduduk->no_kk_sebelumnya }}">
+                                    <input type="text" class="form-control input-sm" name="kk_sebelumnya" id="kk_sebelumnya" placeholder="No. KK Sebelumnya" value="{{ $data_penduduk->kk_sebelumnya }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -117,13 +125,13 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-sm-5">
+                            {{-- <div class="col-sm-5">
                                 <label for="contoh"> Status Penduduk </label>
                                 <select name="" id="" class="form-control input-sm select2">
                                     <option value="">- Pilih -</option>
                                     <option value="">Tetap</option>
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <div class="col-sm-12">
                                 <div class="form-group bg-info" style="padding: 5px; margin-top: 15px;">
@@ -168,8 +176,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="tempat_lahir"> Tempat Dilahirkan </label>
-                                    <select name="tempat_lahir" id="tempat_lahir" class="form-control input-sm select2">
+                                    <label for=""> Tempat Dilahirkan </label>
+                                    <select name="" id="" class="form-control input-sm select2">
                                         <option value="">- Pilih -</option>
                                         <option value="RS">RS/RB</option>
                                         <option value="PUSKESMAS">PUSKESMAS</option>
@@ -315,7 +323,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="alamat_sekarang"> Alamat KK </label>
-                                    <input type="text" name="alamat_sekarang" id="alamat_sekarang" class="form-control input-sm">
+                                    <input type="text" name="alamat_sekarang" id="alamat_sekarang" class="form-control input-sm" value="{{ $data_penduduk->alamat_sekarang }}">
                                 </div>
                             </div>
 
@@ -325,7 +333,7 @@
                                     <select name="id_dusun" id="id_dusun" class="form-control input-sm select2" width="100%">
                                         <option value="">Pilih Dusun</option>
                                         @foreach ($data_dusun as $d)
-                                        <option value="{{ $d->id }}">
+                                        <option value="{{ $d->id }}" {{ $data_penduduk->id_dusun == $d->id ? 'selected' : '' }}>
                                             {{ $d->dusun }}
                                         </option>
                                         @endforeach
@@ -334,10 +342,28 @@
                             </div>
 
                             <div class="col-md-4">
+                                <div class="form-group" id="rwSebelumnya">
+                                    <label for="">RW</label>
+                                    <select id="" name="" class="form-control input-sm select2">
+                                        <option value="">Pilih RW</option>
+                                        @foreach ($data_rw as $rw)
+                                        <option value="{{ $rw->id }}" {{ $rw->id == $data_penduduk->id_rw ? 'selected' : '' }}>{{ $rw->rw }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group" id="rw"></div>
                             </div>
 
                             <div class="col-md-4">
+                                <div class="form-group" id="rtSebelumnya">
+                                    <label for="">RT</label>
+                                    <select name="" id="" class="form-control input-sm select2">
+                                        <option value="">Pilih RT</option>
+                                        @foreach ($data_rt as $rt)
+                                        <option value="{{ $rt->id }}" {{ $rt->id == $data_penduduk->id_rt ? 'selected' : '' }}>{{ $rt->rt }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group" id="rt"></div>
                             </div>
                         </div>
@@ -346,21 +372,21 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="telepon"> Nomor Telepon </label>
-                                    <input type="text" name="telepon" id="telepon" class="form-control input-sm">
+                                    <input type="text" name="telepon" id="telepon" class="form-control input-sm"  value="{{ $data_penduduk->telepon }}">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email"> Alamat Email </label>
-                                    <input type="email" name="email" id="email" class="form-control input-sm">
+                                    <input type="email" name="email" id="email" class="form-control input-sm"  value="{{ $data_penduduk->email }}">
                                 </div>
                             </div>
 
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="alamat_sebelumnya"> Alamat Sebelumnya </label>
-                                    <input type="text" name="alamat_sebelumnya" id="alamat_sebelumnya" class="form-control input-sm">
+                                    <input type="text" name="alamat_sebelumnya" id="alamat_sebelumnya" class="form-control input-sm"  value="{{ $data_penduduk->alamat_sebelumnya }}">
                                 </div>
                             </div>
 
@@ -376,7 +402,7 @@
                                     <select name="" id="" class="form-control input-sm">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_kawin as $kawin)
-                                        <option value="{{ $kawin->id }}">
+                                        <option value="{{ $kawin->id }}" {{ $kawin->id == $data_penduduk->status_kawin ? 'selected' : '' }}>
                                             {{ $kawin->nama }}
                                         </option>
                                         @endforeach
@@ -386,7 +412,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="akta_perkawinan"> No. Akta Nikah </label>
-                                    <input type="text" name="akta_perkawinan" id="akta_perkawinan" class="form-control input-sm">
+                                    <input type="text" name="akta_perkawinan" id="akta_perkawinan" class="form-control input-sm" value="{{ $data_penduduk->akta_perkawinan }}">
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -396,7 +422,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control input-sm pull-right datepicker" name="tanggal_perkawinan" id="tanggal_perkawinan" type="text" value="">
+                                        <input class="form-control input-sm pull-right datepicker" name="tanggal_perkawinan" id="tanggal_perkawinan" type="text" value="{{ $data_penduduk->tanggal_perkawinan }}">
                                     </div>
                                 </div>
                             </div>
@@ -404,7 +430,7 @@
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label for="akta_perceraian"> Akta Perceraian </label>
-                                    <input type="text" name="akta_perceraian" id="akta_perceraian" class="form-control input-sm">
+                                    <input type="text" name="akta_perceraian" id="akta_perceraian" class="form-control input-sm" value="{{ $data_penduduk->akta_perceraian }}">
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -414,7 +440,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control input-sm pull-right datepicker" name="tanggal_perceraian" id="tanggal_perceraian" type="text" value="">
+                                        <input class="form-control input-sm pull-right datepicker" name="tanggal_perceraian" id="tanggal_perceraian" type="text" value="{{ $data_penduduk->tanggal_perkawinan }}">
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +470,7 @@
                                     <select name="id_cacat" id="id_cacat" class="form-control input-sm select2">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_cacat as $cacat)
-                                        <option value="{{ $cacat->id }}">
+                                        <option value="{{ $cacat->id }}" {{ $cacat->id == $data_penduduk->id_cacat ? 'selected' : '' }}>
                                             {{ $cacat->nama }}
                                         </option>
                                         @endforeach
@@ -457,7 +483,7 @@
                                     <select name="id_sakit_menahun" id="id_sakit_menahun" class="form-control input-sm select2">
                                         <option value="">- Pilih -</option>
                                         @foreach ($data_sakit_menahun as $sakit_menahun)
-                                        <option value="{{ $sakit_menahun->id }}">
+                                        <option value="{{ $sakit_menahun->id }}" {{ $sakit_menahun->id == $data_penduduk->id_sakit_menahun ? 'selected' : '' }}>
                                             {{ $sakit_menahun->nama }}
                                         </option>
                                         @endforeach
@@ -512,6 +538,7 @@
                 url: "{{ url('page/admin/dashboard/coba/combobox/ambil-rw') }}",
                 data: { id_dusun: id_dusun },
                 success: function(data){
+                    $("#rwSebelumnya").addClass('hidden')
                     $("#rw").html(data);
                 }
             });
@@ -535,234 +562,234 @@
     }
 
     $('#file_browser4').click(function(e)
-	{
-		e.preventDefault();
-		$('#file4').click();
-	});
-	$('#file4').change(function()
-	{
-		$('#file_path4').val($(this).val());
-	});
-	$('#file_path4').click(function()
-	{
-		$('#file_browser4').click();
-	});
+    {
+        e.preventDefault();
+        $('#file4').click();
+    });
+    $('#file4').change(function()
+    {
+        $('#file_path4').val($(this).val());
+    });
+    $('#file_path4').click(function()
+    {
+        $('#file_browser4').click();
+    });
 
-    ! function(a, i, r) {
-        var e = {};
-        e.UTIL = {
-            setupFormValidation: function() {
-                a("#formTambahPendudukLahir").validate({
-                    ignore: "",
-                    rules: {
-                        foto: {
-                            accept: !0
-                        },
-                        tgl_lapor: {
-                            required: !0
-                        },
-                        nik: {
-                            required: !0,
-                            number: !0,
-                            minlength: 16,
-                            maxlength: 16,
-                        },
-                        kk_sebelumnya: {
-                            number: !0,
-                            minlength: 16,
-                            maxlength: 16,
-                        },
-                        nama: {
-                            required: !0
-                        },
-                        kk_level: {
-                            required: !0
-                        },
-                        id_sex: {
-                            required: !0
-                        },
-                        id_agama: {
-                            required: !0
-                        },
-                        tempat_lahir: {
-                            required: !0
-                        },
-                        tgl_lahir: {
-                            required: !0
-                        },
-                        waktu_lahir: {
-                            required: !0
-                        },
-                        kelahiran_ke: {
-                            required: !0
-                        },
-                        berat_lahir: {
-                            required: !0
-                        },
-                        panjang_lahir: {
-                            required: !0
-                        },
-                        id_pendidikan: {
-                            required: !0
-                        },
-                        id_pendidikan_sedang: {
-                            required: !0
-                        },
-                        id_pekerjaan: {
-                            required: !0
-                        },
-                        id_warga_negara: {
-                            required: !0
-                        },
-                        nik_ayah: {
-                            required: !0,
-                            number: !0,
-                            minlength: 16,
-                            maxlength: 16,
-                        },
-                        nama_ayah: {
-                            required: !0
-                        },
-                        nik_ibu: {
-                            required: !0,
-                            number: !0,
-                            minlength: 16,
-                            maxlength: 16,
-                        },
-                        nama_ibu: {
-                            required: !0
-                        },
-                        alamat_sekarang: {
-                            required: !0
-                        },
-                        id_dusun: {
-                            required: !0
-                        },
-                        id_rw: {
-                            required: !0
-                        },
-                        id_rt: {
-                            required: !0
-                        },
-                        akta_lahir: {
-                            required: !0
-                        },
-                        tempat_lahir: {
-                            required: !0
-                        },
-                        alamat_sebelumnya: {
-                            required: !0
-                        }
-                    },
-                    messages: {
-                        foto: {
-                            accept: "Upload format gambar!"
-                        },
-                        tempat_lahir: {
-                            required: "Tempat lahir harap di isi!"
-                        },
-                        akta_lahir: {
-                            required: "Akta lahir harap di isi!"
-                        },
-                        tgl_lapor: {
-                            required: "Tanggal lapor harap di isi!"
-                        },
-                        nik: {
-                            required: "NIK harap di isi!",
-                            minlength: "Panjang NIK minimal 16!",
-                            maxlength: "Panjang NIK maksimal 16!",
-                            number: "Harap masukan angka!"
-                        },
-                        kk_sebelumnya: {
-                            minlength: "Panjang NIK minimal 16!",
-                            maxlength: "Panjang NIK maksimal 16!",
-                            number: "Harap masukan angka!"
-                        },
-                        nama: {
-                            required: "Nama harap di isi!"
-                        },
-                        kk_level: {
-                            required: "Hubungan keluarga harap di isi!"
-                        },
-                        id_sex: {
-                            required: "Jenis kelamin harap di isi!"
-                        },
-                        id_agama: {
-                            required: "Agama harap di isi!"
-                        },
-                        tempat_lahir: {
-                            required: "Tempat lahir harap di isi!"
-                        },
-                        tgl_lahir: {
-                            required: "Tanggal lahir harap di isi!"
-                        },
-                        waktu_lahir: {
-                            required: "Waktu lahir harap di isi!"
-                        },
-                        kelahiran_ke: {
-                            required: "Anak ke harap di isi!"
-                        },
-                        berat_lahir: {
-                            required: "Berat lahir harap di isi!"
-                        },
-                        panjang_lahir: {
-                            required: "Panjang lahir harap di isi!"
-                        },
-                        id_pendidikan: {
-                            required: "Pendidikan harap di isi!"
-                        },
-                        id_pendidikan_sedang: {
-                            required: "Pendidikan harap di isi!"
-                        },
-                        id_pekerjaan: {
-                            required: "Pekerjaan harap di isi!"
-                        },
-                        id_warga_negara: {
-                            required: "Warga negara harap di isi!"
-                        },
-                        nik_ayah: {
-                            required: "NIK ayah harap di isi!",
-                            minlength: "Panjang NIK minimal 16!",
-                            maxlength: "Panjang NIK maksimal 16!",
-                            number: "Harap masukan angka!"
-                        },
-                        nama_ayah: {
-                            required: "Nama ayah harap di isi!"
-                        },
-                        nik_ibu: {
-                            required: "NIK ibu harap di isi!",
-                            minlength: "Panjang NIK minimal 16!",
-                            maxlength: "Panjang NIK maksimal 16!",
-                            number: "Harap masukan angka!"
-                        },
-                        nama_ibu: {
-                            required: "Nama ibu harap di isi!"
-                        },
-                        alamat_sekarang: {
-                            required: "Alamat kk harap di isi!"
-                        },
-                        id_dusun: {
-                            required: "Dusun harap di isi!"
-                        },
-                        id_rw: {
-                            required: "RW harap di isi!"
-                        },
-                        id_rt: {
-                            required: "RT harap di isi!"
-                        },
-                        alamat_sebelumnya: {
-                            required: "Alamat sebelumnya harap di isi!"
-                        }
-                    },
-                    submitHandler: function(a) {
-                        a.submit()
-                    }
-                })
-            }
-        }, a(r).ready(function(a) {
-            e.UTIL.setupFormValidation()
-        })
-    }(jQuery, window, document);
-</script>
+    // ! function(a, i, r) {
+        //     var e = {};
+        //     e.UTIL = {
+            //         setupFormValidation: function() {
+                //             a("#formTambahPendudukLahir").validate({
+                    //                 ignore: "",
+                    //                 rules: {
+                        //                     foto: {
+                            //                         accept: !0
+                            //                     },
+                            //                     tgl_lapor: {
+                                //                         required: !0
+                                //                     },
+                                //                     nik: {
+                                    //                         required: !0,
+                                    //                         number: !0,
+                                    //                         minlength: 16,
+                                    //                         maxlength: 16,
+                                    //                     },
+                                    //                     kk_sebelumnya: {
+                                        //                         number: !0,
+                                        //                         minlength: 16,
+                                        //                         maxlength: 16,
+                                        //                     },
+                                        //                     nama: {
+                                            //                         required: !0
+                                            //                     },
+                                            //                     kk_level: {
+                                                //                         required: !0
+                                                //                     },
+                                                //                     id_sex: {
+                                                    //                         required: !0
+                                                    //                     },
+                                                    //                     id_agama: {
+                                                        //                         required: !0
+                                                        //                     },
+                                                        //                     tempat_lahir: {
+                                                            //                         required: !0
+                                                            //                     },
+                                                            //                     tgl_lahir: {
+                                                                //                         required: !0
+                                                                //                     },
+                                                                //                     waktu_lahir: {
+                                                                    //                         required: !0
+                                                                    //                     },
+                                                                    //                     kelahiran_ke: {
+                                                                        //                         required: !0
+                                                                        //                     },
+                                                                        //                     berat_lahir: {
+                                                                            //                         required: !0
+                                                                            //                     },
+                                                                            //                     panjang_lahir: {
+                                                                                //                         required: !0
+                                                                                //                     },
+                                                                                //                     id_pendidikan: {
+                                                                                    //                         required: !0
+                                                                                    //                     },
+                                                                                    //                     id_pendidikan_sedang: {
+                                                                                        //                         required: !0
+                                                                                        //                     },
+                                                                                        //                     id_pekerjaan: {
+                                                                                            //                         required: !0
+                                                                                            //                     },
+                                                                                            //                     id_warga_negara: {
+                                                                                                //                         required: !0
+                                                                                                //                     },
+                                                                                                //                     nik_ayah: {
+                                                                                                    //                         required: !0,
+                                                                                                    //                         number: !0,
+                                                                                                    //                         minlength: 16,
+                                                                                                    //                         maxlength: 16,
+                                                                                                    //                     },
+                                                                                                    //                     nama_ayah: {
+                                                                                                        //                         required: !0
+                                                                                                        //                     },
+                                                                                                        //                     nik_ibu: {
+                                                                                                            //                         required: !0,
+                                                                                                            //                         number: !0,
+                                                                                                            //                         minlength: 16,
+                                                                                                            //                         maxlength: 16,
+                                                                                                            //                     },
+                                                                                                            //                     nama_ibu: {
+                                                                                                                //                         required: !0
+                                                                                                                //                     },
+                                                                                                                //                     alamat_sekarang: {
+                                                                                                                    //                         required: !0
+                                                                                                                    //                     },
+                                                                                                                    //                     id_dusun: {
+                                                                                                                        //                         required: !0
+                                                                                                                        //                     },
+                                                                                                                        //                     id_rw: {
+                                                                                                                            //                         required: !0
+                                                                                                                            //                     },
+                                                                                                                            //                     id_rt: {
+                                                                                                                                //                         required: !0
+                                                                                                                                //                     },
+                                                                                                                                //                     akta_lahir: {
+                                                                                                                                    //                         required: !0
+                                                                                                                                    //                     },
+                                                                                                                                    //                     tempat_lahir: {
+                                                                                                                                        //                         required: !0
+                                                                                                                                        //                     },
+                                                                                                                                        //                     alamat_sebelumnya: {
+                                                                                                                                            //                         required: !0
+                                                                                                                                            //                     }
+                                                                                                                                            //                 },
+                                                                                                                                            //                 messages: {
+                                                                                                                                                //                     foto: {
+                                                                                                                                                    //                         accept: "Upload format gambar!"
+                                                                                                                                                    //                     },
+                                                                                                                                                    //                     tempat_lahir: {
+                                                                                                                                                        //                         required: "Tempat lahir harap di isi!"
+                                                                                                                                                        //                     },
+                                                                                                                                                        //                     akta_lahir: {
+                                                                                                                                                            //                         required: "Akta lahir harap di isi!"
+                                                                                                                                                            //                     },
+                                                                                                                                                            //                     tgl_lapor: {
+                                                                                                                                                                //                         required: "Tanggal lapor harap di isi!"
+                                                                                                                                                                //                     },
+                                                                                                                                                                //                     nik: {
+                                                                                                                                                                    //                         required: "NIK harap di isi!",
+                                                                                                                                                                    //                         minlength: "Panjang NIK minimal 16!",
+                                                                                                                                                                    //                         maxlength: "Panjang NIK maksimal 16!",
+                                                                                                                                                                    //                         number: "Harap masukan angka!"
+                                                                                                                                                                    //                     },
+                                                                                                                                                                    //                     kk_sebelumnya: {
+                                                                                                                                                                        //                         minlength: "Panjang NIK minimal 16!",
+                                                                                                                                                                        //                         maxlength: "Panjang NIK maksimal 16!",
+                                                                                                                                                                        //                         number: "Harap masukan angka!"
+                                                                                                                                                                        //                     },
+                                                                                                                                                                        //                     nama: {
+                                                                                                                                                                            //                         required: "Nama harap di isi!"
+                                                                                                                                                                            //                     },
+                                                                                                                                                                            //                     kk_level: {
+                                                                                                                                                                                //                         required: "Hubungan keluarga harap di isi!"
+                                                                                                                                                                                //                     },
+                                                                                                                                                                                //                     id_sex: {
+                                                                                                                                                                                    //                         required: "Jenis kelamin harap di isi!"
+                                                                                                                                                                                    //                     },
+                                                                                                                                                                                    //                     id_agama: {
+                                                                                                                                                                                        //                         required: "Agama harap di isi!"
+                                                                                                                                                                                        //                     },
+                                                                                                                                                                                        //                     tempat_lahir: {
+                                                                                                                                                                                            //                         required: "Tempat lahir harap di isi!"
+                                                                                                                                                                                            //                     },
+                                                                                                                                                                                            //                     tgl_lahir: {
+                                                                                                                                                                                                //                         required: "Tanggal lahir harap di isi!"
+                                                                                                                                                                                                //                     },
+                                                                                                                                                                                                //                     waktu_lahir: {
+                                                                                                                                                                                                    //                         required: "Waktu lahir harap di isi!"
+                                                                                                                                                                                                    //                     },
+                                                                                                                                                                                                    //                     kelahiran_ke: {
+                                                                                                                                                                                                        //                         required: "Anak ke harap di isi!"
+                                                                                                                                                                                                        //                     },
+                                                                                                                                                                                                        //                     berat_lahir: {
+                                                                                                                                                                                                            //                         required: "Berat lahir harap di isi!"
+                                                                                                                                                                                                            //                     },
+                                                                                                                                                                                                            //                     panjang_lahir: {
+                                                                                                                                                                                                                //                         required: "Panjang lahir harap di isi!"
+                                                                                                                                                                                                                //                     },
+                                                                                                                                                                                                                //                     id_pendidikan: {
+                                                                                                                                                                                                                    //                         required: "Pendidikan harap di isi!"
+                                                                                                                                                                                                                    //                     },
+                                                                                                                                                                                                                    //                     id_pendidikan_sedang: {
+                                                                                                                                                                                                                        //                         required: "Pendidikan harap di isi!"
+                                                                                                                                                                                                                        //                     },
+                                                                                                                                                                                                                        //                     id_pekerjaan: {
+                                                                                                                                                                                                                            //                         required: "Pekerjaan harap di isi!"
+                                                                                                                                                                                                                            //                     },
+                                                                                                                                                                                                                            //                     id_warga_negara: {
+                                                                                                                                                                                                                                //                         required: "Warga negara harap di isi!"
+                                                                                                                                                                                                                                //                     },
+                                                                                                                                                                                                                                //                     nik_ayah: {
+                                                                                                                                                                                                                                    //                         required: "NIK ayah harap di isi!",
+                                                                                                                                                                                                                                    //                         minlength: "Panjang NIK minimal 16!",
+                                                                                                                                                                                                                                    //                         maxlength: "Panjang NIK maksimal 16!",
+                                                                                                                                                                                                                                    //                         number: "Harap masukan angka!"
+                                                                                                                                                                                                                                    //                     },
+                                                                                                                                                                                                                                    //                     nama_ayah: {
+                                                                                                                                                                                                                                        //                         required: "Nama ayah harap di isi!"
+                                                                                                                                                                                                                                        //                     },
+                                                                                                                                                                                                                                        //                     nik_ibu: {
+                                                                                                                                                                                                                                            //                         required: "NIK ibu harap di isi!",
+                                                                                                                                                                                                                                            //                         minlength: "Panjang NIK minimal 16!",
+                                                                                                                                                                                                                                            //                         maxlength: "Panjang NIK maksimal 16!",
+                                                                                                                                                                                                                                            //                         number: "Harap masukan angka!"
+                                                                                                                                                                                                                                            //                     },
+                                                                                                                                                                                                                                            //                     nama_ibu: {
+                                                                                                                                                                                                                                                //                         required: "Nama ibu harap di isi!"
+                                                                                                                                                                                                                                                //                     },
+                                                                                                                                                                                                                                                //                     alamat_sekarang: {
+                                                                                                                                                                                                                                                    //                         required: "Alamat kk harap di isi!"
+                                                                                                                                                                                                                                                    //                     },
+                                                                                                                                                                                                                                                    //                     id_dusun: {
+                                                                                                                                                                                                                                                        //                         required: "Dusun harap di isi!"
+                                                                                                                                                                                                                                                        //                     },
+                                                                                                                                                                                                                                                        //                     id_rw: {
+                                                                                                                                                                                                                                                            //                         required: "RW harap di isi!"
+                                                                                                                                                                                                                                                            //                     },
+                                                                                                                                                                                                                                                            //                     id_rt: {
+                                                                                                                                                                                                                                                                //                         required: "RT harap di isi!"
+                                                                                                                                                                                                                                                                //                     },
+                                                                                                                                                                                                                                                                //                     alamat_sebelumnya: {
+                                                                                                                                                                                                                                                                    //                         required: "Alamat sebelumnya harap di isi!"
+                                                                                                                                                                                                                                                                    //                     }
+                                                                                                                                                                                                                                                                    //                 },
+                                                                                                                                                                                                                                                                    //                 submitHandler: function(a) {
+                                                                                                                                                                                                                                                                        //                     a.submit()
+                                                                                                                                                                                                                                                                        //                 }
+                                                                                                                                                                                                                                                                        //             })
+                                                                                                                                                                                                                                                                        //         }
+                                                                                                                                                                                                                                                                        //     }, a(r).ready(function(a) {
+                                                                                                                                                                                                                                                                            //         e.UTIL.setupFormValidation()
+                                                                                                                                                                                                                                                                            //     })
+                                                                                                                                                                                                                                                                            // }(jQuery, window, document);
+                                                                                                                                                                                                                                                                        </script>
 
-@endsection
+                                                                                                                                                                                                                                                                        @endsection
