@@ -272,7 +272,7 @@ class PendudukController extends Controller
     {
         Penduduk::create($request->all());
 
-        return redirect("/page/admin/kependudukan/penduduk");
+        return redirect("/page/admin/kependudukan/penduduk")->with('message', "<script>swal('Selamat!', 'Data anda berhasil ditambah', 'success')</script>");
     }
 
     public function paging($page)
