@@ -25,6 +25,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PendudukAgamaController;
 use App\Http\Controllers\PendudukPekerjaanController;
 use App\Http\Controllers\PendudukPendidikanController;
+use App\Http\Controllers\PendidikanYangSedangDitempuhController;  
 use App\Http\Controllers\PendudukSexController;
 use App\Http\Controllers\PendudukWargaNegaraController;
 use App\Http\Controllers\PotensiController;
@@ -136,6 +137,9 @@ Route::prefix('/data')->group(function () {
 
     // Pendidikan
     Route::get('/pendidikan', [UserController::class, 'pendidikan']);
+
+    // Pendidikan
+    Route::get('/pendidikanyangsedangditempuh', [UserController::class, 'pendidikanyangsedangditempuh']);
 
     // Pekerjaan
     Route::get('/pekerjaan', [UserController::class, 'pekerjaan']);
@@ -250,6 +254,12 @@ Route::prefix("page")->group(function() {
                 Route::get("/pendidikan/edit", [PendudukPendidikanController::class, "edit"]);
                 Route::put("/pendidikan/simpan", [PendudukPendidikanController::class, "update"]);
                 Route::resource("/pendidikan", PendudukPendidikanController::class);
+
+                // Pendidikan
+                Route::get("/pendidikanyangsedangditempuh/edit", [PendidikanYangSedangDitempuhController::class, "edit"]);
+                Route::put("/pendidikanyangsedangditempuh/simpan", [PendidikanYangSedangDitempuhController::class, "update"]);
+                Route::resource("/pendidikanyangsedangditempuh", PendidikanYangSedangDitempuhController::class);
+                
 
                 // Pekerjaan
                 Route::get("/pekerjaan/edit", [PendudukPekerjaanController::class, "edit"]);

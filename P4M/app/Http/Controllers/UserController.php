@@ -21,6 +21,7 @@ use App\Models\Model\Penduduk;
 use App\Models\Model\PendudukSex;
 use App\Models\Model\PendudukAgama;
 use App\Models\Model\PendudukPendidikan;
+use App\Models\Model\PendidikanYangSedangDitempuh;
 use App\Models\Model\PendudukPekerjaan;
 use App\Models\Model\PendudukWargaNegara;
 use App\Models\Model\SaranaAgama;
@@ -201,6 +202,13 @@ class UserController extends Controller
         $pendidikan = PendudukPendidikan::withCount('getCountPenduduk')->get();
         $penduduk = $this->penduduk;
         return view("pengunjung/page/data_desa/pendidikan", compact("pendidikan", "penduduk"));
+    }
+
+    public function pen()
+    {
+        $pendidikanyangsedangditempuh = PendidikanYangSedangDitempuh::withCount('getCountPenduduk')->get();
+        $pendidikanyangsedangditempuh = $this->pendidikanyangsedangditempuh;
+        return view("pengunjung/page/data_desa/pendidikan_yang_sedang_ditempuh", compact("pendidikan_yang_sedang_ditempuh", "penduduk"));
     }
 
     public function pekerjaan()
