@@ -506,9 +506,10 @@ Route::prefix("page")->group(function() {
                 Route::get("/cetak/{id}", [CetakSuratController::class, "cetakSuratAfterUpdate"]);
                 Route::get("/", [CetakSuratController::class, "data_surat"]);
                 Route::get("/form/{url_surat}", [CetakSuratController::class, "form_cetak_surat"]);
+                Route::get("/form/{url_surat}/{id}", [CetakSuratController::class, "form_cetak_surat"]);
                 Route::put("/form/{url_surat}", [CetakSuratController::class, "ambil_data_penduduk"]);
+                Route::put("/form/{url_surat}/{id}", [CetakSuratController::class, "ambil_data_penduduk"]);
                 Route::post("/form/{url_surat}", [CetakSuratController::class, "cetakSuratBeforeUpdate"]);
-                Route::put("/form/{url_surat}", [CetakSuratController::class, "cari_data"]);
             });
 
         });

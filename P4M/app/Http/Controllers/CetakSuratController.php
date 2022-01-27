@@ -27,28 +27,33 @@ class CetakSuratController extends Controller
         return view("/admin/page/cetak_surat/data_surat", $data);
     }
 
-    public function form_cetak_surat($url_surat)
+    public function form_cetak_surat($url_surat, $id=null)
     {
         $data = [
             "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
-            "data_penduduk" => Penduduk::all(),
             "data_pegawai" => Pegawai::all(),
             "max_nomer" => $this->maxNumber(),
-            "cari" => ""
         ];
+
+        if ($id == null) {
+            $data["data_penduduk"] = Penduduk::all();
+        } else {
+            $data["detail"] = Penduduk::where('id', $id)->first();
+        }
+
 
         return view("template-surat.".$url_surat, $data);
     }
 
-    public function ambil_data_penduduk(Request $request, $url_surat)
+    public function ambil_data_penduduk(Request $request, $url_surat, $id=null)
     {
         $data = [
             "detail_surat" => SuratFormat::where("url_surat", $url_surat)->first(),
             "data_penduduk" => Penduduk::all(),
-            "data_penduduk" => Penduduk::all(),
             "data_pegawai" => Pegawai::all(),
+            "data_pemohon" => PermohonanSurat::all(),
             "detail" => Penduduk::where("id", $request->id_penduduk)->first(),
-            "max_nomer" => $this->maxNumber()
+            "max_nomer" => $this->maxNumber(),
         ];
 
         return view("template-surat.".$url_surat, $data);

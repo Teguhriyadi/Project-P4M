@@ -46,7 +46,7 @@
                                     <td>{{ $p->getSurat->nama }}</td>
                                     <td>{{ $p->telepon }}</td>
                                     <td>
-                                        <a href="" class="btn bg-purple"><i class="fa fa-file-word-o"></i></a>
+                                        <a href="{{ url('page/admin/cetak_surat/form/'.$p->getSurat->url_surat.'/'.$p->nik) }}" class="btn bg-purple"><i class="fa fa-file-word-o"></i></a>
                                     </td>
                                 @endforeach
                             </tbody>
