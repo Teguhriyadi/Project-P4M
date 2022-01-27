@@ -38,7 +38,7 @@
                                 @php
                                     $data_penduduk = PermohonanSurat::paginate(3);
                                 @endphp
-                                @foreach ($data_penduduk as $penduduk)
+                                @forelse ($data_penduduk as $penduduk)
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
@@ -53,7 +53,17 @@
                                         <p>{{ $penduduk->kebutuhan }}</p>
                                     </a>
                                 </li>
-                                @endforeach
+                                @empty
+                                <li>
+                                    <a href="#" style="margin-left: 10%;">
+                                        <h4>
+                                            <i>
+                                                <b>Belum Ada Data</b>
+                                            </i>
+                                        </h4>
+                                    </a>
+                                </li>
+                                @endforelse
                             </ul>
                         </li>
                         <li class="footer">
