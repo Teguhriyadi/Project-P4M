@@ -100,12 +100,12 @@
                     </li>
                     <li class="{{ Request::is('page/admin/data/pendidikan') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/pendidikan') }}">
-                            <i class="fa fa-circle-o"></i> Data Pendidikan
+                            <i class="fa fa-circle-o"></i> Data Pendidikan KK
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/data/pendidikanyangsedangditempuh') ? 'active' : '' }}">
                         <a href="{{ url('/page/admin/data/pendidikanyangsedangditempuh') }}">
-                            <i class="fa fa-circle-o"></i> Data Pendidikan Yang Ditempuh
+                            <i class="fa fa-circle-o"></i> Data Pendidikan
                         </a>
                     </li>
                     <li class="{{ Request::is('page/admin/data/pekerjaan') ? 'active' : '' }}">

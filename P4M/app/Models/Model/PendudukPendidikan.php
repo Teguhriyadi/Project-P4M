@@ -9,7 +9,7 @@ class PendudukPendidikan extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_penduduk_pendidikan";
+    protected $table = "tb_penduduk_pendidikan_kk";
 
     protected $guarded = [''];
 

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title', 'Data Pendidikan')
+@section('title', 'Data Pendidikan Ditempuh')
 
 @section('page_content')
 
@@ -257,7 +257,7 @@
             name: 'Populasi',
             data: [
             @foreach ($data_pendidikan_yang_sedang_ditempuh as $data)
-            ["{{ $data->nama }}", {{ $data->getCountPenduduk->count() }}],
+            ["{{ $data->nama }}", 5],
             @endforeach
             ]
         }]
