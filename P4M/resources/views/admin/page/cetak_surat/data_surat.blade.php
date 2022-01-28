@@ -23,9 +23,9 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a href="" class="btn btn-primary btn-flat btn-sm" title="Contoh">
-                        Contoh
-                    </a>
+                    <h3 class="box-title">
+                        Cetak Layanan Surat
+                    </h3>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
