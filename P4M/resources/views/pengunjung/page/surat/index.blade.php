@@ -4,8 +4,8 @@
 
 @section('page_content')
 
-<link rel="stylesheet" href="/backend/template/bower_components/select2/dist/css/select2.min.css">
-<script src="/backend/template/bower_components/select2/dist/js/select2.full.js"></script>
+<link rel="stylesheet" href="{{ url('') }}/backend/template/bower_components/select2/dist/css/select2.min.css">
+<script src="{{ url('') }}/backend/template/bower_components/select2/dist/js/select2.full.js"></script>
 
 <style>
     label.error {
