@@ -125,7 +125,7 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $data->getJabatan->nama_jabatan }}</td>
-                                        <td>{{ $data->getPegawai->nama }}</td>
+                                        <td>{{ $data->getPegawai->getPenduduk->nama }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('/page/admin/pemerintahan/struktur_pemerintahan/'.$data->id) }}/edit" class="btn btn-warning btn-sm" title="Ubah data">
                                                 <i class="fa fa-edit"></i>

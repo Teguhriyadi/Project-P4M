@@ -22,6 +22,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            <!--
             <div class="alert alert-warning" role="alert">
                 <h4>Surat yang udah bisa</h4>
                 <ul>
@@ -31,6 +32,7 @@
                     <li>Surat Keterangan Usaha</li>
                 </ul>
             </div>
+        -->
             <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title">
