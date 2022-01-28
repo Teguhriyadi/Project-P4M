@@ -30,9 +30,6 @@
                     <a href="{{ url('/page/admin/program_bantuan/create') }}" class="btn btn-social btn-primary btn-flat btn-sm" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
-                    <a href="" class="btn btn-social btn-info btn-success btn-flat btn-sm" title="Panduan">
-                        <i class="fa fa-arrow-circle-right"></i> Panduan
-                    </a>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
