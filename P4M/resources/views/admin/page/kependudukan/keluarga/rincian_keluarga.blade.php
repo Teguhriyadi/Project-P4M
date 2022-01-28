@@ -76,13 +76,6 @@
                                         {{ $edit->alamat }}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Program Bantuan</td>
-                                    <td>:</td>
-                                    <td>
-                                        -
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

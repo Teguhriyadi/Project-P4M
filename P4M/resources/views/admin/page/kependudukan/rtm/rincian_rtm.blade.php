@@ -15,7 +15,9 @@
             </a>
         </li>
         <li>
-
+            <a href="{{ url('/page/admin/kependudukan/rtm') }}">
+                Data Rumah Tangga
+            </a>
         </li>
         <li class="active">@yield('title')</li>
     </ol>
@@ -26,14 +28,14 @@
         <div class="col-sm-12">
             <div class="box box-info">
                 <div class="box-header">
-                    <a onclick="tambahAnggotaRTM({{ $edit->id }})" type="button" data-toggle="modal" data-target="#modalBox" class="btn btn-social btn-success btn-flat btn-sm">
+                    <a onclick="tambahAnggotaRTM({{ $edit->id }})" type="button" data-toggle="modal" data-target="#modalBox" class="btn btn-social btn-success btn-flat btn-sm" title="Tambah Anggota">
                         <i class="fa fa-plus"></i> Tambah Anggota
                     </a>
-                    <a href="{{ url('/page/admin/kependudukan/rtm/kartu_rtm/'.$edit->id) }}" class="btn bg-purple btn-flat btn-sm">
+                    <a href="{{ url('/page/admin/kependudukan/rtm/kartu_rtm/'.$edit->id) }}" class="btn btn-social bg-purple btn-flat btn-sm" title="Kartu Rumah Tangga">
                         <i class="fa fa-book"></i> Kartu Rumah Tangga
                     </a>
-                    <a href="{{ url('/page/admin/kependudukan/rtm') }}" class="btn btn-info btn-flat btn-sm">
-                        <i class="fa fa-arrow-left"></i> Kembali ke Daftar Rumah Tangga
+                    <a href="{{ url('/page/admin/kependudukan/rtm') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali ke Daftar Rumah Tangga">
+                        <i class="fa fa-arrow-circle-left"></i> Kembali ke Daftar Rumah Tangga
                     </a>
                 </div>
                 <div class="box-body">
@@ -62,15 +64,6 @@
                                     <td>:</td>
                                     <td>
                                         {{ $edit->getDataPenduduk->alamat }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Program Bantuan</td>
-                                    <td>:</td>
-                                    <td>
-                                        @foreach ($program_bantuan as $program)
-                                            {{ $program->nama }}
-                                        @endforeach
                                     </td>
                                 </tr>
                             </tbody>

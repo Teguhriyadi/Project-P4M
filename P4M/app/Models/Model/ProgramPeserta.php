@@ -20,4 +20,9 @@ class ProgramPeserta extends Model
         return $this->hasOne(ProgramBantuan::class, "id", "program_id");
     }
 
+    public function getDataPenduduk()
+    {
+        return $this->hasOne(Penduduk::class, "id", "kartu_id_penduduk");
+    }
+
 }

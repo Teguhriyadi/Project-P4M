@@ -27,9 +27,6 @@
                     @else
 
                     @endif
-                    <a href="" class="btn btn-social bg-purple btn-flat btn-sm" title="Cetak Data">
-                        <i class="fa fa-upload"></i> Cetak
-                    </a>
                     <a href="{{ url('/page/admin/program_bantuan') }}" class="btn btn-social btn-info btn-flat btn-sm" title="Kembali Ke Daftar Program Bantuan">
                         <i class="fa fa-arrow-circle-left "></i> Kembali Ke Daftar Program Bantuan
                     </a>
@@ -93,9 +90,6 @@
                                                 <tr>
                                                     <th rowspan="2" width="1%">No.</th>
                                                     <th rowspan="2">Aksi</th>
-                                                    <th rowspan="2">NIK</th>
-                                                    <th rowspan="2">No. KK</th>
-                                                    <th rowspan="2">Nama Penduduk</th>
                                                     <th colspan="7" class="text-center">Identitas Di Kartu Peserta</th>
                                                 </tr>
                                                 <tr>
@@ -124,20 +118,13 @@
                                                             </button>
                                                         </form>
                                                     </td>
-                                                    <td>
-                                                        <a href="{{ url('/page/admin/program_bantuan/'.$detail->id.'/profil/'.$data->kartu_nik) }}">
-                                                            {{ $data->kartu_nik }}
-                                                        </a>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>{{ $data->kartu_nama }}</td>
                                                     <td class="text-center">{{ $data->no_id_kartu }}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $data->kartu_nik }}</td>
+                                                    <td>{{ $data->kartu_nama }}</td>
+                                                    <td>{{ $data->kartu_tempat_lahir }}</td>
+                                                    <td>{{ $data->kartu_tanggal_lahir }}</td>
+                                                    <td>{{ $data->getDataPenduduk->getKelamin->nama }}</td>
+                                                    <td>{{ $data->kartu_alamat }}</td>
                                                 </tr>
                                                 @empty
                                                 <tr>

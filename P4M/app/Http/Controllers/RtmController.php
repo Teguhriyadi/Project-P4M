@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Model\Keluarga;
 use App\Models\Model\Penduduk;
 use App\Models\Model\ProgramBantuan;
+use App\Models\Model\ProgramPeserta;
 use App\Models\Model\RTM;
 use App\Models\Model\RtmHubungan;
 use Illuminate\Http\Request;
@@ -48,8 +49,6 @@ class RtmController extends Controller
         $data = [
             "edit" => RTM::where("id", $id)->first()
         ];
-
-        $data["program_bantuan"] = ProgramBantuan::get();
 
         if (!$data["edit"]) {
             abort(404);
