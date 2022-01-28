@@ -30,7 +30,7 @@
         <div class="alert alert-danger" style="text-align:center;">
             <b> Pastikan nama anda sudah terdaftar di kependudukan Desa Arahan Lor! </b>
             <br>
-            <p>Silahkan lihat data anda pada link berikut ini <p><a href="/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p>
+            <p>Silahkan lihat data anda pada link berikut ini <p><a href="{{ url('') }}/kependudukan"><u> Data kependudukan desa Arahan Lor </u></a></p>  </p>
         </div>
         <form action="{{ url('') }}/surat" method="post" id="permohonanSurat">
             @csrf
