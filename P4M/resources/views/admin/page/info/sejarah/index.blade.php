@@ -56,15 +56,22 @@
                                 <i class="fa fa-upload"></i> Upload Gambar
                             </h3>
                         </div>
-                        <div class="box-body">
-                            <label for="gambar" style="width: 100%"> Gambar </label>
+                        <div class="box-body box-profile">
                             @if ($sejarah)
-                            <center><img src="/storage/{{ $sejarah->gambar }}" class="gambar-preview" style="width: 200px; margin-bottom: 20px;"></center>
-                            <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
+                            <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/storage/'.$sejarah->gambar) }}" alt="Foto Penduduk">
                             @else
-                            <center><img src="{{ url('/gambar/upload.png') }}" class="gambar-preview" style="width: 200px; margin-bottom: 20px;"></center>
-                            <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
+                            <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/upload.png') }}" alt="Foto Penduduk">
                             @endif
+
+                            <div class="input-group input-group-sm">
+                                <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                                <input type="file" class="hidden" id="file4" name="gambar" onchange="previewImage()">
+                                <span class="input-group-btn">
+                                    <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                        <i class="fa fa-upload"></i> Upload
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                         <div class="box-footer">
                             @if ($sejarah)
@@ -97,6 +104,34 @@
         $(function() {
             CKEDITOR.replace('sejarah')
         })
+
+        function previewImage() {
+            const image = document.querySelector("#file4");
+            const imgPreview = document.querySelector(".img-preview");
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+
+        $('#file_browser4').click(function(e)
+        {
+            e.preventDefault();
+            $('#file4').click();
+        });
+        $('#file4').change(function()
+        {
+            $('#file_path4').val($(this).val());
+        });
+        $('#file_path4').click(function()
+        {
+            $('#file_browser4').click();
+        });
 
     </script>
 
@@ -165,21 +200,6 @@
             });
 
         })(jQuery, window, document);
-
-        function previewImage()
-        {
-            const gambar = document.querySelector("#gambar");
-            const gambarPreview = document.querySelector(".gambar-preview");
-
-            gambarPreview.style.display = "block";
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(gambar.files[0]);
-
-            oFReader.onload = function(oFREvent) {
-                gambarPreview.src = oFREvent.target.result;
-            }
-        }
 
     </script>
 

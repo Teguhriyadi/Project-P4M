@@ -157,17 +157,25 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="gambar"> Gambar </label>
-                                        @if ($data_profil->count())
-                                        @foreach ($data_profil as $profil)
-                                        <img src="{{ url('/storage/'.$profil->gambar) }}" class="gambar-preview" style="width: 300px; margin-bottom: 5px;">
-                                        @endforeach
-                                        @else
-                                        <br>
-                                        <center>
-                                            <img src="{{ url('/gambar/upload.png') }}" class="gambar-preview" style="width: 200px; margin-bottom: 20px;">
-                                        </center>
-                                        @endif
-                                        <input onchange="previewImage()" type="file" class="form-control" name="gambar" id="gambar">
+                                        <div class="box-body box-profile">
+                                            @if ($data_profil->count())
+                                                @foreach ($data_profil as $profil)
+                                                <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/storage/'.$profil->gambar) }}" alt="Foto Profil">
+                                                @endforeach
+                                            @else
+                                            <img class="penduduk profile-user-img img-responsive img-preview" style="border-radius: 50%; width: 200px; height: 200px; margin-bottom: 15px" src="{{ url('/gambar/upload.png') }}" alt="Foto Profil">
+                                            @endif
+
+                                            <div class="input-group input-group-sm">
+                                                <input  type="text" class="form-control" id="file_path4" placeholder="Masukkan Gambar">
+                                                <input type="file" class="hidden" id="file4" name="gambar" onchange="previewImage()">
+                                                <span class="input-group-btn">
+                                                    <button  type="button" class="btn btn-info btn-flat" id="file_browser4">
+                                                        <i class="fa fa-upload"></i> Upload
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
@@ -209,20 +217,33 @@
 
                     <script type="text/javascript">
 
-                        function previewImage()
-                        {
-                            const gambar = document.querySelector("#gambar");
-                            const gambarPreview = document.querySelector(".gambar-preview");
+                        function previewImage() {
+                            const image = document.querySelector("#file4");
+                            const imgPreview = document.querySelector(".img-preview");
 
-                            gambarPreview.style.display = "block";
+                            imgPreview.style.display = 'block';
 
                             const oFReader = new FileReader();
-                            oFReader.readAsDataURL(gambar.files[0]);
+                            oFReader.readAsDataURL(image.files[0]);
 
                             oFReader.onload = function(oFREvent) {
-                                gambarPreview.src = oFREvent.target.result;
+                                imgPreview.src = oFREvent.target.result;
                             }
                         }
+
+                        $('#file_browser4').click(function(e)
+                        {
+                            e.preventDefault();
+                            $('#file4').click();
+                        });
+                        $('#file4').change(function()
+                        {
+                            $('#file_path4').val($(this).val());
+                        });
+                        $('#file_path4').click(function()
+                        {
+                            $('#file_browser4').click();
+                        });
 
                     </script>
 
