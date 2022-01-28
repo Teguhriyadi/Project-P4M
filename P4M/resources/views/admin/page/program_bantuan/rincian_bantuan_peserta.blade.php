@@ -109,7 +109,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($daftar_peserta as $data)
+                                                @forelse ($daftar_peserta as $data)
                                                 <tr>
                                                     <td class="text-center">{{ $loop->iteration }}.</td>
                                                     <td class="text-center">
@@ -139,7 +139,15 @@
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
-                                                @endforeach
+                                                @empty
+                                                <tr>
+                                                    <td colspan="12" class="text-center">
+                                                        <i>
+                                                            <b>Data Saat Ini Masih Kosong</b>
+                                                        </i>
+                                                    </td>
+                                                </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>

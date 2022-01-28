@@ -4,6 +4,10 @@
 
 @section('page_content')
 
+@php
+use App\Models\Model\ProgramPeserta;
+@endphp
+
 <section class="content-header">
     <h1>
         @yield('title')
@@ -102,18 +106,32 @@
                                                     <option value="">- Pilih -</option>
                                                     @foreach ($data_penduduk as $data)
                                                         @if (empty($edit))
-                                                        <option value="{{ $data->id }}">
-                                                            NIK : {{ $data->nik }} - {{ $data->nama }}
-                                                        </option>
-                                                        @else
-                                                            @if ($edit->id == $data->id)
-                                                            <option value="{{ $data->id }}" selected>
-                                                                NIK : {{ $data->nik }} - {{ $data->nama }}
-                                                            </option>
-                                                            @else
+                                                            @php
+                                                                $coba = ProgramPeserta::where("program_id",$detail->id)
+                                                                        ->where("kartu_id_penduduk", $data->id)
+                                                                        ->first();
+                                                            @endphp
+                                                            @if (!$coba)
                                                             <option value="{{ $data->id }}">
                                                                 NIK : {{ $data->nik }} - {{ $data->nama }}
                                                             </option>
+                                                            @endif
+                                                        @else
+                                                            @php
+                                                                $coba = ProgramPeserta::where("program_id", $detail->id)
+                                                                        ->where("kartu_id_penduduk",$data->id)
+                                                                        ->first();
+                                                            @endphp
+                                                            @if (!$coba)
+                                                                @if ($edit->id == $data->id)
+                                                                <option value="{{ $data->id }}" selected>
+                                                                    NIK : {{ $data->nik }} - {{ $data->nama }}
+                                                                </option>
+                                                                @else
+                                                                <option value="{{ $data->id }}">
+                                                                    NIK : {{ $data->nik }} - {{ $data->nama }}
+                                                                </option>
+                                                                @endif
                                                             @endif
                                                         @endif
                                                     @endforeach
@@ -154,31 +172,31 @@
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Nomer KK </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled>
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getKeluarga->no_kk }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Nama Kepala Keluarga </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled>
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getKeluarga->getDataPenduduk->nama }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Status KK </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled>
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getHubungan->nama }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Alamat Peserta </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled>
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->getKeluarga->alamat }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="" class="col-sm-4 col-lg-5"> Tempat Tanggal, Lahir Peserta </label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control input-sm" disabled>
+                                                            <input type="text" class="form-control input-sm" disabled value="{{ $edit->get }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -254,20 +272,21 @@
                                                 <form action="{{ url('/page/admin/program_bantuan/tambah_data_peserta_bantuan') }}" method="POST" class="form-horizontal">
                                                     @csrf
 
-                                                    <input type="hidden" name="program_id" value="{{ $edit->id }}">
+                                                    @if ($detail->sasaran == 1)
+                                                    <input type="hidden" name="peserta" value="{{ $edit->nik }}">
+                                                    @elseif($detail->sasaran == 2)
+                                                    <input type="hidden" name="peserta" value="{{ $edit->getKeluarga->no_kk }}">
+                                                    @elseif($detail->sasaran == 3)
+                                                    <input type="hidden" name="peserta" value="{{ $edit->nik }}">
+                                                    @endif
+
+                                                    <input type="hidden" name="program_id" value="{{ $detail->id }}">
                                                     <input type="hidden" name="kartu_id_penduduk" value="{{ $edit->id }}">
                                                     <div class="box-body">
                                                         <div class="form-group">
-                                                            <label for="" class="col-sm-4 col-lg-4"> Nomor Kartu Peserta </label>
+                                                            <label for="no_id_kartu" class="col-sm-4 col-lg-4"> Nomor Kartu Peserta </label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="" class="form-control input-sm" placeholder="Masukkan Nomor Kartu Peserta">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="kartu_peserta" class="col-sm-4 col-lg-4">Gambar Kartu Peserta</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="file" name="kartu_peserta" id="kartu_peserta" class="form-control input-sm">
-                                                                <span class="help-block"><code> Kosongkan jika tidak ingin mengunggah gambar</code></span>
+                                                                <input type="text" name="no_id_kartu" id="no_id_kartu" class="form-control input-sm" placeholder="Masukkan Nomor Kartu Peserta">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -311,7 +330,7 @@
                                                             <i class="fa fa-refresh"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-social btn-primary btn-flat btn-sm pull-right" title="Tambah Data">
-                                                            <i class="fa fa-check"></i> Tambah
+                                                            <i class="fa fa-plus"></i> Tambah
                                                         </button>
                                                     </div>
                                                 </form>
