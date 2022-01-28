@@ -44,9 +44,9 @@
 @endsection
 
 @section('page_scripts')
-<link rel="stylesheet" href="/backend/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-<script src="/backend/template/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="/backend/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{ url('') }}/backend/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<script src="{{ url('') }}/backend/template/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ url('') }}/backend/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 <script>
     $(function () {
